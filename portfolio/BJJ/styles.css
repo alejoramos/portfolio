@@ -1,0 +1,388 @@
+/* Reset: quita márgenes y paddings por defecto del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* hace que padding no rompa el tamaño */
+}
+
+/* Hace que el scroll entre secciones sea suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilos base del body */
+body {
+    font-family: "Inter", sans-serif; /* tipografía */
+    background-color: #0b0b0b; /* fondo oscuro */
+    color: #fff; /* texto blanco */
+    line-height: 1.6; /* espacio entre líneas */
+}
+
+/* Contenedor central para no usar todo el ancho */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* centra horizontalmente */
+}
+
+/* Navbar fija arriba */
+.navbar {
+    position: sticky; /* se queda arriba al hacer scroll */
+    top: 0;
+    background-color: rgba(11, 11, 11, 0.85); /* fondo semi-transparente */
+    backdrop-filter: blur(10px); /* efecto glass */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000; /* se pone encima de todo */
+}
+
+/* Contenido del navbar (logo + links) */
+.nav-content {
+    display: flex; /* pone elementos en fila */
+    justify-content: space-between; /* separa izquierda y derecha */
+    align-items: center; /* centra vertical */
+    padding: 20px 0;
+}
+
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Lista de navegación */
+.nav-links {
+    list-style: none; /* quita puntos */
+    display: flex;
+    gap: 24px; /* espacio entre links */
+}
+
+/* Links */
+.nav-links a {
+    text-decoration: none;
+    color: #d9d9d9;
+    transition: 0.3s; /* suaviza hover */
+}
+
+/* Hover en links */
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* Hero ocupa toda la pantalla */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center; /* centra vertical */
+    padding: 60px 0;
+    background: linear-gradient(to bottom, #111111, #0b0b0b);
+}
+
+/* Contenedor del hero */
+.hero-content {
+    display: flex; /* columnas */
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* en móvil baja */
+}
+
+/* Texto del hero */
+.hero-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Etiqueta arriba del título */
+.hero-text span {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px; /* forma de pill */
+    color: #cfcfcf;
+    font-size: 1rem;
+}
+
+/* Título principal */
+.hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* responsive */
+    line-height: 1;
+    margin-bottom: 18px;
+    animation: fadeUp 0.8s ease; /* animación */
+}
+
+/* Texto debajo */
+.hero-text p {
+    color: #bbbbbb;
+    max-width: 550px;
+    margin-bottom: 28px;
+    animation: fadeUp 1.2s ease;
+}
+
+/* Botones */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeUp 1.6s ease;
+}
+
+/* Estilo base de botones */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* Botón principal */
+.btn-primary {
+    background-color: white;
+    color: #0b0b0b;
+}
+
+/* Hover */
+.btn-primary:hover {
+    transform: translateY(-4px); /* efecto levantar */
+}
+
+/* Botón secundario */
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Card derecha */
+.hero-card {
+    flex: 1;
+    min-width: 280px;
+    background-color: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2rem;
+    padding: 20px;
+    transition: 0.4s;
+    animation: fadeUp 1.2s ease;
+}
+
+/* Hover card */
+.hero-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen */
+.hero-card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover; /* no se deforma */
+    border-radius: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Info debajo de la imagen */
+.hero-info {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Cada box */
+.info-box {
+    flex: 1;
+    min-width: 120px;
+    background-color: #1d1d1d;
+    border-radius: 16px;
+    padding: 14px;
+}
+
+.info-box span {
+    display: block;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Secciones */
+section {
+    padding: 80px 0;
+}
+
+/* Títulos */
+.section-title {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+/* Texto */
+.section-text {
+    color: #bcbcbc;
+    max-width: 700px;
+    margin-bottom: 36px;
+}
+
+/* Contenedor de cards */
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Card */
+.card {
+    flex: 1 1 220px;
+    background-color: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 24px;
+
+    /* Estado inicial oculto */
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: 0.6s;
+}
+
+/* Cuando aparece */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover */
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* Icono */
+.icon {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+}
+
+/* Lista de horarios */
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Cada fila */
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    background-color: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 18px 20px;
+
+    transition: 0.3s;
+
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Animación */
+.schedule-item.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.6s;
+}
+
+/* Hover */
+.schedule-item:hover {
+    transform: translateX(8px);
+}
+
+/* Badge */
+.badge {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background-color: #222222;
+}
+
+/* Formulario */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+}
+
+/* Inputs */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background-color: #151515;
+    color: white;
+}
+
+/* Placeholder */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #9a9a9a;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #9a9a9a;
+}
+
+/* Animación base */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s;
+}
+
+/* Cuando aparece */
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación usada en hero */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-content {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+}

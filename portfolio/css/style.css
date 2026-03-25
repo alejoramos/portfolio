@@ -1,0 +1,297 @@
+/* ===== Base ===== */
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+  font-family: arial, sans-serif;
+  color: #222;
+  background: linear-gradient(180deg, #eef2f7 0%, #e9ecf1 100%);
+  line-height: 1.6;
+}
+
+/* ===== Layout ===== */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-section{
+  padding: 70px 0;
+}
+
+/* ===== Header / Nav ===== */
+.main-header{
+  background-color: rgba(17, 17, 17, 0.9);
+  color: white;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  margin: 0;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.nav-links{
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links a:hover{
+  text-decoration: underline;
+}
+
+/* ===== About (2 columns) ===== */
+.content-wrapper{
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.text-content{
+  flex: 1;
+  text-align: left;
+}
+
+.text-content h2{
+  font-size: 48px;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.text-content p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4a5568;
+  max-width: 560px;
+}
+
+.text-content .primary-btn{
+  margin-top: 15px;
+}
+
+.image-content{
+  flex: 1;
+}
+
+.image-content img{
+  width: 100%;
+  border-radius: 16px;
+}
+
+
+/* ===== Buttons ===== */
+.primary-btn{
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+  color: #0f172a;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,123,255,0.22);
+}
+
+.primary-btn:hover{
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0,123,255,0.28);
+}
+
+.secondary-btn{
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+  display: block;
+  margin: 30px auto 0;
+}
+
+/* ===== Cards (Skills) ===== */
+.skill{
+  margin-top: 20px;
+  text-align: left;
+}
+
+.skill p{
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.skill-bar{
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-fill{
+  height: 100%;
+  border-radius: 10px;
+}
+
+.skill-description{
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+}
+/* niveles */
+.skill-fill.html{
+  width: 70%;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+}
+
+.skill-fill.css{
+  width: 60%;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+}
+
+.skill-fill.js{
+  width: 50%;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* ===== Contact Links ===== */
+.contact-links{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-links a{
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.contact-links a:hover{
+  text-decoration: underline;
+}
+
+/* ===== Contact Form ===== */
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  max-width: 1000px;
+}
+
+form label{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+input, textarea{
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.2s;
+}
+
+/* focus (cuando haces click) */
+input:focus, textarea:focus{
+  border-color: #007BFF;
+}
+
+/* textarea tamaño */
+textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* botón dentro del form */
+form button{
+  width: fit-content;
+}
+
+/* ===== Footer ===== */
+footer{
+  width: 100%;
+  margin: 0;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.cards{
+  display: flex;
+  flex-wrap: wrap; /* para que bajen si no caben */
+  justify-content: center;
+  gap: 20px;
+}
+
+.card{
+  width: 260px;
+  padding: 18px;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: 0.4s;
+}
+
+.card:hover img{
+  transform: scale(1.03);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px){
+  .content-wrapper{
+    flex-direction: column;
+  }
+
+  .cards{
+    flex-direction: column;
+  }
+}
+
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eddy Landing</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container nav">
+      <p class="logo">Eddy Ramos</p>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="main-section" id="about">
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="text-content">
+          <h2>About Me</h2>
+          <p>
+           I am a Digital Media student at Greenville University, graduating in May 2026, focused on becoming a front-end developer.
+I enjoy building real projects and turning ideas into clean, responsive websites using HTML, CSS, and JavaScript. I have worked on projects like a portfolio, a to-do list app, a calculator, and a weather app using APIs.
+
+I speak both English and Spanish, and I am currently focused on improving my skills by building consistently and preparing for my first professional opportunity in web development.
+          </p>
+          <button class="primary-btn" id="see-work-btn">See My Work</button>
+        </div>
+
+        <div class="image-content">
+          <img src="images/profile.jpg" alt="Profile picture">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section" id="skills">
+    <div class="container">
+      <h2>My Skills</h2>
+      <p>I am currently learning HTML, CSS, and JavaScript.</p>
+
+          <div class="skill">
+  <p>HTML</p>
+
+  <div class="skill-bar">
+    <div class="skill-fill html"></div>
+  </div>
+
+  <span class="skill-description">
+    Semantic structure, sections, and clean page organization
+  </span>
+</div>
+
+      <div class="skill">
+  <p>CSS</p>
+
+  <div class="skill-bar">
+    <div class="skill-fill css"></div>
+  </div>
+
+  <span class="skill-description">
+    Flexbox layouts, spacing, responsive design and styling
+  </span>
+</div>
+
+     <div class="skill">
+  <p>JavaScript</p>
+
+  <div class="skill-bar">
+    <div class="skill-fill js"></div>
+  </div>
+
+  <span class="skill-description">
+    DOM manipulation, events, and small interactive projects
+  </span>
+</div>
+
+    </div>
+  </section>
+
+  <section class="main-section" id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <div class="cards">
+        <div class="card">
+          <img src="images/to-do-list.png" alt="To-Do List App">
+          <h3>To-Do List App</h3>
+          <p>
+            Task manager built with JavaScript.
+            Users can add, complete, and delete tasks.
+          </p>
+          <a href="to-do list/index.html" class="primary-btn" target="_blank">View Project</a>
+        </div>
+
+        <div class="card">
+          <img src="images/calculator.png" alt="Calculator App">
+          <h3>Calculator</h3>
+          <p>Interactive calculator supporting basic operations.</p>
+          <a href="calculator/index.html" class="primary-btn" target="_blank">View Project</a>
+        </div>
+
+        <div class="card">
+          <img src="images/weather-app.png" alt="Weather App">
+          <h3>Weather App</h3>
+          <p>Weather app that fetches real-time data using an API.</p>
+          <a href="weather-app/index.html" class="primary-btn" target="_blank">View Project</a>
+        </div>
+
+          <div class="card">
+            <img src="images/BJJ.png" alt="BJJ Landing Page">
+            <h3>BJJ Landing Page</h3>
+            <p>Landing page for a Brazilian Jiu-Jitsu gym built with HTML and CSS.</p>
+            <a href="BJJ/index.html" class="primary-btn" target="_blank">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section" id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out!</p>
+
+      <form action="https://formspree.io/f/mwvradqy" method="POST">
+        <label>
+          Your email:
+          <input type="email" name="email">
+        </label>
+
+        <label>
+          Your message:
+          <textarea name="message"></textarea>
+        </label>
+
+        <button type="submit" class="primary-btn">Send</button>
+      </form>
+
+      <div class="contact-links">
+        <a href="https://wa.link/mn6ror" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+
+        <a href="https://www.instagram.com/ajr0623/" target="_blank">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+
+        <a href="https://github.com/alejoramos" target="_blank">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Eddy Ramos</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

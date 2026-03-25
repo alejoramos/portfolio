@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Configuracion basica del documento -->
+    <meta charset="UTF-8"> <!-- Permite caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que sea responsive -->
+    <title>BJJ Website</title>
+
+    <!-- Fuente de Google (tipografia) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Conectamos el archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
+
+            <!-- Contenedor para centrar contenido -->
+            <div class="container nav-content">
+
+                <!-- Logo de la pagina -->
+                <div class="logo">BJJ Elite</div>
+
+                <!-- Links de navegacion -->
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="home">
+
+            <!-- Contenedor principal -->
+            <div class="container hero-content">
+
+                <!-- Texto principal del hero -->
+                <div class="hero-text">
+
+                    <!-- Texto pequeno tipo etiqueta -->
+                    <span>Brazilian Jiu-Jitsu • Discipline • Growth</span>
+
+                    <!-- Titulo grande -->
+                    <h1>Train smart. Fight better.</h1>
+
+                    <!-- Parrafo principal -->
+                    <p>
+                        Your journey to mastering Brazilian Jiu-Jitsu starts here.
+                        Join us and become part of our elite community.
+                    </p>
+
+                    <!-- Botones principales -->
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Start Now</a>
+                        <a href="#schedule" class="btn btn-secondary">View Schedule</a>
+                    </div>
+
+                </div>
+
+                <!-- Card visual del lado derecho -->
+                <div class="hero-card">
+
+                    <!-- Imagen -->
+                    <img src="images/BJJ.jpg" alt="BJJ Training">
+
+                    <!-- Info debajo de la imagen -->
+                    <div class="hero-info">
+
+                        <!-- Cada box es un dato -->
+                        <div class="info-box">
+                            <span>Classes</span>
+                            <strong>12+</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span>Level</span>
+                            <strong>All</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span>Environment</span>
+                            <strong>Pro</strong>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= BENEFITS ================= -->
+        <section id="benefits">
+            <div class="container">
+
+                <!-- Titulo de seccion -->
+                <h2 class="section-title reveal">Why train BJJ</h2>
+
+                <!-- Texto de apoyo -->
+                <p class="section-text reveal">
+                    Training in Brazilian Jiu-Jitsu offers physical and mental benefits.
+                </p>
+
+                <!-- Contenedor de cards -->
+                <div class="cards">
+
+                    <!-- Card individual -->
+                    <div class="card reveal">
+                        <div class="icon">🛡️</div>
+                        <h3>Self-defense</h3>
+                        <p>Learn real control and technique.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">🔥</div>
+                        <h3>Conditioning</h3>
+                        <p>Improve strength and endurance.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">🧠</div>
+                        <h3>Mental Toughness</h3>
+                        <p>Build resilience and focus.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">🤝</div>
+                        <h3>Sportsmanship</h3>
+                        <p>Develop discipline and respect.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SCHEDULE ================= -->
+        <section id="schedule">
+            <div class="container">
+
+                <h2 class="section-title reveal">Schedule</h2>
+                <p class="section-text reveal">
+                    Find the class that fits your level.
+                </p>
+
+                <!-- Lista de horarios -->
+                <div class="schedule-list">
+
+                    <!-- Item individual -->
+                    <div class="schedule-item reveal">
+                        <strong>Monday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">Fundamentals</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Wednesday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">All Levels</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Friday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">Sparring</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Saturday</strong>
+                        <span>10:00 AM - 11:30 AM</span>
+                        <span class="badge">Open Mat</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact">
+            <div class="container">
+
+                <h2 class="section-title reveal">Contact Us</h2>
+
+                <p class="section-text reveal">
+                    Send us a message to get started.
+                </p>
+
+                <!-- Formulario -->
+                <form class="contact-form reveal">
+
+                    <!-- Input nombre -->
+                    <input type="text" placeholder="Your Name" required>
+
+                    <!-- Input email -->
+                    <input type="email" placeholder="Your Email" required>
+
+                    <!-- Area de texto -->
+                    <textarea placeholder="Your Message" required></textarea>
+
+                    <!-- Boton enviar -->
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2026 BJJ Academy. All rights reserved.</p>
+    </footer>
+
+   
+<script src="script.js"></script>
+</body>
+</html>
