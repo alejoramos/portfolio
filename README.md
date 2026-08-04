@@ -4,7 +4,7 @@ My personal portfolio, plus the seven projects it links to. Everything here is
 plain HTML, CSS and JavaScript. There is no build step and no dependencies, so
 you can open `index.html` in a browser and it works.
 
-**Live site:** add your Netlify URL here once it is deployed.
+**Live site:** [eddy-dev.netlify.app](https://eddy-dev.netlify.app)
 
 ## Running it locally
 
