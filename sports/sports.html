@@ -4,61 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum Athletics | Sports</title>
+    <meta name="description" content="Basketball, soccer, running and fitness training at Momentum Athletics. Start with one or move between them during the week.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary">
             <a href="index.html" class="logo">Momentum Athletics</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="sports.html" class="active">Sports</a>
+                <a href="sports.html" class="active" aria-current="page">Sports</a>
                 <a href="schedule.html">Schedule</a>
                 <a href="contact.html">Contact</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="page-hero">
-            <span class="tag">Programs</span>
             <h1>Choose your sport.</h1>
-            <p>Start with one program or try different sports during the week.</p>
+            <p>Start with one program or move between them during the week. None of these need experience to join.</p>
         </section>
 
         <section class="section">
-            <div class="cards sport-grid">
-                <article class="card sport-card">
-                    <img src="images/basketball.jpg" alt="Basketball training practice">
-                    <span class="sport-icon">Basketball</span>
-                    <h3>Basketball</h3>
-                    <p>Work on shooting, passing, defense, footwork, and team play.</p>
-                </article>
-                <article class="card sport-card">
-                    <img src="images/soccer.jpg" alt="Soccer players training on a field">
-                    <span class="sport-icon">Soccer</span>
-                    <h3>Soccer</h3>
-                    <p>Practice ball control, passing, movement, and small-sided games.</p>
-                </article>
-                <article class="card sport-card">
-                    <img src="images/running.jpg" alt="Runners training on a track">
-                    <span class="sport-icon">Running</span>
-                    <h3>Running</h3>
-                    <p>Improve endurance, speed, breathing, and race preparation.</p>
-                </article>
-                <article class="card sport-card">
-                    <img src="images/fitness.jpg" alt="Athletes doing fitness drills">
-                    <span class="sport-icon">Fitness</span>
-                    <h3>Fitness Training</h3>
-                    <p>Build strength, agility, mobility, and basic athletic conditioning.</p>
-                </article>
-            </div>
+            <article class="program-block">
+                <div>
+                    <h2>Basketball</h2>
+                    <p>
+                        Shooting, passing, defense and footwork, then small games at the end
+                        so you use what you just practised.
+                    </p>
+                    <p class="program-meta">Mondays, 5:00 to 6:30pm</p>
+                </div>
+                <figure class="program-photo">
+                    <img src="images/basketball.jpg" alt="Players running a basketball drill on an outdoor court." width="1100" height="733">
+                </figure>
+            </article>
+
+            <article class="program-block">
+                <div>
+                    <h2>Soccer</h2>
+                    <p>
+                        Ball control, passing and movement off the ball, built around small
+                        sided games rather than drills in a line.
+                    </p>
+                    <p class="program-meta">Tuesdays, 5:30 to 7:00pm</p>
+                </div>
+                <figure class="program-photo">
+                    <img src="images/soccer.jpg" alt="Players training with a ball on a soccer field." width="1100" height="733" loading="lazy">
+                </figure>
+            </article>
+
+            <article class="program-block">
+                <div>
+                    <h2>Running</h2>
+                    <p>
+                        Endurance, pacing and breathing. The group splits by pace, so nobody
+                        gets left behind and nobody has to hold back.
+                    </p>
+                    <p class="program-meta">Thursdays, 6:00 to 7:00pm</p>
+                </div>
+                <figure class="program-photo">
+                    <img src="images/running.jpg" alt="Runners training together on a track." width="1100" height="733" loading="lazy">
+                </figure>
+            </article>
+
+            <article class="program-block">
+                <div>
+                    <h2>Fitness training</h2>
+                    <p>
+                        Strength, agility and mobility work that supports whatever else you
+                        are doing during the week.
+                    </p>
+                    <p class="program-meta">Wednesdays, 4:30 to 5:30pm</p>
+                </div>
+                <figure class="program-photo">
+                    <img src="images/fitness.jpg" alt="Athletes working through a fitness circuit with kettlebells." width="1100" height="733" loading="lazy">
+                </figure>
+            </article>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Momentum Athletics</p>
+        <div class="footer-inner">
+            <p><strong>Momentum Athletics</strong></p>
+            <p>Community Sports Center &middot; (555) 456-7890</p>
+            <p>&copy; 2026 Momentum Athletics</p>
+        </div>
     </footer>
 </body>
 </html>

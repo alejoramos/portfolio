@@ -3,180 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Cuts</title>
+    <title>Elite Cuts | Barbershop in Chicago</title>
+    <meta name="description" content="Elite Cuts is a barbershop in Chicago. Haircuts, beard work and full service grooming. Walk in or book a chair.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
         <div class="container navbar">
-            <a href="#home" class="brand">Elite Cuts</a>
+            <a href="#home" class="brand">Elite&nbsp;Cuts</a>
 
-            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <nav class="nav-links" id="nav-links">
-                <a href="#home">Home</a>
+            <nav class="nav-links" id="nav-links" aria-label="Primary">
                 <a href="#services">Services</a>
-                <a href="#schedule">Schedule</a>
                 <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="#schedule">Hours</a>
+                <a href="#contact">Visit</a>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <section class="hero" id="home">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <p class="eyebrow">Premium Barbershop Experience</p>
-                    <h1>Elite Cuts</h1>
+                    <h1>Elite<br>Cuts</h1>
                     <p class="tagline">Modern cuts. Clean style.</p>
                     <p class="hero-text">
-                        Step into a sharp, modern barbershop built for confidence. From crisp fades to polished beard work, every detail is designed to keep you looking your best.
+                        A barbershop on the north side of Chicago. Fades, beard work and
+                        straight razor finishes, done properly and without rushing you out
+                        of the chair.
                     </p>
-                    <a href="#contact" class="primary-btn">Book Now</a>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn">Book a chair</a>
+                        <a href="#services" class="btn btn-quiet">See the prices</a>
+                    </div>
                 </div>
 
-                <div class="hero-card">
-                    <div class="hero-panel">
-                        <p class="panel-label">Open Today</p>
-                        <h2>Precision grooming with a luxury finish.</h2>
-                        <div class="hero-stats">
-                            <div>
-                                <span>Style</span>
-                                <strong>Modern</strong>
-                            </div>
-                            <div>
-                                <span>Finish</span>
-                                <strong>Clean</strong>
-                            </div>
-                            <div>
-                                <span>Detail</span>
-                                <strong>Premium</strong>
-                            </div>
-                        </div>
-                    </div>
+                <figure class="hero-photo">
+                    <img src="images/cut.jpg" alt="A barber finishing a fade with clippers." width="1200" height="800">
+                </figure>
+            </div>
+
+            <div class="hours-strip">
+                <div class="container">
+                    <p><span>Mon to Fri</span> 9:00 to 7:00</p>
+                    <p><span>Saturday</span> 10:00 to 6:00</p>
+                    <p><span>Sunday</span> Closed</p>
+                    <p class="strip-note">Walk ins welcome when a chair is open</p>
                 </div>
             </div>
         </section>
 
         <section class="section" id="services">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">Services</p>
-                    <h2>Sharp services for every routine.</h2>
-                </div>
+            <div class="container services-grid">
+                <div class="services-list">
+                    <h2>The list</h2>
 
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-image service-image-haircut">
-                            <img src="images/cut.jpg" alt="">
+                    <dl class="price-list">
+                        <div>
+                            <dt>Haircut</dt>
+                            <dd class="dots" aria-hidden="true"></dd>
+                            <dd class="price">$25</dd>
+                            <dd class="detail">Clippers and scissors, washed and styled before you leave.</dd>
                         </div>
-                        <h3>Haircut</h3>
-                        <p>Fresh cut, detailed finish, and modern styling tailored to your look.</p>
-                        <span class="price">$25</span>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-image service-image-beard">
-                            <img src="images/beard.jpg" alt="">
+                        <div>
+                            <dt>Beard trim</dt>
+                            <dd class="dots" aria-hidden="true"></dd>
+                            <dd class="price">$15</dd>
+                            <dd class="detail">Shape and edge up, hot towel, straight razor on the line.</dd>
                         </div>
-                        <h3>Beard Trim</h3>
-                        <p>Shape, edge-up, and beard cleanup for a cleaner and more refined profile.</p>
-                        <span class="price">$15</span>
-                    </article>
-
-                    <article class="service-card">
-                        <div class="service-image service-image-full">
-                           <img src="images/full.jpg" alt="">
+                        <div>
+                            <dt>Full service</dt>
+                            <dd class="dots" aria-hidden="true"></dd>
+                            <dd class="price">$40</dd>
+                            <dd class="detail">Haircut and beard together, with the finish work included.</dd>
                         </div>
-                        <h3>Full Service</h3>
-                        <p>Complete grooming package with haircut, beard work, and finishing touches.</p>
-                        <span class="price">$40</span>
-                    </article>
-                </div>
-            </div>
-        </section>
+                    </dl>
 
-        <section class="section" id="about">
-            <div class="container about-grid">
-                <div class="about-card">
-                    <p class="eyebrow">About</p>
-                    <h2>A barbershop focused on quality and consistency.</h2>
-                    <p>
-                        At Elite Cuts, we believe grooming should feel elevated, not rushed. We combine modern barbering, attention to detail, and a welcoming atmosphere to deliver a high-quality experience every time you sit in the chair.
+                    <p class="services-note">
+                        Cash and card both fine. Kids under ten are $18.
                     </p>
                 </div>
 
-                <div class="about-highlight">
-                    <div class="highlight-box">
-                        <span>Experience</span>
-                        <strong>Clean cuts, premium care, and a professional atmosphere from start to finish.</strong>
-                    </div>
+                <figure class="services-photo">
+                    <img src="images/full.jpg" alt="A client in the chair after a full haircut and beard service." width="1200" height="1500" loading="lazy">
+                </figure>
+            </div>
+        </section>
+
+        <section class="section section-about" id="about">
+            <div class="container about-grid">
+                <figure class="about-photo">
+                    <img src="images/beard.jpg" alt="Close up of a beard being shaped with a straight razor." width="1200" height="800" loading="lazy">
+                </figure>
+
+                <div class="about-copy">
+                    <h2>Same barbers, same chairs, since we opened.</h2>
+                    <p>
+                        Elite Cuts is a small shop. Three chairs, no front desk, and the same
+                        people cutting every week, which is the whole point. You get used to
+                        someone knowing how you like it without having to explain it again.
+                    </p>
+                    <p>
+                        Bring a photo if you have one. If you do not, we will talk it through
+                        before anything gets cut.
+                    </p>
                 </div>
             </div>
         </section>
 
         <section class="section" id="schedule">
             <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">Schedule</p>
-                    <h2>Hours built for your routine.</h2>
-                </div>
+                <h2>Hours</h2>
 
-                <div class="schedule-list">
-                    <div class="schedule-item">
-                        <span>Monday - Friday</span>
-                        <strong>9:00 AM - 7:00 PM</strong>
-                    </div>
-                    <div class="schedule-item">
-                        <span>Saturday</span>
-                        <strong>10:00 AM - 6:00 PM</strong>
-                    </div>
-                    <div class="schedule-item">
-                        <span>Sunday</span>
-                        <strong>Closed</strong>
-                    </div>
-                </div>
+                <table class="hours-table">
+                    <caption class="sr-only">Opening hours for Elite Cuts</caption>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Monday</th>
+                            <td>9:00 to 7:00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tuesday</th>
+                            <td>9:00 to 7:00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wednesday</th>
+                            <td>9:00 to 7:00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Thursday</th>
+                            <td>9:00 to 7:00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Friday</th>
+                            <td>9:00 to 7:00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Saturday</th>
+                            <td>10:00 to 6:00</td>
+                        </tr>
+                        <tr class="is-closed">
+                            <th scope="row">Sunday</th>
+                            <td>Closed</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <section class="section" id="contact">
+        <section class="section section-contact" id="contact">
             <div class="container contact-grid">
                 <div class="contact-info">
-                    <p class="eyebrow">Contact</p>
-                    <h2>Book your next look.</h2>
-                    <div class="contact-list">
-                        <p><strong>Address:</strong> 1450 Gold Line Ave, Chicago, IL 60601</p>
-                        <p><strong>Phone:</strong> (312) 555-0148</p>
-                        <p><strong>Email:</strong> hello@elitecuts.com</p>
-                    </div>
+                    <h2>Come by</h2>
+
+                    <address class="contact-list">
+                        <p>1450 Gold Line Ave<br>Chicago, IL 60601</p>
+                        <p><a href="tel:+13125550148">(312) 555-0148</a></p>
+                        <p><a href="mailto:hello@elitecuts.com">hello@elitecuts.com</a></p>
+                    </address>
+
+                    <p class="contact-note">
+                        Booking ahead is easiest on a Saturday. Anything else, just show up.
+                    </p>
                 </div>
 
-                <form class="contact-form">
-                    <label>
-                        Name
-                        <input type="text" name="name" placeholder="Your name" required>
-                    </label>
+                <form class="contact-form" id="booking-form" novalidate>
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
 
-                    <label>
-                        Email
-                        <input type="email" name="email" placeholder="you@example.com" required>
-                    </label>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
 
-                    <label>
-                        Message
-                        <textarea name="message" placeholder="Tell us what service you want" required></textarea>
-                    </label>
+                    <div class="field">
+                        <label for="service">What do you want done?</label>
+                        <select id="service" name="service">
+                            <option>Haircut</option>
+                            <option>Beard trim</option>
+                            <option>Full service</option>
+                            <option>Not sure yet</option>
+                        </select>
+                    </div>
 
-                    <button type="submit" class="primary-btn">Send Message</button>
+                    <div class="field">
+                        <label for="message">Anything else</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Send it</button>
+                    <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -184,12 +214,9 @@
 
     <footer class="site-footer">
         <div class="container footer-content">
-            <div class="social-links">
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-            <p>&copy; 2026 Elite Cuts. All rights reserved.</p>
+            <p class="footer-brand">Elite Cuts</p>
+            <p>1450 Gold Line Ave, Chicago &middot; (312) 555-0148</p>
+            <p class="footer-legal">&copy; 2026 Elite Cuts</p>
         </div>
     </footer>
 

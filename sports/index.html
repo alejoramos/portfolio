@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Momentum Athletics | Home</title>
+    <title>Momentum Athletics | Community sports club</title>
+    <meta name="description" content="A community sports club with basketball, soccer, running and fitness sessions five days a week. All levels welcome.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary">
             <a href="index.html" class="logo">Momentum Athletics</a>
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html" class="active" aria-current="page">Home</a>
                 <a href="about.html">About</a>
                 <a href="sports.html">Sports</a>
                 <a href="schedule.html">Schedule</a>
@@ -20,85 +24,105 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="hero">
             <div class="hero-media">
-                <img src="images/sports-hero.jpg" alt="Athletes training together">
+                <img src="images/sports-hero.jpg" alt="Members of the club training together on the field and the court." width="1536" height="1024">
             </div>
             <div class="hero-overlay">
                 <div class="hero-text">
-                    <span class="tag">Community Sports Club</span>
                     <h1>Train with purpose. Play with momentum.</h1>
                     <p>
-                        A modern community club for students, families, and athletes who want
-                        structured practices, friendly coaching, and weekly sports programs.
+                        A community club for students, families and anyone who wants a reason
+                        to show up twice a week. Structured practices, coaches who know your
+                        name, and no tryouts.
                     </p>
                     <div class="hero-buttons">
-                        <a href="sports.html" class="btn primary">Explore Sports</a>
-                        <a href="contact.html" class="btn secondary">Join Now</a>
+                        <a href="sports.html" class="btn primary">See the sports</a>
+                        <a href="contact.html" class="btn secondary">Join the club</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="quick-info" aria-label="Club highlights">
-            <article>
-                <strong>4+</strong>
-                <span>Sports Programs</span>
-            </article>
-            <article>
-                <strong>5</strong>
-                <span>Weekly Sessions</span>
-            </article>
-            <article>
-                <strong>All</strong>
-                <span>Skill Levels Welcome</span>
-            </article>
+        <section class="week-strip" aria-label="This week">
+            <ul>
+                <li><b>Mon</b> Basketball</li>
+                <li><b>Tue</b> Soccer</li>
+                <li><b>Wed</b> Fitness</li>
+                <li><b>Thu</b> Running</li>
+                <li><b>Sat</b> Open sports day</li>
+            </ul>
         </section>
 
         <section class="section split-section">
-            <div class="section-heading">
-                <span class="tag">Why Join</span>
-                <h2>Built for consistency, confidence, and real progress.</h2>
-                <p>Momentum Athletics gives members a simple rhythm: show up, move well, learn the fundamentals, and improve week by week.</p>
-            </div>
+            <h2>Why people join</h2>
 
-            <div class="cards">
-                <article class="card feature-card">
-                    <span class="card-number">01</span>
-                    <h3>Stay Active</h3>
-                    <p>Practice movement, strength, coordination, and conditioning in sessions that feel energetic and approachable.</p>
-                </article>
-                <article class="card feature-card">
-                    <span class="card-number">02</span>
-                    <h3>Learn Teamwork</h3>
-                    <p>Train with others, communicate during games, and build the habits that make athletes better teammates.</p>
-                </article>
-                <article class="card feature-card">
-                    <span class="card-number">03</span>
-                    <h3>Build Confidence</h3>
-                    <p>Develop skills in small steps with clear coaching, repetition, and positive feedback every week.</p>
-                </article>
+            <div class="split-body">
+                <p class="lead">
+                    The club runs on a simple rhythm. Show up, work on the fundamentals,
+                    and come back next week.
+                </p>
+                <p>
+                    Most people who walk in have not played seriously since school, and a
+                    few have never played at all. Sessions are built so that both of those
+                    people can be in the same gym without anyone feeling out of place. You
+                    get real coaching on the basics rather than being thrown straight into
+                    a game.
+                </p>
+                <p>
+                    There are no tryouts and no season commitment. Pick one sport or move
+                    between them during the week, whichever keeps you coming.
+                </p>
             </div>
         </section>
 
-        <section class="section program-preview">
-            <div class="section-heading">
-                <span class="tag">Programs</span>
-                <h2>Choose a sport and start moving.</h2>
-            </div>
+        <section class="section">
+            <h2>The programs</h2>
 
-            <div class="program-strip">
-                <a href="sports.html" class="program-pill">Basketball</a>
-                <a href="sports.html" class="program-pill">Soccer</a>
-                <a href="sports.html" class="program-pill">Running</a>
-                <a href="sports.html" class="program-pill">Fitness Training</a>
+            <div class="program-list">
+                <a class="program-row" href="sports.html">
+                    <span class="num">01</span>
+                    <div>
+                        <h3>Basketball</h3>
+                        <p>Shooting, passing, defense, footwork and team play.</p>
+                    </div>
+                    <img class="program-thumb" src="images/basketball.jpg" alt="" width="1100" height="733" loading="lazy">
+                </a>
+                <a class="program-row" href="sports.html">
+                    <span class="num">02</span>
+                    <div>
+                        <h3>Soccer</h3>
+                        <p>Ball control, passing, movement and small sided games.</p>
+                    </div>
+                    <img class="program-thumb" src="images/soccer.jpg" alt="" width="1100" height="733" loading="lazy">
+                </a>
+                <a class="program-row" href="sports.html">
+                    <span class="num">03</span>
+                    <div>
+                        <h3>Running</h3>
+                        <p>Endurance, pacing, breathing and race preparation.</p>
+                    </div>
+                    <img class="program-thumb" src="images/running.jpg" alt="" width="1100" height="733" loading="lazy">
+                </a>
+                <a class="program-row" href="sports.html">
+                    <span class="num">04</span>
+                    <div>
+                        <h3>Fitness training</h3>
+                        <p>Strength, agility, mobility and general conditioning.</p>
+                    </div>
+                    <img class="program-thumb" src="images/fitness.jpg" alt="" width="1100" height="733" loading="lazy">
+                </a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Momentum Athletics</p>
+        <div class="footer-inner">
+            <p><strong>Momentum Athletics</strong></p>
+            <p>Community Sports Center &middot; (555) 456-7890</p>
+            <p>&copy; 2026 Momentum Athletics</p>
+        </div>
     </footer>
 </body>
 </html>

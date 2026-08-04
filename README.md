@@ -50,4 +50,5 @@ netlify.toml      publish settings and cache headers
 
 Looking for a junior front-end role or an internship.
 [eddyalejramos@gmail.com](mailto:eddyalejramos@gmail.com) ·
+[LinkedIn](https://www.linkedin.com/in/eddy-alejandro-ramos-94610815a/) ·
 [GitHub](https://github.com/alejoramos)

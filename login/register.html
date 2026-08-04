@@ -3,45 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessFlow | Register</title>
+    <title>AccessFlow | Create account</title>
+    <meta name="description" content="Create an account in this browser. Part of a sign in flow built with HTML, CSS and vanilla JavaScript.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <main class="page-shell">
-        <section class="brand-panel">
-            <a href="../index.html" class="brand-link">Eddy Ramos</a>
-            <div>
-                <p class="panel-kicker">Vanilla JavaScript</p>
-                <h2>Register page.</h2>
-                <p>I added password checks, confirm password, and simple localStorage so the account can be used on the login page.</p>
+        <aside class="brand-panel">
+            <a href="../index.html" class="brand-link">Back to Eddy Ramos</a>
+
+            <div class="panel-body">
+                <h2>AccessFlow</h2>
+                <p>
+                    The password meter and the rules below the field update on every
+                    keystroke, so you can see what is still missing instead of finding out
+                    after you submit.
+                </p>
             </div>
-            <div class="panel-stats">
-                <span>Password meter</span>
-                <span>Live rules</span>
-                <span>Local account</span>
-            </div>
-        </section>
+
+            <p class="panel-note">
+                The account lives in this browser using localStorage. Nothing is sent
+                anywhere, and this is not real authentication.
+            </p>
+        </aside>
 
         <section class="auth-card">
-            <p class="eyebrow">Simple auth demo</p>
             <h1>Create account</h1>
-            <p class="subtitle">This is stored only in your browser using localStorage.</p>
+            <p class="subtitle">Stored on this browser only.</p>
 
-            <form id="registerForm" class="auth-form">
+            <form id="registerForm" class="auth-form" novalidate>
                 <label>
                     <span>Name</span>
-                    <input type="text" id="registerName" placeholder="Enter your name" required>
+                    <input type="text" id="registerName" autocomplete="name" placeholder="Your name" required>
                 </label>
 
                 <label>
                     <span>Email</span>
-                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                    <input type="email" id="registerEmail" autocomplete="email" placeholder="you@example.com" required>
                 </label>
 
                 <label>
                     <span>Password</span>
                     <div class="password-field">
-                        <input type="password" id="registerPassword" placeholder="At least 6 characters" required>
+                        <input type="password" id="registerPassword" autocomplete="new-password" placeholder="At least 6 characters" required>
                         <button type="button" class="toggle-password" data-target="registerPassword">Show</button>
                     </div>
                 </label>
@@ -61,16 +66,16 @@
                 <label>
                     <span>Confirm password</span>
                     <div class="password-field">
-                        <input type="password" id="confirmPassword" placeholder="Repeat your password" required>
+                        <input type="password" id="confirmPassword" autocomplete="new-password" placeholder="Repeat your password" required>
                         <button type="button" class="toggle-password" data-target="confirmPassword">Show</button>
                     </div>
                 </label>
 
-                <button type="submit">Create Account</button>
-                <p id="registerMessage" class="status-message" aria-live="polite"></p>
+                <button type="submit">Create account</button>
+                <p id="registerMessage" class="status-message" role="status" aria-live="polite"></p>
             </form>
 
-            <p class="helper-text">Already have an account? <a href="index.html">Go to login</a></p>
+            <p class="helper-text">Already made one? <a href="index.html">Sign in</a></p>
         </section>
     </main>
 

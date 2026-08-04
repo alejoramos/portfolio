@@ -321,6 +321,29 @@ a {
   transform: scaleX(1);
 }
 
+/* the resume is the one nav item that leaves the page, so it is marked */
+.nav-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  border: 1px solid var(--rule);
+}
+
+.nav-resume .icon {
+  width: 11px;
+  height: 11px;
+}
+
+.nav-resume::after {
+  display: none;
+}
+
+.nav-resume:hover {
+  border-color: var(--ink);
+  background: var(--accent-wash);
+}
+
 .masthead-actions {
   display: flex;
   align-items: center;

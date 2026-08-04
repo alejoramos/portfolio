@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum Athletics | About</title>
+    <meta name="description" content="Momentum Athletics is a community sports club built on simple coaching, consistent practice and no tryouts.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary">
             <a href="index.html" class="logo">Momentum Athletics</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html" class="active">About</a>
+                <a href="about.html" class="active" aria-current="page">About</a>
                 <a href="sports.html">Sports</a>
                 <a href="schedule.html">Schedule</a>
                 <a href="contact.html">Contact</a>
@@ -20,28 +24,32 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="page-hero">
-            <span class="tag">About Us</span>
             <h1>Sports for all levels.</h1>
             <p>
-                Momentum Athletics is built around simple coaching, positive energy,
-                and consistent practice. The goal is to help people enjoy sports
-                while learning the basics the right way.
+                The club runs on simple coaching, consistent practice and the idea that
+                the hardest part is walking in the first time.
             </p>
         </section>
 
         <section class="section two-column">
             <div>
-                <h2>Our Mission</h2>
+                <h2>What we are trying to do</h2>
                 <p>
-                    We want athletes to feel welcome, supported, and motivated.
-                    Whether someone is new or already experienced, the club gives
-                    them a place to improve and connect with others.
+                    Give people a place to be active that does not require already being
+                    good at something. Whether someone played through school or has never
+                    touched a ball, the session is built so both of them get something out
+                    of the same hour.
+                </p>
+                <p>
+                    Coaches learn names in the first week. That sounds small, but it is
+                    most of the reason people keep coming back.
                 </p>
             </div>
-            <div class="info-box">
-                <h3>What We Focus On</h3>
+
+            <div class="focus-list">
+                <h3>What we focus on</h3>
                 <ul>
                     <li>Basic skills and fundamentals</li>
                     <li>Teamwork and respect</li>
@@ -53,7 +61,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Momentum Athletics</p>
+        <div class="footer-inner">
+            <p><strong>Momentum Athletics</strong></p>
+            <p>Community Sports Center &middot; (555) 456-7890</p>
+            <p>&copy; 2026 Momentum Athletics</p>
+        </div>
     </footer>
 </body>
 </html>

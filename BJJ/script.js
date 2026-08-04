@@ -21,10 +21,29 @@ elements.forEach(function(el) {
 const contactForm = document.querySelector("#contact-form");
 const formMessage = document.querySelector("#form-message");
 
+// Front-end demo. There is no server behind this form, so it checks the
+// fields and answers on the page rather than pretending to send anything.
 if (contactForm && formMessage) {
     contactForm.addEventListener("submit", function(event) {
         event.preventDefault();
-        formMessage.textContent = "Thanks. Your message has been received. We will contact you soon.";
+
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+        const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+
+        if (name.value.trim() === "") {
+            formMessage.textContent = "Add your name and we will know who to look out for.";
+            name.focus();
+            return;
+        }
+
+        if (!emailLooksValid) {
+            formMessage.textContent = "That email does not look right.";
+            email.focus();
+            return;
+        }
+
+        formMessage.textContent = "Thanks. We will reply with the class to start with.";
         contactForm.reset();
     });
 }

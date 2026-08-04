@@ -3,40 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessFlow | Login</title>
+    <title>AccessFlow | Sign in</title>
+    <meta name="description" content="A sign in and sign up flow built with HTML, CSS and vanilla JavaScript. The account is stored in the browser with localStorage.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <main class="page-shell">
-        <section class="brand-panel">
-            <a href="../index.html" class="brand-link">Eddy Ramos</a>
-            <div>
-                <p class="panel-kicker">Vanilla JavaScript</p>
-                <h2>Login page.</h2>
-                <p>I built this login and register project with HTML, CSS, and vanilla JavaScript. It saves a demo account in the browser using localStorage.</p>
+        <aside class="brand-panel">
+            <a href="../index.html" class="brand-link">Back to Eddy Ramos</a>
+
+            <div class="panel-body">
+                <h2>AccessFlow</h2>
+                <p>
+                    A sign in and sign up flow I built to practise form handling. Validation,
+                    a password meter that reacts as you type, and a small dashboard once you
+                    are through.
+                </p>
             </div>
-            <div class="panel-stats">
-                <span>localStorage</span>
-                <span>Password check</span>
-                <span>Dashboard</span>
-            </div>
-        </section>
+
+            <p class="panel-note">
+                The account lives in this browser using localStorage. Nothing is sent
+                anywhere, and this is not real authentication.
+            </p>
+        </aside>
 
         <section class="auth-card">
-            <p class="eyebrow">Simple auth demo</p>
             <h1>Welcome back</h1>
             <p class="subtitle">Sign in with the account you created on this browser.</p>
 
-            <form id="loginForm" class="auth-form">
+            <form id="loginForm" class="auth-form" novalidate>
                 <label>
                     <span>Email</span>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" autocomplete="email" placeholder="you@example.com" required>
                 </label>
 
                 <label>
                     <span>Password</span>
                     <div class="password-field">
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" autocomplete="current-password" placeholder="Your password" required>
                         <button type="button" class="toggle-password" data-target="password">Show</button>
                     </div>
                 </label>
@@ -46,11 +51,11 @@
                     <span>Remember my email</span>
                 </label>
 
-                <button type="submit">Sign In</button>
-                <p id="message" class="status-message" aria-live="polite"></p>
+                <button type="submit">Sign in</button>
+                <p id="message" class="status-message" role="status" aria-live="polite"></p>
             </form>
 
-            <p class="helper-text">Don't have an account? <a href="register.html">Sign up</a></p>
+            <p class="helper-text">No account yet? <a href="register.html">Create one</a></p>
         </section>
     </main>
 

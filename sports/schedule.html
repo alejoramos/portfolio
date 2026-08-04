@@ -4,62 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum Athletics | Schedule</title>
+    <meta name="description" content="The weekly training schedule at Momentum Athletics, from Monday basketball to the Saturday open sports day.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary">
             <a href="index.html" class="logo">Momentum Athletics</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="sports.html">Sports</a>
-                <a href="schedule.html" class="active">Schedule</a>
+                <a href="schedule.html" class="active" aria-current="page">Schedule</a>
                 <a href="contact.html">Contact</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="page-hero">
-            <span class="tag">Weekly Plan</span>
-            <h1>Training schedule.</h1>
-            <p>A basic weekly schedule for practices and skill sessions.</p>
+            <h1>The week.</h1>
+            <p>Same times every week. Turn up to one session or all five, there is no sign up sheet.</p>
         </section>
 
         <section class="section">
-            <div class="schedule-list">
-                <div class="schedule-item">
-                    <strong>Monday</strong>
-                    <span>Basketball Skills</span>
-                    <span>5:00 PM - 6:30 PM</span>
-                </div>
-                <div class="schedule-item">
-                    <strong>Tuesday</strong>
-                    <span>Soccer Practice</span>
-                    <span>5:30 PM - 7:00 PM</span>
-                </div>
-                <div class="schedule-item">
-                    <strong>Wednesday</strong>
-                    <span>Fitness Training</span>
-                    <span>4:30 PM - 5:30 PM</span>
-                </div>
-                <div class="schedule-item">
-                    <strong>Thursday</strong>
-                    <span>Running Club</span>
-                    <span>6:00 PM - 7:00 PM</span>
-                </div>
-                <div class="schedule-item">
-                    <strong>Saturday</strong>
-                    <span>Open Sports Day</span>
-                    <span>10:00 AM - 12:00 PM</span>
-                </div>
-            </div>
+            <table class="schedule-table">
+                <caption class="sr-only">Weekly training schedule</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Session</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <td>Basketball skills</td>
+                        <td>5:00 to 6:30pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <td>Soccer practice</td>
+                        <td>5:30 to 7:00pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <td>Fitness training</td>
+                        <td>4:30 to 5:30pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <td>Running club</td>
+                        <td>6:00 to 7:00pm</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Saturday</th>
+                        <td>Open sports day</td>
+                        <td>10:00am to 12:00pm</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Momentum Athletics</p>
+        <div class="footer-inner">
+            <p><strong>Momentum Athletics</strong></p>
+            <p>Community Sports Center &middot; (555) 456-7890</p>
+            <p>&copy; 2026 Momentum Athletics</p>
+        </div>
     </footer>
 </body>
 </html>

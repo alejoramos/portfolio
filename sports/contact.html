@@ -4,58 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum Athletics | Contact</title>
+    <meta name="description" content="Get in touch with Momentum Athletics about joining a session or trying a sport for the first time.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Primary">
             <a href="index.html" class="logo">Momentum Athletics</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="sports.html">Sports</a>
                 <a href="schedule.html">Schedule</a>
-                <a href="contact.html" class="active">Contact</a>
+                <a href="contact.html" class="active" aria-current="page">Contact</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="page-hero">
-            <span class="tag">Contact</span>
             <h1>Join the club.</h1>
-            <p>Send a message if you want more information about classes or programs.</p>
+            <p>Tell us which sport you are curious about and we will tell you which session to turn up to first.</p>
         </section>
 
         <section class="section contact-layout">
-            <div class="info-box">
-                <h2>Club Info</h2>
-                <p>Email: hello@momentumathletics.com</p>
-                <p>Phone: (555) 456-7890</p>
-                <p>Location: Community Sports Center</p>
+            <div>
+                <h2>Club info</h2>
+
+                <dl class="club-info">
+                    <div>
+                        <dt>Email</dt>
+                        <dd><a href="mailto:hello@momentumathletics.com">hello@momentumathletics.com</a></dd>
+                    </div>
+                    <div>
+                        <dt>Phone</dt>
+                        <dd><a href="tel:+15554567890">(555) 456-7890</a></dd>
+                    </div>
+                    <div>
+                        <dt>Where</dt>
+                        <dd>Community Sports Center</dd>
+                    </div>
+                </dl>
             </div>
 
-            <form class="contact-form" id="contact-form">
-                <label>
-                    Name
-                    <input type="text" placeholder="Your name" required>
-                </label>
-                <label>
-                    Email
-                    <input type="email" placeholder="you@example.com" required>
-                </label>
-                <label>
-                    Message
-                    <textarea placeholder="Tell us what sport you are interested in" required></textarea>
-                </label>
-                <button type="submit" class="btn primary">Send Message</button>
-                <p id="form-message" class="form-message"></p>
+            <form class="contact-form" id="contact-form" novalidate>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="field">
+                    <label for="sport">Which sport?</label>
+                    <select id="sport" name="sport">
+                        <option>Basketball</option>
+                        <option>Soccer</option>
+                        <option>Running</option>
+                        <option>Fitness training</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="message">Anything we should know</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Complete beginner is a perfectly good answer."></textarea>
+                </div>
+
+                <button type="submit" class="btn primary">Send message</button>
+                <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Momentum Athletics</p>
+        <div class="footer-inner">
+            <p><strong>Momentum Athletics</strong></p>
+            <p>Community Sports Center &middot; (555) 456-7890</p>
+            <p>&copy; 2026 Momentum Athletics</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

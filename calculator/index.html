@@ -4,18 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <meta name="description" content="A calculator built with HTML, CSS and vanilla JavaScript. Basic math, decimals, backspace and full keyboard input.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <main class="app-shell">
         <section class="intro-panel">
-            <a href="../index.html" class="back-link">Eddy Ramos</a>
-            <p class="eyebrow">Vanilla JavaScript</p>
-            <h1>Calculator app.</h1>
-            <p>
-                I built this calculator with HTML, CSS, and vanilla JavaScript.
-                It handles basic math, decimals, clear, backspace, and keyboard input.
-            </p>
+            <a href="../index.html" class="back-link">Back to Eddy Ramos</a>
+
+            <div>
+                <h1>Calculator</h1>
+                <p>
+                    Built with HTML, CSS and vanilla JavaScript. It keeps the expression
+                    above the answer so you can see what you typed, and the whole thing
+                    works from the keyboard.
+                </p>
+            </div>
+
+            <dl class="keys-help">
+                <div>
+                    <dt>0 to 9 and .</dt>
+                    <dd>Type a number</dd>
+                </div>
+                <div>
+                    <dt>+ &minus; * /</dt>
+                    <dd>Operators</dd>
+                </div>
+                <div>
+                    <dt>Enter</dt>
+                    <dd>Equals</dd>
+                </div>
+                <div>
+                    <dt>Backspace</dt>
+                    <dd>Delete one character</dd>
+                </div>
+                <div>
+                    <dt>Escape</dt>
+                    <dd>Clear everything</dd>
+                </div>
+            </dl>
         </section>
 
         <section class="calculator" aria-label="Calculator">
@@ -24,28 +52,30 @@
                 <div class="screen" id="screen" aria-live="polite">0</div>
             </div>
 
-            <button class="btn utility" id="c" type="button">AC</button>
-            <button class="btn utility" id="backspace" type="button" aria-label="Backspace">⌫</button>
-            <button class="btn operator" type="button">÷</button>
-            <button class="btn operator" type="button">×</button>
+            <div class="keypad">
+                <button class="btn utility" id="c" type="button">AC</button>
+                <button class="btn utility" id="backspace" type="button" aria-label="Backspace">&#9003;</button>
+                <button class="btn operator" type="button">&divide;</button>
+                <button class="btn operator" type="button">&times;</button>
 
-            <button class="btn number" type="button">7</button>
-            <button class="btn number" type="button">8</button>
-            <button class="btn number" type="button">9</button>
-            <button class="btn operator" type="button">-</button>
+                <button class="btn number" type="button">7</button>
+                <button class="btn number" type="button">8</button>
+                <button class="btn number" type="button">9</button>
+                <button class="btn operator" type="button">-</button>
 
-            <button class="btn number" type="button">4</button>
-            <button class="btn number" type="button">5</button>
-            <button class="btn number" type="button">6</button>
-            <button class="btn operator" type="button">+</button>
+                <button class="btn number" type="button">4</button>
+                <button class="btn number" type="button">5</button>
+                <button class="btn number" type="button">6</button>
+                <button class="btn operator" type="button">+</button>
 
-            <button class="btn number" type="button">1</button>
-            <button class="btn number" type="button">2</button>
-            <button class="btn number" type="button">3</button>
-            <button class="btn equals" id="equals" type="button">=</button>
+                <button class="btn number" type="button">1</button>
+                <button class="btn number" type="button">2</button>
+                <button class="btn number" type="button">3</button>
+                <button class="btn equals" id="equals" type="button">=</button>
 
-            <button class="btn number zero" id="zero" type="button">0</button>
-            <button class="btn number" type="button">.</button>
+                <button class="btn number zero" id="zero" type="button">0</button>
+                <button class="btn number" type="button">.</button>
+            </div>
         </section>
     </main>
 

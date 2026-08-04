@@ -4,41 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AccessFlow | Dashboard</title>
+    <meta name="description" content="The screen you land on after signing in. Shows the account saved in this browser.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <main class="page-shell dashboard-shell">
-        <section class="brand-panel">
-            <a href="../index.html" class="brand-link">Eddy Ramos</a>
-            <div>
-                <p class="panel-kicker">Vanilla JavaScript</p>
-                <h2>Simple dashboard.</h2>
-                <p>After logging in, this page shows the saved name, email, and last login from localStorage.</p>
+        <aside class="brand-panel">
+            <a href="../index.html" class="brand-link">Back to Eddy Ramos</a>
+
+            <div class="panel-body">
+                <h2>AccessFlow</h2>
+                <p>
+                    Where you land after signing in. It reads the name, email and last login
+                    back out of localStorage, and the logout button clears the session flag
+                    without deleting the account.
+                </p>
             </div>
-            <div class="panel-stats">
-                <span>Login state</span>
-                <span>Profile info</span>
-                <span>Logout</span>
-            </div>
-        </section>
+
+            <p class="panel-note">
+                The account lives in this browser using localStorage. Nothing is sent
+                anywhere, and this is not real authentication.
+            </p>
+        </aside>
 
         <section class="auth-card dashboard-card">
-            <p class="eyebrow">Logged in</p>
             <h1 id="welcomeTitle">Welcome</h1>
             <p class="subtitle" id="welcomeText">You are signed in on this browser.</p>
 
-            <div class="dashboard-box">
-                <p><strong>Name:</strong> <span id="profileName">-</span></p>
-                <p><strong>Email:</strong> <span id="profileEmail">-</span></p>
-                <p><strong>Last login:</strong> <span id="lastLogin">-</span></p>
-            </div>
+            <dl class="dashboard-box">
+                <div>
+                    <dt>Name</dt>
+                    <dd id="profileName">-</dd>
+                </div>
+                <div>
+                    <dt>Email</dt>
+                    <dd id="profileEmail">-</dd>
+                </div>
+                <div>
+                    <dt>Last login</dt>
+                    <dd id="lastLogin">-</dd>
+                </div>
+            </dl>
+
+            <button type="button" id="logoutBtn">Log out</button>
 
             <div class="dashboard-actions">
-                <a href="../index.html" class="secondary-action">View Portfolio</a>
-                <button type="button" id="clearAccountBtn" class="danger-btn">Delete Account</button>
+                <a href="../index.html" class="secondary-action">View portfolio</a>
+                <button type="button" id="clearAccountBtn" class="danger-btn">Delete this account</button>
             </div>
-
-            <button type="button" id="logoutBtn">Logout</button>
         </section>
     </main>
 
