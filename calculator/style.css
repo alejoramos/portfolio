@@ -52,11 +52,12 @@ a {
 
 .app-shell {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    /* fixed track for the unit, so its width is not decided by its contents */
+    grid-template-columns: minmax(0, 1fr) 440px;
     gap: clamp(32px, 6vw, 80px);
     align-items: center;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 1020px;
     min-height: calc(100vh - clamp(40px, 10vw, 120px));
     margin-inline: auto;
 }
@@ -117,17 +118,18 @@ a {
 /* ---------------------------------------------------------------- the unit */
 
 .calculator {
-    width: min(340px, 100%);
-    padding: 18px;
+    width: 100%;
+    max-width: 440px;
+    padding: 22px;
     background: var(--case);
     border: 1px solid var(--case-edge);
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
 }
 
 .display {
-    padding: 20px 18px 16px;
-    margin-bottom: 18px;
+    padding: 26px 22px 20px;
+    margin-bottom: 22px;
     background: var(--screen);
     border-radius: 3px;
     text-align: right;
@@ -146,7 +148,7 @@ a {
 .screen {
     color: var(--screen-text);
     font-family: ui-monospace, Consolas, monospace;
-    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-size: clamp(2.2rem, 8vw, 3rem);
     font-weight: 500;
     line-height: 1.2;
     word-break: break-all;
@@ -155,18 +157,18 @@ a {
 .keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 9px;
+    gap: 11px;
 }
 
 .btn {
-    min-height: 58px;
+    min-height: 66px;
     border: 1px solid var(--key-edge);
     border-bottom-width: 3px;
-    border-radius: 4px;
+    border-radius: 5px;
     background: var(--key);
     color: var(--ink);
     font: inherit;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 600;
     cursor: pointer;
     transition: filter 0.12s ease, transform 0.05s ease;
@@ -187,14 +189,14 @@ a {
     background: var(--key-dark);
     border-color: var(--key-dark-edge);
     color: #efece5;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .operator {
     background: var(--key-dark);
     border-color: var(--key-dark-edge);
     color: var(--orange);
-    font-size: 1.35rem;
+    font-size: 1.5rem;
 }
 
 .equals {
@@ -202,7 +204,7 @@ a {
     background: var(--orange);
     border-color: var(--orange-edge);
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .zero {
@@ -211,7 +213,7 @@ a {
 
 /* ---------------------------------------------------------------- responsive */
 
-@media (max-width: 820px) {
+@media (max-width: 900px) {
     .app-shell {
         grid-template-columns: minmax(0, 1fr);
         justify-items: center;
@@ -221,10 +223,6 @@ a {
 
     .intro-panel {
         max-width: 100%;
-    }
-
-    .calculator {
-        width: min(360px, 100%);
     }
 }
 
