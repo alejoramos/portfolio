@@ -265,8 +265,10 @@ a {
 
 /* ER monogram. The custom property reaches into the <use> shadow tree,
    which a plain class selector cannot do. */
+/* <E/R> lockup. The custom property reaches into the <use> shadow tree,
+   which a plain class selector cannot do. */
 .brand-mark {
-  width: 25px;
+  width: 75px;
   height: 20px;
   flex: none;
   color: var(--ink);
