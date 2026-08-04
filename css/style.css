@@ -263,22 +263,14 @@ a {
   text-decoration: none;
 }
 
+/* ER monogram. The custom property reaches into the <use> shadow tree,
+   which a plain class selector cannot do. */
 .brand-mark {
-  position: relative;
-  width: 12px;
-  height: 12px;
+  width: 25px;
+  height: 20px;
   flex: none;
-  background: var(--accent);
-}
-
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--ink);
+  color: var(--ink);
+  --logo-accent: var(--accent);
 }
 
 .primary-nav {
@@ -1246,7 +1238,7 @@ textarea {
 }
 
 .footer-identity .brand-mark {
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .footer-identity p {

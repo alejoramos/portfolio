@@ -90,12 +90,27 @@
     <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <path d="M6 6l12 12M18 6L6 18"/>
     </symbol>
+    <!-- ER monogram. Both letters are built from rectangles on the same grid,
+         and the leg of the R picks up the accent colour. -->
+    <symbol id="i-logo" viewBox="0 0 30 24">
+      <g fill="currentColor">
+        <rect x="0" y="0" width="3.2" height="24"/>
+        <rect x="0" y="0" width="10" height="3.2"/>
+        <rect x="0" y="10.4" width="7.6" height="3.2"/>
+        <rect x="0" y="20.8" width="10" height="3.2"/>
+        <rect x="15.5" y="0" width="3.2" height="24"/>
+        <rect x="15.5" y="0" width="11" height="3.2"/>
+        <rect x="23.3" y="0" width="3.2" height="12"/>
+        <rect x="15.5" y="8.8" width="11" height="3.2"/>
+      </g>
+      <polygon points="22.2,12 25.8,12 30,24 26.4,24" fill="var(--logo-accent, currentColor)"/>
+    </symbol>
   </svg>
 
   <header class="masthead" id="masthead">
     <div class="shell masthead-inner">
       <a href="#top" class="brand" aria-label="Eddy Ramos, back to top">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <svg class="brand-mark" aria-hidden="true"><use href="#i-logo"/></svg>
         <span class="brand-name">Eddy Ramos</span>
       </a>
 
@@ -143,9 +158,9 @@
     <section class="hero" id="top">
       <div class="shell hero-grid">
         <h1 class="hero-title">
-          <span class="line"><span>Seven projects in.</span></span>
-          <span class="line"><span>Looking for the first</span></span>
-          <span class="line"><span>one with a <em>team</em>.</span></span>
+          <span class="line"><span>I build websites.</span></span>
+          <span class="line"><span>I want to build them</span></span>
+          <span class="line"><span>with a <em>team</em>.</span></span>
         </h1>
 
         <div class="hero-copy">
@@ -800,7 +815,7 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <div class="footer-identity">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <svg class="brand-mark" aria-hidden="true"><use href="#i-logo"/></svg>
         <p><strong>Eddy Ramos</strong><br>Junior front-end developer</p>
       </div>
 
