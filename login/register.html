@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessFlow | Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="brand-panel">
+            <a href="../index.html" class="brand-link">Eddy Ramos</a>
+            <div>
+                <p class="panel-kicker">Vanilla JavaScript</p>
+                <h2>Register page.</h2>
+                <p>I added password checks, confirm password, and simple localStorage so the account can be used on the login page.</p>
+            </div>
+            <div class="panel-stats">
+                <span>Password meter</span>
+                <span>Live rules</span>
+                <span>Local account</span>
+            </div>
+        </section>
+
+        <section class="auth-card">
+            <p class="eyebrow">Simple auth demo</p>
+            <h1>Create account</h1>
+            <p class="subtitle">This is stored only in your browser using localStorage.</p>
+
+            <form id="registerForm" class="auth-form">
+                <label>
+                    <span>Name</span>
+                    <input type="text" id="registerName" placeholder="Enter your name" required>
+                </label>
+
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                </label>
+
+                <label>
+                    <span>Password</span>
+                    <div class="password-field">
+                        <input type="password" id="registerPassword" placeholder="At least 6 characters" required>
+                        <button type="button" class="toggle-password" data-target="registerPassword">Show</button>
+                    </div>
+                </label>
+
+                <div class="password-strength">
+                    <div class="strength-bar">
+                        <div id="strengthFill"></div>
+                    </div>
+                    <p id="strengthText">Password strength: -</p>
+                    <ul class="password-rules">
+                        <li id="lengthRule">At least 6 characters</li>
+                        <li id="numberRule">At least 1 number</li>
+                        <li id="caseRule">Uppercase and lowercase letters</li>
+                    </ul>
+                </div>
+
+                <label>
+                    <span>Confirm password</span>
+                    <div class="password-field">
+                        <input type="password" id="confirmPassword" placeholder="Repeat your password" required>
+                        <button type="button" class="toggle-password" data-target="confirmPassword">Show</button>
+                    </div>
+                </label>
+
+                <button type="submit">Create Account</button>
+                <p id="registerMessage" class="status-message" aria-live="polite"></p>
+            </form>
+
+            <p class="helper-text">Already have an account? <a href="index.html">Go to login</a></p>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

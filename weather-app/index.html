@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="app-intro">
+            <p class="eyebrow">Live Forecast</p>
+            <h1>Weather App</h1>
+            <p class="intro-copy">Busca una ciudad, elige un estado y mira el clima con una interfaz mas clara, visual y facil de entender.</p>
+        </div>
+
+        <div class="search-panel">
+            <div class="search-box">
+                <label class="field">
+                    <span id="cityLabel">City</span>
+                    <input type="text" id="cityInput" placeholder="Chicago">
+                </label>
+
+                <label class="field">
+                    <span id="stateLabel">State</span>
+                    <select id="stateSelect">
+                        <option value="">Any state</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span id="quickPickLabel">Quick pick</span>
+                    <select id="cityPreset">
+                        <option value="">Choose an example</option>
+                        <option value="Miami,FL">Miami, FL</option>
+                        <option value="Dallas,TX">Dallas, TX</option>
+                        <option value="Chicago,IL">Chicago, IL</option>
+                        <option value="Seattle,WA">Seattle, WA</option>
+                        <option value="Los Angeles,CA">Los Angeles, CA</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span id="languageLabel">Language</span>
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="es">Espanol</option>
+                    </select>
+                </label>
+
+                <button id="searchBtn">Search Weather</button>
+            </div>
+
+            <div class="button-row">
+                <button id="unitBtn">Show Fahrenheit</button>
+                <button id="shareBtn">Share</button>
+            </div>
+        </div>
+
+        <div class="weather-card weather-mist" id="weatherCard">
+            <div class="weather-hero">
+                <div>
+                    <p class="weather-status" id="weatherStatus">Ready to explore</p>
+                    <h2 id="cityName">Pick a city</h2>
+                    <p class="weather-summary" id="description">Choose a city to see the current weather.</p>
+                </div>
+                <div class="weather-icon" id="weatherIcon" aria-hidden="true">&#127780;</div>
+            </div>
+
+            <div class="temperature-row">
+                <p class="temperature-reading" id="temperature">--&deg;</p>
+                <p class="feels-like" id="feelsLike">Feels like --&deg;</p>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-pill">
+                    <span>Humidity</span>
+                    <strong id="humidity">--</strong>
+                </div>
+                <div class="detail-pill">
+                    <span>Wind</span>
+                    <strong id="wind">--</strong>
+                </div>
+                <div class="detail-pill">
+                    <span>Condition</span>
+                    <strong id="conditionLabel">--</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-section">
+            <div class="forecast-heading">
+                <h2>5-Day Forecast</h2>
+                <p>Resumen rapido para ver que viene en los proximos dias.</p>
+            </div>
+            <div id="forecastList" class="forecast-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

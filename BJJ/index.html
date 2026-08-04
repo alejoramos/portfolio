@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner BJJ Landing Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container nav-content">
+                <div class="logo">BJJ Basics</div>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Photos</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#about-bjj">About BJJ</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span>Brazilian Jiu-Jitsu &bull; Basics &bull; Confidence</span>
+                    <h1>Start BJJ with confidence.</h1>
+                    <p>
+                        Learn the fundamentals of Brazilian Jiu-Jitsu in a friendly
+                        environment focused on technique, discipline, and steady progress.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Book a First Class</a>
+                        <a href="#schedule" class="btn btn-secondary">View Schedule</a>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <img src="images/bjj1.jpg" alt="BJJ training session">
+
+                    <div class="hero-info">
+                        <div class="info-box">
+                            <span>Classes</span>
+                            <strong>4 / week</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span>Level</span>
+                            <strong>Beginner+</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span>Environment</span>
+                            <strong>Friendly</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title reveal">Training photos</h2>
+                <p class="section-text reveal">
+                    A quick look at the kind of movement, control, and partner training used in Brazilian Jiu-Jitsu.
+                </p>
+
+                <div class="carousel reveal">
+                    <button class="carousel-btn" id="prev-slide" aria-label="Previous photo">&lt;</button>
+
+                    <div class="carousel-track">
+                        <img src="images/bjj1.jpg" alt="Students drilling BJJ positions across the mat" class="carousel-image active">
+                        <img src="images/bjj2.jpg" alt="Two students practicing ground movement" class="carousel-image">
+                        <img src="images/bjj3.jpg" alt="BJJ student working on hip movement and base" class="carousel-image">
+                        <img src="images/bjj4.jpg" alt="Close-up of ground control practice" class="carousel-image">
+                        <img src="images/bjj5.jpg" alt="Students resetting after a technique drill" class="carousel-image">
+                        <img src="images/bjj6.jpg" alt="Students practicing standing grip control" class="carousel-image">
+                        <img src="images/bjj7.jpg" alt="Student using guard movement during training" class="carousel-image">
+                        <img src="images/bjj8.jpg" alt="Student applying pressure from top position" class="carousel-image">
+                        <img src="images/bjj9.jpg" alt="Students combining guard and top pressure drills" class="carousel-image">
+                        
+                    </div>
+
+                    <button class="carousel-btn" id="next-slide" aria-label="Next photo">&gt;</button>
+
+                    <p class="carousel-caption" id="carousel-caption">Students drilling positions and movement across the mat.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <div class="container">
+                <h2 class="section-title reveal">Why train BJJ</h2>
+                <p class="section-text reveal">
+                    Build useful skills while improving fitness, patience, and confidence.
+                </p>
+
+                <div class="cards">
+                    <div class="card reveal">
+                        <div class="icon">01</div>
+                        <h3>Self-defense</h3>
+                        <p>Learn control, positioning, and practical technique.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">02</div>
+                        <h3>Conditioning</h3>
+                        <p>Improve strength, mobility, and endurance over time.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">03</div>
+                        <h3>Mental Focus</h3>
+                        <p>Develop patience, discipline, and calm under pressure.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">04</div>
+                        <h3>Respect</h3>
+                        <p>Train with partners in a safe and supportive environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-bjj">
+            <div class="container">
+                <h2 class="section-title reveal">More about BJJ</h2>
+                <p class="section-text reveal">
+                    Brazilian Jiu-Jitsu is a grappling martial art that focuses on control, escapes, submissions,
+                    and smart body positioning. Instead of relying mostly on punches or kicks, BJJ teaches you how
+                    to stay calm, protect yourself, and use technique to handle bigger or stronger opponents.
+                </p>
+
+                <div class="info-grid">
+                    <div class="intro-card reveal">
+                        <h3>How it is different</h3>
+                        <p>
+                            Many martial arts spend a lot of time on striking from standing positions. BJJ is different
+                            because it spends more time on clinching, takedowns, ground control, and submissions.
+                        </p>
+                    </div>
+
+                    <div class="intro-card reveal">
+                        <h3>Technique over strength</h3>
+                        <p>
+                            BJJ uses leverage, timing, and position. This makes it useful for smaller people because
+                            good technique can beat pure strength.
+                        </p>
+                    </div>
+
+                    <div class="intro-card reveal">
+                        <h3>Problem solving</h3>
+                        <p>
+                            Training feels like a physical puzzle. You learn how to escape bad spots, keep control,
+                            and make better decisions under pressure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="who-for">
+            <div class="container">
+                <h2 class="section-title reveal">Who is BJJ for?</h2>
+                <p class="section-text reveal">
+                    BJJ can be a good fit for many people because classes can be adjusted by age, experience,
+                    fitness level, and personal goals.
+                </p>
+
+                <div class="cards">
+                    <div class="card reveal">
+                        <div class="icon">A</div>
+                        <h3>Beginners</h3>
+                        <p>You can start with no martial arts experience and learn step by step.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">B</div>
+                        <h3>Self-defense students</h3>
+                        <p>It teaches control, escaping, and staying calm when someone is close to you.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">C</div>
+                        <h3>People wanting fitness</h3>
+                        <p>It improves strength, cardio, flexibility, and coordination while learning a skill.</p>
+                    </div>
+
+                    <div class="card reveal">
+                        <div class="icon">D</div>
+                        <h3>Anyone building confidence</h3>
+                        <p>Progress comes from showing up, solving problems, and getting better over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="first-class">
+            <div class="container">
+                <h2 class="section-title reveal">Your first class</h2>
+                <p class="section-text reveal">
+                    No experience is needed. These are the basics most beginners want to know before starting.
+                </p>
+
+                <div class="intro-grid">
+                    <div class="intro-card reveal">
+                        <h3>Who it's for</h3>
+                        <p>Perfect for beginners, curious first-timers, and students building strong fundamentals.</p>
+                    </div>
+
+                    <div class="intro-card reveal">
+                        <h3>What to bring</h3>
+                        <p>Comfortable workout clothes, water, and a good attitude. You can start simple and upgrade later.</p>
+                    </div>
+
+                    <div class="intro-card reveal">
+                        <h3>What you'll learn</h3>
+                        <p>Basic positions, movement, simple escapes, and how to train safely with a partner.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <div class="container">
+                <h2 class="section-title reveal">Schedule</h2>
+                <p class="section-text reveal">
+                    A simple weekly plan focused on fundamentals and steady improvement.
+                </p>
+
+                <div class="schedule-list">
+                    <div class="schedule-item reveal">
+                        <strong>Monday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">Fundamentals</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Wednesday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">All Levels</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Friday</strong>
+                        <span>6:00 PM - 7:30 PM</span>
+                        <span class="badge">Light Sparring</span>
+                    </div>
+
+                    <div class="schedule-item reveal">
+                        <strong>Saturday</strong>
+                        <span>10:00 AM - 11:30 AM</span>
+                        <span class="badge">Open Mat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title reveal">Contact Us</h2>
+                <p class="section-text reveal">
+                    Send a message and we will help you get started with your first class.
+                </p>
+
+                <div class="contact-details reveal">
+                    <div class="contact-chip">WhatsApp: (555) 123-4567</div>
+                    <div class="contact-chip">Email: hello@bjjbasics.com</div>
+                    <div class="contact-chip">Location: Beginner-friendly training space</div>
+                </div>
+
+                <form class="contact-form reveal" id="contact-form">
+                    <label>
+                        <span>Your Name</span>
+                        <input type="text" placeholder="Your Name" required>
+                    </label>
+
+                    <label>
+                        <span>Your Email</span>
+                        <input type="email" placeholder="Your Email" required>
+                    </label>
+
+                    <label>
+                        <span>Your Message</span>
+                        <textarea placeholder="Tell us if you're a complete beginner" required></textarea>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p class="form-message" id="form-message" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BJJ Basics. Built for steady progress.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

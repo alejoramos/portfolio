@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="intro-panel">
+            <a href="../index.html" class="back-link">Eddy Ramos</a>
+            <p class="eyebrow">Vanilla JavaScript</p>
+            <h1>Calculator app.</h1>
+            <p>
+                I built this calculator with HTML, CSS, and vanilla JavaScript.
+                It handles basic math, decimals, clear, backspace, and keyboard input.
+            </p>
+        </section>
+
+        <section class="calculator" aria-label="Calculator">
+            <div class="display">
+                <p class="history" id="history" aria-live="polite"></p>
+                <div class="screen" id="screen" aria-live="polite">0</div>
+            </div>
+
+            <button class="btn utility" id="c" type="button">AC</button>
+            <button class="btn utility" id="backspace" type="button" aria-label="Backspace">⌫</button>
+            <button class="btn operator" type="button">÷</button>
+            <button class="btn operator" type="button">×</button>
+
+            <button class="btn number" type="button">7</button>
+            <button class="btn number" type="button">8</button>
+            <button class="btn number" type="button">9</button>
+            <button class="btn operator" type="button">-</button>
+
+            <button class="btn number" type="button">4</button>
+            <button class="btn number" type="button">5</button>
+            <button class="btn number" type="button">6</button>
+            <button class="btn operator" type="button">+</button>
+
+            <button class="btn number" type="button">1</button>
+            <button class="btn number" type="button">2</button>
+            <button class="btn number" type="button">3</button>
+            <button class="btn equals" id="equals" type="button">=</button>
+
+            <button class="btn number zero" id="zero" type="button">0</button>
+            <button class="btn number" type="button">.</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

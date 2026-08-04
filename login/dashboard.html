@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessFlow | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="page-shell dashboard-shell">
+        <section class="brand-panel">
+            <a href="../index.html" class="brand-link">Eddy Ramos</a>
+            <div>
+                <p class="panel-kicker">Vanilla JavaScript</p>
+                <h2>Simple dashboard.</h2>
+                <p>After logging in, this page shows the saved name, email, and last login from localStorage.</p>
+            </div>
+            <div class="panel-stats">
+                <span>Login state</span>
+                <span>Profile info</span>
+                <span>Logout</span>
+            </div>
+        </section>
+
+        <section class="auth-card dashboard-card">
+            <p class="eyebrow">Logged in</p>
+            <h1 id="welcomeTitle">Welcome</h1>
+            <p class="subtitle" id="welcomeText">You are signed in on this browser.</p>
+
+            <div class="dashboard-box">
+                <p><strong>Name:</strong> <span id="profileName">-</span></p>
+                <p><strong>Email:</strong> <span id="profileEmail">-</span></p>
+                <p><strong>Last login:</strong> <span id="lastLogin">-</span></p>
+            </div>
+
+            <div class="dashboard-actions">
+                <a href="../index.html" class="secondary-action">View Portfolio</a>
+                <button type="button" id="clearAccountBtn" class="danger-btn">Delete Account</button>
+            </div>
+
+            <button type="button" id="logoutBtn">Logout</button>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

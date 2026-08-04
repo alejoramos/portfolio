@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="todo-container" aria-labelledby="page-title">
+            <header class="app-header">
+                <div>
+                    <span class="eyebrow">Task Dashboard</span>
+                    <h1 id="page-title">To-Do List</h1>
+                </div>
+                <p id="task-counter">0 tasks</p>
+            </header>
+
+            <section class="stats-grid" aria-label="Task overview">
+                <div class="stat-card">
+                    <span id="total-count">0</span>
+                    <p>Total</p>
+                </div>
+                <div class="stat-card">
+                    <span id="pending-count">0</span>
+                    <p>Pending</p>
+                </div>
+                <div class="stat-card">
+                    <span id="completed-count">0</span>
+                    <p>Done</p>
+                </div>
+                <div class="stat-card">
+                    <span id="overdue-count">0</span>
+                    <p>Overdue</p>
+                </div>
+            </section>
+
+            <div class="progress-wrap" aria-label="Completion progress">
+                <div class="progress-label">
+                    <span>Progress</span>
+                    <strong id="progress-text">0%</strong>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <form class="input-area" id="task-form">
+                <div class="field field-wide">
+                    <label for="task-input">Task</label>
+                    <input type="text" id="task-input" placeholder="Enter a task" required>
+                </div>
+
+                <div class="field">
+                    <label for="person-input">Person</label>
+                    <input type="text" id="person-input" placeholder="Person name">
+                </div>
+
+                <div class="field">
+                    <label for="date-input">Due date</label>
+                    <input type="date" id="date-input">
+                </div>
+
+                <div class="field">
+                    <label for="priority-input">Priority</label>
+                    <select id="priority-input">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="category-input">Category</label>
+                    <select id="category-input">
+                        <option value="Personal">Personal</option>
+                        <option value="School">School</option>
+                        <option value="Work">Work</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Errands">Errands</option>
+                    </select>
+                </div>
+
+                <div class="field field-wide">
+                    <label for="notes-input">Notes</label>
+                    <textarea id="notes-input" rows="3" placeholder="Add details, links, or reminders"></textarea>
+                </div>
+
+                <button id="add-task-btn" class="primary-action" type="submit">Add Task</button>
+            </form>
+
+            <section class="toolbar" aria-label="Task tools">
+                <div class="search-box">
+                    <label for="search-input">Search</label>
+                    <input type="search" id="search-input" placeholder="Search task, person, category, notes">
+                </div>
+
+                <div class="tool-controls">
+                    <select id="status-filter" aria-label="Filter by status">
+                        <option value="all">All tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+
+                    <select id="priority-filter" aria-label="Filter by priority">
+                        <option value="all">All priorities</option>
+                        <option value="high">High priority</option>
+                        <option value="medium">Medium priority</option>
+                        <option value="low">Low priority</option>
+                    </select>
+
+                    <select id="sort-select" aria-label="Sort tasks">
+                        <option value="created-desc">Newest first</option>
+                        <option value="date-asc">Due date</option>
+                        <option value="priority-desc">Priority</option>
+                        <option value="name-asc">A-Z</option>
+                    </select>
+                </div>
+            </section>
+
+            <ul id="task-list" aria-live="polite"></ul>
+
+            <p id="empty-state" class="empty-state">No tasks yet. Add one above to start planning.</p>
+
+            <div class="list-actions">
+                <button id="print-btn" type="button">Print</button>
+                <button id="share-btn" type="button">Share</button>
+                <button id="clear-completed-btn" type="button">Clear Done</button>
+                <button id="clear-all-btn" type="button">Clear All</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
