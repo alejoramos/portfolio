@@ -15,9 +15,11 @@
   --ink-muted: #55565c;
   --rule: rgba(22, 22, 26, 0.16);
   --rule-soft: rgba(22, 22, 26, 0.09);
-  --accent: #146b4a;
-  --accent-ink: #0f5638;
-  --accent-wash: rgba(20, 107, 74, 0.09);
+  /* blue sampled from the EAR logo artwork */
+  --accent: #0072c8;
+  --accent-ink: #005ca3;
+  --accent-wash: rgba(0, 114, 200, 0.09);
+  --on-accent: #ffffff;
   --shadow-frame: 0 24px 50px -30px rgba(22, 22, 26, 0.4);
 
   --font-display: "Bricolage Grotesque", "Segoe UI", sans-serif;
@@ -37,9 +39,10 @@
   --ink-muted: #a0a3a9;
   --rule: rgba(240, 238, 232, 0.18);
   --rule-soft: rgba(240, 238, 232, 0.09);
-  --accent: #4fc48d;
-  --accent-ink: #6fd6a4;
-  --accent-wash: rgba(79, 196, 141, 0.12);
+  --accent: #3aa9f0;
+  --accent-ink: #6cc0ff;
+  --accent-wash: rgba(58, 169, 240, 0.14);
+  --on-accent: #0b1a25;
   --shadow-frame: 0 24px 50px -30px rgba(0, 0, 0, 0.8);
 }
 
@@ -190,7 +193,7 @@ a {
 
 .btn-primary:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .btn-primary:hover .icon {
@@ -265,14 +268,18 @@ a {
 
 /* ER monogram. The custom property reaches into the <use> shadow tree,
    which a plain class selector cannot do. */
-/* <E/R> lockup. The custom property reaches into the <use> shadow tree,
-   which a plain class selector cannot do. */
+/* EAR mark. Two files because the artwork is a solid mass with the letters
+   cut out of it, so the mass has to flip between themes. Using a background
+   rather than <img> means only the version in use gets downloaded. */
 .brand-mark {
-  width: 75px;
-  height: 20px;
+  width: 80px;
+  height: 29px;
   flex: none;
-  color: var(--ink);
-  --logo-accent: var(--accent);
+  background: url("../images/logo-ear-light.png") no-repeat center / contain;
+}
+
+[data-theme="dark"] .brand-mark {
+  background-image: url("../images/logo-ear-dark.png");
 }
 
 .primary-nav {
