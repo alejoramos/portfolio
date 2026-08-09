@@ -281,7 +281,7 @@
             <figcaption class="frame-bar">
               <span class="frame-path">momentum-athletics / index.html</span>
             </figcaption>
-            <img src="images/sports.jpg" alt="Momentum Athletics homepage: a wide photo of athletes training under the headline Train with purpose, play with momentum." width="1600" height="1006" loading="lazy" decoding="async">
+            <img src="images/sports.jpg" alt="Momentum Athletics homepage: a full width photo of club members under the oversized headline You don't need to have been the sporty one." width="1600" height="1006" loading="lazy" decoding="async">
           </figure>
 
           <div class="project-body" data-reveal>
@@ -308,7 +308,7 @@
 
             <dl class="spec">
               <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript</dd></div>
+              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, GSAP</dd></div>
               <div><dt>Pages</dt><dd>Home, About, Sports, Schedule, Contact</dd></div>
             </dl>
           </div>
@@ -320,7 +320,8 @@
                 <h4>What's in it</h4>
                 <ul>
                   <li>Five pages sharing one header, one footer and one stylesheet.</li>
-                  <li>Program pages for basketball, soccer, running and fitness.</li>
+                  <li>A scroll driven sport switcher: the list on the right changes the photo held in the sticky column on the left.</li>
+                  <li>A looping marquee that speeds up slightly with scroll velocity.</li>
                   <li>A contact form that confirms the submission without leaving the page.</li>
                 </ul>
               </div>
@@ -593,15 +594,16 @@
         <ul class="build-list" data-reveal>
           <li class="build">
             <a class="build-link" href="BJJ/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="images/bjj.jpg" alt="BJJ Basics landing page with the headline Start BJJ with confidence beside a photo of two students training." width="1600" height="1006" loading="lazy" decoding="async">
+              <img src="images/bjj.jpg" alt="BJJ Basics academy site: a full bleed photo of a beginners class under the headline Everyone here started as a beginner." width="1600" height="1006" loading="lazy" decoding="async">
               <span class="build-main">
                 <span class="build-name">BJJ Basics<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
                 <span class="build-desc">
-                  A landing page for a jiu-jitsu gym, with a photo carousel I wrote from scratch, a
-                  class schedule and a contact form.
+                  A site for a jiu-jitsu academy, built to read like the real thing rather than a
+                  demo. The training photos sit in a horizontal track that scrolls sideways while
+                  the section is pinned, and becomes a normal swipeable row on a phone.
                 </span>
               </span>
-              <span class="build-tech">HTML, CSS, JS</span>
+              <span class="build-tech">GSAP, ScrollTrigger</span>
               <span class="sr-only">(opens in a new tab)</span>
             </a>
           </li>

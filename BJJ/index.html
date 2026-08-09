@@ -3,229 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BJJ Basics | Beginner Brazilian Jiu-Jitsu classes</title>
-    <meta name="description" content="Beginner Brazilian Jiu-Jitsu classes four times a week. No experience needed, no contract, first class is free.">
+    <title>BJJ Basics | Brazilian Jiu-Jitsu Academy</title>
+    <meta name="description" content="A Brazilian Jiu-Jitsu academy for people who have never trained. Gi and no-gi, four evenings a week, first class free.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="../favicon.png" type="image/png">
+
+    <script>
+        // Marks the document before first paint so animated blocks can start
+        // hidden. script.js removes it again if GSAP is unavailable.
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header>
-        <nav class="navbar" aria-label="Primary">
-            <div class="container nav-content">
-                <a href="#home" class="logo">BJJ Basics</a>
+    <header class="masthead" id="masthead">
+        <div class="shell masthead-inner">
+            <a href="#top" class="wordmark">
+                BJJ <span>Basics</span>
+            </a>
 
-                <ul class="nav-links">
-                    <li><a href="#what">What it is</a></li>
-                    <li><a href="#gallery">Photos</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
+            <nav class="nav" aria-label="Primary">
+                <a href="#method">Method</a>
+                <a href="#mat">On the mat</a>
+                <a href="#styles">Gi &amp; no-gi</a>
+                <a href="#schedule">Schedule</a>
+            </nav>
+
+            <a href="#visit" class="nav-cta">First class free</a>
+        </div>
     </header>
 
     <main id="main">
-        <section class="hero" id="home">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>Start BJJ<br>with confidence.</h1>
+        <!-- ==================================================== HERO -->
+        <section class="hero" id="top">
+            <div class="hero-media">
+                <img src="images/academy.jpg" alt="A beginners class training in pairs across the academy mats." width="1672" height="941" fetchpriority="high">
+            </div>
+
+            <div class="hero-inner shell">
+                <h1 class="hero-title">
+                    <span class="reveal-line"><span>Everyone here</span></span>
+                    <span class="reveal-line"><span>started as</span></span>
+                    <span class="reveal-line"><span>a beginner.</span></span>
+                </h1>
+
+                <div class="hero-foot" data-hero>
                     <p class="hero-lead">
-                        Beginner Brazilian Jiu-Jitsu, four evenings a week. You do not need
-                        to be fit, flexible or experienced to walk in. Most people start
-                        knowing nothing, which is exactly the point.
+                        Brazilian Jiu-Jitsu for people who have never trained. You do not
+                        need to be fit, flexible or brave. You need to show up once.
                     </p>
+                    <a href="#visit" class="btn btn-solid">Book your first class</a>
+                </div>
+            </div>
 
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Book a first class</a>
-                        <a href="#schedule" class="btn btn-secondary">See the schedule</a>
-                    </div>
+            <div class="hero-bar" data-hero>
+                <div class="shell hero-bar-inner">
+                    <span><b>Mon &middot; Wed &middot; Fri</b> 6:00pm</span>
+                    <span><b>Saturday</b> 10:00am open mat</span>
+                    <span class="hero-bar-note">First class is free, no sign up</span>
+                </div>
+            </div>
+        </section>
 
-                    <p class="hero-meta">
-                        Mon, Wed, Fri at 6:00pm &nbsp;&middot;&nbsp; Sat at 10:00am &nbsp;&middot;&nbsp; First class is free
+        <!-- ==================================================== METHOD -->
+        <section class="method" id="method">
+            <div class="shell method-grid">
+                <div class="method-head" data-anim>
+                    <p class="marker">01 &nbsp;/&nbsp; Method</p>
+                    <h2 class="display">Position<br>before<br>submission.</h2>
+                </div>
+
+                <div class="method-body" data-anim>
+                    <p class="lead">
+                        We teach in the order the art actually works. Where to put your
+                        body first, how to stay safe there, and only then how to finish.
+                    </p>
+                    <p>
+                        Most people arrive expecting to be thrown into a fight. That is not
+                        what happens. The first month is spent learning to move on the
+                        ground, protect your neck, and get out from underneath someone
+                        without panicking. It is slow on purpose.
+                    </p>
+                    <p>
+                        Classes are capped so an instructor can correct you by name. Nobody
+                        is left to copy the person next to them and hope.
                     </p>
                 </div>
 
-                <figure class="hero-photo">
-                    <img src="images/bjj1.jpg" alt="Two students drilling a position on the mat during a beginners class." width="1000" height="563">
+                <figure class="method-photo method-photo-a" data-anim>
+                    <img src="images/grips.jpg" alt="Two instructors demonstrating standing grips in the gi." width="1400" height="933" loading="lazy">
+                </figure>
+
+                <figure class="method-photo method-photo-b" data-anim>
+                    <img src="images/instructor.jpg" alt="An instructor sitting on the mat while a class trains behind him." width="1400" height="788" loading="lazy">
+                    <figcaption>Every class is led by a black belt.</figcaption>
                 </figure>
             </div>
         </section>
 
-        <section id="what">
-            <div class="container what-grid">
-                <h2 class="section-title reveal">What it actually is</h2>
+        <!-- ==================================================== HORIZONTAL TRACK -->
+        <section class="mat" id="mat">
+            <div class="shell mat-head" data-anim>
+                <p class="marker">02 &nbsp;/&nbsp; On the mat</p>
+                <h2 class="display">An hour and<br>a half, four<br>nights a week.</h2>
+            </div>
 
-                <div class="what-body reveal">
-                    <p class="lead">
-                        Brazilian Jiu-Jitsu is a grappling art. It is about control, escapes and
-                        position rather than striking, so almost all of it happens close up or on
-                        the ground.
-                    </p>
-                    <p>
-                        Most martial arts spend their time on punches and kicks from standing.
-                        BJJ spends it on clinching, takedowns, holding position and getting out
-                        of bad ones. It leans on leverage and timing instead of strength, which
-                        is why a smaller person with good technique can handle someone much
-                        bigger.
-                    </p>
-                    <p>
-                        The other thing people notice is that it feels like a puzzle. You spend
-                        the class working out how to get out of somewhere uncomfortable, calmly,
-                        while someone is actively stopping you.
-                    </p>
+            <div class="track" id="track">
+                <div class="track-inner" id="track-inner">
+                    <figure class="slide">
+                        <img src="images/teaching.jpg" alt="An instructor demonstrating a technique while the class watches from the mat." width="1400" height="1050" loading="lazy">
+                        <figcaption><b>Technique first</b> Every session opens with one position, broken down slowly.</figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="images/class.jpg" alt="Students sitting on the mat listening to the coach before drilling." width="1600" height="900" loading="lazy">
+                        <figcaption><b>Then drilling</b> You repeat it with a partner until it stops feeling strange.</figcaption>
+                    </figure>
+                    <figure class="slide slide-tall">
+                        <img src="images/women.jpg" alt="Two students training together in the gi." width="1000" height="1250" loading="lazy">
+                        <figcaption><b>Everyone rolls</b> Partners rotate, so you train with every size and level.</figcaption>
+                    </figure>
+                    <figure class="slide slide-tall">
+                        <img src="images/closeup.jpg" alt="Close control during a no-gi round." width="1000" height="1250" loading="lazy">
+                        <figcaption><b>Live rounds</b> Light and controlled. You tap, you reset, you go again.</figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="images/academy.jpg" alt="A wide view of the academy with several pairs training." width="1672" height="941" loading="lazy">
+                        <figcaption><b>Then it repeats</b> Progress here is just attendance, spread over months.</figcaption>
+                    </figure>
                 </div>
+            </div>
+
+            <p class="track-hint shell">Scroll to move through the session</p>
+        </section>
+
+        <!-- ==================================================== GI / NO GI -->
+        <section class="styles" id="styles">
+            <div class="shell styles-head" data-anim>
+                <p class="marker">03 &nbsp;/&nbsp; Two ways to train</p>
+                <h2 class="display">Gi and no-gi.<br>Start with either.</h2>
+            </div>
+
+            <div class="styles-split">
+                <article class="style-panel" data-panel="a">
+                    <figure>
+                        <img src="images/gi.jpg" alt="Two students training in the gi, one controlling from the top." width="1400" height="933" loading="lazy">
+                    </figure>
+                    <div class="style-copy">
+                        <p class="style-tag">Gi</p>
+                        <h3>Grips, patience, and a lot of detail.</h3>
+                        <p>
+                            The jacket gives everyone something to hold, which slows the game
+                            down and rewards precision over speed. This is where most people
+                            learn fastest. We lend you a gi for the first month.
+                        </p>
+                        <p class="style-when">Mondays and Wednesdays</p>
+                    </div>
+                </article>
+
+                <article class="style-panel" data-panel="b">
+                    <figure>
+                        <img src="images/nogi.jpg" alt="Two students training no-gi in rash guards." width="1400" height="933" loading="lazy">
+                    </figure>
+                    <div class="style-copy">
+                        <p class="style-tag">No-gi</p>
+                        <h3>Faster, sweatier, fewer places to hold.</h3>
+                        <p>
+                            Shorts and a rash guard. Without the jacket everything moves
+                            quicker and you learn to control with angles and pressure instead
+                            of grips. Bring what you already own.
+                        </p>
+                        <p class="style-when">Fridays and Saturday open mat</p>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <section id="gallery">
-            <div class="container">
-                <h2 class="section-title reveal">In the room</h2>
-
-                <div class="carousel reveal">
-                    <div class="carousel-frame">
-                        <div class="carousel-track">
-                            <img src="images/bjj1.jpg" alt="Students drilling BJJ positions across the mat" class="carousel-image active">
-                            <img src="images/bjj2.jpg" alt="Two students practicing ground movement" class="carousel-image">
-                            <img src="images/bjj3.jpg" alt="BJJ student working on hip movement and base" class="carousel-image">
-                            <img src="images/bjj4.jpg" alt="Close-up of ground control practice" class="carousel-image">
-                            <img src="images/bjj5.jpg" alt="Students resetting after a technique drill" class="carousel-image">
-                            <img src="images/bjj6.jpg" alt="Students practicing standing grip control" class="carousel-image">
-                            <img src="images/bjj7.jpg" alt="Student using guard movement during training" class="carousel-image">
-                            <img src="images/bjj8.jpg" alt="Student applying pressure from top position" class="carousel-image">
-                            <img src="images/bjj9.jpg" alt="Students combining guard and top pressure drills" class="carousel-image">
-                        </div>
-                    </div>
-
-                    <div class="carousel-bar">
-                        <p class="carousel-caption" id="carousel-caption">Students drilling positions and movement across the mat.</p>
-
-                        <div class="carousel-controls">
-                            <button class="carousel-btn" id="prev-slide" type="button" aria-label="Previous photo">&larr;</button>
-                            <button class="carousel-btn" id="next-slide" type="button" aria-label="Next photo">&rarr;</button>
-                        </div>
-                    </div>
+        <!-- ==================================================== REASONS -->
+        <section class="reasons-section" id="reasons">
+            <div class="shell reasons-grid">
+                <div class="reasons-head" data-anim>
+                    <p class="marker">04 &nbsp;/&nbsp; Why people stay</p>
+                    <h2 class="display">It changes<br>more than<br>your fitness.</h2>
                 </div>
-            </div>
-        </section>
 
-        <section id="benefits">
-            <div class="container">
-                <h2 class="section-title reveal">Why people keep coming back</h2>
-
-                <ol class="reasons reveal">
+                <ol class="reasons">
                     <li>
                         <h3>You learn to control a situation</h3>
-                        <p>
-                            Position, distance and leverage, which turns out to be most of self
-                            defence. Nothing here depends on hitting anyone.
-                        </p>
+                        <p>Position, distance and leverage, which turns out to be most of self defence. Nothing here depends on hitting anyone.</p>
                     </li>
                     <li>
                         <h3>The conditioning arrives on its own</h3>
-                        <p>
-                            Nobody makes you do burpees. Strength, mobility and cardio show up
-                            because you spent an hour and a half moving under resistance.
-                        </p>
+                        <p>Nobody makes you do burpees. Strength and cardio show up because you spent ninety minutes moving under resistance.</p>
                     </li>
                     <li>
                         <h3>You get calmer under pressure</h3>
-                        <p>
-                            Being stuck somewhere bad and thinking your way out is a skill. It
-                            transfers off the mat more than people expect.
-                        </p>
+                        <p>Being stuck somewhere bad and thinking your way out is a skill. It transfers off the mat more than people expect.</p>
                     </li>
                     <li>
                         <h3>Everyone was new once</h3>
-                        <p>
-                            You train with partners, not against them. The higher belts in the
-                            room are the ones most careful with beginners.
-                        </p>
+                        <p>You train with partners, not against them. The higher belts are the ones most careful with beginners.</p>
                     </li>
                 </ol>
             </div>
         </section>
 
-        <section id="schedule">
-            <div class="container schedule-grid">
-                <div>
-                    <h2 class="section-title reveal">Schedule</h2>
+        <!-- ==================================================== SCHEDULE -->
+        <section class="schedule" id="schedule">
+            <div class="shell schedule-grid">
+                <div data-anim>
+                    <p class="marker">05 &nbsp;/&nbsp; The week</p>
+                    <h2 class="display">Same times,<br>every week.</h2>
 
-                    <table class="schedule-table reveal">
+                    <table class="schedule-table">
                         <caption class="sr-only">Weekly class schedule</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Day</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Class</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">Monday</th>
-                                <td>6:00 to 7:30pm</td>
-                                <td>Fundamentals</td>
+                                <td>Fundamentals, gi</td>
+                                <td>6:00 &ndash; 7:30pm</td>
                             </tr>
                             <tr>
                                 <th scope="row">Wednesday</th>
-                                <td>6:00 to 7:30pm</td>
-                                <td>All levels</td>
+                                <td>All levels, gi</td>
+                                <td>6:00 &ndash; 7:30pm</td>
                             </tr>
                             <tr>
                                 <th scope="row">Friday</th>
-                                <td>6:00 to 7:30pm</td>
-                                <td>Light sparring</td>
+                                <td>No-gi and light rounds</td>
+                                <td>6:00 &ndash; 7:30pm</td>
                             </tr>
                             <tr>
                                 <th scope="row">Saturday</th>
-                                <td>10:00 to 11:30am</td>
-                                <td>Open mat</td>
+                                <td>Open mat, both styles</td>
+                                <td>10:00 &ndash; 11:30am</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="first-class reveal">
-                    <h3>Before your first one</h3>
+                <div class="first-time" data-anim>
+                    <h3>Coming for the first time</h3>
                     <dl>
                         <div>
+                            <dt>Wear</dt>
+                            <dd>Shorts without pockets or zips, and a t-shirt. We lend gis.</dd>
+                        </div>
+                        <div>
                             <dt>Bring</dt>
-                            <dd>Shorts, a t-shirt and water. No gi needed to start.</dd>
+                            <dd>Water, and flip flops for walking off the mat.</dd>
                         </div>
                         <div>
                             <dt>Arrive</dt>
-                            <dd>Ten minutes early so someone can show you around.</dd>
+                            <dd>Ten minutes early so someone can walk you through it.</dd>
                         </div>
                         <div>
                             <dt>Expect</dt>
-                            <dd>Warm up, a few positions, then drilling with a partner.</dd>
+                            <dd>A warm up, one position, drilling, and rounds if you want them.</dd>
                         </div>
                     </dl>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <div class="container contact-grid">
-                <div class="contact-info reveal">
-                    <h2 class="section-title">Come and try one</h2>
-                    <p>
-                        Send a message and we will tell you which class to start with. The first
-                        one is free and there is no contract afterwards.
+        <!-- ==================================================== COMMUNITY -->
+        <section class="community">
+            <figure class="community-media">
+                <img src="images/community.jpg" alt="The whole academy gathered on the mat after a Saturday session." width="1536" height="1024" loading="lazy">
+            </figure>
+            <div class="shell community-copy" data-anim>
+                <h2 class="display">You will know<br>everyone&rsquo;s name<br>by the third week.</h2>
+                <p>
+                    That is not a promise about the training. It is just what happens when
+                    the same forty people keep turning up to the same room.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================================================== VISIT -->
+        <section class="visit" id="visit">
+            <div class="shell visit-grid">
+                <div data-anim>
+                    <p class="marker">06 &nbsp;/&nbsp; Visit</p>
+                    <h2 class="display">Come and<br>try one.</h2>
+                    <p class="visit-lead">
+                        Send a message and we will tell you which night to start on. There is
+                        no trial package and no contract, and the first class costs nothing.
                     </p>
 
-                    <address class="contact-details">
+                    <address class="visit-details">
                         <p><a href="tel:+15551234567">(555) 123-4567</a></p>
                         <p><a href="mailto:hello@bjjbasics.com">hello@bjjbasics.com</a></p>
                     </address>
                 </div>
 
-                <form class="contact-form reveal" id="contact-form" novalidate>
+                <form class="visit-form" id="contact-form" novalidate data-anim>
                     <div class="field">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" autocomplete="name" required>
@@ -238,24 +314,26 @@
 
                     <div class="field">
                         <label for="message">Have you trained before?</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Complete beginner is a perfectly good answer."></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder="Complete beginner is the most common answer."></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Send message</button>
+                    <button type="submit" class="btn btn-solid">Send message</button>
                     <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container footer-content">
-            <p class="footer-brand">BJJ Basics</p>
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <p class="footer-mark">BJJ <span>Basics</span></p>
             <p>Mon, Wed, Fri 6:00pm &middot; Sat 10:00am</p>
             <p>&copy; 2026 BJJ Basics</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

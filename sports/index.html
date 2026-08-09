@@ -4,125 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum Athletics | Community sports club</title>
-    <meta name="description" content="A community sports club with basketball, soccer, running and fitness sessions five days a week. All levels welcome.">
+    <meta name="description" content="A community sports club for people who never played. Soccer, basketball, running and fitness training, five nights a week, no tryouts.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../favicon.png" type="image/png">
+
+    <script>
+        // Set before first paint so animated blocks can start hidden.
+        // script.js removes it again if GSAP never arrives.
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
-        <nav class="navbar" aria-label="Primary">
-            <a href="index.html" class="logo">Momentum Athletics</a>
-            <div class="nav-links">
+    <header class="site-header" id="site-header">
+        <div class="shell navbar">
+            <a href="index.html" class="logo">Momentum</a>
+
+            <nav class="nav-links" aria-label="Primary">
                 <a href="index.html" class="active" aria-current="page">Home</a>
-                <a href="about.html">About</a>
                 <a href="sports.html">Sports</a>
                 <a href="schedule.html">Schedule</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </nav>
+                <a href="about.html">About</a>
+            </nav>
+
+            <a href="contact.html" class="nav-join">Join</a>
+        </div>
     </header>
 
     <main id="main">
-        <section class="hero">
+        <!-- ==================================================== HERO -->
+        <section class="hero" id="top">
             <div class="hero-media">
-                <img src="images/sports-hero.jpg" alt="Members of the club training together on the field and the court." width="1536" height="1024">
+                <img src="images/hero.jpg" alt="Members of the club walking together after a session, carrying a soccer ball and a basketball." width="1672" height="941" fetchpriority="high">
             </div>
-            <div class="hero-overlay">
-                <div class="hero-text">
-                    <h1>Train with purpose. Play with momentum.</h1>
+
+            <div class="shell hero-inner">
+                <h1 class="hero-title">
+                    <span class="reveal-line"><span>You don't need</span></span>
+                    <span class="reveal-line"><span>to have been</span></span>
+                    <span class="reveal-line"><span><em>the sporty one.</em></span></span>
+                </h1>
+
+                <div class="hero-foot" data-hero>
                     <p>
-                        A community club for students, families and anyone who wants a reason
-                        to show up twice a week. Structured practices, coaches who know your
-                        name, and no tryouts.
+                        Four sports, five nights a week, and absolutely no tryouts. Most
+                        people here have not played properly since school. Some never did.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="sports.html" class="btn primary">See the sports</a>
-                        <a href="contact.html" class="btn secondary">Join the club</a>
+                    <div class="hero-actions">
+                        <a href="contact.html" class="btn btn-lime" data-magnetic>Join the club</a>
+                        <a href="#sports" class="btn btn-line">See the sports</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="week-strip" aria-label="This week">
-            <ul>
-                <li><b>Mon</b> Basketball</li>
-                <li><b>Tue</b> Soccer</li>
-                <li><b>Wed</b> Fitness</li>
-                <li><b>Thu</b> Running</li>
-                <li><b>Sat</b> Open sports day</li>
-            </ul>
-        </section>
+        <!-- ==================================================== MARQUEE -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track" id="marquee-track">
+                <span>Soccer <i>&bull;</i> Basketball <i>&bull;</i> Running <i>&bull;</i> Fitness <i>&bull;</i> No tryouts <i>&bull;</i> All levels <i>&bull;</i> Every week <i>&bull;</i></span>
+                <span>Soccer <i>&bull;</i> Basketball <i>&bull;</i> Running <i>&bull;</i> Fitness <i>&bull;</i> No tryouts <i>&bull;</i> All levels <i>&bull;</i> Every week <i>&bull;</i></span>
+            </div>
+        </div>
+        <p class="sr-only">The club runs soccer, basketball, running and fitness sessions. No tryouts, all levels, every week.</p>
 
-        <section class="section split-section">
-            <h2>Why people join</h2>
-
-            <div class="split-body">
-                <p class="lead">
-                    The club runs on a simple rhythm. Show up, work on the fundamentals,
-                    and come back next week.
-                </p>
-                <p>
-                    Most people who walk in have not played seriously since school, and a
-                    few have never played at all. Sessions are built so that both of those
-                    people can be in the same gym without anyone feeling out of place. You
-                    get real coaching on the basics rather than being thrown straight into
-                    a game.
-                </p>
-                <p>
-                    There are no tryouts and no season commitment. Pick one sport or move
-                    between them during the week, whichever keeps you coming.
-                </p>
+        <!-- ==================================================== STATEMENT -->
+        <section class="statement">
+            <div class="shell statement-grid">
+                <p class="marker" data-anim>What this is</p>
+                <h2 class="statement-title" data-anim>
+                    A club, not a team. Turning up<br class="wide-only">
+                    <em>is the whole entry requirement.</em>
+                </h2>
+                <div class="statement-body" data-anim>
+                    <p>
+                        We run sessions the way a good pickup game works. You show up, you
+                        get put with people at your level, a coach actually teaches you
+                        something, and then you play.
+                    </p>
+                    <p>
+                        Nobody gets cut. Nobody sits on a bench. If you have never kicked a
+                        ball with any confidence, Tuesday is still for you.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2>The programs</h2>
+        <!-- ==================================================== SPORTS SHOWCASE -->
+        <section class="showcase" id="sports">
+            <div class="shell showcase-head">
+                <h2 class="display" data-anim>Four sports.<br>One membership.</h2>
+            </div>
 
-            <div class="program-list">
-                <a class="program-row" href="sports.html">
-                    <span class="num">01</span>
-                    <div>
-                        <h3>Basketball</h3>
-                        <p>Shooting, passing, defense, footwork and team play.</p>
-                    </div>
-                    <img class="program-thumb" src="images/basketball.jpg" alt="" width="1100" height="733" loading="lazy">
-                </a>
-                <a class="program-row" href="sports.html">
-                    <span class="num">02</span>
-                    <div>
+            <div class="shell showcase-grid">
+                <div class="showcase-media" aria-hidden="true">
+                    <figure class="showcase-figure is-active" data-media="0">
+                        <img src="images/soccer.jpg" alt="" width="1400" height="933" loading="lazy">
+                    </figure>
+                    <figure class="showcase-figure" data-media="1">
+                        <img src="images/basketball.jpg" alt="" width="1400" height="933" loading="lazy">
+                    </figure>
+                    <figure class="showcase-figure" data-media="2">
+                        <img src="images/running.jpg" alt="" width="1400" height="933" loading="lazy">
+                    </figure>
+                    <figure class="showcase-figure" data-media="3">
+                        <img src="images/fitness.jpg" alt="" width="1400" height="933" loading="lazy">
+                    </figure>
+                </div>
+
+                <ol class="showcase-list">
+                    <li class="showcase-item is-active" data-item="0">
+                        <figure class="showcase-inline">
+                            <img src="images/soccer.jpg" alt="Players competing for the ball during a small sided game." width="1400" height="933" loading="lazy">
+                        </figure>
+                        <span class="showcase-num">01</span>
                         <h3>Soccer</h3>
-                        <p>Ball control, passing, movement and small sided games.</p>
-                    </div>
-                    <img class="program-thumb" src="images/soccer.jpg" alt="" width="1100" height="733" loading="lazy">
-                </a>
-                <a class="program-row" href="sports.html">
-                    <span class="num">03</span>
-                    <div>
+                        <p>Small sided games on turf. Ball control and movement first, then we play until it gets dark.</p>
+                        <p class="showcase-when">Tuesdays, 5:30 to 7:00pm</p>
+                    </li>
+                    <li class="showcase-item" data-item="1">
+                        <figure class="showcase-inline">
+                            <img src="images/basketball.jpg" alt="A player driving to the basket during an indoor session." width="1400" height="933" loading="lazy">
+                        </figure>
+                        <span class="showcase-num">02</span>
+                        <h3>Basketball</h3>
+                        <p>Shooting, passing and footwork, then full court games with the teams mixed up every week.</p>
+                        <p class="showcase-when">Mondays, 5:00 to 6:30pm</p>
+                    </li>
+                    <li class="showcase-item" data-item="2">
+                        <figure class="showcase-inline">
+                            <img src="images/running.jpg" alt="A running group out together along the waterfront." width="1400" height="933" loading="lazy">
+                        </figure>
+                        <span class="showcase-num">03</span>
                         <h3>Running</h3>
-                        <p>Endurance, pacing, breathing and race preparation.</p>
-                    </div>
-                    <img class="program-thumb" src="images/running.jpg" alt="" width="1100" height="733" loading="lazy">
-                </a>
-                <a class="program-row" href="sports.html">
-                    <span class="num">04</span>
-                    <div>
+                        <p>The group splits by pace, so nobody gets dropped and nobody has to hold back. Everyone finishes together.</p>
+                        <p class="showcase-when">Thursdays, 6:00 to 7:00pm</p>
+                    </li>
+                    <li class="showcase-item" data-item="3">
+                        <figure class="showcase-inline">
+                            <img src="images/fitness.jpg" alt="Members working through a strength circuit with a coach." width="1400" height="933" loading="lazy">
+                        </figure>
+                        <span class="showcase-num">04</span>
                         <h3>Fitness training</h3>
-                        <p>Strength, agility, mobility and general conditioning.</p>
-                    </div>
-                    <img class="program-thumb" src="images/fitness.jpg" alt="" width="1100" height="733" loading="lazy">
-                </a>
+                        <p>Strength and conditioning that supports whatever else you are doing. Scaled to whoever turns up.</p>
+                        <p class="showcase-when">Wednesdays, 4:30 to 5:30pm</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ==================================================== MOMENTS -->
+        <section class="moments">
+            <div class="shell">
+                <h2 class="moments-title" data-anim>
+                    The sport is<br>the excuse.
+                </h2>
+
+                <div class="moments-collage">
+                    <figure class="moment moment-a" data-anim>
+                        <img src="images/highfive.jpg" alt="Two members celebrating at the end of a basketball session." width="1400" height="933" loading="lazy">
+                    </figure>
+                    <figure class="moment moment-b" data-anim>
+                        <img src="images/runclub.jpg" alt="The running group gathered and talking before heading out." width="1400" height="933" loading="lazy">
+                        <figcaption>Thursday, ten minutes before anyone runs.</figcaption>
+                    </figure>
+                    <figure class="moment moment-c" data-anim>
+                        <img src="images/field.jpg" alt="A coach setting up a drill while the group listens on the field." width="1400" height="933" loading="lazy">
+                    </figure>
+                    <p class="moments-note" data-anim>
+                        Half the people here joined for the exercise and stayed for the
+                        group chat. That is a completely acceptable reason to keep coming.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================== REASONS -->
+        <section class="why">
+            <div class="shell why-grid">
+                <h2 class="display" data-anim>Why people<br>actually stay.</h2>
+
+                <ol class="why-list">
+                    <li>
+                        <h3>Someone learns your name in week one</h3>
+                        <p>Coaches run the same session every week, so they know who you are and what you are working on.</p>
+                    </li>
+                    <li>
+                        <h3>You are never the worst person there</h3>
+                        <p>Groups are split by level within the session. You train with people moving at your speed.</p>
+                    </li>
+                    <li>
+                        <h3>Missing a week costs nothing</h3>
+                        <p>No season, no commitment, no guilt. Come back on Tuesday and nobody mentions it.</p>
+                    </li>
+                    <li>
+                        <h3>It is the same forty faces</h3>
+                        <p>That is what turns a session into a reason to leave the house on a cold evening.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ==================================================== WEEK -->
+        <section class="week">
+            <div class="shell">
+                <h2 class="week-title" data-anim>The week</h2>
+
+                <ul class="week-list" data-anim>
+                    <li><span class="week-day">Mon</span><span class="week-sport">Basketball</span><span class="week-time">5:00pm</span></li>
+                    <li><span class="week-day">Tue</span><span class="week-sport">Soccer</span><span class="week-time">5:30pm</span></li>
+                    <li><span class="week-day">Wed</span><span class="week-sport">Fitness training</span><span class="week-time">4:30pm</span></li>
+                    <li><span class="week-day">Thu</span><span class="week-sport">Running</span><span class="week-time">6:00pm</span></li>
+                    <li><span class="week-day">Sat</span><span class="week-sport">Open sports day</span><span class="week-time">10:00am</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ==================================================== JOIN -->
+        <section class="join">
+            <figure class="join-media">
+                <img src="images/group.jpg" alt="The whole club gathered together after a Saturday open sports day." width="1672" height="941" loading="lazy">
+            </figure>
+
+            <div class="shell join-inner">
+                <h2 class="join-title" data-anim>Come once.<br>Decide after.</h2>
+                <div class="join-foot" data-anim>
+                    <p>
+                        Your first session is free and there is nothing to sign. Tell us
+                        which sport you are curious about and we will tell you where to
+                        stand on the night.
+                    </p>
+                    <a href="contact.html" class="btn btn-lime" data-magnetic>Join the club</a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-inner">
+        <div class="shell footer-inner">
             <p><strong>Momentum Athletics</strong></p>
             <p>Community Sports Center &middot; (555) 456-7890</p>
             <p>&copy; 2026 Momentum Athletics</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

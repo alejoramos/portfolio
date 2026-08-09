@@ -1,91 +1,163 @@
-const elements = document.querySelectorAll(".reveal");
+/* BJJ Basics
+   Motion is deliberately limited: one entrance, scroll reveals, a pinned
+   horizontal track on desktop, and a slow drift on the gi / no-gi panels.
+   Everything degrades to a plain scrolling page if GSAP never loads. */
 
-const observer = new IntersectionObserver(
-    function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                observer.unobserve(entry.target);
+(function () {
+    'use strict';
+
+    var root = document.documentElement;
+    var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Without GSAP, or with reduced motion, drop the class that hides things.
+    if (!hasGsap || reduced) {
+        root.classList.remove('js');
+    }
+
+    /* ------------------------------------------------------------ masthead */
+
+    var masthead = document.getElementById('masthead');
+    var hero = document.querySelector('.hero');
+
+    if (masthead && hero) {
+        var flipHeader = function () {
+            var past = window.scrollY > hero.offsetHeight - 90;
+            masthead.classList.toggle('is-light', past);
+        };
+        window.addEventListener('scroll', flipHeader, { passive: true });
+        flipHeader();
+    }
+
+    /* ------------------------------------------------------------ contact form */
+
+    // Front-end demo. No server, so it validates and answers on the page.
+    var form = document.getElementById('contact-form');
+    var formMessage = document.getElementById('form-message');
+
+    if (form && formMessage) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name');
+            var email = document.getElementById('email');
+            var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+
+            if (name.value.trim() === '') {
+                formMessage.textContent = 'Add your name so we know who to look out for.';
+                name.focus();
+                return;
             }
+
+            if (!emailOk) {
+                formMessage.textContent = 'That email does not look right.';
+                email.focus();
+                return;
+            }
+
+            formMessage.textContent = 'Thanks. We will reply with the night to start on.';
+            form.reset();
         });
-    },
-    {
-        threshold: 0.15
     }
-);
 
-elements.forEach(function(el) {
-    observer.observe(el);
-});
+    if (!hasGsap || reduced) return;
 
-const contactForm = document.querySelector("#contact-form");
-const formMessage = document.querySelector("#form-message");
+    gsap.registerPlugin(ScrollTrigger);
 
-// Front-end demo. There is no server behind this form, so it checks the
-// fields and answers on the page rather than pretending to send anything.
-if (contactForm && formMessage) {
-    contactForm.addEventListener("submit", function(event) {
-        event.preventDefault();
+    /* ------------------------------------------------------------ entrance */
 
-        const name = document.querySelector("#name");
-        const email = document.querySelector("#email");
-        const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+    var intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        if (name.value.trim() === "") {
-            formMessage.textContent = "Add your name and we will know who to look out for.";
-            name.focus();
-            return;
+    intro
+        .to('.hero-media img', { scale: 1, duration: 1.8, ease: 'power2.out' })
+        .to('.reveal-line > span', { y: 0, duration: 1.05, stagger: 0.085 }, 0.2)
+        .to('[data-hero]', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12 }, 0.75);
+
+    /* ------------------------------------------------------------ scroll reveals */
+
+    gsap.utils.toArray('[data-anim]').forEach(function (el) {
+        gsap.fromTo(el,
+            { opacity: 0, y: 34 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 86%', once: true }
+            }
+        );
+    });
+
+    // the reasons list staggers its own rows rather than arriving as one block
+    var reasonItems = gsap.utils.toArray('.reasons li');
+    if (reasonItems.length) {
+        gsap.fromTo(reasonItems,
+            { opacity: 0, y: 26 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: 'power3.out',
+                stagger: 0.09,
+                scrollTrigger: { trigger: '.reasons', start: 'top 82%', once: true }
+            }
+        );
+    }
+
+    /* ------------------------------------------------------------ responsive motion */
+
+    var mm = gsap.matchMedia();
+
+    mm.add('(min-width: 821px)', function () {
+        var inner = document.getElementById('track-inner');
+        var section = document.querySelector('.mat');
+
+        // Pinned horizontal track. The distance is measured from the content,
+        // and recalculated on resize, so it never over or under scrolls.
+        if (inner && section) {
+            var distance = function () {
+                return Math.max(0, inner.scrollWidth - window.innerWidth);
+            };
+
+            gsap.to(inner, {
+                x: function () { return -distance(); },
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top top',
+                    end: function () { return '+=' + distance(); },
+                    pin: true,
+                    scrub: 0.6,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true
+                }
+            });
         }
 
-        if (!emailLooksValid) {
-            formMessage.textContent = "That email does not look right.";
-            email.focus();
-            return;
-        }
+        // The two style panels drift apart slightly as they pass through.
+        gsap.to('[data-panel="a"]', {
+            y: -46,
+            ease: 'none',
+            scrollTrigger: { trigger: '.styles-split', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
 
-        formMessage.textContent = "Thanks. We will reply with the class to start with.";
-        contactForm.reset();
-    });
-}
+        gsap.to('[data-panel="b"]', {
+            y: 46,
+            ease: 'none',
+            scrollTrigger: { trigger: '.styles-split', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
 
-const carouselImages = document.querySelectorAll(".carousel-image");
-const carouselCaption = document.querySelector("#carousel-caption");
-const prevSlide = document.querySelector("#prev-slide");
-const nextSlide = document.querySelector("#next-slide");
-const carouselCaptions = [
-    "Students drilling positions and movement across the mat.",
-    "Ground movement practice helps students learn balance and control.",
-    "Hip movement is important for escaping and creating space.",
-    "Close control teaches pressure, patience, and safe partner training.",
-    "Students reset between drills so they can repeat the technique correctly.",
-    "Standing grip control helps set up takedowns and better positioning.",
-    "Guard movement teaches defense, angles, and how to recover position.",
-    "Top pressure helps a student control space without rushing.",
-    "Live drilling combines guard work, control, and calm decision making."
-];
-
-let currentSlide = 0;
-
-function showSlide(index) {
-    if (carouselImages.length === 0) {
-        return;
-    }
-
-    carouselImages[currentSlide].classList.remove("active");
-    currentSlide = (index + carouselImages.length) % carouselImages.length;
-    carouselImages[currentSlide].classList.add("active");
-
-    if (carouselCaption) {
-        carouselCaption.textContent = carouselCaptions[currentSlide] || "BJJ training photo.";
-    }
-}
-
-if (prevSlide && nextSlide) {
-    prevSlide.addEventListener("click", function() {
-        showSlide(currentSlide - 1);
+        // A slow push on the closing photo, so the section is not static.
+        gsap.fromTo('.community-media img',
+            { scale: 1.16 },
+            {
+                scale: 1,
+                ease: 'none',
+                scrollTrigger: { trigger: '.community', start: 'top bottom', end: 'bottom top', scrub: true }
+            }
+        );
     });
 
-    nextSlide.addEventListener("click", function() {
-        showSlide(currentSlide + 1);
-    });
-}
+    // Late-loading images change the layout, so measurements are refreshed.
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+})();
