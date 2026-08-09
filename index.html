@@ -189,7 +189,7 @@
             <li>
               <a href="#project-elite">
                 <span class="idx">03</span>
-                <span class="name">Elite Cuts</span>
+                <span class="name">Leland Barbers</span>
                 <span class="kind">Responsive site</span>
               </a>
             </li>
@@ -425,7 +425,7 @@
         </div>
       </article>
 
-      <!-- 03 Elite Cuts -->
+      <!-- 03 Leland Barbers -->
       <article class="project project-split project-flip" id="project-elite">
         <div class="shell project-split-grid">
           <div class="project-col" data-reveal>
@@ -433,15 +433,15 @@
               <p class="project-index">03</p>
               <div>
                 <p class="project-kind">Responsive website</p>
-                <h3 class="project-title">Elite Cuts</h3>
+                <h3 class="project-title">Leland Barbers</h3>
               </div>
             </div>
 
             <div class="project-summary">
               <p>
-                A barbershop landing page in a dark, warm palette. Services, hours and a booking call
-                to action, with a mobile menu that opens and closes from the same button and shuts
-                itself when you tap a link.
+                A barbershop site built to get someone into a chair. Recent cuts swap from the before
+                photo to the after on hover, the shop photos stack as you scroll past them, and the
+                opening hours work out for themselves whether the place is open right now.
               </p>
 
               <div class="project-links">
@@ -460,8 +460,8 @@
 
             <dl class="spec">
               <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript</dd></div>
-              <div><dt>Focus</dt><dd>Dark interface and mobile navigation</dd></div>
+              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, GSAP</dd></div>
+              <div><dt>Focus</dt><dd>Image led layout and scroll motion</dd></div>
             </dl>
 
             <details class="notes">
@@ -470,23 +470,25 @@
                 <div>
                   <h4>What's in it</h4>
                   <ul>
-                    <li>A sticky header with anchor navigation between sections.</li>
-                    <li>Services, opening hours and a booking section.</li>
+                    <li>Before and after cuts that swap on hover, with a switch for touch screens.</li>
+                    <li>Shop photos that stack on top of each other as the section scrolls.</li>
+                    <li>Prices, opening hours and a booking request form.</li>
                   </ul>
                 </div>
                 <div>
-                  <h4>The menu</h4>
+                  <h4>The hours</h4>
                   <p>
-                    One button controls it. It flips a class and updates aria-expanded at the same
-                    time, so what a screen reader announces and what you see can't end up saying
-                    different things.
+                    The week is one array in the script. It works out whether the shop is open right
+                    now, what time it opens next, and which row of the table to highlight, so nothing
+                    has to be edited by hand in two places.
                   </p>
                 </div>
                 <div>
                   <h4>What I ran into</h4>
                   <p>
-                    Dark interfaces need more contrast checking than light ones. Text that looked
-                    fine on my laptop turned out to be too dim once I actually measured it.
+                    The stacked photos first crossfaded into each other, which just looked like a
+                    double exposure. Clipping the frame and sliding each photo up over the last one
+                    instead is what makes it read as a stack.
                   </p>
                 </div>
               </div>
@@ -495,9 +497,9 @@
 
           <figure class="frame" data-reveal>
             <figcaption class="frame-bar">
-              <span class="frame-path">elite-cuts / index.html</span>
+              <span class="frame-path">leland-barbers / index.html</span>
             </figcaption>
-            <img src="images/barbershop.jpg" alt="Elite Cuts homepage: a large serif wordmark on near black, beside a photo of a barber finishing a fade." width="1600" height="1006" loading="lazy" decoding="async">
+            <img src="images/barbershop.jpg" alt="Leland Barbers homepage: the shop name set very large in bone over a dark photo of a barber mid cut." width="1600" height="1000" loading="lazy" decoding="async">
           </figure>
         </div>
       </article>
