@@ -28,8 +28,10 @@
     --shell: 1300px;
 }
 
+/* No scroll-behavior: smooth here. It fights the pinned track, because the
+   browser keeps animating the scroll position while ScrollTrigger is reading
+   it, and the section ends up jumping or refusing to pin. */
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: 78px;
     -webkit-text-size-adjust: 100%;
 }
@@ -391,8 +393,21 @@ a { color: inherit; }
 .mat-head { margin-bottom: clamp(36px, 5vw, 64px); }
 .mat .marker { color: var(--muted-dark); }
 
+/* The row is a real horizontal scroller by default, so the photos are always
+   reachable by swipe or shift+wheel. When GSAP takes over and pins the
+   section it adds .is-pinned, which hands scrolling back to the timeline. */
 .track {
     width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.track::-webkit-scrollbar { display: none; }
+
+.track.is-pinned {
+    overflow-x: hidden;
+    scroll-snap-type: none;
 }
 
 .track-inner {
@@ -804,13 +819,21 @@ textarea { resize: vertical; }
         max-width: none;
     }
 
+    /* Height is fixed and width follows the photo's own ratio, which is what
+       gives the row its uneven rhythm. The ratio is spelled out per slide
+       rather than left as `auto`: the images are lazy, and an unloaded image
+       with `aspect-ratio: auto` has no width at all, so the pin measured the
+       row far too short and stopped before the last photo. */
     .slide img,
     .slide-tall img {
         height: clamp(240px, 42vh, 460px);
         width: auto;
         max-width: none;
-        aspect-ratio: auto;
     }
+
+    .slide-43 img { aspect-ratio: 4 / 3; }
+    .slide-169 img { aspect-ratio: 16 / 9; }
+    .slide-tall img { aspect-ratio: 4 / 5; }
 
     .slide figcaption {
         max-width: 34ch;
@@ -848,15 +871,8 @@ textarea { resize: vertical; }
     .method-photo-b { grid-column: 1; }
     .method-photo-b { margin-top: 0; }
 
-    /* the horizontal track becomes a normal swipeable row on touch */
-    .track {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .track::-webkit-scrollbar { display: none; }
+    /* on touch the row snaps, since it is swiped rather than pinned */
+    .track { scroll-snap-type: x mandatory; }
 
     .track-inner {
         transform: none !important;
@@ -896,8 +912,6 @@ textarea { resize: vertical; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-
     *, *::before, *::after {
         animation-duration: 0.001ms !important;
         transition-duration: 0.001ms !important;

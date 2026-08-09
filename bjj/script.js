@@ -114,9 +114,27 @@
 
         // Pinned horizontal track. The distance is measured from the content,
         // and recalculated on resize, so it never over or under scrolls.
+        var track = document.getElementById('track');
+
         if (inner && section) {
+            // The row scrolls on its own until this point. Hand that over to
+            // the timeline, otherwise the two fight each other.
+            if (track) {
+                track.scrollLeft = 0;
+                track.classList.add('is-pinned');
+            }
+
+            // Measured from the last slide rather than from scrollWidth,
+            // which is unreliable once the row is clipped by .is-pinned.
+            // Both rects carry the same transform, so it cancels out.
+            var slides = inner.querySelectorAll('.slide');
+            var last = slides[slides.length - 1];
+
             var distance = function () {
-                return Math.max(0, inner.scrollWidth - window.innerWidth);
+                if (!last) return 0;
+                var pad = parseFloat(getComputedStyle(inner).paddingRight) || 0;
+                var width = last.getBoundingClientRect().right - inner.getBoundingClientRect().left;
+                return Math.max(0, Math.round(width + pad - window.innerWidth));
             };
 
             gsap.to(inner, {
@@ -131,6 +149,21 @@
                     anticipatePin: 1,
                     invalidateOnRefresh: true
                 }
+            });
+
+            // The ratios above keep the widths right before the photos load,
+            // but a decoded image can still land a fraction off, so the
+            // measurements are taken again once the row has finished loading.
+            var waiting = 0;
+            var settle = function () {
+                if (--waiting <= 0) ScrollTrigger.refresh();
+            };
+
+            Array.prototype.forEach.call(inner.querySelectorAll('img'), function (img) {
+                if (img.complete && img.naturalWidth) return;
+                waiting++;
+                img.addEventListener('load', settle, { once: true });
+                img.addEventListener('error', settle, { once: true });
             });
         }
 
@@ -156,6 +189,11 @@
                 scrollTrigger: { trigger: '.community', start: 'top bottom', end: 'bottom top', scrub: true }
             }
         );
+
+        // Dropping below 821px gives the row back to the browser.
+        return function () {
+            if (track) track.classList.remove('is-pinned');
+        };
     });
 
     // Late-loading images change the layout, so measurements are refreshed.
