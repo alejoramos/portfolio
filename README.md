@@ -23,7 +23,7 @@ npx serve .
 | `to-do list/` | Task Dashboard, a task manager with search, filters and localStorage | HTML, CSS, JS |
 | `barbershop/` | Elite Cuts, a dark barbershop landing page with a mobile menu | HTML, CSS, JS |
 | `weather-app/` | Weather App, live data from the OpenWeather API in English and Spanish | HTML, CSS, JS |
-| `BJJ/` | BJJ Basics, a gym landing page with a carousel written from scratch | HTML, CSS, JS |
+| `bjj/` | BJJ Basics, an academy site with a pinned horizontal photo track | HTML, CSS, JS, GSAP |
 | `login/` | A sign up and sign in flow backed by localStorage | HTML, CSS, JS |
 | `calculator/` | A calculator with history and keyboard input | HTML, CSS, JS |
 
