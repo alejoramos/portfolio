@@ -220,12 +220,20 @@ a { color: inherit; }
     transition: background-color 0.22s ease, color 0.22s ease;
 }
 
-.nav-cta:hover {
-    background: currentColor;
+/* Fill and label are set as an explicit pair. Using currentColor for the
+   background made it follow the colour set on the same hover, so both ended
+   up identical and the label disappeared. */
+.masthead:not(.is-light) .nav-cta:hover {
+    background: var(--bone);
+    border-color: var(--bone);
+    color: var(--ink);
 }
 
-.masthead.is-light .nav-cta:hover { color: var(--bone); }
-.masthead:not(.is-light) .nav-cta:hover { color: var(--ink); }
+.masthead.is-light .nav-cta:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bone);
+}
 
 /* ---------------------------------------------------------------- hero */
 

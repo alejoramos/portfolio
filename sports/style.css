@@ -133,8 +133,20 @@ a { color: inherit; }
     background: transparent;
 }
 
-.btn-line:hover { background: currentColor; }
-.hero .btn-line:hover { color: var(--ink); }
+/* Fill and label are set as an explicit pair. With currentColor the fill
+   tracked the colour set on the same hover, so the label vanished into it. */
+.btn-line:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+}
+
+/* over the dark hero the pair inverts */
+.hero .btn-line:hover {
+    background: var(--paper);
+    border-color: var(--paper);
+    color: var(--ink);
+}
 
 /* ---------------------------------------------------------------- header */
 
