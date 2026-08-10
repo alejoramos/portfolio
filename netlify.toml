@@ -1,8 +1,30 @@
-# Static site, nothing to build. Netlify serves this folder as is.
+# Static site, nothing to build. Netlify serves this folder as is, including
+# the store's committed build output.
 
 [build]
   publish = "."
   command = ""
+
+# The store is a React single page app that lives in a subfolder, so its build
+# output has to be mapped onto the URL it is served from. Assets resolve into
+# the build directory; anything else under /store hands back the app shell, so
+# client side routes survive a refresh or a shared link.
+#
+# force is required. Netlify serves a matching static file before it considers
+# a redirect, and store/index.html is Vite's source template pointing at
+# /src/main.tsx, which only exists while the dev server is running. Without
+# force, /store would serve that template and the page would come up blank.
+[[redirects]]
+  from = "/store/assets/*"
+  to = "/store/dist/assets/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/store/*"
+  to = "/store/dist/index.html"
+  status = 200
+  force = true
 
 # Long cache for assets that rarely change. HTML stays fresh so edits go live immediately.
 [[headers]]
@@ -19,6 +41,12 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Vite puts a content hash in every filename here, so these can never go stale.
+[[headers]]
+  for = "/store/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*"

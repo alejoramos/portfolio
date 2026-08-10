@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Foundation */
+  --color-ink: #0a0a0b;
+  --color-ink-2: #141417;
+  --color-ink-3: #1e1e23;
+  --color-bone: #f2f0eb;
+  --color-chalk: #ffffff;
+  --color-ash: #8a8a92;
+  --color-ash-2: #55555d;
+
+  /* Category accents */
+  --color-ember: #ff4a1c;
+  --color-volt: #c6f24e;
+  --color-electric: #2b5cff;
+  --color-violet: #5b3df5;
+  --color-denim: #172554;
+
+  --font-display: 'Anton', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --ease-brand: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Lenis drives scrolling itself; native smooth scrolling fights it. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-volt);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-volt);
+    color: var(--color-ink);
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .edge {
+    padding-inline: clamp(1rem, 4vw, 5rem);
+  }
+
+  /* Hides scrollbars on deliberately scrollable rails. */
+  .no-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

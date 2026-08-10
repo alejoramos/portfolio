@@ -1,0 +1,334 @@
+{
+  "characters": [
+    {
+      "slug": "athlete-01",
+      "src": "/assets/characters/athlete-01.webp",
+      "width": 567,
+      "height": 868,
+      "ratio": 0.653,
+      "kb": 136,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-02",
+      "src": "/assets/characters/athlete-02.webp",
+      "width": 342,
+      "height": 955,
+      "ratio": 0.358,
+      "kb": 95,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-03",
+      "src": "/assets/characters/athlete-03.webp",
+      "width": 453,
+      "height": 1011,
+      "ratio": 0.448,
+      "kb": 71,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-04",
+      "src": "/assets/characters/athlete-04.webp",
+      "width": 363,
+      "height": 931,
+      "ratio": 0.39,
+      "kb": 60,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-05",
+      "src": "/assets/characters/athlete-05.webp",
+      "width": 313,
+      "height": 958,
+      "ratio": 0.327,
+      "kb": 65,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-06",
+      "src": "/assets/characters/athlete-06.webp",
+      "width": 411,
+      "height": 1018,
+      "ratio": 0.404,
+      "kb": 90,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-07",
+      "src": "/assets/characters/athlete-07.webp",
+      "width": 342,
+      "height": 952,
+      "ratio": 0.359,
+      "kb": 63,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "athlete-08",
+      "src": "/assets/characters/athlete-08.webp",
+      "width": 321,
+      "height": 911,
+      "ratio": 0.352,
+      "kb": 68,
+      "trimmedFrom": "1536x1024"
+    }
+  ],
+  "tops": [
+    {
+      "slug": "core-tee-graphite",
+      "src": "/assets/tops/core-tee-graphite.webp",
+      "width": 771,
+      "height": 914,
+      "ratio": 0.844,
+      "kb": 94,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "baseline-tee-chalk",
+      "src": "/assets/tops/baseline-tee-chalk.webp",
+      "width": 816,
+      "height": 919,
+      "ratio": 0.888,
+      "kb": 102,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "signal-run-tee-ember",
+      "src": "/assets/tops/signal-run-tee-ember.webp",
+      "width": 814,
+      "height": 944,
+      "ratio": 0.862,
+      "kb": 98,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "offgrid-boxy-tee-slate",
+      "src": "/assets/tops/offgrid-boxy-tee-slate.webp",
+      "width": 835,
+      "height": 898,
+      "ratio": 0.93,
+      "kb": 93,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "studio-oversized-tee-bone",
+      "src": "/assets/tops/studio-oversized-tee-bone.webp",
+      "width": 781,
+      "height": 854,
+      "ratio": 0.915,
+      "kb": 98,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "thermo-mesh-tee-teal",
+      "src": "/assets/tops/thermo-mesh-tee-teal.webp",
+      "width": 740,
+      "height": 874,
+      "ratio": 0.847,
+      "kb": 103,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "voltage-speed-tee-volt",
+      "src": "/assets/tops/voltage-speed-tee-volt.webp",
+      "width": 766,
+      "height": 905,
+      "ratio": 0.846,
+      "kb": 137,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "nightshift-half-zip-void",
+      "src": "/assets/tops/nightshift-half-zip-void.webp",
+      "width": 816,
+      "height": 935,
+      "ratio": 0.873,
+      "kb": 84,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "longline-base-layer-glacier",
+      "src": "/assets/tops/longline-base-layer-glacier.webp",
+      "width": 789,
+      "height": 870,
+      "ratio": 0.907,
+      "kb": 125,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "recovery-hoodie-sand",
+      "src": "/assets/tops/recovery-hoodie-sand.webp",
+      "width": 733,
+      "height": 867,
+      "ratio": 0.845,
+      "kb": 109,
+      "trimmedFrom": "1024x1024"
+    }
+  ],
+  "footwear": [
+    {
+      "slug": "flux-runner-ember",
+      "src": "/assets/footwear/flux-runner-ember.webp",
+      "width": 856,
+      "height": 754,
+      "ratio": 1.135,
+      "kb": 150,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "voltcell-2-volt",
+      "src": "/assets/footwear/voltcell-2-volt.webp",
+      "width": 825,
+      "height": 739,
+      "ratio": 1.116,
+      "kb": 152,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "aero-glide-glacier",
+      "src": "/assets/footwear/aero-glide-glacier.webp",
+      "width": 861,
+      "height": 594,
+      "ratio": 1.449,
+      "kb": 119,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "phantom-trainer-void",
+      "src": "/assets/footwear/phantom-trainer-void.webp",
+      "width": 894,
+      "height": 619,
+      "ratio": 1.444,
+      "kb": 118,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "meridian-low-bone",
+      "src": "/assets/footwear/meridian-low-bone.webp",
+      "width": 866,
+      "height": 619,
+      "ratio": 1.399,
+      "kb": 111,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "hydra-trail-abyss",
+      "src": "/assets/footwear/hydra-trail-abyss.webp",
+      "width": 869,
+      "height": 621,
+      "ratio": 1.399,
+      "kb": 132,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "dune-court-sand",
+      "src": "/assets/footwear/dune-court-sand.webp",
+      "width": 850,
+      "height": 596,
+      "ratio": 1.426,
+      "kb": 107,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "redline-gt-scarlet",
+      "src": "/assets/footwear/redline-gt-scarlet.webp",
+      "width": 854,
+      "height": 747,
+      "ratio": 1.143,
+      "kb": 164,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "cirrus-lite-chalk",
+      "src": "/assets/footwear/cirrus-lite-chalk.webp",
+      "width": 839,
+      "height": 600,
+      "ratio": 1.398,
+      "kb": 110,
+      "trimmedFrom": "1024x1024"
+    },
+    {
+      "slug": "terra-field-moss",
+      "src": "/assets/footwear/terra-field-moss.webp",
+      "width": 839,
+      "height": 590,
+      "ratio": 1.422,
+      "kb": 118,
+      "trimmedFrom": "1024x1024"
+    }
+  ],
+  "bottoms": [
+    {
+      "slug": "rig-cargo-jogger-black",
+      "src": "/assets/bottoms/rig-cargo-jogger-black.webp",
+      "width": 386,
+      "height": 659,
+      "ratio": 0.586,
+      "kb": 51,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "field-cargo-pant-olive",
+      "src": "/assets/bottoms/field-cargo-pant-olive.webp",
+      "width": 384,
+      "height": 714,
+      "ratio": 0.538,
+      "kb": 95,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "stretch-denim-jogger-indigo",
+      "src": "/assets/bottoms/stretch-denim-jogger-indigo.webp",
+      "width": 459,
+      "height": 838,
+      "ratio": 0.548,
+      "kb": 135,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "wash-denim-cargo-ice",
+      "src": "/assets/bottoms/wash-denim-cargo-ice.webp",
+      "width": 380,
+      "height": 714,
+      "ratio": 0.532,
+      "kb": 98,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "studio-cargo-pant-bone",
+      "src": "/assets/bottoms/studio-cargo-pant-bone.webp",
+      "width": 403,
+      "height": 834,
+      "ratio": 0.483,
+      "kb": 79,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "thermo-jogger-teal",
+      "src": "/assets/bottoms/thermo-jogger-teal.webp",
+      "width": 412,
+      "height": 803,
+      "ratio": 0.513,
+      "kb": 76,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "blackout-cargo-void",
+      "src": "/assets/bottoms/blackout-cargo-void.webp",
+      "width": 454,
+      "height": 851,
+      "ratio": 0.533,
+      "kb": 67,
+      "trimmedFrom": "1536x1024"
+    },
+    {
+      "slug": "utility-jogger-graphite",
+      "src": "/assets/bottoms/utility-jogger-graphite.webp",
+      "width": 419,
+      "height": 852,
+      "ratio": 0.492,
+      "kb": 103,
+      "trimmedFrom": "1536x1024"
+    }
+  ]
+}

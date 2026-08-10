@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta
+      name="description"
+      content="KINETA — performance sportswear engineered with athletes and finished for the street. Shop the SS26 drop."
+    />
+    <title>KINETA — Built at speed</title>
+    <!-- Under /assets so it is covered by the same rewrite as everything else
+         Vite emits. See the [[redirects]] blocks in netlify.toml. -->
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- The hero's first figure is the LCP element on the home page. -->
+    <link rel="preload" as="image" href="/assets/characters/athlete-01.webp" fetchpriority="high" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

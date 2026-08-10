@@ -1,0 +1,14 @@
+node_modules
+*.tsbuildinfo
+.DS_Store
+.vite
+.vs
+
+# The source renders, about 67MB of PNG. `npm run assets` trims and converts
+# them into public/assets as WebP, and that is what the app actually loads, so
+# only the output belongs in the repo. Keep the originals locally to re-run it.
+images/
+
+# dist is committed on purpose. The portfolio is hosted as a plain static site
+# with no build step, so the built store has to be in the repo for it to exist
+# on the web. The source next to it is the point of the project.

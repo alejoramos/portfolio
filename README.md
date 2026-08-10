@@ -1,8 +1,9 @@
 # Eddy Ramos, portfolio
 
-My personal portfolio, plus the seven projects it links to. Everything here is
-plain HTML, CSS and JavaScript. There is no build step and no dependencies, so
-you can open `index.html` in a browser and it works.
+My personal portfolio, plus the projects it links to. The portfolio itself and
+most of the demos are plain HTML, CSS and JavaScript with no build step, so you
+can open `index.html` in a browser and it works. `store/` is the exception: it
+is a React and TypeScript app built with Vite.
 
 **Live site:** [eddy-dev.netlify.app](https://eddy-dev.netlify.app)
 
@@ -15,10 +16,21 @@ same way they do in production:
 npx serve .
 ```
 
+The store has its own dev server:
+
+```bash
+cd store && npm install && npm run dev
+```
+
+Its build output is committed to `store/dist` because the site is hosted as a
+plain static folder with nothing to build on deploy. `netlify.toml` maps
+`/store/*` onto that output so the app's own routes work on a refresh.
+
 ## What is in here
 
 | Folder | Project | Built with |
 | --- | --- | --- |
+| `store/` | KINETA, a sportswear storefront with a catalogue, cart, wishlist and checkout | React, TypeScript, Vite, Tailwind, GSAP, Framer Motion, Three.js, Zustand |
 | `sports/` | Momentum Athletics, a five page community sports club site | HTML, CSS, JS |
 | `to-do list/` | Task Dashboard, a task manager with search, filters and localStorage | HTML, CSS, JS |
 | `barbershop/` | Leland Barbers, a barbershop site with before and after cuts and a scroll driven photo stack | HTML, CSS, JS, GSAP |
