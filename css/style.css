@@ -1437,12 +1437,15 @@ textarea {
   transition: border-color 0.2s ease, transform 0.25s ease;
 }
 
+/* contain, not cover: a certificate that has had its edges cropped off looks
+   like the wrong image rather than a tidy one. */
 .cert-shot img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
 }
 
 .cert-shot:hover {
@@ -1468,6 +1471,13 @@ textarea {
   font-size: 1.02rem;
   font-weight: 600;
   line-height: 1.3;
+}
+
+/* Plain English for what the Spanish course name means. */
+.cert-what {
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 0.9rem;
 }
 
 .cert-issuer {

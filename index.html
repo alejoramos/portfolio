@@ -798,21 +798,9 @@
 
     <!-- ============================== CERTIFICATIONS ============================== -->
     <!--
-      TO FILL IN. Each entry needs four things: the certificate image in
-      images/certs/, the exact course name, who issued it and the year, and the
-      verification link the issuer gives you.
-
-      To add the image, replace the whole <div class="cert-shot-empty"> block
-      with this, keeping the same file name you saved:
-
-        <button class="cert-shot" type="button" data-cert
-                data-full="images/certs/NAME.jpg"
-                aria-label="View the CERTIFICATE NAME certificate full size">
-          <img src="images/certs/NAME.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
-        </button>
-
-      Delete any entry you do not have yet. An empty section looks worse than
-      a short one.
+      The course names stay in Spanish because that is what the certificate and
+      the verification page say. The line under each one explains it in English.
+      Thumbnails are 640px; the lightbox loads the full size PNG.
     -->
     <section class="section section-certs" id="certs">
       <div class="shell">
@@ -820,26 +808,23 @@
           <p class="section-label"><span class="section-number">06</span> Certifications</p>
           <h2 class="section-title">What I have studied.</h2>
           <p class="section-note">
-            The degree and the courses I have finished so far. Every one can be checked with the
-            place that issued it.
+            Courses I have finished, in order. Every one has a link that checks it against
+            EducaciónIT directly, so you do not have to take my word for it.
           </p>
         </header>
 
         <ul class="certs" data-reveal>
           <li class="cert">
-            <div class="cert-shot-empty" aria-hidden="true"><span>Diploma image</span></div>
+            <button class="cert-shot" type="button" data-cert
+                    data-full="images/certs/desarrollo-web-html.png"
+                    aria-label="View the Desarrollo Web con HTML certificate full size">
+              <img src="images/certs/desarrollo-web-html-thumb.jpg" alt="Certificate for Desarrollo Web con HTML, issued to Alejandro Ramos by EducaciónIT." width="640" height="494" loading="lazy" decoding="async">
+            </button>
             <div class="cert-body">
-              <h3 class="cert-name">Digital Media, with a Business minor</h3>
-              <p class="cert-issuer">Greenville University &middot; May 2026</p>
-            </div>
-          </li>
-
-          <li class="cert">
-            <div class="cert-shot-empty" aria-hidden="true"><span>Certificate image</span></div>
-            <div class="cert-body">
-              <h3 class="cert-name">Course name goes here</h3>
-              <p class="cert-issuer">Who issued it &middot; Year</p>
-              <a class="cert-verify" href="#" target="_blank" rel="noopener noreferrer">
+              <h3 class="cert-name">Desarrollo Web con HTML</h3>
+              <p class="cert-what">Web development with HTML</p>
+              <p class="cert-issuer">EducaciónIT &middot; March 2026</p>
+              <a class="cert-verify" href="https://www.educacionit.com/perfil/alejandro-ramos-1107131/certificado/82034" target="_blank" rel="noopener noreferrer">
                 Verify
                 <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
                 <span class="sr-only">(opens in a new tab)</span>
@@ -848,11 +833,34 @@
           </li>
 
           <li class="cert">
-            <div class="cert-shot-empty" aria-hidden="true"><span>Certificate image</span></div>
+            <button class="cert-shot" type="button" data-cert
+                    data-full="images/certs/javascript-desde-cero.png"
+                    aria-label="View the Javascript desde cero certificate full size">
+              <img src="images/certs/javascript-desde-cero-thumb.jpg" alt="Certificate for Javascript desde cero, issued to Alejandro Ramos by EducaciónIT." width="640" height="494" loading="lazy" decoding="async">
+            </button>
             <div class="cert-body">
-              <h3 class="cert-name">Course name goes here</h3>
-              <p class="cert-issuer">Who issued it &middot; Year</p>
-              <a class="cert-verify" href="#" target="_blank" rel="noopener noreferrer">
+              <h3 class="cert-name">Javascript desde cero</h3>
+              <p class="cert-what">JavaScript from scratch</p>
+              <p class="cert-issuer">EducaciónIT &middot; March 2026</p>
+              <a class="cert-verify" href="https://www.educacionit.com/perfil/alejandro-ramos-1107131/certificado/80748" target="_blank" rel="noopener noreferrer">
+                Verify
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="cert">
+            <button class="cert-shot" type="button" data-cert
+                    data-full="images/certs/maquetador-web-avanzado.png"
+                    aria-label="View the Maquetador Web Avanzado certificate full size">
+              <img src="images/certs/maquetador-web-avanzado-thumb.jpg" alt="Certificate for Maquetador Web Avanzado, issued to Alejandro Ramos by EducaciónIT." width="640" height="494" loading="lazy" decoding="async">
+            </button>
+            <div class="cert-body">
+              <h3 class="cert-name">Maquetador Web Avanzado</h3>
+              <p class="cert-what">Advanced layout with HTML and CSS</p>
+              <p class="cert-issuer">EducaciónIT &middot; May 2026</p>
+              <a class="cert-verify" href="https://www.educacionit.com/perfil/alejandro-ramos-1107131/certificado/84203" target="_blank" rel="noopener noreferrer">
                 Verify
                 <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
                 <span class="sr-only">(opens in a new tab)</span>
