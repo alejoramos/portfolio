@@ -101,8 +101,9 @@
 
       <nav class="primary-nav" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
+        <a href="#client">Work</a>
         <a href="#toolkit">Toolkit</a>
+        <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
         <a class="nav-resume" href="eddy-ramos-resume.pdf" target="_blank" rel="noopener noreferrer">
           Resume
@@ -130,9 +131,11 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav class="mobile-menu-inner" aria-label="Mobile">
       <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="#client">Client work</a>
+      <a href="#work">Projects</a>
       <a href="#builds">Other builds</a>
       <a href="#toolkit">Toolkit</a>
+      <a href="#certs">Certifications</a>
       <a href="#contact">Contact</a>
       <a href="eddy-ramos-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </nav>
@@ -161,7 +164,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary btn-down" href="#work">
+            <a class="btn btn-primary btn-down" href="#client">
               See the work
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
             </a>
@@ -173,24 +176,24 @@
           <p class="hero-index-title" id="hero-index-title">Selected work</p>
           <ol class="hero-index-list">
             <li>
-              <a href="#project-kineta">
+              <a href="#project-rollinglawns">
                 <span class="idx">01</span>
+                <span class="name">Rolling Lawns Farm</span>
+                <span class="kind">Client site</span>
+              </a>
+            </li>
+            <li>
+              <a href="#project-kineta">
+                <span class="idx">02</span>
                 <span class="name">KINETA</span>
                 <span class="kind">React storefront</span>
               </a>
             </li>
             <li>
               <a href="#project-momentum">
-                <span class="idx">02</span>
+                <span class="idx">03</span>
                 <span class="name">Momentum Athletics</span>
                 <span class="kind">Multi-page site</span>
-              </a>
-            </li>
-            <li>
-              <a href="#project-tasks">
-                <span class="idx">03</span>
-                <span class="name">Task Dashboard</span>
-                <span class="kind">JavaScript app</span>
               </a>
             </li>
             <li>
@@ -198,13 +201,6 @@
                 <span class="idx">04</span>
                 <span class="name">Leland Barbers</span>
                 <span class="kind">Responsive site</span>
-              </a>
-            </li>
-            <li>
-              <a href="#project-weather">
-                <span class="idx">05</span>
-                <span class="name">Weather App</span>
-                <span class="kind">API integration</span>
               </a>
             </li>
           </ol>
@@ -264,12 +260,104 @@
       </div>
     </section>
 
+    <!-- ============================== CLIENT WORK ============================== -->
+    <section class="section section-client" id="client">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="section-label"><span class="section-number">02</span> Client work</p>
+          <h2 class="section-title">A site I built for a real business.</h2>
+        </header>
+      </div>
+
+      <article class="project project-split" id="project-rollinglawns">
+        <div class="shell project-split-grid">
+          <div class="project-col" data-reveal>
+            <div class="project-head">
+              <p class="project-index">01</p>
+              <div>
+                <p class="project-kind">Client site, built on Wix</p>
+                <h3 class="project-title">Rolling Lawns Farm</h3>
+              </div>
+            </div>
+
+            <div class="project-summary">
+              <p>
+                A dairy farm in Greenville, Illinois that sells milk and ice cream to markets and
+                restaurants. Their old site was out of date and hard to follow, and they wanted
+                something modern that would help them sell the tours they run at the farm and at
+                the Milk House.
+              </p>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://www.rollinglawns.farm/" target="_blank" rel="noopener noreferrer">
+                  Visit the site
+                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Role</dt><dd>Redesigned and rebuilt their site</dd></div>
+              <div><dt>Built with</dt><dd>Wix, plus my own HTML and CSS for one section</dd></div>
+              <div><dt>Focus</dt><dd>Making the tours easy to find and book</dd></div>
+            </dl>
+
+            <details class="notes">
+              <summary><span>Build notes</span></summary>
+              <div class="notes-body">
+                <div>
+                  <h4>What they needed</h4>
+                  <p>
+                    The site they had was static and had almost no colour, and the information on it
+                    was old. What they wanted was a page that looked modern and that pushed people
+                    towards the tours, because that is what they are trying to sell.
+                  </p>
+                </div>
+                <div>
+                  <h4>What I did</h4>
+                  <p>
+                    I rebuilt the layout around the products and the tours, so the tours are not
+                    buried at the bottom any more. I added a parallax effect and hover effects on
+                    the photos, so the page feels alive instead of flat.
+                  </p>
+                  <p>
+                    The old site also did not work on phones. I went through it section by section
+                    and changed the layout until it did.
+                  </p>
+                </div>
+                <div>
+                  <h4>The hardest part</h4>
+                  <p>
+                    One section needed four cards that tilt in 3D when you put the mouse on them.
+                    Wix does not have that, and I could not find a way to do it with their editor.
+                  </p>
+                  <p>
+                    So I wrote those four cards myself in HTML and CSS, with the 3D movement on
+                    hover, and embedded them into the page. That was the moment where knowing how
+                    to code was the difference between doing it and telling the client no.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <figure class="frame" data-reveal>
+            <figcaption class="frame-bar">
+              <span class="frame-path">rollinglawns.farm</span>
+            </figcaption>
+            <img src="images/rollinglawns.jpg" alt="Rolling Lawns Farm homepage: the heading From Our Farm To Your Table above a photo of their milk bottles, cream and ice cream laid out on a warm background." width="1600" height="1006" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
+    </section>
+
     <!-- ============================== FEATURED WORK ============================== -->
     <section class="section section-work" id="work">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">02</span> Work</p>
-          <h2 class="section-title">Five projects, and what I ran into building them.</h2>
+          <p class="section-label"><span class="section-number">03</span> Projects</p>
+          <h2 class="section-title">Three projects, and what I ran into building them.</h2>
         </header>
       </div>
 
@@ -324,33 +412,44 @@
               <summary><span>Build notes</span></summary>
               <div class="notes-body">
                 <div>
-                  <h4>How it's put together</h4>
+                  <h4>What it does</h4>
+                  <ul>
+                    <li>28 products you can filter by size and price, and sort by price or newest.</li>
+                    <li>A cart and a wishlist that are still there if you close the tab and come back.</li>
+                    <li>A checkout with five steps.</li>
+                    <li>A home page where the brand name grows until it covers the screen and opens the store.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>How I built it</h4>
                   <p>
-                    Routing is React Router, state is Zustand with the cart and wishlist persisted to
-                    localStorage, and every page reads through one repository module. That module is
-                    the only thing that knows where products come from, so swapping the mock
-                    catalogue for a real API is a change to one file and no components.
+                    Every page asks for products from one file, repository.ts. Nothing else in the
+                    app knows where the products come from. Right now they come from a list I wrote
+                    by hand, so the day they come from a real server I change that one file and no
+                    page has to change.
+                  </p>
+                  <p>
+                    I used two animation libraries, but not for the same job. GSAP moves things when
+                    you scroll. Framer Motion moves things when you click, like the cart opening. I
+                    never use both on the same element, so they can't fight each other.
                   </p>
                 </div>
                 <div>
-                  <h4>Two animation libraries, on purpose</h4>
+                  <h4>The hardest part</h4>
                   <p>
-                    GSAP with ScrollTrigger owns anything driven by scroll position, and Framer
-                    Motion owns anything driven by state, like the cart drawer and the checkout
-                    steps. They are never applied to the same element. The one Three.js scene is
-                    code split and only mounted when it comes into view, so it costs nothing on the
-                    pages that do not use it.
+                    When I scrolled back up to the top, the screen started blinking and the big
+                    KINETA text disappeared.
                   </p>
-                </div>
-                <div>
-                  <h4>What I ran into</h4>
                   <p>
-                    Scrolling back up to the hero made the screen flicker and the type drop out. The
-                    wordmark was being scaled 24 times, which asked the compositor for a layer about
-                    34,000 pixels across, well past what the GPU will hold. Scaling only the text box
-                    instead of its full width wrapper, and cutting the factor to six, fixed it
-                    without changing how it looks, because the type turns the same ink as the panel
-                    behind it anyway.
+                    I was making the text bigger with scale: 24. The problem was that I was growing
+                    the whole box around the text, not the text itself, and that box is as wide as
+                    the screen. So the browser had to draw a picture about 34,000 pixels wide.
+                    Chrome only goes up to 8,192, so it gave up and drew nothing.
+                  </p>
+                  <p>
+                    I changed it to grow only the text, and used scale: 6. Now the picture is 5,358
+                    pixels wide and it works. It still looks the same, because by then the text is
+                    already the same dark colour as the panel behind it.
                   </p>
                 </div>
               </div>
@@ -410,27 +509,36 @@
             <summary><span>Build notes</span></summary>
             <div class="notes-body">
               <div>
-                <h4>What's in it</h4>
+                <h4>What it does</h4>
                 <ul>
-                  <li>Five pages sharing one header, one footer and one stylesheet.</li>
-                  <li>A scroll driven sport switcher: the list on the right changes the photo held in the sticky column on the left.</li>
-                  <li>A looping marquee that speeds up slightly with scroll velocity.</li>
-                  <li>A contact form that confirms the submission without leaving the page.</li>
+                  <li>Five pages that share the same header, footer and stylesheet.</li>
+                  <li>A list of sports where the photo on the left changes as you scroll past each name on the right.</li>
+                  <li>A line of moving text that goes a bit faster while you scroll.</li>
+                  <li>A contact form that answers you without reloading the page.</li>
                 </ul>
               </div>
               <div>
                 <h4>How I built it</h4>
                 <p>
-                  I wrote the header, the buttons and the spacing once, in a stylesheet all five
-                  pages share, instead of styling each page separately. When I changed the nav later
-                  I only had to change one file and every page followed.
+                  I wrote the header, the buttons and the spacing one time, in a stylesheet that all
+                  five pages use. I did not style each page on its own.
+                </p>
+                <p>
+                  That paid off later. When I changed the menu, I edited one file and the five pages
+                  changed with it. If I had copied the styles into each page, I would have had to fix
+                  the same thing five times, and I would probably have missed one.
                 </p>
               </div>
               <div>
-                <h4>What I took from it</h4>
+                <h4>The hardest part</h4>
                 <p>
-                  Keeping a multi-page site consistent is a structure problem before it's a design
-                  problem. Deciding what gets shared, and where it lives, turned out to be the real work.
+                  Deciding what should be shared and what should stay on its own page.
+                </p>
+                <p>
+                  At the start I put everything in the shared file, even things only the Schedule
+                  page used, and the file got long and confusing. I moved the parts that only one
+                  page needed back into that page, and left in the shared file only what really
+                  repeats: header, footer, buttons, spacing and colours.
                 </p>
               </div>
             </div>
@@ -438,92 +546,13 @@
         </div>
       </article>
 
-      <!-- 03 Task Dashboard -->
-      <article class="project project-split" id="project-tasks">
+      
+      <!-- 03 Leland Barbers -->
+      <article class="project project-split" id="project-elite">
         <div class="shell project-split-grid">
           <div class="project-col" data-reveal>
             <div class="project-head">
               <p class="project-index">03</p>
-              <div>
-                <p class="project-kind">JavaScript app</p>
-                <h3 class="project-title">Task Dashboard</h3>
-              </div>
-            </div>
-
-            <div class="project-summary">
-              <p>
-                A task manager that still has your list when you come back. Each task can carry a
-                person, a due date, a priority, a category and notes, and the whole list can be
-                searched, filtered and sorted.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="to-do list/index.html" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/to-do%20list" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript</dd></div>
-              <div><dt>Storage</dt><dd>Saved in the browser with localStorage</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Search across the task, the person, the category and the notes at once.</li>
-                    <li>Filter by status and priority, sort by date, priority or name.</li>
-                    <li>Counters and a progress bar that update as the list changes.</li>
-                    <li>Send a task to Google Calendar or Outlook as a prefilled event.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How it's put together</h4>
-                  <p>
-                    The tasks live in one array and the list on screen is drawn from it. Search,
-                    filtering and sorting are small separate functions that run over that array before
-                    anything gets rendered, so adding a new filter didn't mean rewriting the rest.
-                  </p>
-                </div>
-                <div>
-                  <h4>The tricky part</h4>
-                  <p>
-                    Overdue isn't something you set. It gets worked out from the due date every time
-                    the list is drawn, which means a task can go overdue on its own while nobody is
-                    touching the page. That took me a while to get right.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">task-dashboard / index.html</span>
-            </figcaption>
-            <img src="images/to-do-list.jpg" alt="Task Dashboard with five tasks, counters for total, pending, done and overdue, a progress bar at 40 percent, and priority tags on each row." width="1400" height="1684" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </article>
-
-      <!-- 04 Leland Barbers -->
-      <article class="project project-split project-flip" id="project-elite">
-        <div class="shell project-split-grid">
-          <div class="project-col" data-reveal>
-            <div class="project-head">
-              <p class="project-index">04</p>
               <div>
                 <p class="project-kind">Responsive website</p>
                 <h3 class="project-title">Leland Barbers</h3>
@@ -561,27 +590,40 @@
               <summary><span>Build notes</span></summary>
               <div class="notes-body">
                 <div>
-                  <h4>What's in it</h4>
+                  <h4>What it does</h4>
                   <ul>
-                    <li>Before and after cuts that swap on hover, with a switch for touch screens.</li>
-                    <li>Shop photos that stack on top of each other as the section scrolls.</li>
-                    <li>Prices, opening hours and a booking request form.</li>
+                    <li>Photos of real cuts that change from before to after when you put the mouse over them, with a button for phones.</li>
+                    <li>Photos of the shop that pile on top of each other while you scroll.</li>
+                    <li>Prices, opening hours and a form to ask for an appointment.</li>
                   </ul>
                 </div>
                 <div>
-                  <h4>The hours</h4>
+                  <h4>How I built it</h4>
                   <p>
-                    The week is one array in the script. It works out whether the shop is open right
-                    now, what time it opens next, and which row of the table to highlight, so nothing
-                    has to be edited by hand in two places.
+                    The whole week is one array in the JavaScript, with the opening and closing hour
+                    of each day. From that same array the page works out three things: if the shop is
+                    open right now, what day and time it opens next, and which row of the table to
+                    mark as today.
+                  </p>
+                  <p>
+                    I did it that way so the hours are written in one place only. If they change on a
+                    Saturday, I edit one line and the three things update together.
                   </p>
                 </div>
                 <div>
-                  <h4>What I ran into</h4>
+                  <h4>The hardest part</h4>
                   <p>
-                    The stacked photos first crossfaded into each other, which just looked like a
-                    double exposure. Clipping the frame and sliding each photo up over the last one
-                    instead is what makes it read as a stack.
+                    The photos that pile up while you scroll.
+                  </p>
+                  <p>
+                    My first version faded one photo into the next. In the middle of the change you
+                    could see both at the same time, and it looked like a mistake, like one photo
+                    printed on top of another. It did not look like a pile.
+                  </p>
+                  <p>
+                    What fixed it was cutting the frame so nothing shows outside it, and making each
+                    photo slide up from below and cover the one before, with no fading. Now it looks
+                    like someone putting photos down on a table.
                   </p>
                 </div>
               </div>
@@ -597,96 +639,50 @@
         </div>
       </article>
 
-      <!-- 05 Weather App -->
-      <article class="project project-split" id="project-weather">
-        <div class="shell project-split-grid">
-          <div class="project-col" data-reveal>
-            <div class="project-head">
-              <p class="project-index">05</p>
-              <div>
-                <p class="project-kind">API integration</p>
-                <h3 class="project-title">Weather App</h3>
-              </div>
-            </div>
-
-            <div class="project-summary">
-              <p>
-                Search a city, narrow it down by state, and get the current conditions plus a five
-                day outlook from the OpenWeather API. The whole interface switches between English
-                and Spanish without reloading.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="weather-app/index.html" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/weather-app" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, fetch</dd></div>
-              <div><dt>Data</dt><dd>OpenWeather API</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Current conditions with feels like, humidity and wind.</li>
-                    <li>A five day forecast built from the API response.</li>
-                    <li>Celsius and Fahrenheit, and English and Spanish.</li>
-                    <li>The background changes with the weather, so clear, rain and storm each get their own colours.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How the language switch works</h4>
-                  <p>
-                    All the interface text sits in one object with an English and a Spanish version
-                    of every key. Changing the language relabels the page from that object, so there
-                    is no duplicated markup and no reload.
-                  </p>
-                </div>
-                <div>
-                  <h4>The tricky part</h4>
-                  <p>
-                    Working out what the app should show before anyone has searched, and when a city
-                    doesn't exist, took more thought than showing the data. Handling those two cases
-                    is what made it stop feeling like a demo.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">weather-app / index.html</span>
-            </figcaption>
-            <img src="images/weather-app.jpg" alt="Weather App showing live conditions for Chicago at 21.3 degrees Celsius with humidity and wind, above a five day forecast." width="1300" height="1783" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </article>
+      
     </section>
 
     <!-- ============================== OTHER BUILDS ============================== -->
     <section class="section section-builds" id="builds">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">03</span> Other builds</p>
-          <h2 class="section-title">Smaller things I made while learning.</h2>
+          <p class="section-label"><span class="section-number">04</span> Other builds</p>
+          <h2 class="section-title">Smaller things I built while learning.</h2>
         </header>
 
         <ul class="build-list" data-reveal>
+          <li class="build">
+            <a class="build-link" href="to-do list/index.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/to-do-list.jpg" alt="Task Dashboard showing a list of tasks with owners, due dates and priority tags, above a progress bar." width="1600" height="1006" loading="lazy" decoding="async">
+              <span class="build-main">
+                <span class="build-name">Task Dashboard<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
+                <span class="build-desc">
+                  A task manager with search, filters and sorting. Each task can carry a person, a
+                  due date, a priority and notes. The list is saved in the browser, so it is still
+                  there when you come back, and a task turns late on its own when the date passes.
+                </span>
+              </span>
+              <span class="build-tech">JS, localStorage</span>
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
+
+          <li class="build">
+            <a class="build-link" href="weather-app/index.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/weather-app.jpg" alt="Weather App showing the current conditions for a city above a five day forecast." width="1600" height="1006" loading="lazy" decoding="async">
+              <span class="build-main">
+                <span class="build-name">Weather App<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
+                <span class="build-desc">
+                  Search a city and get the weather right now plus a five day forecast, from the
+                  OpenWeather API. The whole page switches between English and Spanish without
+                  reloading, and the background colour changes with the weather.
+                </span>
+              </span>
+              <span class="build-tech">JS, fetch, API</span>
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
+
           <li class="build">
             <a class="build-link" href="bjj/index.html" target="_blank" rel="noopener noreferrer">
               <img src="images/bjj.jpg" alt="BJJ Basics academy site: a full bleed photo of a beginners class under the headline Everyone here started as a beginner." width="1600" height="1006" loading="lazy" decoding="async">
@@ -741,7 +737,7 @@
     <section class="section section-toolkit" id="toolkit">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">04</span> Toolkit</p>
+          <p class="section-label"><span class="section-number">05</span> Toolkit</p>
           <h2 class="section-title">What I work with.</h2>
         </header>
 
@@ -760,9 +756,7 @@
             <dd>
               <span>CSS Grid</span>
               <span>Flexbox</span>
-              <span>Custom properties</span>
               <span>Responsive design</span>
-              <span>Semantic markup</span>
               <span>Tailwind CSS</span>
             </dd>
           </div>
@@ -772,21 +766,16 @@
               <span>React</span>
               <span>React Router</span>
               <span>Zustand</span>
-              <span>Hooks and custom hooks</span>
-              <span>Code splitting</span>
               <span>Vite</span>
             </dd>
           </div>
           <div>
-            <dt>Motion and 3D</dt>
+            <dt>Motion</dt>
             <dd>
               <span>GSAP</span>
               <span>ScrollTrigger</span>
-              <span>GSAP Flip</span>
               <span>Framer Motion</span>
-              <span>Lenis</span>
               <span>Three.js</span>
-              <span>React Three Fiber</span>
             </dd>
           </div>
           <div>
@@ -807,11 +796,78 @@
       </div>
     </section>
 
+    <!-- ============================== CERTIFICATIONS ============================== -->
+    <!--
+      TO FILL IN. Each entry needs four things: the certificate image in
+      images/certs/, the exact course name, who issued it and the year, and the
+      verification link the issuer gives you.
+
+      To add the image, replace the whole <div class="cert-shot-empty"> block
+      with this, keeping the same file name you saved:
+
+        <button class="cert-shot" type="button" data-cert
+                data-full="images/certs/NAME.jpg"
+                aria-label="View the CERTIFICATE NAME certificate full size">
+          <img src="images/certs/NAME.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async">
+        </button>
+
+      Delete any entry you do not have yet. An empty section looks worse than
+      a short one.
+    -->
+    <section class="section section-certs" id="certs">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="section-label"><span class="section-number">06</span> Certifications</p>
+          <h2 class="section-title">What I have studied.</h2>
+          <p class="section-note">
+            The degree and the courses I have finished so far. Every one can be checked with the
+            place that issued it.
+          </p>
+        </header>
+
+        <ul class="certs" data-reveal>
+          <li class="cert">
+            <div class="cert-shot-empty" aria-hidden="true"><span>Diploma image</span></div>
+            <div class="cert-body">
+              <h3 class="cert-name">Digital Media, with a Business minor</h3>
+              <p class="cert-issuer">Greenville University &middot; May 2026</p>
+            </div>
+          </li>
+
+          <li class="cert">
+            <div class="cert-shot-empty" aria-hidden="true"><span>Certificate image</span></div>
+            <div class="cert-body">
+              <h3 class="cert-name">Course name goes here</h3>
+              <p class="cert-issuer">Who issued it &middot; Year</p>
+              <a class="cert-verify" href="#" target="_blank" rel="noopener noreferrer">
+                Verify
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="cert">
+            <div class="cert-shot-empty" aria-hidden="true"><span>Certificate image</span></div>
+            <div class="cert-body">
+              <h3 class="cert-name">Course name goes here</h3>
+              <p class="cert-issuer">Who issued it &middot; Year</p>
+              <a class="cert-verify" href="#" target="_blank" rel="noopener noreferrer">
+                Verify
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ============================== CONTACT ============================== -->
     <section class="section section-contact" id="contact">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">05</span> Contact</p>
+          <p class="section-label"><span class="section-number">07</span> Contact</p>
           <h2 class="section-title">Get in touch.</h2>
           <p class="section-note">
             If you're hiring for a junior front-end role or looking for an intern, I'd really like to
@@ -822,20 +878,6 @@
 
         <div class="contact-grid" data-reveal>
           <form class="contact-form" id="contact-form" action="https://formspree.io/f/mwvradqy" method="POST" novalidate>
-            <fieldset class="topic">
-              <legend>What is this about?</legend>
-              <div class="topic-options">
-                <label class="topic-option">
-                  <input type="radio" name="topic" value="Hiring or internship" checked>
-                  <span>A role or internship</span>
-                </label>
-                <label class="topic-option">
-                  <input type="radio" name="topic" value="Website project">
-                  <span>A website for my business</span>
-                </label>
-              </div>
-            </fieldset>
-
             <div class="field">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" autocomplete="name" required>
@@ -922,14 +964,21 @@
             </ul>
 
             <p class="contact-aside-note">
-              I also take on a few freelance projects, usually a first website for a small business.
-              If that's you, pick the second option in the form.
+              I read everything that comes in and I answer the same day.
             </p>
           </aside>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Opened by the certificate thumbnails. Stays out of the way until then. -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
@@ -940,8 +989,9 @@
 
       <nav class="footer-nav" aria-label="Footer">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
+        <a href="#client">Work</a>
         <a href="#toolkit">Toolkit</a>
+        <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/alejoramos" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/eddy-alejandro-ramos-94610815a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

@@ -369,4 +369,57 @@
         });
     });
   }
+
+  /* ------------------------------------------------------------------------
+     Certificate lightbox
+
+     The thumbnails are real buttons in the markup, so with no JavaScript they
+     simply do nothing rather than looking clickable and failing.
+     ------------------------------------------------------------------------ */
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxClose = document.getElementById('lightbox-close');
+  var certButtons = document.querySelectorAll('[data-cert]');
+
+  if (lightbox && lightboxImg && certButtons.length) {
+    var lastFocused = null;
+
+    var openLightbox = function (button) {
+      var full = button.getAttribute('data-full');
+      var thumb = button.querySelector('img');
+      if (!full) return;
+
+      lastFocused = button;
+      lightboxImg.src = full;
+      // The thumbnail's alt already describes the certificate, so reuse it
+      // rather than writing the same thing twice in the markup.
+      lightboxImg.alt = thumb ? thumb.getAttribute('alt') || '' : '';
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (lightboxClose) lightboxClose.focus();
+    };
+
+    var closeLightbox = function () {
+      lightbox.hidden = true;
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    };
+
+    Array.prototype.forEach.call(certButtons, function (button) {
+      button.addEventListener('click', function () { openLightbox(button); });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+    // Clicking the backdrop closes it, clicking the image itself does not.
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  }
 })();
