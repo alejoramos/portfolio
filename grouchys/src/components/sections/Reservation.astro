@@ -1,0 +1,954 @@
+---
+import { Image } from 'astro:assets';
+import Frame from '@/components/Frame.astro';
+import WhiskeyGlass from '@/components/WhiskeyGlass.astro';
+import { photo, brand } from '@/data/images';
+import { site } from '@/data/site';
+import {
+  PARTY_SIZES,
+  DEFAULT_PARTY,
+  MAX_PARTY,
+  TIMES,
+  DEFAULT_TIME,
+  FULLY_BOOKED,
+  buildDays,
+  firstOpenIndex,
+  TOTAL_STEPS,
+} from '@/data/reservation';
+
+interface Props {
+  headingId?: string;
+  /** The /reserve page leads with the card; the homepage leads with the copy. */
+  compact?: boolean;
+  /**
+   * On the homepage this is one section among many (h2). On /reserve it is the
+   * page's subject, so it has to be the h1 — the heading order is part of the
+   * document, not decoration.
+   */
+  as?: 'h1' | 'h2';
+}
+const {
+  headingId = 'reserve-title',
+  compact = false,
+  as = 'h2',
+}: Props = Astro.props;
+const Heading = as;
+/** The card sits one level below whatever the section heading is. */
+const CardHeading = as === 'h1' ? 'h2' : 'h3';
+
+/*
+  Days are generated at build time so the markup is complete and readable with
+  no JavaScript, then recomputed on load by the reservation script so the dates
+  are never stale. Closed days come from the confirmed opening hours.
+*/
+const days = buildDays();
+const defaultDay = firstOpenIndex(days);
+---
+
+<section class="section band-a reserve" data-reserve aria-labelledby={headingId}>
+  <div class="reserve__bg" aria-hidden="true">
+    <Frame
+      src={photo.diningRoom}
+      alt=""
+      widths={[640, 1000, 1400]}
+      sizes="100vw"
+      class="reserve__bg-photo"
+      position="50% 40%"
+    />
+    <div class="reserve__bg-veil"></div>
+    <Image
+      src={brand.buildingCream}
+      alt=""
+      class="sketch reserve__sketch"
+      data-parallax="sketch"
+      widths={[463]}
+      sizes="900px"
+      loading="lazy"
+    />
+  </div>
+
+  <div class:list={['shell', 'reserve__grid', compact && 'reserve__grid--compact']}>
+    <div class="reserve__intro">
+      <p class="eyebrow" data-reveal>Reservations</p>
+
+      <Heading class="t-h2-reserve reserve__title" id={headingId} data-reveal>
+        Save the<br /><em>good table.</em>
+      </Heading>
+
+      <p class="t-body reserve__body" data-reveal>
+        Anniversaries, birthdays, a Friday that got away from you. Tell us when, and we'll have it
+        ready.
+      </p>
+
+      <ul class="reserve__notes" data-reveal>
+        <li class="t-mono">Walk-ins welcome at the bar</li>
+        <li class="t-mono">
+          Parties over {MAX_PARTY} — call <a class="link" href={site.phone.href}
+            >{site.phone.display}</a
+          >
+        </li>
+      </ul>
+
+      <div class="reserve__glass">
+        <WhiskeyGlass />
+      </div>
+    </div>
+
+    <!--
+      The reservation card. This is a front-end demonstration: the form has no
+      action and no endpoint, and `submitReservation()` in the script is the
+      single seam where a real provider would be connected later.
+    -->
+    <div class="reserve__card">
+      <form class="reserve__form" data-reserve-form novalidate autocomplete="on">
+        <div class="reserve__head">
+          <CardHeading class="reserve__card-title">Reserve a Table</CardHeading>
+          <p class="reserve__step" data-step-indicator>Step 1 of {TOTAL_STEPS}</p>
+        </div>
+
+        <!-- ---------------- step 1: the table ---------------- -->
+        <div class="reserve__panel" data-step-panel="1">
+          <fieldset class="reserve__field">
+            <legend class="reserve__label">Guests</legend>
+            <div class="reserve__chips">
+              {
+                PARTY_SIZES.map((n) => (
+                  <div class="reserve__chip">
+                    <input
+                      type="radio"
+                      name="guests"
+                      id={`guests-${n}`}
+                      value={n}
+                      checked={n === DEFAULT_PARTY}
+                      class="reserve__input"
+                      data-guests
+                    />
+                    <label for={`guests-${n}`} class="reserve__chip-label">
+                      {n}
+                      <span class="sr-only">{n === 1 ? 'guest' : 'guests'}</span>
+                    </label>
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <fieldset class="reserve__field">
+            <legend class="reserve__label">Date</legend>
+            <div class="reserve__days">
+              {
+                days.map((day, i) => (
+                  <div class="reserve__day">
+                    <input
+                      type="radio"
+                      name="date"
+                      id={`date-${day.iso}`}
+                      value={day.iso}
+                      checked={i === defaultDay}
+                      disabled={!day.open}
+                      class="reserve__input"
+                      data-day
+                      data-open={day.open ? 'true' : 'false'}
+                    />
+                    <label for={`date-${day.iso}`} class="reserve__day-label">
+                      <span class="reserve__dow" data-dow>
+                        {day.dow}
+                      </span>
+                      <span class="reserve__num" data-num>
+                        {day.num}
+                      </span>
+                      <span class="sr-only">
+                        {day.label}
+                        {!day.open && ' — closed'}
+                      </span>
+                    </label>
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <fieldset class="reserve__field">
+            <div class="reserve__label-row">
+              <legend class="reserve__label">Time</legend>
+              <p class="reserve__hint">Struck through = fully booked</p>
+            </div>
+            <div class="reserve__times">
+              {
+                TIMES.map((t) => {
+                  const full = FULLY_BOOKED.includes(t);
+                  return (
+                    <div class="reserve__time">
+                      <input
+                        type="radio"
+                        name="time"
+                        id={`time-${t.replace(':', '')}`}
+                        value={t}
+                        checked={t === DEFAULT_TIME}
+                        disabled={full}
+                        class="reserve__input"
+                        data-time
+                      />
+                      <label
+                        for={`time-${t.replace(':', '')}`}
+                        class:list={['reserve__time-label', full && 'is-full']}
+                      >
+                        {t}
+                        <span class="sr-only">pm{full && ' — fully booked'}</span>
+                      </label>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </fieldset>
+
+          <div class="reserve__foot">
+            <p class="reserve__summary" data-summary></p>
+            <button type="button" class="btn btn-primary reserve__submit" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- ---------------- step 2: who is coming ---------------- -->
+        <div class="reserve__panel" data-step-panel="2" hidden>
+          <div class="reserve__field">
+            <label class="reserve__label" for="res-name">Name</label>
+            <input
+              type="text"
+              id="res-name"
+              name="name"
+              class="reserve__text"
+              autocomplete="name"
+              required
+              aria-describedby="res-name-error"
+              data-required
+            />
+            <p class="reserve__error" id="res-name-error" data-error-for="res-name" hidden></p>
+          </div>
+
+          <div class="reserve__field">
+            <label class="reserve__label" for="res-phone">Phone</label>
+            <input
+              type="tel"
+              id="res-phone"
+              name="phone"
+              class="reserve__text"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+              aria-describedby="res-phone-error"
+              data-required
+            />
+            <p class="reserve__error" id="res-phone-error" data-error-for="res-phone" hidden></p>
+          </div>
+
+          <div class="reserve__field">
+            <label class="reserve__label" for="res-email">
+              Email <span class="reserve__optional">optional</span>
+            </label>
+            <input
+              type="email"
+              id="res-email"
+              name="email"
+              class="reserve__text"
+              autocomplete="email"
+              inputmode="email"
+              aria-describedby="res-email-error"
+            />
+            <p class="reserve__error" id="res-email-error" data-error-for="res-email" hidden></p>
+          </div>
+
+          <div class="reserve__field">
+            <label class="reserve__label" for="res-request">
+              Anything we should know <span class="reserve__optional">optional</span>
+            </label>
+            <textarea id="res-request" name="request" class="reserve__text reserve__textarea" rows="3"
+            ></textarea>
+          </div>
+
+          <div class="reserve__foot">
+            <button type="button" class="btn btn-tertiary reserve__back" data-back>Back</button>
+            <button type="button" class="btn btn-primary reserve__submit" data-next>Review</button>
+          </div>
+        </div>
+
+        <!-- ---------------- step 3: review ---------------- -->
+        <div class="reserve__panel" data-step-panel="3" hidden>
+          <dl class="reserve__review" data-review></dl>
+
+          <p class="reserve__disclaimer">
+            This reservation flow is a preview. Nothing is sent and nothing is stored — to book a
+            table today, call <a class="link" href={site.phone.href}>{site.phone.display}</a>.
+          </p>
+
+          <div class="reserve__foot">
+            <button type="button" class="btn btn-tertiary reserve__back" data-back>Back</button>
+            <button type="submit" class="btn btn-primary reserve__submit" data-confirm>
+              Confirm
+            </button>
+          </div>
+        </div>
+
+        <!-- ---------------- confirmation ---------------- -->
+        <div class="reserve__panel reserve__done" data-step-panel="done" hidden>
+          <svg class="reserve__check" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle class="reserve__check-ring" cx="32" cy="32" r="30"></circle>
+            <path class="reserve__check-tick" d="M18 33.5 L28 43 L46 22"></path>
+          </svg>
+
+          <p class="reserve__done-title">That's the table held.</p>
+          <dl class="reserve__review" data-review-done></dl>
+
+          <p class="reserve__disclaimer">
+            Demonstration only — nothing was sent and no details were saved. Call <a
+              class="link"
+              href={site.phone.href}>{site.phone.display}</a
+            > to make it real.
+          </p>
+
+          <button type="button" class="btn btn-secondary reserve__restart" data-restart>
+            Start again
+          </button>
+        </div>
+
+        <!-- Live region so step changes are announced, not just seen. -->
+        <p class="sr-only" role="status" aria-live="polite" data-live></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reserve {
+    position: relative;
+  }
+
+  .reserve__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .reserve__bg-photo {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+  }
+
+  .reserve__bg-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #070707 0%, rgb(7 7 7 / 0.86) 30%, rgb(7 7 7 / 0.92) 100%);
+  }
+
+  .reserve__sketch {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    opacity: 0.045;
+  }
+
+  @media (min-width: 768px) {
+    .reserve__sketch {
+      width: 900px;
+    }
+  }
+
+  .reserve__grid {
+    position: relative;
+    display: grid;
+    gap: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    .reserve__grid {
+      grid-template-columns: 1fr minmax(0, 560px);
+      gap: 60px;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__grid {
+      grid-template-columns: 1fr 660px;
+      gap: 110px;
+    }
+  }
+
+  .reserve__grid--compact {
+    gap: 34px;
+  }
+
+  @media (min-width: 1024px) {
+    .reserve__grid--compact {
+      align-items: start;
+    }
+  }
+
+  /* ---------- left column ------------------------------------------------ */
+
+  .reserve__title {
+    margin-top: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .reserve__title {
+      margin-top: 30px;
+    }
+  }
+
+  .reserve__body {
+    max-width: 380px;
+    margin-top: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .reserve__body {
+      margin-top: 34px;
+    }
+  }
+
+  .reserve__notes {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 768px) {
+    .reserve__notes {
+      margin-top: 44px;
+    }
+  }
+
+  .reserve__glass {
+    display: none;
+    margin-top: 26px;
+  }
+
+  /* The 430 frame has no glass; it appears from tablet up. */
+  @media (min-width: 768px) {
+    .reserve__glass {
+      display: block;
+    }
+  }
+
+  /* ---------- the card --------------------------------------------------- */
+
+  .reserve__card {
+    border: 1px solid rgb(180 134 58 / 0.28);
+    background: rgb(10 10 9 / 0.86);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    padding: 26px 22px;
+  }
+
+  @media (min-width: 480px) {
+    .reserve__card {
+      padding: 34px 30px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__card {
+      padding: 46px 46px 44px;
+    }
+  }
+
+  .reserve__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid rgb(180 134 58 / 0.18);
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__head {
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .reserve__card-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem);
+    color: var(--color-cream);
+  }
+
+  .reserve__step {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    white-space: nowrap;
+  }
+
+  .reserve__panel[hidden] {
+    display: none;
+  }
+
+  .reserve__field {
+    border: 0;
+    padding: 0;
+    margin: 0 0 26px;
+    min-width: 0;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__field {
+      margin-bottom: 34px;
+    }
+  }
+
+  .reserve__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 14px;
+    padding: 0;
+  }
+
+  .reserve__label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .reserve__hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(184 178 167 / 0.45);
+    margin-bottom: 14px;
+  }
+
+  .reserve__optional {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: rgb(184 178 167 / 0.4);
+  }
+
+  /* ---------- choice controls -------------------------------------------
+     Real radios, visually hidden. Selection, keyboard support and focus all
+     come from the browser; the styling rides on :checked and :focus-visible. */
+
+  .reserve__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .reserve__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (min-width: 480px) {
+    .reserve__chips {
+      gap: 10px;
+    }
+  }
+
+  .reserve__chip {
+    flex: 1 0 46px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__chip {
+      flex: 0 0 58px;
+    }
+  }
+
+  .reserve__chip-label,
+  .reserve__day-label,
+  .reserve__time-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgb(180 134 58 / 0.25);
+    color: var(--color-warm-grey);
+    font-family: var(--font-sans);
+    background: transparent;
+    transition:
+      background-color 180ms var(--ease-mask),
+      border-color 180ms var(--ease-mask),
+      color 180ms var(--ease-mask);
+  }
+
+  .reserve__chip-label {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__chip-label {
+      height: 52px;
+      font-size: 15px;
+    }
+  }
+
+  .reserve__days {
+    display: flex;
+    gap: 6px;
+  }
+
+  @media (min-width: 480px) {
+    .reserve__days {
+      gap: 8px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__days {
+      gap: 10px;
+    }
+  }
+
+  .reserve__day {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .reserve__day-label {
+    flex-direction: column;
+    gap: 4px;
+    height: 64px;
+    padding-inline: 2px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__day-label {
+      gap: 5px;
+      height: 74px;
+    }
+  }
+
+  .reserve__dow {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 480px) {
+    .reserve__dow {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+    }
+  }
+
+  .reserve__num {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__num {
+      font-size: 22px;
+    }
+  }
+
+  .reserve__times {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__times {
+      gap: 10px;
+    }
+  }
+
+  .reserve__time-label {
+    height: 46px;
+    font-size: 13px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__time-label {
+      height: 50px;
+      font-size: 14px;
+    }
+  }
+
+  /* hover */
+  .reserve__input:not(:disabled) + .reserve__chip-label:hover,
+  .reserve__input:not(:disabled) + .reserve__day-label:hover,
+  .reserve__input:not(:disabled) + .reserve__time-label:hover {
+    border-color: var(--color-gold);
+    color: var(--color-cream);
+  }
+
+  /* selected */
+  .reserve__input:checked + .reserve__chip-label,
+  .reserve__input:checked + .reserve__day-label,
+  .reserve__input:checked + .reserve__time-label {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-black);
+    font-weight: 500;
+  }
+
+  /* keyboard focus — the ring is on the label, since the input is hidden */
+  .reserve__input:focus-visible + .reserve__chip-label,
+  .reserve__input:focus-visible + .reserve__day-label,
+  .reserve__input:focus-visible + .reserve__time-label {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  /* disabled — closed day, fully-booked slot */
+  .reserve__input:disabled + .reserve__chip-label,
+  .reserve__input:disabled + .reserve__day-label,
+  .reserve__input:disabled + .reserve__time-label {
+    border-color: rgb(244 240 232 / 0.07);
+    color: rgb(184 178 167 / 0.28);
+    cursor: not-allowed;
+  }
+
+  .reserve__time-label.is-full {
+    text-decoration: line-through;
+  }
+
+  /* ---------- text inputs ------------------------------------------------ */
+
+  .reserve__text {
+    display: block;
+    width: 100%;
+    background: rgb(7 7 7 / 0.6);
+    border: 1px solid rgb(180 134 58 / 0.25);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 300;
+    padding: 14px 16px;
+    min-height: 50px;
+    transition:
+      border-color 180ms var(--ease-reveal),
+      background-color 180ms var(--ease-reveal);
+  }
+
+  .reserve__text::placeholder {
+    color: rgb(184 178 167 / 0.4);
+  }
+
+  .reserve__text:hover {
+    border-color: rgb(180 134 58 / 0.5);
+  }
+
+  .reserve__text:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background: rgb(7 7 7 / 0.85);
+  }
+
+  .reserve__text:focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .reserve__textarea {
+    resize: vertical;
+    min-height: 88px;
+    line-height: 1.6;
+  }
+
+  .reserve__text[aria-invalid='true'] {
+    border-color: #c2603a;
+  }
+
+  .reserve__error {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #d98a5f;
+    margin-top: 8px;
+  }
+
+  .reserve__error[hidden] {
+    display: none;
+  }
+
+  /* ---------- review + footer -------------------------------------------- */
+
+  .reserve__review {
+    margin: 0 0 22px;
+    display: grid;
+    gap: 0;
+  }
+
+  .reserve__review div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-top: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .reserve__review div:last-child {
+    border-bottom: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .reserve__review dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    flex: 0 0 auto;
+  }
+
+  .reserve__review dd {
+    margin: 0;
+    font-size: 15px;
+    color: var(--color-cream);
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .reserve__disclaimer {
+    font-size: var(--fs-body-sm);
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 24px;
+  }
+
+  .reserve__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgb(180 134 58 / 0.18);
+    padding-top: 24px;
+  }
+
+  @media (min-width: 1280px) {
+    .reserve__foot {
+      padding-top: 28px;
+    }
+  }
+
+  .reserve__summary {
+    font-size: 15px;
+    color: var(--color-cream);
+  }
+
+  .reserve__submit {
+    --btn-py: 15px;
+    --btn-px: 28px;
+    min-height: 50px;
+    flex: 1 0 auto;
+  }
+
+  @media (min-width: 480px) {
+    .reserve__submit {
+      flex: 0 0 auto;
+      --btn-py: 17px;
+      --btn-px: 32px;
+    }
+  }
+
+  .reserve__back {
+    padding-bottom: 6px;
+  }
+
+  /* ---------- confirmation ----------------------------------------------- */
+
+  .reserve__done {
+    text-align: center;
+  }
+
+  .reserve__check {
+    width: 64px;
+    height: 64px;
+    margin: 6px auto 22px;
+    overflow: visible;
+  }
+
+  .reserve__check-ring,
+  .reserve__check-tick {
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 1.5;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+  }
+
+  .reserve__check-ring {
+    stroke: rgb(180 134 58 / 0.35);
+  }
+
+  .reserve__done[data-drawn] .reserve__check-tick {
+    stroke-dasharray: 44;
+    stroke-dashoffset: 44;
+    animation: drawTick 700ms var(--ease-reveal) 120ms forwards;
+  }
+
+  .reserve__done[data-drawn] .reserve__check-ring {
+    stroke-dasharray: 189;
+    stroke-dashoffset: 189;
+    animation: drawTick 700ms var(--ease-reveal) forwards;
+  }
+
+  @keyframes drawTick {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reserve__done[data-drawn] .reserve__check-tick,
+    .reserve__done[data-drawn] .reserve__check-ring {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .reserve__done-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--color-cream);
+    margin-bottom: 24px;
+  }
+
+  .reserve__done .reserve__review dd {
+    text-align: right;
+  }
+
+  .reserve__restart {
+    --btn-py: 14px;
+    --btn-px: 26px;
+    min-height: 48px;
+  }
+</style>
+
+<script>
+  import '@/scripts/reservation';
+</script>

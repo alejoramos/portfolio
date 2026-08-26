@@ -1,0 +1,223 @@
+---
+import Frame from '@/components/Frame.astro';
+import { photo, alt } from '@/data/images';
+import { barHighlights, PRICE_PLACEHOLDER } from '@/data/menu';
+import { url } from '@/lib/url';
+---
+
+<section class="section band-a bar" aria-labelledby="bar-title">
+  <div class="shell bar__grid">
+    <div class="bar__photos">
+      <Frame
+        src={photo.whiskeyFlight}
+        alt={alt.whiskeyFlight}
+        class="bar__photo"
+        widths={[560, 760, 1120]}
+        sizes="(max-width: 1023px) 100vw, 560px"
+        position="50% 50%"
+        mask
+      />
+      <div class="bar__inset">
+        <Frame
+          src={photo.cocktailCoupe}
+          alt={alt.cocktailCoupe}
+          class="bar__inset-photo"
+          widths={[300, 560]}
+          sizes="280px"
+          position="50% 45%"
+        />
+      </div>
+    </div>
+
+    <div class="bar__text">
+      <p class="eyebrow" data-reveal>The Bar</p>
+
+      <h2 class="t-h2-bar bar__title" id="bar-title" data-reveal>
+        Poured with<br /><em>character.</em>
+      </h2>
+
+      <p class="t-body bar__body" data-reveal>
+        Whiskey and bourbon chosen one bottle at a time. Jack Daniel's flights, curated spirit
+        flights, craft beer on draft, and classic cocktails made the slow way.
+      </p>
+
+      <ul class="bar__rows" data-reveal>
+        {
+          barHighlights.map((item) => (
+            <li class="bar__row">
+              <span class="bar__row-name">{item.name}</span>
+              <span class="bar__row-price">{item.price ?? PRICE_PLACEHOLDER}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a href={url("/menu#whiskey")} class="btn btn-tertiary bar__link">See the drinks list</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bar__grid {
+    display: grid;
+    gap: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    .bar__grid {
+      grid-template-columns: minmax(0, 560px) 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bar__grid {
+      grid-template-columns: 620px 1fr;
+      gap: 110px;
+    }
+  }
+
+  .bar__photos {
+    position: relative;
+  }
+
+  .bar__photo {
+    height: 420px;
+  }
+
+  @media (min-width: 768px) {
+    .bar__photo {
+      height: 560px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bar__photo {
+      height: 720px;
+    }
+  }
+
+  /* The overlapping cocktail card. Kept inside the grid on small screens so
+     nothing hangs off the edge and triggers a horizontal scrollbar. */
+  .bar__inset {
+    display: none;
+    position: absolute;
+    right: -40px;
+    bottom: -48px;
+    width: 240px;
+    height: 312px;
+    border: 1px solid rgb(180 134 58 / 0.25);
+    padding: 10px;
+    background: var(--color-black);
+  }
+
+  @media (min-width: 768px) {
+    .bar__inset {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bar__inset {
+      right: -110px;
+      bottom: -72px;
+      width: 300px;
+      height: 390px;
+    }
+  }
+
+  .bar__inset-photo {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bar__text {
+    padding-left: 0;
+  }
+
+  @media (min-width: 1280px) {
+    .bar__text {
+      padding-left: 130px;
+    }
+  }
+
+  .bar__title {
+    margin-top: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .bar__title {
+      margin-top: 32px;
+    }
+  }
+
+  .bar__body {
+    max-width: 400px;
+    margin-top: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .bar__body {
+      margin-top: 34px;
+    }
+  }
+
+  .bar__rows {
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    .bar__rows {
+      margin-top: 52px;
+    }
+  }
+
+  .bar__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    border-top: 1px solid rgb(180 134 58 / 0.18);
+  }
+
+  .bar__row:last-child {
+    border-bottom: 1px solid rgb(180 134 58 / 0.18);
+  }
+
+  @media (min-width: 768px) {
+    .bar__row {
+      padding: 18px 0;
+    }
+  }
+
+  .bar__row-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1rem + 0.4vw, 1.3125rem);
+    color: var(--color-cream);
+  }
+
+  .bar__row-price {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--color-gold-deep);
+    white-space: nowrap;
+  }
+
+  .bar__link {
+    margin-top: 34px;
+  }
+
+  @media (min-width: 768px) {
+    .bar__link {
+      margin-top: 44px;
+    }
+  }
+</style>

@@ -1,0 +1,242 @@
+---
+import { Image } from 'astro:assets';
+import Frame from '@/components/Frame.astro';
+import { photo, brand, alt } from '@/data/images';
+import { site, hours } from '@/data/site';
+
+interface Props {
+  headingId?: string;
+}
+const { headingId = 'visit-title' } = Astro.props;
+---
+
+<section class="section band-b visit" aria-labelledby={headingId}>
+  <div class="seam seam-top"></div>
+
+  <Image
+    src={brand.buildingCream}
+    alt=""
+    class="sketch visit__sketch"
+    data-parallax="sketch"
+    widths={[463]}
+    sizes="520px"
+    loading="lazy"
+  />
+
+  <div class="shell visit__grid">
+    <div class="visit__info">
+      <p class="eyebrow" data-reveal>Visit</p>
+
+      <h2 class="t-h2-visit visit__title" id={headingId} data-reveal>
+        {site.address.street}<br /><em>{site.address.locality}, {site.address.region}</em>
+      </h2>
+
+      <div class="visit__cols">
+        <div class="visit__block" data-reveal>
+          <h3 class="visit__label">Hours</h3>
+          <ul class="visit__hours">
+            {
+              hours.map((h) => (
+                <li class:list={['visit__hour', !h.service && 'is-closed']}>
+                  <span>{h.day}</span>
+                  <span class="visit__hour-value">{h.service ?? 'Closed'}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="visit__stack" data-reveal>
+          <div class="visit__block">
+            <h3 class="visit__label">Phone</h3>
+            <a class="visit__phone tap-target" href={site.phone.href}>{site.phone.display}</a>
+          </div>
+
+          <div class="visit__block">
+            <h3 class="visit__label">Parking</h3>
+            <p class="t-small">{site.parkingNote}</p>
+          </div>
+
+          <a
+            class="link-underline visit__directions"
+            href={site.directionsUrl}
+            target="_blank"
+            rel="noopener">Get directions</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="visit__map">
+      <Frame
+        src={photo.map}
+        alt={alt.map}
+        class="visit__map-photo"
+        widths={[560, 900, 1400]}
+        sizes="(max-width: 1023px) 92vw, 680px"
+      />
+      <span class="visit__marker" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .visit__sketch {
+    right: -80px;
+    bottom: 0;
+    width: 360px;
+    opacity: 0.07;
+  }
+
+  @media (min-width: 768px) {
+    .visit__sketch {
+      right: auto;
+      left: 60px;
+      bottom: -40px;
+      width: 520px;
+    }
+  }
+
+  .visit__grid {
+    position: relative;
+    display: grid;
+    gap: 34px;
+  }
+
+  @media (min-width: 1024px) {
+    .visit__grid {
+      grid-template-columns: 1fr minmax(0, 700px);
+      gap: 60px;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .visit__grid {
+      gap: 90px;
+    }
+  }
+
+  .visit__title {
+    margin-top: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .visit__title {
+      margin-top: 30px;
+    }
+  }
+
+  .visit__cols {
+    display: grid;
+    gap: 34px;
+    margin-top: 30px;
+    max-width: 520px;
+  }
+
+  @media (min-width: 640px) {
+    .visit__cols {
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      margin-top: 52px;
+    }
+  }
+
+  .visit__label {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+    margin-bottom: 14px;
+  }
+
+  .visit__hours {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .visit__hour {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: var(--fs-body-sm);
+    color: var(--color-warm-grey);
+  }
+
+  .visit__hour-value {
+    color: var(--color-cream);
+    white-space: nowrap;
+  }
+
+  /* Closed reads as closed by word and by weight, never by colour alone. */
+  .visit__hour.is-closed,
+  .visit__hour.is-closed .visit__hour-value {
+    color: rgb(184 178 167 / 0.45);
+  }
+
+  .visit__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .visit__phone {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.2rem + 0.5vw, 1.5rem);
+    color: var(--color-cream);
+    transition: color 200ms var(--ease-reveal);
+  }
+
+  .visit__phone:hover {
+    color: var(--color-gold-light);
+  }
+
+  .visit__map {
+    position: relative;
+    border: 1px solid rgb(180 134 58 / 0.24);
+    padding: 10px;
+  }
+
+  .visit__map-photo {
+    height: 220px;
+  }
+
+  @media (min-width: 768px) {
+    .visit__map-photo {
+      height: 360px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .visit__map-photo {
+      height: 480px;
+    }
+  }
+
+  .visit__marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .visit__marker::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1px solid rgb(180 134 58 / 0.28);
+    border-radius: 50%;
+  }
+</style>

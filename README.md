@@ -16,20 +16,27 @@ same way they do in production:
 npx serve .
 ```
 
-The store has its own dev server:
+`store/` and `grouchys/` each have their own dev server:
 
 ```bash
 cd store && npm install && npm run dev
 ```
 
-Its build output is committed to `store/dist` because the site is hosted as a
-plain static folder with nothing to build on deploy. `netlify.toml` maps
-`/store/*` onto that output so the app's own routes work on a refresh.
+Both commit their build output, to `store/dist` and `grouchys/dist`, because
+the site is hosted as a plain static folder with nothing to build on deploy.
+`netlify.toml` maps `/store/*` and `/grouchys/*` onto those builds. Each one
+sets its own base path, `/store/` in `vite.config.ts` and `/grouchys/` in
+`astro.config.mjs`, since neither is served from the domain root.
+
+Grouchy's carries a `noindex` on purpose. It is a proposal for a real
+restaurant that has not commissioned it, and the prices and photography are
+still placeholders, so it should not turn up in a search for the business.
 
 ## What is in here
 
 | Folder | Project | Built with |
 | --- | --- | --- |
+| `grouchys/` | Grouchy's Public House, a six page restaurant site built as a proposal | Astro, TypeScript, Tailwind, GSAP, Three.js |
 | `store/` | KINETA, a sportswear storefront with a catalogue, cart, wishlist and checkout | React, TypeScript, Vite, Tailwind, GSAP, Framer Motion, Three.js, Zustand |
 | `sports/` | Momentum Athletics, a five page community sports club site | HTML, CSS, JS |
 | `to-do list/` | Task Dashboard, a task manager with search, filters and localStorage | HTML, CSS, JS |

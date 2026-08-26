@@ -1,0 +1,215 @@
+---
+import { Image } from 'astro:assets';
+import Frame from '@/components/Frame.astro';
+import { photo, brand, alt } from '@/data/images';
+import { site } from '@/data/site';
+
+/**
+ * Rooted on Main Street. Copy is approved and locked — no restaurant history,
+ * no origin of the name, no claim about the building.
+ */
+---
+
+<section class="section band-b story" aria-labelledby="story-title">
+  <Image
+    src={brand.buildingCream}
+    alt=""
+    class="sketch story__sketch"
+    data-parallax="sketch"
+    data-parallax-fade
+    widths={[463]}
+    sizes="860px"
+    loading="lazy"
+  />
+
+  <div class="shell story__grid">
+    <div class="story__photos">
+      <Frame
+        src={photo.diningRoom}
+        alt={alt.diningRoom}
+        class="story__photo story__photo--1"
+        widths={[420, 640, 860]}
+        sizes="(max-width: 767px) 100vw, (max-width: 1279px) 46vw, 300px"
+        position="50% 55%"
+        mask
+      />
+      <Frame
+        src={photo.whiskeyPour}
+        alt={alt.whiskeyPour}
+        class="story__photo story__photo--2"
+        widths={[420, 640, 860]}
+        sizes="(max-width: 1279px) 46vw, 300px"
+        mask
+      />
+      <Frame
+        src={photo.interiorWide}
+        alt={alt.interiorWide}
+        class="story__photo story__photo--3"
+        widths={[640, 900, 1400]}
+        sizes="(max-width: 1279px) 92vw, 640px"
+        mask
+      />
+    </div>
+
+    <div class="story__text">
+      <p class="eyebrow" data-reveal>{site.address.locality}, {site.address.region}</p>
+
+      <h2 class="t-h2-story story__title" id="story-title" data-reveal>
+        Rooted on Main Street.<br />Made for good evenings.
+      </h2>
+
+      <p class="t-lead story__lead" data-reveal>Modern dining. Old-fashioned soul.</p>
+
+      <p class="t-body story__body" data-reveal>
+        In the heart of {site.address.locality}, {site.name} brings together premium grilled dishes,
+        handcrafted cocktails, whiskey, bourbon and craft beer in a warm, intimate setting.
+      </p>
+
+      <p class="t-body story__body" data-reveal>
+        Come for dinner, stay for another round, and settle into a place made for date nights,
+        celebrations and good company.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story__sketch {
+    right: -60px;
+    bottom: 40px;
+    width: 420px;
+    opacity: 0.06;
+  }
+
+  @media (min-width: 768px) {
+    .story__sketch {
+      right: -90px;
+      bottom: auto;
+      top: 60px;
+      width: 860px;
+    }
+  }
+
+  .story__grid {
+    position: relative;
+    display: grid;
+    gap: 40px;
+  }
+
+  @media (min-width: 1280px) {
+    .story__grid {
+      grid-template-columns: 1fr 660px;
+      gap: 90px;
+    }
+  }
+
+  /* ---------- the photo cluster ----------------------------------------- */
+
+  .story__photos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    order: 2;
+  }
+
+  @media (min-width: 768px) {
+    .story__photos {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .story__photos {
+      order: 1;
+      gap: 28px;
+      align-content: start;
+    }
+  }
+
+  .story__photo {
+    height: 300px;
+  }
+
+  @media (min-width: 768px) {
+    .story__photo--1 {
+      height: 420px;
+    }
+    .story__photo--2 {
+      height: 330px;
+      margin-top: 80px;
+    }
+    .story__photo--3 {
+      height: 280px;
+      grid-column: 1 / -1;
+      margin-top: 8px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .story__photo--1 {
+      height: 520px;
+    }
+    .story__photo--2 {
+      height: 400px;
+      margin-top: 120px;
+    }
+    .story__photo--3 {
+      height: 340px;
+    }
+  }
+
+  /* The mobile composition carries a single image, per the 430px frame. */
+  @media (max-width: 767px) {
+    .story__photo--2,
+    .story__photo--3 {
+      display: none;
+    }
+  }
+
+  /* ---------- text ------------------------------------------------------- */
+
+  .story__text {
+    order: 1;
+  }
+
+  @media (min-width: 1280px) {
+    .story__text {
+      order: 2;
+      padding-top: 120px;
+    }
+  }
+
+  .story__title {
+    margin-top: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .story__title {
+      margin-top: 30px;
+    }
+  }
+
+  .story__lead {
+    margin-top: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .story__lead {
+      margin-top: 26px;
+    }
+  }
+
+  .story__body {
+    margin-top: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .story__body {
+      margin-top: 24px;
+    }
+    .story__body + .story__body {
+      margin-top: 22px;
+    }
+  }
+</style>

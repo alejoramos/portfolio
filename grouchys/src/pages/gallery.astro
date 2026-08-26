@@ -1,0 +1,138 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Gallery from '@/components/sections/Gallery.astro';
+import Lightbox from '@/components/Lightbox.astro';
+import Frame from '@/components/Frame.astro';
+import { photo } from '@/data/images';
+import { site, reserveHref } from '@/data/site';
+---
+
+<BaseLayout
+  title="Gallery"
+  description="Inside Grouchy's Public House — the room, the bar and the grill in Greenville, Illinois."
+  path="/gallery"
+>
+  <!-- Typography sitting directly on the photograph, no card, no eyebrow. -->
+  <section class="lede" aria-labelledby="gallery-page-title">
+    <Frame
+      src={photo.couple}
+      alt=""
+      class="lede__photo"
+      widths={[900, 1400]}
+      sizes="100vw"
+      position="50% 46%"
+      priority
+    />
+    <span class="lede__veil" aria-hidden="true"></span>
+    <div class="shell lede__inner">
+      <h1 class="t-hero lede__title" id="gallery-page-title">
+        Warm light,<br /><em>low conversation.</em>
+      </h1>
+      <p class="t-body lede__body">
+        Dark wood, deep booths and pendant light. Comfortable enough for a Tuesday, right for an
+        anniversary.
+      </p>
+    </div>
+  </section>
+
+  <Gallery withHeader={false} headingId="gallery-grid-title" />
+
+  <section class="tail band-a" aria-labelledby="tail-title">
+    <div class="seam seam-top"></div>
+    <div class="shell tail__inner">
+      <h2 class="t-h2-story tail__title" id="tail-title" data-reveal>
+        Best seen from a booth.
+      </h2>
+      <div class="tail__actions" data-reveal>
+        <a href={reserveHref} class="btn btn-primary" data-magnetic>Reserve a Table</a>
+        <a href={site.phone.href} class="btn btn-tertiary">{site.phone.display}</a>
+      </div>
+    </div>
+  </section>
+
+  <Lightbox />
+</BaseLayout>
+
+<style>
+  .lede {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: 54px;
+  }
+
+  @media (min-width: 768px) {
+    .lede {
+      min-height: 640px;
+      padding-bottom: 80px;
+    }
+  }
+
+  .lede__photo {
+    position: absolute;
+    inset: 0;
+  }
+
+  .lede__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #070707 0%,
+      rgb(7 7 7 / 0.62) 34%,
+      rgb(7 7 7 / 0.86) 78%,
+      #070707 100%
+    );
+  }
+
+  .lede__inner {
+    position: relative;
+    width: 100%;
+  }
+
+  .lede__title {
+    max-width: 16ch;
+  }
+
+  .lede__body {
+    margin-top: 24px;
+  }
+
+  .tail {
+    position: relative;
+    padding-block: 72px 80px;
+  }
+
+  @media (min-width: 768px) {
+    .tail {
+      padding-block: 110px 120px;
+    }
+  }
+
+  .tail__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .tail__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+  }
+
+  .tail__actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+</style>

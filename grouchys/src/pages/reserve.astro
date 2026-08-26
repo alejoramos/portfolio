@@ -1,0 +1,110 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Reservation from '@/components/sections/Reservation.astro';
+import { site, hours } from '@/data/site';
+import { MAX_PARTY } from '@/data/reservation';
+---
+
+<BaseLayout
+  title="Reserve a Table"
+  description={`Hold a table at Grouchy's Public House, ${site.address.street}, ${site.address.locality}, ${site.address.region}. Walk-ins welcome at the bar.`}
+  path="/reserve"
+>
+  <Reservation headingId="reserve-page-title" compact as="h1" />
+
+  <!-- Everything a guest needs to know that the card itself cannot say. -->
+  <section class="notes band-b" aria-labelledby="notes-title">
+    <div class="seam seam-top"></div>
+    <div class="shell notes__grid">
+      <h2 class="t-h2-story notes__title" id="notes-title" data-reveal>
+        Before you come in.
+      </h2>
+
+      <dl class="notes__list">
+        <div class="notes__row" data-reveal>
+          <dt class="notes__term">Walk-ins</dt>
+          <dd class="notes__def">Welcome at the bar, any service.</dd>
+        </div>
+        <div class="notes__row" data-reveal>
+          <dt class="notes__term">Large parties</dt>
+          <dd class="notes__def">
+            Over {MAX_PARTY} guests, call <a class="link" href={site.phone.href}
+              >{site.phone.display}</a
+            > and we'll sort the room out with you.
+          </dd>
+        </div>
+        <div class="notes__row" data-reveal>
+          <dt class="notes__term">Service</dt>
+          <dd class="notes__def">
+            {
+              hours
+                .filter((h) => h.service)
+                .map((h) => h.short)
+                .join(' · ')
+            } — {hours.find((h) => h.service)?.service}. Closed Tuesday and Sunday.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notes {
+    position: relative;
+    padding-block: var(--section-pt) var(--section-pb);
+  }
+
+  .notes__grid {
+    display: grid;
+    gap: 30px;
+  }
+
+  @media (min-width: 1024px) {
+    .notes__grid {
+      grid-template-columns: minmax(0, 380px) 1fr;
+      gap: 90px;
+      align-items: start;
+    }
+  }
+
+  .notes__list {
+    margin: 0;
+  }
+
+  .notes__row {
+    display: grid;
+    gap: 8px;
+    padding: 22px 0;
+    border-top: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .notes__row:last-of-type {
+    border-bottom: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  @media (min-width: 640px) {
+    .notes__row {
+      grid-template-columns: minmax(120px, 180px) 1fr;
+      gap: 40px;
+      align-items: baseline;
+      padding: 26px 0;
+    }
+  }
+
+  .notes__term {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  .notes__def {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--color-warm-grey);
+    max-width: 52ch;
+  }
+</style>

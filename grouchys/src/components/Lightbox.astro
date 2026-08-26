@@ -1,0 +1,174 @@
+---
+/**
+ * Gallery lightbox. Rendered once per page that has a gallery, hidden until a
+ * trigger opens it. Escape closes, arrows page, focus is trapped and restored.
+ */
+---
+
+<div class="lightbox" data-lightbox-root hidden>
+  <div class="lightbox__backdrop" data-lightbox-dismiss></div>
+
+  <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Gallery image">
+    <button type="button" class="lightbox__close" data-lightbox-close>
+      <span class="sr-only">Close image</span>
+      <span class="lightbox__x" aria-hidden="true"></span>
+    </button>
+
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" data-lightbox-img alt="" decoding="async" />
+      <figcaption class="lightbox__caption t-mono" data-lightbox-caption></figcaption>
+    </figure>
+
+    <div class="lightbox__controls">
+      <button type="button" class="lightbox__nav" data-lightbox-prev>
+        <span class="sr-only">Previous image</span>
+        <span aria-hidden="true">←</span>
+      </button>
+      <p class="lightbox__count t-mono" data-lightbox-count aria-live="polite"></p>
+      <button type="button" class="lightbox__nav" data-lightbox-next>
+        <span class="sr-only">Next image</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(7 7 7 / 0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .lightbox__panel {
+    position: relative;
+    width: min(1200px, 100%);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lightbox__figure {
+    margin: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .lightbox__img {
+    width: 100%;
+    max-height: min(74vh, 820px);
+    object-fit: contain;
+    background: var(--color-black-4);
+    border: 1px solid rgb(180 134 58 / 0.18);
+  }
+
+  .lightbox__caption {
+    color: rgb(184 178 167 / 0.62);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: none;
+  }
+
+  .lightbox__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .lightbox__nav {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(180 134 58 / 0.28);
+    color: var(--color-gold-light);
+    font-size: 18px;
+    transition:
+      background-color 200ms var(--ease-reveal),
+      color 200ms var(--ease-reveal),
+      border-color 200ms var(--ease-reveal);
+  }
+
+  .lightbox__nav:hover {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-black);
+  }
+
+  .lightbox__count {
+    color: rgb(184 178 167 / 0.5);
+    font-size: 10.5px;
+    min-width: 6ch;
+    text-align: center;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -8px;
+    right: 0;
+    transform: translateY(-100%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
+    .lightbox__close {
+      position: static;
+      transform: none;
+      align-self: flex-end;
+    }
+  }
+
+  .lightbox__x {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .lightbox__x::before,
+  .lightbox__x::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 24px;
+    height: 1px;
+    background: var(--color-gold);
+  }
+  .lightbox__x::before {
+    transform: rotate(45deg);
+  }
+  .lightbox__x::after {
+    transform: rotate(-45deg);
+  }
+</style>
+
+<script>
+  import '@/scripts/lightbox';
+</script>

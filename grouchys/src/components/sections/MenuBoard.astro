@@ -1,0 +1,452 @@
+---
+import Frame from '@/components/Frame.astro';
+import { photo, alt } from '@/data/images';
+import { menu, PRICE_PLACEHOLDER, PRICE_NOTE } from '@/data/menu';
+import { url } from '@/lib/url';
+
+/**
+ * The board — the homepage menu preview.
+ *
+ * Without JavaScript every category is on the page, one after another. Once the
+ * tab script runs it collapses to a single panel and the tabs take over. The
+ * board is never empty and never depends on a script to be readable.
+ */
+---
+
+<section class="section band-b board" data-board aria-labelledby="board-title">
+  <div class="shell">
+    <header class="board__head">
+      <p class="eyebrow eyebrow-center" data-reveal>The Board</p>
+      <h2 class="t-h2 board__title" id="board-title" data-reveal>What's on tonight</h2>
+    </header>
+
+    <div class="board__tabs-wrap">
+      <span class="board__tab-rule board__tab-rule--l" aria-hidden="true"></span>
+
+      <div class="board__tabs rail" role="tablist" aria-label="Menu categories">
+        {
+          menu.map((cat, i) => (
+            <button
+              type="button"
+              role="tab"
+              class:list={['board__tab', i === 0 && 'is-active']}
+              id={`tab-${cat.key}`}
+              aria-controls={`panel-${cat.key}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              tabindex={i === 0 ? 0 : -1}
+              data-tab
+              data-key={cat.key}
+            >
+              <span class="board__tab-label">{cat.label}</span>
+              <span class="board__tab-underline" aria-hidden="true" />
+            </button>
+          ))
+        }
+      </div>
+
+      <span class="board__tab-rule board__tab-rule--r" aria-hidden="true"></span>
+    </div>
+
+    <div class="board__grid">
+      <div class="board__panels">
+        {
+          menu.map((cat, i) => (
+            <div
+              class:list={['board__panel', i === 0 && 'is-active']}
+              id={`panel-${cat.key}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${cat.key}`}
+              data-panel
+              data-key={cat.key}
+              tabindex="0"
+            >
+              <h3 class="board__panel-head">{cat.label}</h3>
+              <ul class="board__rows">
+                {cat.items.map((item) => (
+                  <li class="board__row" data-row>
+                    <div class="board__row-text">
+                      <p class="board__row-name">{item.name}</p>
+                      <p class="board__row-desc">{item.desc}</p>
+                    </div>
+                    <span class="board__leader" aria-hidden="true" />
+                    <p class="t-price board__price">{item.price ?? PRICE_PLACEHOLDER}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+
+        <div class="board__foot">
+          <a href={url("/menu")} class="btn btn-secondary" data-magnetic>View the full menu</a>
+          <p class="t-mono board__note">{PRICE_NOTE}</p>
+        </div>
+      </div>
+
+      <aside class="board__feature" aria-label="Tonight's feature">
+        <Frame
+          src={photo.steakPuree}
+          alt={alt.steakPuree}
+          class="board__feature-photo"
+          widths={[420, 640, 900]}
+          sizes="(max-width: 1023px) 92vw, 416px"
+        />
+        <div class="board__feature-text">
+          <p class="board__feature-tag">Chef's Seasonal Special</p>
+          <p class="board__feature-name">Ask what's on tonight</p>
+          <p class="board__feature-desc">
+            The feature changes with the season and the grill. Your server will walk you through it.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .board__head {
+    text-align: center;
+  }
+
+  .board__title {
+    margin-top: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .board__title {
+      margin-top: 22px;
+    }
+  }
+
+  /* ---------- tabs ------------------------------------------------------- */
+
+  .board__tabs-wrap {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 34px;
+    /* let the rail bleed to the screen edge on small screens */
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+
+  @media (min-width: 768px) {
+    .board__tabs-wrap {
+      margin-top: 48px;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .board__tabs-wrap {
+      margin-top: 54px;
+      margin-bottom: 70px;
+    }
+  }
+
+  .board__tab-rule {
+    display: none;
+    flex: 1;
+    height: 1px;
+  }
+
+  .board__tab-rule--l {
+    background: linear-gradient(90deg, rgb(180 134 58 / 0), rgb(180 134 58 / 0.35));
+  }
+  .board__tab-rule--r {
+    background: linear-gradient(90deg, rgb(180 134 58 / 0.35), rgb(180 134 58 / 0));
+  }
+
+  @media (min-width: 1024px) {
+    .board__tab-rule {
+      display: block;
+    }
+  }
+
+  .board__tabs {
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  @media (min-width: 1024px) {
+    .board__tabs {
+      gap: 34px;
+      overflow: visible;
+      justify-content: center;
+    }
+  }
+
+  .board__tab {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    justify-content: center;
+    transition: opacity 200ms var(--ease-reveal);
+  }
+
+  /* Mobile: the chip rail from the 430 frame. */
+  .board__tab-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-warm-grey);
+    border: 1px solid rgb(180 134 58 / 0.28);
+    padding: 10px 13px;
+    transition:
+      color 200ms var(--ease-reveal),
+      background-color 200ms var(--ease-reveal),
+      border-color 200ms var(--ease-reveal);
+  }
+
+  .board__tab.is-active .board__tab-label {
+    color: var(--color-black);
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+
+  .board__tab-underline {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .board__tab-label {
+      font-size: 12.5px;
+      letter-spacing: 0.22em;
+      border: 0;
+      padding: 0;
+      background: none;
+    }
+
+    .board__tab.is-active .board__tab-label {
+      color: var(--color-gold-light);
+      background: none;
+      font-weight: 500;
+    }
+
+    .board__tab:hover .board__tab-label {
+      color: var(--color-cream);
+    }
+
+    .board__tab-underline {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: transparent;
+    }
+
+    .board__tab.is-active .board__tab-underline {
+      background: var(--color-gold);
+    }
+
+    /* When the sliding indicator is live the per-tab rule steps aside. */
+    .board__tabs[data-slider] .board__tab-underline {
+      background: transparent !important;
+    }
+  }
+
+  .board__slider {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: var(--color-gold);
+    transition: transform 260ms var(--ease-reveal), width 260ms var(--ease-reveal);
+    pointer-events: none;
+  }
+
+  /* ---------- rows ------------------------------------------------------- */
+
+  .board__grid {
+    display: grid;
+    gap: 48px;
+    margin-top: 34px;
+  }
+
+  @media (min-width: 1024px) {
+    .board__grid {
+      grid-template-columns: 1fr minmax(320px, 440px);
+      gap: 60px;
+      align-items: start;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .board__grid {
+      gap: 90px;
+    }
+  }
+
+  .board__panel + .board__panel {
+    margin-top: 44px;
+  }
+
+  /* Once the tabs are live only the selected panel is in the document flow. */
+  .board[data-tabs-ready] .board__panel {
+    display: none;
+    margin-top: 0;
+  }
+  .board[data-tabs-ready] .board__panel.is-active {
+    display: block;
+  }
+
+  .board__panel-head {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+    margin-bottom: 22px;
+  }
+
+  .board[data-tabs-ready] .board__panel-head {
+    /* the tab already names the category */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    margin: 0;
+  }
+
+  .board__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .board__rows {
+      gap: 30px;
+    }
+  }
+
+  .board__row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    transition: opacity 200ms var(--ease-reveal);
+  }
+
+  .board__row:hover {
+    opacity: 0.86;
+  }
+
+  .board__row-text {
+    flex: 0 1 auto;
+    max-width: 520px;
+    min-width: 0;
+  }
+
+  .board__row-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-row);
+    line-height: 1.15;
+    color: var(--color-cream);
+  }
+
+  .board__row-desc {
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-top: 6px;
+  }
+
+  .board__leader {
+    flex: 1 1 auto;
+    min-width: 18px;
+    border-bottom: 1px dotted rgb(180 134 58 / 0.32);
+    transform: translateY(-5px);
+  }
+
+  @media (min-width: 1024px) {
+    .board__row {
+      gap: 18px;
+    }
+    .board__row-desc {
+      margin-top: 8px;
+    }
+    .board__leader {
+      transform: translateY(-8px);
+    }
+  }
+
+  .board__foot {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  @media (min-width: 768px) {
+    .board__foot {
+      flex-direction: row;
+      align-items: center;
+      gap: 26px;
+    }
+  }
+
+  .board__note {
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    color: rgb(184 178 167 / 0.5);
+  }
+
+  /* ---------- feature ---------------------------------------------------- */
+
+  .board__feature {
+    border: 1px solid rgb(180 134 58 / 0.24);
+    padding: 12px;
+    background: var(--color-black);
+  }
+
+  .board__feature-photo {
+    height: 300px;
+  }
+
+  @media (min-width: 1024px) {
+    .board__feature-photo {
+      height: 440px;
+    }
+  }
+
+  .board__feature-text {
+    padding: 24px 12px 10px;
+  }
+
+  .board__feature-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .board__feature-name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--color-cream);
+    margin-top: 12px;
+  }
+
+  .board__feature-desc {
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-muted);
+    margin-top: 10px;
+  }
+</style>
+
+<script>
+  import '@/scripts/board';
+</script>

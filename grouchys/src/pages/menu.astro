@@ -1,0 +1,379 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Frame from '@/components/Frame.astro';
+import { photo, alt } from '@/data/images';
+import { menu, PRICE_PLACEHOLDER, PRICE_NOTE } from '@/data/menu';
+import { site, reserveHref } from '@/data/site';
+---
+
+<BaseLayout
+  title="Menu"
+  description="Steaks, burgers, seafood, salads, cocktails, whiskey and beer at Grouchy's Public House, 305 W Main St, Greenville, Illinois."
+  path="/menu"
+>
+  <!-- Opener: type over a bleeding strip of the grill, no eyebrow, no card. -->
+  <section class="masthead" aria-labelledby="menu-title">
+    <div class="masthead__photo" aria-hidden="true">
+      <Frame
+        src={photo.ribeyeMacro}
+        alt=""
+        widths={[900, 1400]}
+        sizes="100vw"
+        position="50% 55%"
+        priority
+      />
+      <span class="masthead__veil"></span>
+    </div>
+
+    <div class="shell masthead__inner">
+      <h1 class="t-hero masthead__title" id="menu-title">
+        What's on<br /><em>tonight.</em>
+      </h1>
+      <p class="masthead__meta t-mono">{PRICE_NOTE}</p>
+    </div>
+  </section>
+
+  <!-- A real jump list: seven confirmed categories, nothing decorative. -->
+  <nav class="jump" aria-label="Menu categories">
+    <ul class="rail jump__rail">
+      {
+        menu.map((cat) => (
+          <li>
+            <a class="jump__link" href={`#${cat.key}`}>
+              {cat.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="ledger band-b">
+    {
+      menu.map((cat, i) => (
+        <section class="ledger__group" id={cat.key} aria-labelledby={`h-${cat.key}`}>
+          <div class="shell ledger__grid">
+            <div class="ledger__side">
+              <p class="ledger__index" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h2 class="ledger__title" id={`h-${cat.key}`}>
+                {cat.label}
+              </h2>
+            </div>
+
+            <ul class="ledger__rows">
+              {cat.items.map((item) => (
+                <li class="ledger__row" data-reveal>
+                  <div class="ledger__row-text">
+                    <p class="ledger__name">{item.name}</p>
+                    <p class="ledger__desc">{item.desc}</p>
+                  </div>
+                  <span class="ledger__leader" aria-hidden="true" />
+                  <p class="t-price">{item.price ?? PRICE_PLACEHOLDER}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <!-- The seasonal feature, full-bleed split rather than a boxed card. -->
+  <section class="feature band-a" aria-labelledby="feature-title">
+    <div class="seam seam-top"></div>
+    <div class="feature__grid">
+      <Frame
+        src={photo.steakPuree}
+        alt={alt.steakPuree}
+        class="feature__photo"
+        widths={[640, 900, 1120]}
+        sizes="(max-width: 1023px) 100vw, 46vw"
+        mask
+      />
+      <div class="feature__text">
+        <p class="eyebrow" data-reveal>Chef's Seasonal Special</p>
+        <h2 class="t-h2-story feature__title" id="feature-title" data-reveal>
+          Ask what's on tonight
+        </h2>
+        <p class="t-body feature__body" data-reveal>
+          The feature changes with the season and the grill. Your server will walk you through it.
+        </p>
+        <div class="feature__actions" data-reveal>
+          <a href={reserveHref} class="btn btn-primary" data-magnetic>Reserve a Table</a>
+          <a href={site.phone.href} class="btn btn-tertiary">{site.phone.display}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- masthead --------------------------------------------------- */
+
+  .masthead {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    min-height: 460px;
+    display: flex;
+    align-items: flex-end;
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .masthead {
+      min-height: 560px;
+      padding-bottom: 72px;
+    }
+  }
+
+  .masthead__photo {
+    position: absolute;
+    inset: 0;
+  }
+
+  .masthead__photo :global(.frame) {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+
+  .masthead__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #070707 0%, rgb(7 7 7 / 0.72) 42%, #070707 100%);
+  }
+
+  .masthead__inner {
+    position: relative;
+    width: 100%;
+  }
+
+  .masthead__title {
+    max-width: 14ch;
+  }
+
+  .masthead__meta {
+    margin-top: 26px;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    color: rgb(184 178 167 / 0.5);
+  }
+
+  /* ---------- jump rail --------------------------------------------------- */
+
+  .jump {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 20;
+    background: rgb(7 7 7 / 0.92);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-top: 1px solid rgb(180 134 58 / 0.14);
+    border-bottom: 1px solid rgb(180 134 58 / 0.14);
+  }
+
+  .jump__rail {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    max-width: var(--shell);
+    gap: 10px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .jump__rail {
+      gap: 34px;
+      justify-content: center;
+      overflow: visible;
+    }
+  }
+
+  .jump__link {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-height: 48px;
+    padding: 0 6px;
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-warm-grey);
+    border-bottom: 1px solid transparent;
+    transition:
+      color 200ms var(--ease-reveal),
+      border-color 200ms var(--ease-reveal);
+  }
+
+  .jump__link:hover {
+    color: var(--color-gold-light);
+    border-bottom-color: var(--color-gold);
+  }
+
+  /* ---------- the ledger -------------------------------------------------- */
+
+  .ledger {
+    padding-block: 60px 40px;
+  }
+
+  @media (min-width: 768px) {
+    .ledger {
+      padding-block: 100px 80px;
+    }
+  }
+
+  .ledger__group + .ledger__group {
+    margin-top: 56px;
+    padding-top: 56px;
+    border-top: 1px solid rgb(180 134 58 / 0.14);
+  }
+
+  @media (min-width: 768px) {
+    .ledger__group + .ledger__group {
+      margin-top: 90px;
+      padding-top: 90px;
+    }
+  }
+
+  .ledger__grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .ledger__grid {
+      grid-template-columns: minmax(200px, 300px) 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+  }
+
+  /* The category name holds beside its rows while they scroll past. */
+  @media (min-width: 1024px) {
+    .ledger__side {
+      position: sticky;
+      top: calc(var(--nav-h) + 96px);
+    }
+  }
+
+  .ledger__index {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    color: var(--color-gold-deep);
+    margin-bottom: 12px;
+  }
+
+  .ledger__title {
+    font-size: var(--fs-h2-story);
+    line-height: 1;
+  }
+
+  .ledger__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  @media (min-width: 768px) {
+    .ledger__rows {
+      gap: 34px;
+    }
+  }
+
+  .ledger__row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .ledger__row {
+      gap: 20px;
+    }
+  }
+
+  .ledger__row-text {
+    flex: 0 1 auto;
+    max-width: 560px;
+    min-width: 0;
+  }
+
+  .ledger__name {
+    font-family: var(--font-display);
+    font-size: var(--fs-row);
+    line-height: 1.15;
+    color: var(--color-cream);
+  }
+
+  .ledger__desc {
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-top: 8px;
+  }
+
+  .ledger__leader {
+    flex: 1 1 auto;
+    min-width: 18px;
+    border-bottom: 1px dotted rgb(180 134 58 / 0.32);
+    transform: translateY(-6px);
+  }
+
+  /* ---------- feature ------------------------------------------------------ */
+
+  .feature {
+    position: relative;
+    padding-block: var(--section-pt) var(--section-pb);
+  }
+
+  .feature__grid {
+    display: grid;
+    gap: 32px;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .feature__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 80px;
+    }
+  }
+
+  .feature__photo {
+    height: 320px;
+  }
+
+  @media (min-width: 768px) {
+    .feature__photo {
+      height: 520px;
+    }
+  }
+
+  .feature__title {
+    margin-top: 20px;
+  }
+
+  .feature__body {
+    margin-top: 20px;
+  }
+
+  .feature__actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+  }
+</style>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Placeholder favicon. Replace with the final mark once vector logo files
+       are supplied by the owner (NOTES-open-questions.md → Brand & legal). -->
+  <rect width="64" height="64" fill="#070707"/>
+  <rect x="14" y="15" width="36" height="1" fill="#B4863A"/>
+  <text x="32" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#F4F0E8">G</text>
+  <rect x="22" y="50" width="20" height="1" fill="#7C5820"/>
+</svg>

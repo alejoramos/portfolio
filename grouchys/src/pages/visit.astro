@@ -1,0 +1,323 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Frame from '@/components/Frame.astro';
+import { photo, brand, alt } from '@/data/images';
+import { site, hours, reserveHref, formattedAddress } from '@/data/site';
+---
+
+<BaseLayout
+  title="Visit"
+  description={`Grouchy's Public House, ${formattedAddress}. Hours, phone and directions.`}
+  path="/visit"
+  schema
+>
+  <!-- The address *is* the headline. No eyebrow above it. -->
+  <section class="address" aria-labelledby="visit-page-title">
+    <Image
+      src={brand.buildingCream}
+      alt=""
+      class="sketch address__sketch"
+      data-parallax="sketch"
+      widths={[463]}
+      sizes="(max-width: 767px) 380px, 720px"
+      loading="eager"
+    />
+
+    <div class="shell address__inner">
+      <h1 class="t-hero address__title" id="visit-page-title">
+        {site.address.street}<br /><em>{site.address.locality}, {site.address.region}</em>
+      </h1>
+
+      <div class="address__lines">
+        <a class="address__phone tap-target" href={site.phone.href}>{site.phone.display}</a>
+        <a
+          class="link-underline"
+          href={site.directionsUrl}
+          target="_blank"
+          rel="noopener">Get directions</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- The map, full width, with the block marked. -->
+  <section class="map" aria-label="Location map">
+    <div class="map__frame">
+      <Frame
+        src={photo.map}
+        alt={alt.map}
+        widths={[640, 1000, 1400]}
+        sizes="100vw"
+        class="map__photo"
+      />
+      <span class="map__marker" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="details band-b" aria-labelledby="details-title">
+    <div class="seam seam-top"></div>
+    <div class="shell details__grid">
+      <div class="details__hours">
+        <h2 class="details__label" id="details-title">Hours</h2>
+        <ul class="details__list">
+          {
+            hours.map((h) => (
+              <li class:list={['details__row', !h.service && 'is-closed']}>
+                <span>{h.day}</span>
+                <span class="details__value">{h.service ?? 'Closed'}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="details__note t-small">Lunch and dinner service, Monday and Wednesday–Saturday.</p>
+      </div>
+
+      <div class="details__stack">
+        <div>
+          <h2 class="details__label">Address</h2>
+          <address class="details__address">
+            {site.address.street}<br />
+            {site.address.locality}, {site.address.region} {site.address.postalCode}
+          </address>
+        </div>
+
+        <div>
+          <h2 class="details__label">Phone</h2>
+          <a class="details__phone tap-target" href={site.phone.href}>{site.phone.display}</a>
+        </div>
+
+        <div>
+          <h2 class="details__label">Parking</h2>
+          <p class="t-small details__parking">{site.parkingNote}</p>
+        </div>
+
+        <a href={reserveHref} class="btn btn-primary details__cta" data-magnetic>Reserve a Table</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .address {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    padding-top: calc(var(--nav-h) + 60px);
+    padding-bottom: 60px;
+  }
+
+  @media (min-width: 768px) {
+    .address {
+      padding-top: calc(var(--nav-h) + 110px);
+      padding-bottom: 100px;
+    }
+  }
+
+  .address__sketch {
+    right: -70px;
+    bottom: -30px;
+    width: 380px;
+    opacity: 0.06;
+  }
+
+  @media (min-width: 768px) {
+    .address__sketch {
+      right: 40px;
+      bottom: -120px;
+      width: 720px;
+      opacity: 0.055;
+    }
+  }
+
+  .address__inner {
+    position: relative;
+  }
+
+  .address__title {
+    max-width: 16ch;
+  }
+
+  .address__lines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    margin-top: 34px;
+  }
+
+  @media (min-width: 640px) {
+    .address__lines {
+      flex-direction: row;
+      align-items: center;
+      gap: 44px;
+      margin-top: 44px;
+    }
+  }
+
+  .address__phone {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+    color: var(--color-cream);
+    transition: color 200ms var(--ease-reveal);
+  }
+
+  .address__phone:hover {
+    color: var(--color-gold-light);
+  }
+
+  /* ---------- map --------------------------------------------------------- */
+
+  .map {
+    background: var(--color-black);
+    padding-bottom: 0;
+  }
+
+  .map__frame {
+    position: relative;
+    border-top: 1px solid rgb(180 134 58 / 0.18);
+    border-bottom: 1px solid rgb(180 134 58 / 0.18);
+  }
+
+  .map__photo {
+    height: 240px;
+  }
+
+  @media (min-width: 768px) {
+    .map__photo {
+      height: 420px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .map__photo {
+      height: 520px;
+    }
+  }
+
+  .map__marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .map__marker::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgb(180 134 58 / 0.3);
+    border-radius: 50%;
+  }
+
+  /* ---------- details ------------------------------------------------------ */
+
+  .details {
+    position: relative;
+    padding-block: var(--section-pt) var(--section-pb);
+  }
+
+  .details__grid {
+    display: grid;
+    gap: 44px;
+  }
+
+  @media (min-width: 768px) {
+    .details__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .details__grid {
+      grid-template-columns: minmax(0, 460px) minmax(0, 380px);
+      justify-content: space-between;
+      gap: 120px;
+    }
+  }
+
+  .details__label {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+    margin-bottom: 16px;
+  }
+
+  .details__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .details__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 0;
+    border-top: 1px solid rgb(180 134 58 / 0.14);
+    font-size: var(--fs-body-sm);
+    color: var(--color-warm-grey);
+  }
+
+  .details__row:last-child {
+    border-bottom: 1px solid rgb(180 134 58 / 0.14);
+  }
+
+  .details__value {
+    color: var(--color-cream);
+    white-space: nowrap;
+  }
+
+  .details__row.is-closed,
+  .details__row.is-closed .details__value {
+    color: rgb(184 178 167 / 0.45);
+  }
+
+  .details__note {
+    margin-top: 20px;
+  }
+
+  .details__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    align-items: flex-start;
+  }
+
+  .details__address {
+    font-style: normal;
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--color-cream);
+  }
+
+  .details__phone {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-cream);
+    transition: color 200ms var(--ease-reveal);
+  }
+
+  .details__phone:hover {
+    color: var(--color-gold-light);
+  }
+
+  .details__parking {
+    max-width: 40ch;
+  }
+
+  .details__cta {
+    margin-top: 6px;
+  }
+</style>

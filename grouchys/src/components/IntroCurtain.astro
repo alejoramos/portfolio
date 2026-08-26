@@ -1,0 +1,301 @@
+---
+import { Image } from 'astro:assets';
+import { brand } from '@/data/images';
+import { site } from '@/data/site';
+
+/**
+ * The intro curtain — once per session, homepage only.
+ *
+ * It ships with the `hidden` attribute set. A tiny inline script decides
+ * whether to show it *before first paint*, so a returning visitor and anyone
+ * who prefers reduced motion never sees a flash of it. The hero underneath is
+ * fully rendered the whole time; this only ever sits on top and then leaves.
+ */
+---
+
+<div class="intro" data-intro hidden aria-hidden="true">
+  <span class="intro__door intro__door--l"></span>
+  <span class="intro__door intro__door--r"></span>
+  <span class="intro__glow"></span>
+  <span class="intro__rule"></span>
+  <Image
+    src={brand.logoCream}
+    alt=""
+    class="intro__mark"
+    widths={[340, 532]}
+    sizes="340px"
+    loading="eager"
+  />
+  <span class="intro__words"
+    >{site.address.locality}, {site.address.region} · Est. {site.established}</span
+  >
+</div>
+
+<script is:inline>
+  (function () {
+    var el = document.querySelector('[data-intro]');
+    if (!el) return;
+
+    var root = document.documentElement;
+
+    // ?intro replays the sequence on demand. A guest never sees this; it exists
+    // so the curtain can actually be reviewed without clearing storage or
+    // opening a fresh tab every time.
+    var forced = /[?&]intro\b/.test(location.search);
+
+    var seen = false;
+    try {
+      seen = sessionStorage.getItem('gph:intro') === '1';
+      sessionStorage.setItem('gph:intro', '1');
+    } catch (e) {
+      // private mode — treat it as seen rather than replaying every navigation
+      seen = true;
+    }
+
+    // Someone arriving on a deep link wants that section, not a curtain.
+    var deepLink = location.hash.length > 1;
+
+    if ((seen && !forced) || deepLink || root.hasAttribute('data-reduced-motion')) {
+      el.remove();
+      return;
+    }
+
+    /*
+      The doors have to part onto the hero, which means the page must actually
+      be at the top. Browsers restore the previous scroll offset on reload, and
+      because the curtain is position:fixed it happily covers a page sitting
+      halfway down — so the sequence would end by revealing the menu board.
+      Pin the page at the top for the length of the sequence, then let go.
+    */
+    try {
+      history.scrollRestoration = 'manual';
+    } catch (e) {
+      /* older browser — the scroll guard below still holds it */
+    }
+    window.scrollTo(0, 0);
+
+    var hold = function () {
+      if (window.scrollY !== 0) window.scrollTo(0, 0);
+    };
+    window.addEventListener('scroll', hold, { passive: true });
+
+    el.hidden = false;
+    root.setAttribute('data-intro-running', '');
+
+    // The motion layer reads this to hold the hero's entrance until the doors
+    // are actually parting, so the sequence opens *onto* the hero coming alive
+    // rather than onto a hero that already finished behind the curtain.
+    window.__gphIntroEndsAt = Date.now() + 4600;
+
+    var done = function () {
+      window.removeEventListener('scroll', hold);
+      try {
+        history.scrollRestoration = 'auto';
+      } catch (e) {}
+      el.hidden = true;
+      el.remove();
+      root.removeAttribute('data-intro-running');
+    };
+
+    // The animation removes it; the timer is the guarantee that it goes away
+    // even if the animation never fires.
+    el.addEventListener('animationend', function (e) {
+      if (e.animationName === 'introVeil') done();
+    });
+    window.setTimeout(done, 5200);
+  })();
+</script>
+
+<style>
+  .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    overflow: hidden;
+    pointer-events: none;
+    animation: introVeil 4.6s ease forwards;
+  }
+
+  .intro[hidden] {
+    display: none;
+  }
+
+  .intro__door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: var(--color-black);
+    will-change: transform;
+  }
+
+  .intro__door--l {
+    left: 0;
+    right: 50%;
+    animation: doorL 4.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .intro__door--r {
+    left: 50%;
+    right: 0;
+    animation: doorR 4.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .intro__rule {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    width: min(340px, 70vw);
+    height: 1px;
+    background: linear-gradient(90deg, rgb(180 134 58 / 0), #b4863a, rgb(180 134 58 / 0));
+    animation: introLine 4.6s ease forwards;
+  }
+
+  .intro__mark {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    width: min(340px, 68vw);
+    height: auto;
+    animation: introMark 4.6s ease forwards;
+  }
+
+  .intro__glow {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%);
+    width: min(700px, 130vw);
+    height: 260px;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(190 140 62 / 0.22), rgb(7 7 7 / 0) 70%);
+    animation: introGlow 4.6s ease forwards;
+  }
+
+  .intro__words {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    white-space: nowrap;
+    animation: introWords 4.6s ease forwards;
+  }
+
+  @media (max-width: 480px) {
+    .intro__words {
+      font-size: 9px;
+      letter-spacing: 0.24em;
+    }
+  }
+
+  /* The mark must stay fully lit while the doors part — that is the moment. */
+  @keyframes introVeil {
+    0%,
+    93% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes doorL {
+    0%,
+    72% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-101%);
+    }
+  }
+
+  @keyframes doorR {
+    0%,
+    72% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(101%);
+    }
+  }
+
+  @keyframes introLine {
+    0% {
+      transform: translate(-50%, -50%) scaleX(0);
+      opacity: 0;
+    }
+    14% {
+      opacity: 1;
+    }
+    46% {
+      transform: translate(-50%, -50%) scaleX(1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scaleX(1);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes introMark {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(18px) scale(0.98);
+      filter: blur(6px);
+    }
+    18% {
+      opacity: 0;
+    }
+    44% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0) scale(1);
+      filter: blur(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(-8px) scale(1.03);
+    }
+  }
+
+  @keyframes introGlow {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateX(-40%);
+    }
+    45% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateX(40%);
+    }
+  }
+
+  @keyframes introWords {
+    0%,
+    62% {
+      opacity: 0;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro {
+      display: none !important;
+    }
+  }
+</style>

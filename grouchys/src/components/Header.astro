@@ -1,0 +1,452 @@
+---
+import { Image } from 'astro:assets';
+import { brand } from '@/data/images';
+import { photo } from '@/data/images';
+import { site, nav, reserveHref } from '@/data/site';
+import { url } from '@/lib/url';
+import Frame from './Frame.astro';
+
+interface Props {
+  path: string;
+  /** True on pages whose first section is a full-bleed dark hero. */
+  overlay?: boolean;
+}
+
+const { path, overlay = false } = Astro.props;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class:list={['site-header', overlay && 'site-header--overlay']} data-header>
+  <div class="site-header__bar">
+    <a class="site-header__logo" href={url("/")} aria-label={`${site.name} — home`}>
+      <Image
+        src={brand.logoCream}
+        alt=""
+        widths={[160, 240, 320]}
+        sizes="(max-width: 767px) 60px, 114px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['site-nav__link', isActive(item.href) && 'is-active']}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href={reserveHref} class="btn btn-secondary site-nav__cta">Reserve a Table</a>
+    </nav>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      data-menu-open
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span class="sr-only">Open menu</span>
+      <span class="menu-toggle__rule" aria-hidden="true"></span>
+      <span class="menu-toggle__rule" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<!--
+  Full-screen mobile navigation. Hidden with the `hidden` attribute so it is
+  inert for assistive tech and for keyboards until it is opened; the toggle is
+  the only thing that reveals it.
+-->
+<div id="mobile-nav" class="mobile-nav" data-mobile-nav hidden>
+  <div class="mobile-nav__bg" aria-hidden="true">
+    <Frame
+      src={photo.interiorWide}
+      alt=""
+      widths={[640, 900]}
+      sizes="100vw"
+      class="mobile-nav__photo"
+    />
+    <div class="mobile-nav__scrim"></div>
+    <Image
+      src={brand.buildingCream}
+      alt=""
+      class="sketch mobile-nav__sketch"
+      widths={[420]}
+      sizes="420px"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="mobile-nav__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-nav__bar">
+      <a class="site-header__logo" href={url("/")} aria-label={`${site.name} — home`}>
+        <Image src={brand.logoCream} alt="" widths={[160, 240]} sizes="60px" loading="lazy" />
+      </a>
+      <button type="button" class="menu-toggle menu-toggle--close" data-menu-close>
+        <span class="sr-only">Close menu</span>
+        <span class="menu-toggle__x" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav__nav" aria-label="Primary">
+      <ul>
+        {
+          nav.map((item, i) => (
+            <li class="mobile-nav__item" data-nav-item>
+              <a
+                href={item.href}
+                class:list={['mobile-nav__link', isActive(item.href) && 'is-active']}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                <span class="mobile-nav__index" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="mobile-nav__label">{item.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="mobile-nav__foot">
+      <a href={reserveHref} class="btn btn-primary mobile-nav__cta">Reserve a Table</a>
+      <div class="mobile-nav__meta">
+        <span class="t-mono">Greenville, Illinois</span>
+        <a class="t-mono link" href={site.phone.href}>{site.phone.display}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ---------- sticky bar ------------------------------------------------ */
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: var(--nav-h);
+    background: linear-gradient(
+      180deg,
+      rgb(7 7 7 / 0.94) 0%,
+      rgb(7 7 7 / 0.72) 62%,
+      rgb(7 7 7 / 0) 100%
+    );
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    transition:
+      background-color 320ms var(--ease-reveal),
+      height 320ms var(--ease-reveal),
+      border-color 320ms var(--ease-reveal);
+    border-bottom: 1px solid transparent;
+  }
+
+  /* The negative margin lets the bar sit over the hero without displacing it. */
+  .site-header--overlay {
+    margin-bottom: calc(var(--nav-h) * -1);
+  }
+
+  /* Scrolled state: the gradient resolves into a solid bar with a hairline. */
+  .site-header[data-scrolled] {
+    background: rgb(7 7 7 / 0.92);
+    border-bottom-color: rgb(180 134 58 / 0.16);
+  }
+
+  .site-header__bar {
+    height: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--nav-gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .site-header__logo {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .site-header__logo :global(img) {
+    height: 42px;
+    width: auto;
+    transition: height 320ms var(--ease-reveal);
+  }
+
+  @media (min-width: 1280px) {
+    .site-header__logo :global(img) {
+      height: 80px;
+    }
+    .site-header[data-scrolled] .site-header__logo :global(img) {
+      height: 60px;
+    }
+  }
+
+  /* ---------- desktop nav ---------------------------------------------- */
+
+  .site-nav {
+    display: none;
+    align-items: center;
+    gap: 36px;
+  }
+
+  @media (min-width: 1024px) {
+    .site-nav {
+      display: flex;
+    }
+  }
+
+  .site-nav__list {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-warm-grey);
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+    transition:
+      color 200ms var(--ease-reveal),
+      border-color 200ms var(--ease-reveal);
+  }
+
+  .site-nav__link:hover {
+    color: var(--color-cream);
+    border-bottom-color: rgb(180 134 58 / 0.6);
+  }
+
+  /* Active state carries both colour and a rule — never colour alone. */
+  .site-nav__link.is-active {
+    color: var(--color-gold);
+    border-bottom-color: var(--color-gold);
+  }
+
+  .site-nav__cta {
+    --btn-py: 13px;
+    --btn-px: 22px;
+    min-height: 0;
+    font-size: 12px;
+  }
+
+  /* ---------- hamburger -------------------------------------------------- */
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 48px;
+    height: 48px;
+    align-items: flex-end;
+    margin-right: -8px;
+  }
+
+  @media (min-width: 1024px) {
+    .menu-toggle {
+      display: none;
+    }
+  }
+
+  .menu-toggle__rule {
+    display: block;
+    width: 26px;
+    height: 1px;
+    background: var(--color-cream);
+    transition: background-color 200ms var(--ease-reveal);
+  }
+
+  .menu-toggle:hover .menu-toggle__rule {
+    background: var(--color-gold-light);
+  }
+
+  .menu-toggle--close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-toggle__x {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .menu-toggle__x::before,
+  .menu-toggle__x::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 26px;
+    height: 1px;
+    background: var(--color-gold);
+  }
+  .menu-toggle__x::before {
+    transform: rotate(45deg);
+  }
+  .menu-toggle__x::after {
+    transform: rotate(-45deg);
+  }
+
+  /* ---------- mobile overlay -------------------------------------------- */
+
+  .mobile-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--color-black);
+    /* dynamic viewport unit keeps the panel clear of mobile browser chrome */
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .mobile-nav[hidden] {
+    display: none;
+  }
+
+  .mobile-nav__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .mobile-nav__photo {
+    position: absolute;
+    inset: 0;
+    opacity: 0.24;
+  }
+
+  .mobile-nav__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(7 7 7 / 0.94),
+      rgb(7 7 7 / 0.82) 50%,
+      rgb(7 7 7 / 0.97)
+    );
+  }
+
+  .mobile-nav__sketch {
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
+    width: 420px;
+    opacity: 0.07;
+  }
+
+  .mobile-nav__panel {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--gutter) max(34px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-nav__bar {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    flex: 0 0 auto;
+  }
+
+  .mobile-nav__nav {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    padding-block: 24px;
+  }
+
+  .mobile-nav__nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .mobile-nav__item {
+    border-top: 1px solid rgb(180 134 58 / 0.16);
+  }
+  .mobile-nav__item:last-child {
+    border-bottom: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .mobile-nav__link {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 18px 0;
+    min-height: 56px;
+  }
+
+  .mobile-nav__index {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--color-gold-deep);
+  }
+
+  .mobile-nav__label {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.2rem + 3.4vw, 2.5rem);
+    line-height: 1.1;
+    color: var(--color-cream);
+    transition: color 200ms var(--ease-reveal);
+  }
+
+  .mobile-nav__link.is-active .mobile-nav__label,
+  .mobile-nav__link.is-active .mobile-nav__index {
+    color: var(--color-gold);
+  }
+
+  .mobile-nav__link:hover .mobile-nav__label {
+    color: var(--color-gold-light);
+  }
+
+  .mobile-nav__foot {
+    flex: 0 0 auto;
+  }
+
+  .mobile-nav__cta {
+    width: 100%;
+    --btn-py: 18px;
+  }
+
+  .mobile-nav__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+    color: var(--color-warm-grey);
+  }
+</style>
+
+<script>
+  import '@/scripts/nav';
+</script>

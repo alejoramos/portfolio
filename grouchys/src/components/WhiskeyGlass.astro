@@ -1,0 +1,237 @@
+---
+/**
+ * The signature WebGL object — a rocks glass of whiskey, in the reservation
+ * section and nowhere else.
+ *
+ * What ships in the HTML is the *fallback*: a static CSS glass with the same
+ * silhouette and the same warm glow. WebGL is loaded lazily, only when this
+ * block scrolls into view, only on pointer-capable large screens, and only
+ * when motion is welcome. If any of that fails the static glass simply stays.
+ *
+ * The whole block is `pointer-events: none` and `aria-hidden` — it is
+ * atmosphere beside the form, never in front of it.
+ */
+---
+
+<div class="glass" data-whiskey-glass aria-hidden="true">
+  <div class="glass__stage">
+    <!-- static fallback: always present, faded out once WebGL takes over -->
+    <div class="glass__static" data-glass-static>
+      <span class="glass__pool"></span>
+      <span class="glass__halo"></span>
+      <span class="glass__body">
+        <span class="glass__liquid">
+          <span class="glass__meniscus"></span>
+          <span class="glass__ice glass__ice--a"></span>
+          <span class="glass__ice glass__ice--b"></span>
+        </span>
+        <span class="glass__spec glass__spec--l"></span>
+        <span class="glass__spec glass__spec--r"></span>
+      </span>
+      <span class="glass__rim"></span>
+    </div>
+
+    <!-- WebGL mounts here -->
+    <div class="glass__gl" data-glass-mount></div>
+  </div>
+
+  <div class="glass__caption">
+    <span class="glass__caption-rule"></span>
+    <span class="glass__caption-text">Reacts to cursor</span>
+    <span class="glass__caption-rule"></span>
+  </div>
+</div>
+
+<style>
+  .glass {
+    position: relative;
+    width: 330px;
+    max-width: 100%;
+    /* never intercepts a click meant for the form beside it */
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .glass__stage {
+    position: relative;
+    width: 100%;
+    height: 430px;
+  }
+
+  .glass__gl {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 700ms var(--ease-reveal);
+  }
+
+  .glass__gl :global(canvas) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .glass[data-gl-ready] .glass__gl {
+    opacity: 1;
+  }
+
+  .glass[data-gl-ready] .glass__static {
+    opacity: 0;
+  }
+
+  /* ---------- static glass ---------------------------------------------- */
+
+  .glass__static {
+    position: absolute;
+    inset: 0;
+    transition: opacity 700ms var(--ease-reveal);
+  }
+
+  .glass__pool {
+    position: absolute;
+    left: 34px;
+    bottom: 52px;
+    width: 260px;
+    height: 84px;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(200 120 40 / 0.3), rgb(7 7 7 / 0) 70%);
+    filter: blur(6px);
+  }
+
+  .glass__halo {
+    position: absolute;
+    left: 50%;
+    bottom: 74px;
+    transform: translateX(-50%);
+    width: 330px;
+    height: 330px;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(215 150 60 / 0.15), rgb(7 7 7 / 0) 68%);
+  }
+
+  .glass__body {
+    position: absolute;
+    left: 50%;
+    bottom: 66px;
+    transform: translateX(-50%);
+    width: 196px;
+    height: 246px;
+    border: 1px solid rgb(244 240 232 / 0.2);
+    background: linear-gradient(
+      105deg,
+      rgb(255 255 255 / 0.055) 0%,
+      rgb(255 255 255 / 0) 34%,
+      rgb(255 255 255 / 0) 66%,
+      rgb(255 255 255 / 0.035) 100%
+    );
+    box-shadow: inset 0 0 34px rgb(200 140 60 / 0.1);
+  }
+
+  .glass__liquid {
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    height: 132px;
+    overflow: hidden;
+    background: linear-gradient(
+      180deg,
+      rgb(214 132 44 / 0.78) 0%,
+      rgb(150 72 18 / 0.92) 62%,
+      rgb(86 38 8 / 0.96) 100%
+    );
+  }
+
+  .glass__meniscus {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: rgb(255 205 130 / 0.55);
+  }
+
+  .glass__ice {
+    position: absolute;
+    border: 1px solid rgb(255 235 200 / 0.32);
+    background: linear-gradient(140deg, rgb(255 240 215 / 0.2), rgb(255 240 215 / 0.04));
+  }
+
+  .glass__ice--a {
+    left: 26px;
+    top: 34px;
+    width: 52px;
+    height: 52px;
+    transform: rotate(18deg);
+  }
+
+  .glass__ice--b {
+    left: 96px;
+    top: 62px;
+    width: 44px;
+    height: 44px;
+    transform: rotate(-12deg);
+  }
+
+  .glass__spec {
+    position: absolute;
+    background: linear-gradient(180deg, rgb(255 246 230 / 0.3), rgb(255 246 230 / 0.03));
+  }
+
+  .glass__spec--l {
+    left: 14px;
+    top: 16px;
+    width: 8px;
+    height: 196px;
+  }
+
+  .glass__spec--r {
+    right: 20px;
+    top: 40px;
+    width: 4px;
+    height: 150px;
+    background: linear-gradient(180deg, rgb(255 246 230 / 0.16), rgb(255 246 230 / 0));
+  }
+
+  .glass__rim {
+    position: absolute;
+    left: 50%;
+    bottom: 300px;
+    transform: translateX(-50%);
+    width: 198px;
+    height: 18px;
+    border: 1px solid rgb(244 240 232 / 0.26);
+    border-radius: 50%;
+  }
+
+  /* ---------- caption ---------------------------------------------------- */
+
+  .glass__caption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: -6px;
+  }
+
+  .glass__caption-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgb(180 134 58 / 0),
+      rgb(180 134 58 / 0.45),
+      rgb(180 134 58 / 0)
+    );
+  }
+
+  .glass__caption-text {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(184 178 167 / 0.5);
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  import { mountWhiskeyGlass } from '@/scripts/whiskey-glass';
+  mountWhiskeyGlass();
+</script>

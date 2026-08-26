@@ -26,6 +26,55 @@
   status = 200
   force = true
 
+# Grouchy's is an Astro site, so unlike the store it builds real pages rather
+# than one shell, and each one lands in its own folder as an index.html.
+#
+# The pages are listed one by one on purpose. A single catch-all would rewrite
+# /grouchys/menu to /grouchys/dist/menu, which is a directory, and whether that
+# resolves to its index.html is left to the host. Naming the file removes the
+# guess. The catch-all underneath then only has to carry assets.
+[[redirects]]
+  from = "/grouchys"
+  to = "/grouchys/dist/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/menu"
+  to = "/grouchys/dist/menu/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/about"
+  to = "/grouchys/dist/about/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/gallery"
+  to = "/grouchys/dist/gallery/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/visit"
+  to = "/grouchys/dist/visit/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/reserve"
+  to = "/grouchys/dist/reserve/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/grouchys/*"
+  to = "/grouchys/dist/:splat"
+  status = 200
+  force = true
+
 # Long cache for assets that rarely change. HTML stays fresh so edits go live immediately.
 [[headers]]
   for = "/images/*"

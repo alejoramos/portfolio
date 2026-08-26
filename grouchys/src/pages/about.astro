@@ -1,0 +1,318 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Frame from '@/components/Frame.astro';
+import FireBand from '@/components/sections/FireBand.astro';
+import { photo, brand, alt } from '@/data/images';
+import { site, hours, reserveHref } from '@/data/site';
+import { url } from '@/lib/url';
+
+const openDays = hours.filter((h) => h.service).length;
+---
+
+<BaseLayout
+  title="About"
+  description="Grouchy's Public House on Main Street in Greenville, Illinois — premium grilled dishes, handcrafted cocktails, whiskey, bourbon and craft beer in a warm, intimate setting."
+  path="/about"
+>
+  <!--
+    Opener: one statement, held in negative space, with the Main Street drawing
+    behind it. No eyebrow, no paragraph, no button — the page earns those later.
+  -->
+  <section class="opener" aria-labelledby="about-title">
+    <Image
+      src={brand.buildingCream}
+      alt=""
+      class="sketch opener__sketch"
+      data-parallax="sketch"
+      widths={[463]}
+      sizes="(max-width: 767px) 420px, 900px"
+      loading="eager"
+    />
+    <div class="shell opener__inner">
+      <h1 class="t-hero opener__title" id="about-title">
+        Rooted on Main Street.<br /><em>Made for good evenings.</em>
+      </h1>
+    </div>
+  </section>
+
+  <!-- The approved story copy, set as an editorial spread. -->
+  <section class="spread band-b" aria-labelledby="spread-title">
+    <div class="seam seam-top"></div>
+    <div class="shell spread__grid">
+      <div class="spread__text">
+        <p class="eyebrow" data-reveal>{site.address.locality}, {site.address.region}</p>
+        <h2 class="t-lead spread__lead" id="spread-title" data-reveal>
+          Modern dining. Old-fashioned soul.
+        </h2>
+        <p class="t-body spread__body" data-reveal>
+          In the heart of {site.address.locality}, {site.name} brings together premium grilled
+          dishes, handcrafted cocktails, whiskey, bourbon and craft beer in a warm, intimate setting.
+        </p>
+        <p class="t-body spread__body" data-reveal>
+          Come for dinner, stay for another round, and settle into a place made for date nights,
+          celebrations and good company.
+        </p>
+      </div>
+
+      <div class="spread__photos">
+        <Frame
+          src={photo.interiorWide}
+          alt={alt.interiorWide}
+          class="spread__photo spread__photo--wide"
+          widths={[640, 900, 1400]}
+          sizes="(max-width: 1023px) 92vw, 60vw"
+          mask
+        />
+        <Frame
+          src={photo.diningRoom}
+          alt={alt.diningRoom}
+          class="spread__photo spread__photo--tall"
+          widths={[420, 640, 900]}
+          sizes="(max-width: 1023px) 60vw, 34vw"
+          position="50% 45%"
+          mask
+        />
+      </div>
+    </div>
+  </section>
+
+  <FireBand />
+
+  <!-- What the house actually does, as three plain lines of fact. -->
+  <section class="facts band-a" aria-labelledby="facts-title">
+    <div class="shell">
+      <h2 class="sr-only" id="facts-title">The house</h2>
+      <dl class="facts__list">
+        <div class="facts__row" data-reveal>
+          <dt class="facts__term">From the grill</dt>
+          <dd class="facts__def">
+            Steaks, chops and burgers over charcoal and open flame — seasoned simply, cooked hard,
+            rested properly.
+          </dd>
+        </div>
+        <div class="facts__row" data-reveal>
+          <dt class="facts__term">Behind the bar</dt>
+          <dd class="facts__def">
+            Whiskey and bourbon chosen one bottle at a time, Jack Daniel's and curated flights,
+            craft beer on draft, and classic cocktails made the slow way.
+          </dd>
+        </div>
+        <div class="facts__row" data-reveal>
+          <dt class="facts__term">In the room</dt>
+          <dd class="facts__def">
+            Dark wood, deep booths and pendant light. Open {openDays} days a week for lunch and
+            dinner at {site.address.street}.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="facts__actions" data-reveal>
+        <a href={reserveHref} class="btn btn-primary" data-magnetic>Reserve a Table</a>
+        <a href={url("/menu")} class="btn btn-tertiary">See the menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- A single closing photograph, full-bleed, no caption. -->
+  <div class="closer" aria-hidden="true">
+    <Frame src={photo.bartender} alt="" widths={[900, 1400]} sizes="100vw" position="50% 38%" />
+    <span class="closer__veil"></span>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ---------- opener ----------------------------------------------------- */
+
+  .opener {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    min-height: 420px;
+    padding-top: calc(var(--nav-h) + 60px);
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 768px) {
+    .opener {
+      min-height: 620px;
+      padding-bottom: 120px;
+    }
+  }
+
+  .opener__sketch {
+    right: -80px;
+    bottom: -40px;
+    width: 420px;
+    opacity: 0.06;
+  }
+
+  @media (min-width: 768px) {
+    .opener__sketch {
+      right: -60px;
+      bottom: -140px;
+      width: 900px;
+      opacity: 0.05;
+    }
+  }
+
+  .opener__inner {
+    position: relative;
+  }
+
+  .opener__title {
+    max-width: 18ch;
+  }
+
+  /* ---------- spread ------------------------------------------------------ */
+
+  .spread {
+    position: relative;
+    padding-block: var(--section-pt) var(--section-pb);
+    overflow: hidden;
+  }
+
+  .spread__grid {
+    display: grid;
+    gap: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    .spread__grid {
+      grid-template-columns: minmax(0, 430px) 1fr;
+      gap: 90px;
+      /*
+        The approved copy here is short — three paragraphs against two
+        photographs. Aligned to the start it left ~590px of dead column under
+        the text, which read as an accident. Centred, the same emptiness sits
+        evenly above and below and reads as intentional negative space.
+      */
+      align-items: center;
+    }
+  }
+
+  .spread__lead {
+    margin-top: 18px;
+  }
+
+  .spread__body {
+    margin-top: 22px;
+    max-width: 46ch;
+  }
+
+  .spread__photos {
+    display: grid;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .spread__photos {
+      gap: 28px;
+    }
+  }
+
+  .spread__photo--wide {
+    height: 260px;
+  }
+
+  .spread__photo--tall {
+    height: 300px;
+  }
+
+  @media (min-width: 768px) {
+    .spread__photo--wide {
+      height: 400px;
+    }
+    /*
+      Held to the left edge, not the right. At 66% right-aligned the offcut
+      landed *between* the text and the photograph — a 259px hole trapped
+      inside the composition. Against the left edge the two images share a
+      spine and the offcut falls at the outer margin, where open space belongs.
+    */
+    .spread__photo--tall {
+      height: 420px;
+      width: 72%;
+      margin-right: auto;
+    }
+  }
+
+  /* ---------- facts -------------------------------------------------------- */
+
+  .facts {
+    padding-block: var(--section-pt) var(--section-pb);
+  }
+
+  .facts__list {
+    margin: 0;
+  }
+
+  .facts__row {
+    display: grid;
+    gap: 12px;
+    padding: 26px 0;
+    border-top: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .facts__row:last-of-type {
+    border-bottom: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  @media (min-width: 768px) {
+    .facts__row {
+      grid-template-columns: minmax(160px, 260px) 1fr;
+      gap: 60px;
+      padding: 34px 0;
+      align-items: baseline;
+    }
+  }
+
+  .facts__term {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+    line-height: 1.1;
+    color: var(--color-cream);
+  }
+
+  .facts__def {
+    margin: 0;
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--color-warm-grey);
+    max-width: 56ch;
+  }
+
+  .facts__actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-top: 44px;
+  }
+
+  /* ---------- closer ------------------------------------------------------- */
+
+  .closer {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .closer {
+      height: 420px;
+    }
+  }
+
+  .closer :global(.frame) {
+    position: absolute;
+    inset: 0;
+  }
+
+  .closer__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #070707 0%, rgb(7 7 7 / 0.42) 40%, #070707 100%);
+  }
+</style>

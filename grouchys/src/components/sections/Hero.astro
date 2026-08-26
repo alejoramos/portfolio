@@ -1,0 +1,310 @@
+---
+import { Image } from 'astro:assets';
+import Frame from '@/components/Frame.astro';
+import { photo, brand, alt } from '@/data/images';
+import { site, heroTags, reserveHref } from '@/data/site';
+import { url } from '@/lib/url';
+
+/**
+ * The hero, exactly as the handoff draws it: photograph on the right, copy on
+ * the left over a horizontal scrim, the Main Street drawing behind at 5.5%.
+ *
+ * All of it is plain HTML. There is no whiskey glass here — that lives in the
+ * reservation section — and nothing depends on JavaScript to become visible.
+ */
+---
+
+<section class="hero grain" data-hero aria-labelledby="hero-title">
+  <div class="hero__photo" data-hero-photo>
+    <Frame
+      src={photo.steakSlate}
+      alt={alt.steakSlate}
+      priority
+      widths={[560, 760, 1120]}
+      sizes="(max-width: 767px) 100vw, 40vw"
+      position="52% 46%"
+      mask
+    />
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <Image
+    src={brand.buildingCream}
+    alt=""
+    class="sketch hero__sketch"
+    data-parallax="sketch"
+    widths={[463]}
+    sizes="(max-width: 767px) 380px, 720px"
+    loading="eager"
+  />
+
+  <div class="shell hero__inner">
+    <div class="hero__copy" data-hero-copy>
+      <p class="eyebrow" data-hero-line>
+        {site.address.locality}, {site.address.region} · Est. {site.established}
+      </p>
+
+      <h1 class="t-hero hero__title" id="hero-title">
+        <span class="hero__line" data-hero-line>Modern</span>
+        <span class="hero__line" data-hero-line>American dining.</span>
+        <span class="hero__line" data-hero-line><em>Old-fashioned soul.</em></span>
+      </h1>
+
+      <p class="t-body hero__lead" data-hero-line>
+        Premium cuts, handcrafted cocktails and timeless hospitality in the heart of {
+          site.address.locality
+        }.
+      </p>
+
+      <div class="hero__actions" data-hero-line>
+        <a href={url("/menu")} class="btn btn-primary hero__btn" data-magnetic>View Our Menu</a>
+        <a href={reserveHref} class="btn btn-tertiary hero__btn-text">Reserve a Table</a>
+      </div>
+    </div>
+
+    <ul class="hero__tags" data-hero-tags>
+      {
+        heroTags.map((tag, i) => (
+          <li class="hero__tag">
+            {i > 0 && <span class="hero__dot" aria-hidden="true" />}
+            <span class="t-mono">{tag}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    /* Never taller than the design's 940px, never shorter than its content. */
+    min-height: 720px;
+    height: 100svh;
+    max-height: 940px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1280px) {
+    .hero {
+      min-height: 780px;
+      height: min(940px, max(780px, 100vh));
+      max-height: 940px;
+    }
+  }
+
+  /* ---------- photograph ------------------------------------------------ */
+
+  .hero__photo {
+    position: absolute;
+    inset: 42% 0 0 0;
+  }
+
+  .hero__photo :global(.frame) {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (min-width: 768px) {
+    .hero__photo {
+      inset: 0 0 0 58%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    /* Aligns the photo edge to 64% of the 1440 grid, then bleeds off-screen. */
+    .hero__photo {
+      inset: 0 0 0 min(64%, calc(50% + 201.6px));
+    }
+  }
+
+  /* ---------- scrim ------------------------------------------------------ */
+
+  .hero__scrim {
+    position: absolute;
+    inset: 38% 0 0 0;
+    background: linear-gradient(
+      180deg,
+      #070707 0%,
+      rgb(7 7 7 / 0.75) 16%,
+      rgb(7 7 7 / 0.15) 46%,
+      rgb(7 7 7 / 0.55) 82%,
+      #070707 100%
+    );
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero__scrim {
+      inset: 0 0 0 30%;
+      background: linear-gradient(
+        90deg,
+        #070707 0%,
+        rgb(7 7 7 / 0.97) 38%,
+        rgb(7 7 7 / 0.55) 70%,
+        rgb(7 7 7 / 0.12) 100%
+      );
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero__scrim {
+      inset: 0 0 0 max(36%, calc(50% - 201.6px));
+    }
+  }
+
+  /* ---------- Main Street drawing --------------------------------------- */
+
+  .hero__sketch {
+    right: -70px;
+    top: 110px;
+    width: 380px;
+    opacity: 0.06;
+  }
+
+  @media (min-width: 768px) {
+    .hero__sketch {
+      right: auto;
+      top: auto;
+      left: -70px;
+      bottom: -90px;
+      width: 720px;
+      opacity: 0.055;
+    }
+  }
+
+  /* ---------- copy ------------------------------------------------------- */
+
+  .hero__inner {
+    position: relative;
+    z-index: 10;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: calc(var(--nav-h) + 28px);
+    padding-bottom: 34px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__inner {
+      justify-content: center;
+      padding-bottom: 52px;
+    }
+  }
+
+  .hero__copy {
+    max-width: 900px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__copy {
+      /* nudges the block above centre, matching the 250px top in the design */
+      margin-bottom: auto;
+      margin-top: auto;
+      padding-bottom: 40px;
+    }
+  }
+
+  .hero__title {
+    margin-top: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__title {
+      margin-top: 34px;
+    }
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__lead {
+    margin-top: 20px;
+    font-size: var(--fs-body);
+  }
+
+  @media (min-width: 768px) {
+    .hero__lead {
+      margin-top: 38px;
+      font-size: clamp(1.0625rem, 0.98rem + 0.18vw, 1.125rem);
+      line-height: 1.7;
+    }
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__actions {
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      margin-top: 46px;
+    }
+  }
+
+  .hero__btn {
+    --btn-py: 18px;
+    width: 100%;
+  }
+
+  .hero__btn-text {
+    align-self: center;
+    padding-block: 14px 6px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__btn {
+      --btn-py: 19px;
+      --btn-px: 36px;
+      width: auto;
+    }
+    .hero__btn-text {
+      align-self: auto;
+      padding-block: 0 6px;
+    }
+  }
+
+  /* ---------- bottom tag row -------------------------------------------- */
+
+  .hero__tags {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: var(--color-warm-grey);
+  }
+
+  @media (min-width: 768px) {
+    .hero__tags {
+      display: flex;
+    }
+  }
+
+  .hero__tag {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .hero__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-gold-deep);
+    flex: 0 0 auto;
+  }
+</style>

@@ -1,0 +1,12 @@
+node_modules/
+.astro/
+*.log
+npm-debug.log*
+.env
+.env.production
+.DS_Store
+Thumbs.db
+
+# dist is committed on purpose. The portfolio is hosted as a plain static
+# folder with no build step on deploy, so the built site has to be in the repo
+# for it to exist on the web. Same arrangement as store/.

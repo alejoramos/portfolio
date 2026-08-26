@@ -1,0 +1,127 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { site, restaurantSchema } from '@/data/site';
+import { url } from '@/lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Marks the active nav item. */
+  path: string;
+  /** Set false on pages where the header should not sit over a dark hero. */
+  overlayHeader?: boolean;
+  /** Emits the Restaurant JSON-LD. Home and Visit only — one per site is enough. */
+  schema?: boolean;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  overlayHeader = false,
+  schema = false,
+  bodyClass = '',
+} = Astro.props;
+
+// Trailing slashes stripped so the canonical matches the sitemap and the URL
+// Netlify actually serves ("/menu", not "/menu/").
+const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(canonicalPath, Astro.site ?? site.url).href;
+const fullTitle = path === '/' ? title : `${title} · ${site.name}`;
+const ogImage = new URL('/og-image.jpg', Astro.site ?? site.url).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {/* TODO — replace with a real share image once photography is delivered. */}
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#070707" />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={url("/apple-touch-icon.png")} />
+    <link rel="manifest" href={url("/site.webmanifest")} />
+
+    <!--
+      This is a proposal for a real restaurant that has not commissioned it,
+      and the prices and photography are still placeholders. Keeping it out of
+      search means nobody looking for Grouchy's can land on it and mistake it
+      for their official site.
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Archivo:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+
+    {
+      schema && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(restaurantSchema(canonical))}
+        />
+      )
+    }
+
+    <!--
+      Boot script. Runs before paint and does three small things:
+        1. flags that JavaScript is alive, so JS-only affordances can appear;
+        2. records the reduced-motion preference once, for CSS and for GSAP;
+        3. measures the scrollbar, so locking the body does not shift the page.
+      It never hides content. Every element on the page is visible without it.
+    -->
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        try {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            root.setAttribute('data-reduced-motion', '');
+          }
+          root.style.setProperty(
+            '--scrollbar-w',
+            window.innerWidth - root.clientWidth + 'px'
+          );
+        } catch (e) {
+          /* older browser — the site works without any of this */
+        }
+      })();
+    </script>
+  </head>
+
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <Header path={path} overlay={overlayHeader} />
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      import '@/scripts/motion';
+    </script>
+  </body>
+</html>

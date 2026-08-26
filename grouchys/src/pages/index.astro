@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import IntroCurtain from '@/components/IntroCurtain.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Story from '@/components/sections/Story.astro';
+import Dishes from '@/components/sections/Dishes.astro';
+import FireBand from '@/components/sections/FireBand.astro';
+import MenuBoard from '@/components/sections/MenuBoard.astro';
+import Bar from '@/components/sections/Bar.astro';
+import Gallery from '@/components/sections/Gallery.astro';
+import Reservation from '@/components/sections/Reservation.astro';
+import Visit from '@/components/sections/Visit.astro';
+import Lightbox from '@/components/Lightbox.astro';
+import { site } from '@/data/site';
+---
+
+<BaseLayout
+  title={`${site.name} — Steakhouse, Grill & Whiskey Bar in Greenville, Illinois`}
+  description="Premium cuts, handcrafted cocktails, whiskey and craft beer on Main Street in Greenville, Illinois. Modern American dining with old-fashioned soul."
+  path="/"
+  overlayHeader
+  schema
+>
+  <IntroCurtain />
+
+  <Hero />
+  <Story />
+  <Dishes />
+  <FireBand />
+  <MenuBoard />
+  <Bar />
+  <Gallery />
+  <Reservation />
+  <Visit />
+
+  <Lightbox />
+</BaseLayout>

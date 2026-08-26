@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { brand } from '@/data/images';
+import { site, nav, reserveHref } from '@/data/site';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page isn't here. Find the menu, the room and the way to Grouchy's Public House in Greenville, Illinois."
+  path="/404"
+>
+  <section class="lost" aria-labelledby="lost-title">
+    <Image
+      src={brand.buildingCream}
+      alt=""
+      class="sketch lost__sketch"
+      widths={[463]}
+      sizes="(max-width: 767px) 340px, 640px"
+      loading="eager"
+    />
+
+    <div class="shell lost__inner">
+      <p class="lost__code t-mono">404</p>
+      <h1 class="t-h2 lost__title" id="lost-title">
+        That page isn't<br />on the board.
+      </h1>
+
+      <ul class="lost__links">
+        {
+          nav.map((item) => (
+            <li>
+              <a class="link-underline" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a class="link-underline" href={reserveHref}>
+            Reserve a Table
+          </a>
+        </li>
+      </ul>
+
+      <p class="lost__phone t-small">
+        Or call <a class="link" href={site.phone.href}>{site.phone.display}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lost {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    min-height: 70svh;
+    padding-top: calc(var(--nav-h) + 60px);
+    padding-bottom: 90px;
+  }
+
+  .lost__sketch {
+    right: -60px;
+    bottom: -40px;
+    width: 340px;
+    opacity: 0.06;
+  }
+
+  @media (min-width: 768px) {
+    .lost__sketch {
+      right: 20px;
+      bottom: -100px;
+      width: 640px;
+    }
+  }
+
+  .lost__inner {
+    position: relative;
+  }
+
+  .lost__code {
+    color: var(--color-gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+  }
+
+  .lost__title {
+    max-width: 16ch;
+  }
+
+  .lost__links {
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 34px;
+  }
+
+  .lost__phone {
+    margin-top: 34px;
+  }
+</style>

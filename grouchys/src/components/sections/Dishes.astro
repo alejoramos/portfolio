@@ -1,0 +1,389 @@
+---
+import Frame from '@/components/Frame.astro';
+import { dishes } from '@/data/dishes';
+
+/**
+ * Six things worth driving for.
+ *
+ * Desktop: the list pins and the plate changes on scroll. Rows are real
+ * buttons, so the section is fully usable by keyboard and by click even when
+ * the pinned scroll never runs.
+ * Mobile: the same six dishes as a swipeable rail, per the 430px frame.
+ */
+---
+
+<section class="section band-a dishes" data-dishes aria-labelledby="dishes-title">
+  <div class="shell">
+    <header class="dishes__head">
+      <p class="eyebrow" data-reveal>From the grill</p>
+      <h2 class="t-h2 dishes__title" id="dishes-title" data-reveal>
+        Six things worth<br />driving for.
+      </h2>
+    </header>
+  </div>
+
+  <!-- ---------- desktop: pinned list + plate ---------- -->
+  <div class="shell dishes__stage" data-dishes-stage>
+    <ol class="dishes__list" data-dishes-list>
+      {
+        dishes.map((dish, i) => (
+          <li class="dishes__row">
+            <button
+              type="button"
+              class:list={['dishes__btn', i === 0 && 'is-active']}
+              data-dish-btn
+              data-index={i}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+              aria-describedby={`dish-desc-${i}`}
+            >
+              <span class="dishes__index" aria-hidden="true">
+                {dish.n}
+              </span>
+              <span class="dishes__body">
+                <span class="dishes__name">{dish.name}</span>
+                <span class="dishes__desc" id={`dish-desc-${i}`}>
+                  {dish.desc}
+                </span>
+              </span>
+              <span class="dishes__rule" aria-hidden="true" />
+            </button>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="dishes__plate">
+      <div class="dishes__plate-frame" aria-hidden="true"></div>
+
+      <div class="dishes__plate-stack">
+        {
+          dishes.map((dish, i) => (
+            <div
+              class:list={['dishes__slide', i === 0 && 'is-active']}
+              data-dish-slide
+              data-index={i}
+              aria-hidden={i === 0 ? 'false' : 'true'}
+            >
+              <Frame
+                src={dish.image}
+                alt={dish.alt}
+                brief={dish.brief}
+                widths={[560, 760, 1120]}
+                sizes="(max-width: 1279px) 90vw, 720px"
+                position="50% 50%"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="dishes__caption" data-dish-caption aria-live="polite">
+        <p class="dishes__caption-tag">{dishes[0]!.tag}</p>
+        <p class="dishes__caption-name">{dishes[0]!.name}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- mobile: swipe rail ---------- -->
+  <div class="dishes__rail-wrap">
+    <ul class="rail dishes__rail" data-dishes-rail>
+      {
+        dishes.map((dish) => (
+          <li class="dishes__card">
+            <Frame
+              src={dish.image}
+              alt={dish.alt}
+              brief={dish.brief}
+              class="dishes__card-photo"
+              widths={[300, 520, 640]}
+              sizes="260px"
+            />
+            <p class="dishes__card-index">{dish.n}</p>
+            <h3 class="dishes__card-name">{dish.name}</h3>
+            <p class="dishes__card-desc">{dish.desc}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="dishes__progress" aria-hidden="true">
+      {dishes.map(() => <span class="dishes__tick" data-dish-tick />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .dishes__head {
+    max-width: 900px;
+  }
+
+  .dishes__title {
+    margin-top: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .dishes__title {
+      margin-top: 26px;
+    }
+  }
+
+  /* ---------- stage ------------------------------------------------------ */
+
+  .dishes__stage {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .dishes__stage {
+      display: grid;
+      grid-template-columns: 1fr minmax(420px, 720px);
+      gap: 60px;
+      align-items: center;
+      margin-top: 66px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .dishes__stage {
+      gap: 80px;
+    }
+  }
+
+  .dishes__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .dishes__row {
+    border-top: 1px solid rgb(180 134 58 / 0.16);
+  }
+
+  .dishes__btn {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    width: 100%;
+    text-align: left;
+    padding: 22px 0;
+    opacity: 0.55;
+    transition: opacity 320ms var(--ease-reveal);
+  }
+
+  .dishes__btn:hover {
+    opacity: 1;
+  }
+
+  .dishes__btn.is-active {
+    opacity: 1;
+  }
+
+  .dishes__index {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-gold-deep);
+    transition: color 320ms var(--ease-reveal);
+    flex: 0 0 auto;
+  }
+
+  .dishes__btn.is-active .dishes__index {
+    color: var(--color-gold);
+  }
+
+  .dishes__body {
+    flex: 1;
+    display: block;
+  }
+
+  .dishes__name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--fs-dish);
+    line-height: 1.1;
+    color: var(--color-warm-grey);
+    transition: color 320ms var(--ease-reveal);
+  }
+
+  .dishes__btn.is-active .dishes__name {
+    color: var(--color-cream);
+  }
+
+  /* The description belongs to the active row only — it is hidden from layout
+     but never from assistive tech, which reads it via aria-describedby. */
+  .dishes__desc {
+    display: block;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-warm-grey);
+    max-width: 400px;
+    margin-top: 10px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 320ms var(--ease-reveal),
+      max-height 420ms var(--ease-reveal),
+      margin-top 420ms var(--ease-reveal);
+  }
+
+  .dishes__btn.is-active .dishes__desc {
+    opacity: 1;
+    max-height: 6em;
+  }
+
+  .dishes__rule {
+    width: 44px;
+    height: 1px;
+    background: var(--color-gold);
+    flex: 0 0 auto;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 420ms var(--ease-reveal);
+  }
+
+  .dishes__btn.is-active .dishes__rule {
+    transform: scaleX(1);
+  }
+
+  /* ---------- plate ------------------------------------------------------ */
+
+  .dishes__plate {
+    position: relative;
+  }
+
+  .dishes__plate-frame {
+    position: absolute;
+    left: -26px;
+    top: -26px;
+    right: 26px;
+    bottom: 26px;
+    border: 1px solid rgb(180 134 58 / 0.22);
+    pointer-events: none;
+  }
+
+  .dishes__plate-stack {
+    position: relative;
+    height: clamp(460px, 46vw, 660px);
+    background: var(--color-black-4);
+    overflow: hidden;
+  }
+
+  .dishes__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 500ms var(--ease-reveal);
+  }
+
+  .dishes__slide.is-active {
+    opacity: 1;
+  }
+
+  .dishes__slide :global(.frame) {
+    position: absolute;
+    inset: 0;
+  }
+
+  .dishes__caption {
+    position: absolute;
+    left: -26px;
+    bottom: -26px;
+    background: var(--color-black);
+    border: 1px solid rgb(180 134 58 / 0.22);
+    padding: 20px 26px;
+    max-width: 420px;
+  }
+
+  .dishes__caption-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .dishes__caption-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--color-cream);
+    margin-top: 10px;
+  }
+
+  /* ---------- rail ------------------------------------------------------- */
+
+  .dishes__rail-wrap {
+    margin-top: 28px;
+  }
+
+  @media (min-width: 1024px) {
+    .dishes__rail-wrap {
+      display: none;
+    }
+  }
+
+  .dishes__rail {
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--gutter);
+    gap: 14px;
+    /* the next card peeks in, as in the mobile frame */
+    scroll-padding-left: var(--gutter);
+  }
+
+  .dishes__card {
+    flex: 0 0 260px;
+    min-width: 0;
+  }
+
+  .dishes__card-photo {
+    height: 330px;
+  }
+
+  .dishes__card-index {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-top: 16px;
+  }
+
+  .dishes__card-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--color-cream);
+    margin-top: 8px;
+  }
+
+  .dishes__card-desc {
+    font-size: var(--fs-body-sm);
+    line-height: 1.65;
+    color: var(--color-muted);
+    margin-top: 10px;
+  }
+
+  .dishes__progress {
+    display: flex;
+    gap: 6px;
+    padding: 26px var(--gutter) 0;
+  }
+
+  .dishes__tick {
+    width: 26px;
+    height: 1px;
+    background: rgb(180 134 58 / 0.22);
+    transition: background-color 300ms var(--ease-reveal);
+  }
+
+  .dishes__tick[data-on] {
+    background: var(--color-gold);
+  }
+</style>
+
+<script>
+  import '@/scripts/dishes';
+</script>
