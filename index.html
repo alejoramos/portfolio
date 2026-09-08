@@ -72,9 +72,6 @@
     <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/>
     </symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
-    </symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.75-1.95C21.5 8.75 23 11 23 14.4V21h-4v-5.9c0-1.4-.03-3.2-2-3.2s-2.3 1.53-2.3 3.1V21h-4V9Z"/>
     </symbol>
@@ -100,8 +97,8 @@
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
+        <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#client">Work</a>
         <a href="#toolkit">Toolkit</a>
         <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
@@ -130,9 +127,8 @@
 
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav class="mobile-menu-inner" aria-label="Mobile">
+      <a href="#work">Selected work</a>
       <a href="#about">About</a>
-      <a href="#client">Client work</a>
-      <a href="#work">Projects</a>
       <a href="#builds">Other builds</a>
       <a href="#toolkit">Toolkit</a>
       <a href="#certs">Certifications</a>
@@ -153,18 +149,16 @@
 
         <div class="hero-copy">
           <p class="lede">
-            I'm Eddy Ramos, a front-end developer with a Digital Media degree from Greenville
-            University. I create responsive websites and interactive experiences with HTML,
-            CSS, and JavaScript.
+            I'm Eddy Ramos, a front-end developer. I build responsive sites and front-end apps,
+            from plain HTML and CSS through to React and TypeScript.
           </p>
 
           <p class="lede-secondary">
-            I'm ready to contribute, learn from experienced developers, and keep growing as part
-            of a team.
+            Below are four projects, one of them for a real client, and how each is put together.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary btn-down" href="#client">
+            <a class="btn btn-primary btn-down" href="#work">
               See the work
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
             </a>
@@ -179,35 +173,28 @@
               <a href="#project-rollinglawns">
                 <span class="idx">01</span>
                 <span class="name">Rolling Lawns Farm</span>
-                <span class="kind">Client site</span>
-              </a>
-            </li>
-            <li>
-              <a href="#project-grouchys">
-                <span class="idx">02</span>
-                <span class="name">Grouchy's Public House</span>
-                <span class="kind">Proposal</span>
+                <span class="kind">Client work</span>
               </a>
             </li>
             <li>
               <a href="#project-kineta">
-                <span class="idx">03</span>
+                <span class="idx">02</span>
                 <span class="name">KINETA</span>
                 <span class="kind">React storefront</span>
               </a>
             </li>
             <li>
-              <a href="#project-momentum">
-                <span class="idx">04</span>
-                <span class="name">Momentum Athletics</span>
-                <span class="kind">Multi-page site</span>
+              <a href="#project-grouchys">
+                <span class="idx">03</span>
+                <span class="name">Grouchy's Public House</span>
+                <span class="kind">Proposal</span>
               </a>
             </li>
             <li>
-              <a href="#project-elite">
-                <span class="idx">05</span>
-                <span class="name">Leland Barbers</span>
-                <span class="kind">Responsive site</span>
+              <a href="#project-tasks">
+                <span class="idx">04</span>
+                <span class="name">Task Dashboard</span>
+                <span class="kind">JavaScript app</span>
               </a>
             </li>
           </ol>
@@ -215,29 +202,370 @@
       </div>
     </section>
 
+
+
+
+
+
+
+
+
+    <!-- ============================== SELECTED WORK ============================== -->
+    <section class="section section-work" id="work">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="section-label"><span class="section-number">01</span> Selected work</p>
+          <h2 class="section-title">Four projects, and how they are put together.</h2>
+        </header>
+      </div>
+
+      <article class="project project-split" id="project-rollinglawns">
+        <div class="shell project-split-grid">
+          <div class="project-col" data-reveal>
+            <div class="project-head">
+              <p class="project-index">01</p>
+              <div>
+                <p class="project-kind">Client work &middot; Built on Wix</p>
+                <h3 class="project-title">Rolling Lawns Farm</h3>
+              </div>
+            </div>
+
+            <div class="project-summary">
+              <p>
+                A dairy farm in Greenville, Illinois that supplies milk and ice cream to markets and
+                restaurants. The farm wanted the tours it runs at the barn and the Milk House to be
+                easier to find, and the previous site was out of date and did not work on phones.
+                The rebuild reorganised the page around the products and the tours, replaced the
+                content, and made the layout responsive.
+              </p>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://www.rollinglawns.farm/" target="_blank" rel="noopener noreferrer">
+                  Visit the site
+                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Type</dt><dd>Client work, live site</dd></div>
+              <div><dt>Built with</dt><dd>Wix, plus custom HTML and CSS in one section</dd></div>
+              <div><dt>Scope</dt><dd>Redesign, responsive layout, content update</dd></div>
+            </dl>
+
+            <details class="notes">
+              <summary><span>Build notes</span></summary>
+              <div class="notes-body">
+                <div>
+                  <h4>What the site covers</h4>
+                  <ul>
+                    <li>The product range, the farm story, the tours, and a store locator.</li>
+                    <li>Parallax and hover treatments on the photography.</li>
+                    <li>A layout reworked section by section so it reads on a phone.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Custom code</h4>
+                  <p>
+                    One section uses four cards that tilt in 3D on hover. That is not something the
+                    Wix editor produces, so those cards are hand written HTML and CSS embedded into
+                    the page. Everything else on the site is built with Wix components.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <figure class="frame" data-reveal>
+            <figcaption class="frame-bar">
+              <span class="frame-path">rollinglawns.farm</span>
+            </figcaption>
+            <img src="images/rollinglawns.jpg" alt="Rolling Lawns Farm homepage: the heading From Our Farm To Your Table above a photo of their milk bottles, cream and ice cream laid out on a warm background." width="1600" height="1006" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
+
+      <article class="project project-split project-flip" id="project-kineta">
+        <div class="shell project-split-grid">
+          <div class="project-col" data-reveal>
+            <div class="project-head">
+              <p class="project-index">02</p>
+              <div>
+                <p class="project-kind">Personal project &middot; Concept storefront</p>
+                <h3 class="project-title">KINETA</h3>
+              </div>
+            </div>
+
+            <div class="project-summary">
+              <p>
+                A storefront for a fictional sportswear brand, built to work through a full shopping
+                flow: a catalogue you can filter and sort, product pages with size selection that
+                marks what is out of stock, a cart and wishlist that survive a reload, and a
+                simulated checkout. The
+                catalogue is local data, there is no backend, and no payment is processed.
+              </p>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="store/" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/store/src" target="_blank" rel="noopener noreferrer">
+                  Source
+                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Type</dt><dd>Personal project, concept store</dd></div>
+              <div><dt>Built with</dt><dd>React, TypeScript, Vite, Tailwind, Zustand</dd></div>
+              <div><dt>Data</dt><dd>28 products from a local file, no backend</dd></div>
+            </dl>
+
+            <details class="notes">
+              <summary><span>Build notes</span></summary>
+              <div class="notes-body">
+                <div>
+                  <h4>What it does</h4>
+                  <ul>
+                    <li>A 28 product catalogue, filtered by category and size, sorted by price, newest or featured.</li>
+                    <li>Product pages with size selection, with sizes that are out of stock shown as unavailable.</li>
+                    <li>A cart and a wishlist held in localStorage, so both are still there after a reload.</li>
+                    <li>A checkout in three steps, Shipping, Payment and Review, then a confirmation screen.</li>
+                  </ul>
+                  <p>
+                    The checkout validates its fields but takes no payment and sends nothing
+                    anywhere. It asks for made up details on purpose.
+                  </p>
+                </div>
+                <div>
+                  <h4>How it is built</h4>
+                  <p>
+                    Every page reads products through one repository module, so the catalogue has a
+                    single source and swapping it for an API would be a change to that file rather
+                    than to the pages. Cart and wishlist state sits in Zustand and is written to
+                    localStorage, which is what makes it survive a reload.
+                  </p>
+                </div>
+                <div>
+                  <h4>Motion and 3D</h4>
+                  <p>
+                    Two animation libraries with a line between them: GSAP with ScrollTrigger drives
+                    anything tied to scroll position, Framer Motion drives anything tied to state,
+                    like the cart drawer and the checkout steps. Neither is applied to the same
+                    element as the other. One Three.js scene renders a shoe and is code split, so it
+                    only downloads on the pages that show it.
+                  </p>
+                  <p>
+                    On the home page the brand name scales up until it fills the screen. The scale
+                    is applied to the text box rather than to its full width wrapper, which keeps
+                    the layer the browser has to hold within a size it will rasterise. Measured in
+                    Chrome that is the difference between roughly 5,000 pixels across and 34,000.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <figure class="frame" data-reveal>
+            <figcaption class="frame-bar">
+              <span class="frame-path">kineta / src / pages / Home.tsx</span>
+            </figcaption>
+            <img src="images/store.jpg" alt="KINETA storefront: the brand name set very large in white across a cobalt field, with an athlete in orange kit standing in front of it." width="1600" height="1006" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
+
+      <article class="project project-split" id="project-grouchys">
+        <div class="shell project-split-grid">
+          <div class="project-col" data-reveal>
+            <div class="project-head">
+              <p class="project-index">03</p>
+              <div>
+                <p class="project-kind">Proposal &middot; Restaurant site</p>
+                <h3 class="project-title">Grouchy's Public House</h3>
+              </div>
+            </div>
+
+            <div class="project-summary">
+              <p>
+                A six page site for a steakhouse and bar on Main Street in Greenville, built as a
+                proposal rather than commissioned work. It covers the menu, the story, a gallery,
+                visiting details and a table booking flow. The prices and the photography are
+                placeholders until the restaurant supplies its own.
+              </p>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="grouchys/" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/grouchys/src" target="_blank" rel="noopener noreferrer">
+                  Source
+                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Type</dt><dd>Proposal, not commissioned</dd></div>
+              <div><dt>Built with</dt><dd>Astro, TypeScript, Tailwind, GSAP</dd></div>
+              <div><dt>Status</dt><dd>Demo only, prices and photos pending</dd></div>
+            </dl>
+
+            <details class="notes">
+              <summary><span>Build notes</span></summary>
+              <div class="notes-body">
+                <div>
+                  <h4>What it does</h4>
+                  <ul>
+                    <li>Six pages: home, menu, about, gallery, visit and a booking flow.</li>
+                    <li>A four step table booking, from picking a table through to confirmation. Nothing is sent anywhere.</li>
+                    <li>A whiskey glass rendered in 3D beside the booking section.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>How it is built</h4>
+                  <p>
+                    Astro suits a site that is mostly photography and text that does not change, because
+                    it ships HTML with no framework attached. GSAP and Three.js are kept out of the
+                    initial download and load only on the page that uses them, and the 3D glass only
+                    once it is scrolled near.
+                  </p>
+                  <p>
+                    Nothing starts hidden in the markup. Reveals animate from a start position to
+                    where the element already sits, so if the animation library does not load the
+                    page still reads normally.
+                  </p>
+                </div>
+                <div>
+                  <h4>The 3D glass, and when it is skipped</h4>
+                  <p>
+                    What ships in the HTML is a glass drawn in CSS. The WebGL version loads over it
+                    only when the screen is wide, the browser reports WebGL support, and reduced
+                    motion is not requested. If any of those is false the CSS glass is what stays on
+                    screen, so the section does not depend on WebGL to look finished.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <figure class="frame" data-reveal>
+            <figcaption class="frame-bar">
+              <span class="frame-path">grouchys / index.astro</span>
+            </figcaption>
+            <img src="images/grouchys.jpg" alt="Grouchy's Public House homepage: the heading Modern American dining, Old-fashioned soul in cream and gold beside a dark photo of a steak and a glass of whiskey." width="1600" height="1006" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
+
+      <article class="project project-split project-flip" id="project-tasks">
+        <div class="shell project-split-grid">
+          <div class="project-col" data-reveal>
+            <div class="project-head">
+              <p class="project-index">04</p>
+              <div>
+                <p class="project-kind">Personal project &middot; JavaScript app</p>
+                <h3 class="project-title">Task Dashboard</h3>
+              </div>
+            </div>
+
+            <div class="project-summary">
+              <p>
+                A task manager that keeps its list in the browser. Each task carries an owner, a due
+                date, a priority, a category and notes, and the whole list can be searched, filtered
+                and sorted. Built with plain JavaScript, no framework and no build step.
+              </p>
+
+              <div class="project-links">
+                <a class="btn btn-primary" href="to-do list/index.html" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/to-do%20list" target="_blank" rel="noopener noreferrer">
+                  Source
+                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+
+            <dl class="spec">
+              <div><dt>Type</dt><dd>Personal project</dd></div>
+              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript</dd></div>
+              <div><dt>Storage</dt><dd>localStorage, no backend</dd></div>
+            </dl>
+
+            <details class="notes">
+              <summary><span>Build notes</span></summary>
+              <div class="notes-body">
+                <div>
+                  <h4>What it does</h4>
+                  <ul>
+                    <li>Search that covers the task, the owner, the category and the notes at once.</li>
+                    <li>Filter by status and priority, sort by date, priority or name.</li>
+                    <li>Counters and a progress bar that follow the list as it changes.</li>
+                    <li>A button that opens a task in Google Calendar or Outlook as a prefilled event.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>How it is built</h4>
+                  <p>
+                    The tasks live in one array and the list on screen is drawn from it each time
+                    something changes. Search, filter and sort are three separate functions that run
+                    over that array in turn, so a new filter can be added without touching the other
+                    two.
+                  </p>
+                </div>
+                <div>
+                  <h4>Working out overdue</h4>
+                  <p>
+                    Overdue is not a value stored on the task. It is worked out from the due date
+                    every time the list is drawn, which means a task becomes overdue on its own once
+                    the date passes, without anything having to run to update it.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <figure class="frame" data-reveal>
+            <figcaption class="frame-bar">
+              <span class="frame-path">to-do list / index.html</span>
+            </figcaption>
+            <img src="images/to-do-list.jpg" alt="Task Dashboard showing a list of tasks with owners, due dates and priority tags, above a progress bar." width="1400" height="1684" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
+    </section>
+
     <!-- ============================== ABOUT ============================== -->
     <section class="section section-about" id="about">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">01</span> About</p>
+          <p class="section-label"><span class="section-number">02</span> About</p>
           <h2 class="section-title">I care about how a website looks, feels, and works.</h2>
         </header>
 
         <div class="about-grid" data-reveal>
           <div class="about-body">
             <p>
-              I graduated from Greenville University in May 2026 with a degree in Digital Media and a
-              minor in Business. During college, I worked with design, media, communication, and web
-              development, but front-end development became the area I enjoyed the most.
+              My degree covered design, media and communication alongside web development, and
+              front-end is the part I stayed with. What I enjoy is the build itself: the layout, the
+              styling, the interactions, and getting it to hold together across screen sizes.
             </p>
             <p>
-              What I like most is seeing an idea come together on the screen. I enjoy working on the
-              layout, styling the interface, adding interactions, and making sure everything works
-              well across different screen sizes.
-            </p>
-            <p>
-              Since graduating, I've continued improving my JavaScript skills and creating projects
-              that push me to try new things and become a better developer.
+              Most of what I know comes from building the projects above and reading how other
+              people solve the same problems. I work in plain HTML, CSS and JavaScript, and in React
+              with TypeScript.
             </p>
           </div>
 
@@ -267,518 +595,43 @@
       </div>
     </section>
 
-    <!-- ============================== CLIENT WORK ============================== -->
-    <section class="section section-client" id="client">
-      <div class="shell">
-        <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">02</span> Client work</p>
-          <h2 class="section-title">Sites I built for local businesses.</h2>
-        </header>
-      </div>
-
-      <article class="project project-split" id="project-rollinglawns">
-        <div class="shell project-split-grid">
-          <div class="project-col" data-reveal>
-            <div class="project-head">
-              <p class="project-index">01</p>
-              <div>
-                <p class="project-kind">Client site, built on Wix</p>
-                <h3 class="project-title">Rolling Lawns Farm</h3>
-              </div>
-            </div>
-
-            <div class="project-summary">
-              <p>
-                A dairy farm in Greenville, Illinois that sells milk and ice cream to markets and
-                restaurants. Their old site was out of date and hard to follow, and they wanted
-                something modern that would help them sell the tours they run at the farm and at
-                the Milk House.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="https://www.rollinglawns.farm/" target="_blank" rel="noopener noreferrer">
-                  Visit the site
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Redesigned and rebuilt their site</dd></div>
-              <div><dt>Built with</dt><dd>Wix, plus my own HTML and CSS for one section</dd></div>
-              <div><dt>Focus</dt><dd>Making the tours easy to find and book</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What they needed</h4>
-                  <p>
-                    The site they had was static and had almost no colour, and the information on it
-                    was old. What they wanted was a page that looked modern and that pushed people
-                    towards the tours, because that is what they are trying to sell.
-                  </p>
-                </div>
-                <div>
-                  <h4>What I did</h4>
-                  <p>
-                    I rebuilt the layout around the products and the tours, so the tours are not
-                    buried at the bottom any more. I added a parallax effect and hover effects on
-                    the photos, so the page feels alive instead of flat.
-                  </p>
-                  <p>
-                    The old site also did not work on phones. I went through it section by section
-                    and changed the layout until it did.
-                  </p>
-                </div>
-                <div>
-                  <h4>The hardest part</h4>
-                  <p>
-                    One section needed four cards that tilt in 3D when you put the mouse on them.
-                    Wix does not have that, and I could not find a way to do it with their editor.
-                  </p>
-                  <p>
-                    So I wrote those four cards myself in HTML and CSS, with the 3D movement on
-                    hover, and embedded them into the page. That was the moment where knowing how
-                    to code was the difference between doing it and telling the client no.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">rollinglawns.farm</span>
-            </figcaption>
-            <img src="images/rollinglawns.jpg" alt="Rolling Lawns Farm homepage: the heading From Our Farm To Your Table above a photo of their milk bottles, cream and ice cream laid out on a warm background." width="1600" height="1006" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </article>
-
-      <article class="project project-split project-flip" id="project-grouchys">
-        <div class="shell project-split-grid">
-          <div class="project-col" data-reveal>
-            <div class="project-head">
-              <p class="project-index">02</p>
-              <div>
-                <p class="project-kind">Proposal for a local restaurant</p>
-                <h3 class="project-title">Grouchy's Public House</h3>
-              </div>
-            </div>
-
-            <div class="project-summary">
-              <p>
-                A steakhouse and bar on Main Street in Greenville. I designed and built the whole
-                site as a proposal to show them what they could have, so this one is not paid work
-                yet. The menu prices and the photography are still placeholders, waiting on the
-                owner.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="grouchys/" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/grouchys/src" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>Astro, TypeScript, Tailwind, GSAP, Three.js</dd></div>
-              <div><dt>Status</dt><dd>Proposal, not launched</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Six pages: home, menu, about, gallery, visit and a table booking flow.</li>
-                    <li>A booking with four steps, from picking a table to the confirmation.</li>
-                    <li>A whiskey glass in 3D that only loads on big screens, near the booking form.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How I built it</h4>
-                  <p>
-                    I used Astro because the site is mostly photos and text that never change. Astro
-                    sends plain HTML with no framework attached, so the pages are light. The two
-                    heavy libraries, GSAP and Three.js, are not in the first download. They only
-                    load on the page that needs them, and the 3D glass only when you scroll near it.
-                  </p>
-                  <p>
-                    Nothing on the page starts invisible. All the animations move things from a
-                    start position to where they already are in the HTML, so if the animation
-                    library never loads, the page is just the page.
-                  </p>
-                </div>
-                <div>
-                  <h4>The hardest part</h4>
-                  <p>
-                    The 3D whiskey glass, and knowing when not to show it.
-                  </p>
-                  <p>
-                    My first version drew it straight away on every screen. On a phone it was slow,
-                    and if the graphics failed you got a black rectangle where a glass should be.
-                  </p>
-                  <p>
-                    Now what ships in the HTML is a glass drawn with CSS. The 3D one loads on top of
-                    it only if the screen is wide, the browser can do 3D, and the person has not
-                    asked for less motion. If any of that is false you keep the CSS glass. There is
-                    no case where you get a black box.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">grouchys / index.astro</span>
-            </figcaption>
-            <img src="images/grouchys.jpg" alt="Grouchy's Public House homepage: the heading Modern American dining, Old-fashioned soul in cream and gold beside a dark photo of a steak and a glass of whiskey." width="1600" height="1006" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </article>
-    </section>
-
-    <!-- ============================== FEATURED WORK ============================== -->
-    <section class="section section-work" id="work">
-      <div class="shell">
-        <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">03</span> Projects</p>
-          <h2 class="section-title">Three projects, and what I ran into building them.</h2>
-        </header>
-      </div>
-
-      <!-- 01 KINETA -->
-      <article class="project project-lead" id="project-kineta">
-        <div class="shell">
-          <div class="project-head" data-reveal>
-            <p class="project-index">01</p>
-            <div>
-              <p class="project-kind">React storefront</p>
-              <h3 class="project-title">KINETA</h3>
-            </div>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">kineta / src / pages / Home.tsx</span>
-            </figcaption>
-            <img src="images/store.jpg" alt="KINETA storefront: the brand name set very large in white across a cobalt field, with an athlete in orange kit standing in front of it." width="1600" height="1006" loading="lazy" decoding="async">
-          </figure>
-
-          <div class="project-body" data-reveal>
-            <div class="project-summary">
-              <p>
-                A sportswear store with a 28 piece catalogue, filtering and sorting, a cart and
-                wishlist that survive a refresh, and a five step checkout. The homepage opens on a
-                hero that transforms as you scroll: the interface clears, the figures accelerate
-                past the camera, and the wordmark rushes forward and turns to ink to open the store.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="store/" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/store/src" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>React, TypeScript, Vite, Tailwind, GSAP, Three.js</dd></div>
-              <div><dt>Focus</dt><dd>Application structure and scroll driven motion</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>28 products you can filter by size and price, and sort by price or newest.</li>
-                    <li>A cart and a wishlist that are still there if you close the tab and come back.</li>
-                    <li>A checkout with five steps.</li>
-                    <li>A home page where the brand name grows until it covers the screen and opens the store.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How I built it</h4>
-                  <p>
-                    Every page asks for products from one file, repository.ts. Nothing else in the
-                    app knows where the products come from. Right now they come from a list I wrote
-                    by hand, so the day they come from a real server I change that one file and no
-                    page has to change.
-                  </p>
-                  <p>
-                    I used two animation libraries, but not for the same job. GSAP moves things when
-                    you scroll. Framer Motion moves things when you click, like the cart opening. I
-                    never use both on the same element, so they can't fight each other.
-                  </p>
-                </div>
-                <div>
-                  <h4>The hardest part</h4>
-                  <p>
-                    When I scrolled back up to the top, the screen started blinking and the big
-                    KINETA text disappeared.
-                  </p>
-                  <p>
-                    I was making the text bigger with scale: 24. The problem was that I was growing
-                    the whole box around the text, not the text itself, and that box is as wide as
-                    the screen. So the browser had to draw a picture about 34,000 pixels wide.
-                    Chrome only goes up to 8,192, so it gave up and drew nothing.
-                  </p>
-                  <p>
-                    I changed it to grow only the text, and used scale: 6. Now the picture is 5,358
-                    pixels wide and it works. It still looks the same, because by then the text is
-                    already the same dark colour as the panel behind it.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-        </div>
-      </article>
-
-      <!-- 02 Momentum Athletics -->
-      <article class="project project-lead" id="project-momentum">
-        <div class="shell">
-          <div class="project-head" data-reveal>
-            <p class="project-index">02</p>
-            <div>
-              <p class="project-kind">Multi-page website</p>
-              <h3 class="project-title">Momentum Athletics</h3>
-            </div>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">momentum-athletics / index.html</span>
-            </figcaption>
-            <img src="images/sports.jpg" alt="Momentum Athletics homepage: a full width photo of club members under the oversized headline You don't need to have been the sporty one." width="1600" height="1006" loading="lazy" decoding="async">
-          </figure>
-
-          <div class="project-body" data-reveal>
-            <div class="project-summary">
-              <p>
-                A site for a community sports club, spread across five pages so someone can go from
-                the homepage to a specific sport, check the training schedule and find the contact
-                form without getting lost.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="sports/index.html" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/sports" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, GSAP</dd></div>
-              <div><dt>Pages</dt><dd>Home, About, Sports, Schedule, Contact</dd></div>
-            </dl>
-          </div>
-
-          <details class="notes">
-            <summary><span>Build notes</span></summary>
-            <div class="notes-body">
-              <div>
-                <h4>What it does</h4>
-                <ul>
-                  <li>Five pages that share the same header, footer and stylesheet.</li>
-                  <li>A list of sports where the photo on the left changes as you scroll past each name on the right.</li>
-                  <li>A line of moving text that goes a bit faster while you scroll.</li>
-                  <li>A contact form that answers you without reloading the page.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>How I built it</h4>
-                <p>
-                  I wrote the header, the buttons and the spacing one time, in a stylesheet that all
-                  five pages use. I did not style each page on its own.
-                </p>
-                <p>
-                  That paid off later. When I changed the menu, I edited one file and the five pages
-                  changed with it. If I had copied the styles into each page, I would have had to fix
-                  the same thing five times, and I would probably have missed one.
-                </p>
-              </div>
-              <div>
-                <h4>The hardest part</h4>
-                <p>
-                  Deciding what should be shared and what should stay on its own page.
-                </p>
-                <p>
-                  At the start I put everything in the shared file, even things only the Schedule
-                  page used, and the file got long and confusing. I moved the parts that only one
-                  page needed back into that page, and left in the shared file only what really
-                  repeats: header, footer, buttons, spacing and colours.
-                </p>
-              </div>
-            </div>
-          </details>
-        </div>
-      </article>
-
-      
-      <!-- 03 Leland Barbers -->
-      <article class="project project-split" id="project-elite">
-        <div class="shell project-split-grid">
-          <div class="project-col" data-reveal>
-            <div class="project-head">
-              <p class="project-index">03</p>
-              <div>
-                <p class="project-kind">Responsive website</p>
-                <h3 class="project-title">Leland Barbers</h3>
-              </div>
-            </div>
-
-            <div class="project-summary">
-              <p>
-                A barbershop site built to get someone into a chair. Recent cuts swap from the before
-                photo to the after on hover, the shop photos stack as you scroll past them, and the
-                opening hours work out for themselves whether the place is open right now.
-              </p>
-
-              <div class="project-links">
-                <a class="btn btn-primary" href="barbershop/index.html" target="_blank" rel="noopener noreferrer">
-                  Live demo
-                  <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/barbershop" target="_blank" rel="noopener noreferrer">
-                  Source
-                  <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-
-            <dl class="spec">
-              <div><dt>Role</dt><dd>Designed and built it on my own</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, GSAP</dd></div>
-              <div><dt>Focus</dt><dd>Image led layout and scroll motion</dd></div>
-            </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Photos of real cuts that change from before to after when you put the mouse over them, with a button for phones.</li>
-                    <li>Photos of the shop that pile on top of each other while you scroll.</li>
-                    <li>Prices, opening hours and a form to ask for an appointment.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How I built it</h4>
-                  <p>
-                    The whole week is one array in the JavaScript, with the opening and closing hour
-                    of each day. From that same array the page works out three things: if the shop is
-                    open right now, what day and time it opens next, and which row of the table to
-                    mark as today.
-                  </p>
-                  <p>
-                    I did it that way so the hours are written in one place only. If they change on a
-                    Saturday, I edit one line and the three things update together.
-                  </p>
-                </div>
-                <div>
-                  <h4>The hardest part</h4>
-                  <p>
-                    The photos that pile up while you scroll.
-                  </p>
-                  <p>
-                    My first version faded one photo into the next. In the middle of the change you
-                    could see both at the same time, and it looked like a mistake, like one photo
-                    printed on top of another. It did not look like a pile.
-                  </p>
-                  <p>
-                    What fixed it was cutting the frame so nothing shows outside it, and making each
-                    photo slide up from below and cover the one before, with no fading. Now it looks
-                    like someone putting photos down on a table.
-                  </p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          <figure class="frame" data-reveal>
-            <figcaption class="frame-bar">
-              <span class="frame-path">leland-barbers / index.html</span>
-            </figcaption>
-            <img src="images/barbershop.jpg" alt="Leland Barbers homepage: the shop name set very large in bone over a dark photo of a barber mid cut." width="1600" height="1000" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </article>
-
-      
-    </section>
-
     <!-- ============================== OTHER BUILDS ============================== -->
     <section class="section section-builds" id="builds">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">04</span> Other builds</p>
-          <h2 class="section-title">Smaller things I built while learning.</h2>
+          <p class="section-label"><span class="section-number">03</span> Other builds</p>
+          <h2 class="section-title">Smaller sites and apps.</h2>
         </header>
 
         <ul class="build-list" data-reveal>
           <li class="build">
-            <a class="build-link" href="to-do list/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="images/to-do-list.jpg" alt="Task Dashboard showing a list of tasks with owners, due dates and priority tags, above a progress bar." width="1600" height="1006" loading="lazy" decoding="async">
+            <a class="build-link" href="sports/index.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/sports.jpg" alt="Momentum Athletics homepage: a full width photo of club members under the oversized headline You don't need to have been the sporty one." width="1600" height="1006" loading="lazy" decoding="async">
               <span class="build-main">
-                <span class="build-name">Task Dashboard<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
+                <span class="build-name">Momentum Athletics<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
                 <span class="build-desc">
-                  A task manager with search, filters and sorting. Each task can carry a person, a
-                  due date, a priority and notes. The list is saved in the browser, so it is still
-                  there when you come back, and a task turns late on its own when the date passes.
+                  A five page site for a community sports club. One shared stylesheet covers the
+                  header, buttons and spacing across all five pages, and a scroll driven list swaps
+                  the photo held in the sticky column beside it.
                 </span>
               </span>
-              <span class="build-tech">JS, localStorage</span>
+              <span class="build-tech">HTML, CSS, JS, GSAP</span>
               <span class="sr-only">(opens in a new tab)</span>
             </a>
           </li>
 
           <li class="build">
-            <a class="build-link" href="weather-app/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="images/weather-app.jpg" alt="Weather App showing the current conditions for a city above a five day forecast." width="1600" height="1006" loading="lazy" decoding="async">
+            <a class="build-link" href="barbershop/index.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/barbershop.jpg" alt="Leland Barbers homepage: the shop name set very large in bone over a dark photo of a barber mid cut." width="1600" height="1000" loading="lazy" decoding="async">
               <span class="build-main">
-                <span class="build-name">Weather App<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
+                <span class="build-name">Leland Barbers<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
                 <span class="build-desc">
-                  Search a city and get the weather right now plus a five day forecast, from the
-                  OpenWeather API. The whole page switches between English and Spanish without
-                  reloading, and the background colour changes with the weather.
+                  A barbershop site built around booking. Recent cuts swap from the before photo to
+                  the after on hover, with a switch for touch screens, and the opening hours work out
+                  from one array whether the shop is open right now.
                 </span>
               </span>
-              <span class="build-tech">JS, fetch, API</span>
+              <span class="build-tech">HTML, CSS, JS, GSAP</span>
               <span class="sr-only">(opens in a new tab)</span>
             </a>
           </li>
@@ -800,32 +653,17 @@
           </li>
 
           <li class="build">
-            <a class="build-link" href="login/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="images/login.jpg" alt="AccessFlow sign in screen: a dark panel explaining the project beside a white form with email, password and a remember my email checkbox." width="1600" height="1006" loading="lazy" decoding="async">
+            <a class="build-link" href="weather-app/index.html" target="_blank" rel="noopener noreferrer">
+              <img src="images/weather-app.jpg" alt="Weather App showing the current conditions for a city above a five day forecast." width="1600" height="1006" loading="lazy" decoding="async">
               <span class="build-main">
-                <span class="build-name">Login and Register Flow<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
+                <span class="build-name">Weather App<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
                 <span class="build-desc">
-                  Sign up and sign in screens with a password strength meter that reacts as you type,
-                  show and hide password, and a small dashboard. The account is kept in localStorage,
-                  so it's a front-end demo and not real authentication.
+                  Search a city and get the weather right now plus a five day forecast, from the
+                  OpenWeather API. The whole page switches between English and Spanish without
+                  reloading, and the background colour changes with the weather.
                 </span>
               </span>
-              <span class="build-tech">JS, localStorage</span>
-              <span class="sr-only">(opens in a new tab)</span>
-            </a>
-          </li>
-
-          <li class="build">
-            <a class="build-link" href="calculator/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="images/calculator.jpg" alt="Calculator app with a dark display showing zero above a keypad with AC, backspace and the four operations." width="1600" height="1006" loading="lazy" decoding="async">
-              <span class="build-main">
-                <span class="build-name">Calculator<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></span>
-                <span class="build-desc">
-                  Basic math with a running history line, decimals, backspace, and full keyboard
-                  input so you never have to reach for the mouse.
-                </span>
-              </span>
-              <span class="build-tech">Vanilla JS</span>
+              <span class="build-tech">JS, fetch, API</span>
               <span class="sr-only">(opens in a new tab)</span>
             </a>
           </li>
@@ -837,7 +675,7 @@
     <section class="section section-toolkit" id="toolkit">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">05</span> Toolkit</p>
+          <p class="section-label"><span class="section-number">04</span> Toolkit</p>
           <h2 class="section-title">What I work with.</h2>
         </header>
 
@@ -905,7 +743,7 @@
     <section class="section section-certs" id="certs">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">06</span> Certifications</p>
+          <p class="section-label"><span class="section-number">05</span> Certifications</p>
           <h2 class="section-title">What I have studied.</h2>
           <p class="section-note">
             Courses I have finished, in order. Every one has a link that checks it against
@@ -996,12 +834,11 @@
     <section class="section section-contact" id="contact">
       <div class="shell">
         <header class="section-head" data-reveal>
-          <p class="section-label"><span class="section-number">07</span> Contact</p>
+          <p class="section-label"><span class="section-number">06</span> Contact</p>
           <h2 class="section-title">Get in touch.</h2>
           <p class="section-note">
-            If you're hiring for a junior front-end role or looking for an intern, I'd really like to
-            hear from you. I'm at the start of this and looking for the chance to work on something
-            real with a team.
+            I'm looking for a junior front-end role or an internship. If you have one open, or you
+            want to talk through anything above, I'd like to hear from you.
           </p>
         </header>
 
@@ -1078,22 +915,10 @@
                   <span class="sr-only">(opens in a new tab)</span>
                 </a>
               </li>
-              <li>
-                <a href="https://www.instagram.com/ajr0623/" target="_blank" rel="noopener noreferrer">
-                  <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
-                  <span class="link-label">Instagram</span>
-                  <span class="link-value">@ajr0623<svg class="icon icon-out" aria-hidden="true"><use href="#i-external"/></svg></span>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </li>
-              <!--
-                LinkedIn goes here once you have the URL. Copy the GitHub item above,
-                swap the href, the label and the value.
-              -->
             </ul>
 
             <p class="contact-aside-note">
-              I read everything that comes in and I answer the same day.
+              Email is the surest way to reach me. WhatsApp works too if it is quicker for you.
             </p>
           </aside>
         </div>
@@ -1117,8 +942,8 @@
       </div>
 
       <nav class="footer-nav" aria-label="Footer">
+        <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#client">Work</a>
         <a href="#toolkit">Toolkit</a>
         <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>

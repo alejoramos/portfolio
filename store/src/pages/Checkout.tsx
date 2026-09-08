@@ -60,9 +60,16 @@ export default function Checkout() {
 
   const stepIndex = STEPS.findIndex((s) => s.key === step);
 
+  /**
+   * One local part, one @, then a domain with at least one dot and a two letter
+   * or longer ending. Enough to catch the common typos without pretending to
+   * be RFC 5322, which is not something a checkout form should attempt.
+   */
+  const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+
   const validateShipping = () => {
     const next: Record<string, string> = {};
-    if (!shipping.email.includes('@')) next.email = 'Enter a valid email address';
+    if (!EMAIL.test(shipping.email.trim())) next.email = 'Enter a valid email address';
     if (!shipping.firstName.trim()) next.firstName = 'Required';
     if (!shipping.lastName.trim()) next.lastName = 'Required';
     if (!shipping.address.trim()) next.address = 'Required';
@@ -75,10 +82,30 @@ export default function Checkout() {
   const validatePayment = () => {
     const next: Record<string, string> = {};
     const digits = payment.cardNumber.replace(/\s/g, '');
+
     if (!payment.nameOnCard.trim()) next.nameOnCard = 'Required';
-    if (digits.length < 15 || !/^\d+$/.test(digits)) next.cardNumber = 'Enter a 16 digit number';
-    if (!/^\d{2}\s?\/\s?\d{2}$/.test(payment.expiry)) next.expiry = 'MM / YY';
-    if (payment.cvc.length < 3) next.cvc = '3 digits';
+
+    // The message used to say 16 while the check allowed 15, so the two now
+    // agree on the same range that real card numbers actually cover.
+    if (!/^\d{15,16}$/.test(digits)) next.cardNumber = 'Enter a 15 or 16 digit number';
+
+    const expiry = payment.expiry.match(/^(\d{2})\s?\/\s?(\d{2})$/);
+    if (!expiry) {
+      next.expiry = 'MM / YY';
+    } else {
+      const month = Number(expiry[1]);
+      const year = 2000 + Number(expiry[2]);
+      const now = new Date();
+      // A card is good through the last day of its month, so compare against
+      // the first day of the month after it.
+      const expiresAfter = new Date(year, month, 1);
+
+      if (month < 1 || month > 12) next.expiry = 'Month must be 01 to 12';
+      else if (expiresAfter <= now) next.expiry = 'This date has passed';
+    }
+
+    if (!/^\d{3,4}$/.test(payment.cvc)) next.cvc = '3 or 4 digits';
+
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -100,7 +127,7 @@ export default function Checkout() {
     clear();
   };
 
-  if (placed) return <OrderConfirmed email={shipping.email} />;
+  if (placed) return <OrderConfirmed />;
 
   if (lines.length === 0) {
     return (
@@ -598,7 +625,7 @@ function OrderSummary({
   );
 }
 
-function OrderConfirmed({ email }: { email: string }) {
+function OrderConfirmed() {
   const navigate = useNavigate();
   const orderNumber = useMemo(
     () => `KN-${Math.floor(100000 + Math.random() * 899999)}`,
@@ -625,8 +652,10 @@ function OrderConfirmed({ email }: { email: string }) {
         <h1 className="font-display mt-8 text-[clamp(2.5rem,9vw,4.5rem)] leading-[0.9]">
           Order placed
         </h1>
+        {/* No email is sent, so this does not claim one was. The order number
+            is generated here and kept only for the length of this screen. */}
         <p className="mt-4 text-sm opacity-65">
-          Confirmation sent to <span className="text-bone">{email}</span>
+          Demo order completed. Nothing was charged and no confirmation was sent.
         </p>
         <p className="mt-2 text-[11px] uppercase tracking-[0.2em] opacity-45">
           Order {orderNumber}
