@@ -215,7 +215,7 @@
       <div class="shell">
         <header class="section-head" data-reveal>
           <p class="section-label"><span class="section-number">01</span> Selected work</p>
-          <h2 class="section-title">Four projects, and how they are put together.</h2>
+          <h2 class="section-title">Four projects.</h2>
         </header>
       </div>
 
@@ -225,18 +225,15 @@
             <div class="project-head">
               <p class="project-index">01</p>
               <div>
-                <p class="project-kind">Client work &middot; Built on Wix</p>
                 <h3 class="project-title">Rolling Lawns Farm</h3>
               </div>
             </div>
 
             <div class="project-summary">
               <p>
-                A dairy farm in Greenville, Illinois that supplies milk and ice cream to markets and
-                restaurants. The farm wanted the tours it runs at the barn and the Milk House to be
-                easier to find, and the previous site was out of date and did not work on phones.
-                The rebuild reorganised the page around the products and the tours, replaced the
-                content, and made the layout responsive.
+                A website for Rolling Lawns Farm, a dairy that supplies milk and ice cream to
+                markets and restaurants. It presents the product range and makes the tours at the
+                farm and the Milk House easy to find.
               </p>
 
               <div class="project-links">
@@ -249,32 +246,10 @@
             </div>
 
             <dl class="spec">
-              <div><dt>Type</dt><dd>Client work, live site</dd></div>
-              <div><dt>Built with</dt><dd>Wix, plus custom HTML and CSS in one section</dd></div>
-              <div><dt>Scope</dt><dd>Redesign, responsive layout, content update</dd></div>
+              <div><dt>Type</dt><dd>Client website</dd></div>
+              <div><dt>Built with</dt><dd>Wix, HTML, CSS</dd></div>
+              <div><dt>Focus</dt><dd>Product discovery and tour booking</dd></div>
             </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What the site covers</h4>
-                  <ul>
-                    <li>The product range, the farm story, the tours, and a store locator.</li>
-                    <li>Parallax and hover treatments on the photography.</li>
-                    <li>A layout reworked section by section so it reads on a phone.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Custom code</h4>
-                  <p>
-                    One section uses four cards that tilt in 3D on hover. That is not something the
-                    Wix editor produces, so those cards are hand written HTML and CSS embedded into
-                    the page. Everything else on the site is built with Wix components.
-                  </p>
-                </div>
-              </div>
-            </details>
           </div>
 
           <figure class="frame" data-reveal>
@@ -292,27 +267,24 @@
             <div class="project-head">
               <p class="project-index">02</p>
               <div>
-                <p class="project-kind">Personal project &middot; Concept storefront</p>
                 <h3 class="project-title">KINETA</h3>
               </div>
             </div>
 
             <div class="project-summary">
               <p>
-                A storefront for a fictional sportswear brand, built to work through a full shopping
-                flow: a catalogue you can filter and sort, product pages with size selection that
-                marks what is out of stock, a cart and wishlist that survive a reload, and a
-                simulated checkout. The
-                catalogue is local data, there is no backend, and no payment is processed.
+                A concept storefront for a sportswear brand, covering the shopping flow from the
+                catalogue and its filters through to the cart and checkout. The checkout is
+                simulated, so no payment is processed.
               </p>
 
               <div class="project-links">
                 <a class="btn btn-primary" href="store/" target="_blank" rel="noopener noreferrer">
-                  Live demo
+                  View demo
                   <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
                   <span class="sr-only">(opens in a new tab)</span>
                 </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/store/src" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/store" target="_blank" rel="noopener noreferrer">
                   Source
                   <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
                   <span class="sr-only">(opens in a new tab)</span>
@@ -321,54 +293,10 @@
             </div>
 
             <dl class="spec">
-              <div><dt>Type</dt><dd>Personal project, concept store</dd></div>
-              <div><dt>Built with</dt><dd>React, TypeScript, Vite, Tailwind, Zustand</dd></div>
-              <div><dt>Data</dt><dd>28 products from a local file, no backend</dd></div>
+              <div><dt>Type</dt><dd>Personal project</dd></div>
+              <div><dt>Built with</dt><dd>React, TypeScript, Tailwind CSS, GSAP, Three.js</dd></div>
+              <div><dt>Focus</dt><dd>Product filtering, cart and checkout</dd></div>
             </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>A 28 product catalogue, filtered by category and size, sorted by price, newest or featured.</li>
-                    <li>Product pages with size selection, with sizes that are out of stock shown as unavailable.</li>
-                    <li>A cart and a wishlist held in localStorage, so both are still there after a reload.</li>
-                    <li>A checkout in three steps, Shipping, Payment and Review, then a confirmation screen.</li>
-                  </ul>
-                  <p>
-                    The checkout validates its fields but takes no payment and sends nothing
-                    anywhere. It asks for made up details on purpose.
-                  </p>
-                </div>
-                <div>
-                  <h4>How it is built</h4>
-                  <p>
-                    Every page reads products through one repository module, so the catalogue has a
-                    single source and swapping it for an API would be a change to that file rather
-                    than to the pages. Cart and wishlist state sits in Zustand and is written to
-                    localStorage, which is what makes it survive a reload.
-                  </p>
-                </div>
-                <div>
-                  <h4>Motion and 3D</h4>
-                  <p>
-                    Two animation libraries with a line between them: GSAP with ScrollTrigger drives
-                    anything tied to scroll position, Framer Motion drives anything tied to state,
-                    like the cart drawer and the checkout steps. Neither is applied to the same
-                    element as the other. One Three.js scene renders a shoe and is code split, so it
-                    only downloads on the pages that show it.
-                  </p>
-                  <p>
-                    On the home page the brand name scales up until it fills the screen. The scale
-                    is applied to the text box rather than to its full width wrapper, which keeps
-                    the layer the browser has to hold within a size it will rasterise. Measured in
-                    Chrome that is the difference between roughly 5,000 pixels across and 34,000.
-                  </p>
-                </div>
-              </div>
-            </details>
           </div>
 
           <figure class="frame" data-reveal>
@@ -386,26 +314,24 @@
             <div class="project-head">
               <p class="project-index">03</p>
               <div>
-                <p class="project-kind">Proposal &middot; Restaurant site</p>
                 <h3 class="project-title">Grouchy's Public House</h3>
               </div>
             </div>
 
             <div class="project-summary">
               <p>
-                A six page site for a steakhouse and bar on Main Street in Greenville, built as a
-                proposal rather than commissioned work. It covers the menu, the story, a gallery,
-                visiting details and a table booking flow. The prices and the photography are
-                placeholders until the restaurant supplies its own.
+                A website for Grouchy's Public House, a steakhouse and bar. The design reflects the
+                restaurant's warm atmosphere and classic character, with easy access to the menu,
+                photo gallery and visitor information.
               </p>
 
               <div class="project-links">
                 <a class="btn btn-primary" href="grouchys/" target="_blank" rel="noopener noreferrer">
-                  Live demo
+                  View demo
                   <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
                   <span class="sr-only">(opens in a new tab)</span>
                 </a>
-                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/grouchys/src" target="_blank" rel="noopener noreferrer">
+                <a class="btn btn-ghost" href="https://github.com/alejoramos/portfolio/tree/main/grouchys" target="_blank" rel="noopener noreferrer">
                   Source
                   <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
                   <span class="sr-only">(opens in a new tab)</span>
@@ -414,47 +340,10 @@
             </div>
 
             <dl class="spec">
-              <div><dt>Type</dt><dd>Proposal, not commissioned</dd></div>
-              <div><dt>Built with</dt><dd>Astro, TypeScript, Tailwind, GSAP</dd></div>
-              <div><dt>Status</dt><dd>Demo only, prices and photos pending</dd></div>
+              <div><dt>Type</dt><dd>Client website</dd></div>
+              <div><dt>Built with</dt><dd>Astro, TypeScript, Tailwind CSS, GSAP</dd></div>
+              <div><dt>Focus</dt><dd>Menu browsing and restaurant information</dd></div>
             </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Six pages: home, menu, about, gallery, visit and a booking flow.</li>
-                    <li>A four step table booking, from picking a table through to confirmation. Nothing is sent anywhere.</li>
-                    <li>A whiskey glass rendered in 3D beside the booking section.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How it is built</h4>
-                  <p>
-                    Astro suits a site that is mostly photography and text that does not change, because
-                    it ships HTML with no framework attached. GSAP and Three.js are kept out of the
-                    initial download and load only on the page that uses them, and the 3D glass only
-                    once it is scrolled near.
-                  </p>
-                  <p>
-                    Nothing starts hidden in the markup. Reveals animate from a start position to
-                    where the element already sits, so if the animation library does not load the
-                    page still reads normally.
-                  </p>
-                </div>
-                <div>
-                  <h4>The 3D glass, and when it is skipped</h4>
-                  <p>
-                    What ships in the HTML is a glass drawn in CSS. The WebGL version loads over it
-                    only when the screen is wide, the browser reports WebGL support, and reduced
-                    motion is not requested. If any of those is false the CSS glass is what stays on
-                    screen, so the section does not depend on WebGL to look finished.
-                  </p>
-                </div>
-              </div>
-            </details>
           </div>
 
           <figure class="frame" data-reveal>
@@ -472,7 +361,6 @@
             <div class="project-head">
               <p class="project-index">04</p>
               <div>
-                <p class="project-kind">Personal project &middot; JavaScript app</p>
                 <h3 class="project-title">Task Dashboard</h3>
               </div>
             </div>
@@ -480,13 +368,12 @@
             <div class="project-summary">
               <p>
                 A task manager that keeps its list in the browser. Each task carries an owner, a due
-                date, a priority, a category and notes, and the whole list can be searched, filtered
-                and sorted. Built with plain JavaScript, no framework and no build step.
+                date, a priority and notes, and the whole list can be searched, filtered and sorted.
               </p>
 
               <div class="project-links">
                 <a class="btn btn-primary" href="to-do list/index.html" target="_blank" rel="noopener noreferrer">
-                  Live demo
+                  View demo
                   <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
                   <span class="sr-only">(opens in a new tab)</span>
                 </a>
@@ -500,41 +387,9 @@
 
             <dl class="spec">
               <div><dt>Type</dt><dd>Personal project</dd></div>
-              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript</dd></div>
-              <div><dt>Storage</dt><dd>localStorage, no backend</dd></div>
+              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, localStorage</dd></div>
+              <div><dt>Focus</dt><dd>Task management, filtering and sorting</dd></div>
             </dl>
-
-            <details class="notes">
-              <summary><span>Build notes</span></summary>
-              <div class="notes-body">
-                <div>
-                  <h4>What it does</h4>
-                  <ul>
-                    <li>Search that covers the task, the owner, the category and the notes at once.</li>
-                    <li>Filter by status and priority, sort by date, priority or name.</li>
-                    <li>Counters and a progress bar that follow the list as it changes.</li>
-                    <li>A button that opens a task in Google Calendar or Outlook as a prefilled event.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>How it is built</h4>
-                  <p>
-                    The tasks live in one array and the list on screen is drawn from it each time
-                    something changes. Search, filter and sort are three separate functions that run
-                    over that array in turn, so a new filter can be added without touching the other
-                    two.
-                  </p>
-                </div>
-                <div>
-                  <h4>Working out overdue</h4>
-                  <p>
-                    Overdue is not a value stored on the task. It is worked out from the due date
-                    every time the list is drawn, which means a task becomes overdue on its own once
-                    the date passes, without anything having to run to update it.
-                  </p>
-                </div>
-              </div>
-            </details>
           </div>
 
           <figure class="frame" data-reveal>

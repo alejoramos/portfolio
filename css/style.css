@@ -676,11 +676,6 @@ a {
   color: var(--accent);
 }
 
-.project-kind {
-  margin-bottom: 4px;
-  color: var(--ink-muted);
-  font-size: 0.92rem;
-}
 
 .project-title {
   font-size: clamp(1.7rem, 3.4vw, 2.7rem);
@@ -717,13 +712,6 @@ a {
   height: auto;
 }
 
-/* Lead project: full width image, then a two column body */
-.project-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 56px);
-  margin-top: 34px;
-}
 
 .project-summary p {
   max-width: 56ch;
@@ -773,100 +761,19 @@ a {
   order: 2;
 }
 
-/* Build notes disclosure */
-.notes {
-  margin-top: 28px;
-  border-top: 1px solid var(--rule);
-}
 
-.notes summary {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 0;
-  color: var(--ink-muted);
-  font-size: 0.94rem;
-  font-weight: 500;
-  cursor: pointer;
-  list-style: none;
-  transition: color 0.2s ease;
-}
 
-.notes summary::-webkit-details-marker {
-  display: none;
-}
 
-.notes summary::before {
-  content: "";
-  width: 22px;
-  height: 22px;
-  flex: none;
-  border: 1px solid var(--rule);
-  background:
-    linear-gradient(var(--ink), var(--ink)) center / 9px 1.5px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) center / 1.5px 9px no-repeat;
-  transition: transform 0.25s ease, border-color 0.2s ease;
-}
 
-.notes[open] summary::before {
-  background: linear-gradient(var(--ink), var(--ink)) center / 9px 1.5px no-repeat;
-  transform: rotate(180deg);
-}
 
-.notes summary:hover {
-  color: var(--ink);
-}
 
-.notes summary:hover::before {
-  border-color: var(--ink);
-}
 
-.notes-body {
-  display: grid;
-  gap: 26px;
-  padding-bottom: 26px;
-}
 
-/* the lead project runs the full width, so its notes can sit in columns */
-.project-lead .notes-body {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px 44px;
-}
 
-.notes-body h4 {
-  margin-bottom: 8px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: var(--ink);
-}
 
-.notes-body p,
-.notes-body li {
-  color: var(--ink-muted);
-  font-size: 0.95rem;
-}
 
-.notes-body ul {
-  display: grid;
-  gap: 7px;
-}
 
-.notes-body li {
-  position: relative;
-  padding-left: 18px;
-}
 
-.notes-body li::before {
-  content: "";
-  position: absolute;
-  top: 0.66em;
-  left: 0;
-  width: 7px;
-  height: 1px;
-  background: var(--accent);
-}
 
 /* --------------------------------------------------------------------------
    10. Other builds
@@ -1711,7 +1618,6 @@ textarea {
     order: 3;
   }
 
-  .project-body,
   .project-split-grid,
   .contact-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1724,10 +1630,6 @@ textarea {
 
   .project-split-grid .frame {
     order: -1;
-  }
-
-  .project-lead .notes-body {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .contact-direct {
@@ -1765,11 +1667,6 @@ textarea {
   .toolkit > div {
     grid-template-columns: minmax(0, 1fr);
     gap: 4px;
-  }
-
-  .project-lead .notes-body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
   }
 }
 
