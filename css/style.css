@@ -452,10 +452,6 @@ a {
   grid-column: 1;
 }
 
-.hero-index {
-  grid-column: 2;
-}
-
 .hero-title .line {
   display: block;
   overflow: hidden;
@@ -487,6 +483,7 @@ a {
 }
 
 .hero-index {
+  grid-column: 2;
   border-top: 2px solid var(--ink);
   padding-top: 14px;
 }
@@ -897,61 +894,6 @@ a {
 .contact-form {
   display: grid;
   gap: 22px;
-}
-
-.topic {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.topic legend {
-  padding: 0;
-  margin-bottom: 12px;
-  color: var(--ink-muted);
-  font-size: 0.92rem;
-}
-
-.topic-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.topic-option {
-  position: relative;
-}
-
-.topic-option input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.topic-option span {
-  display: block;
-  padding: 11px 18px;
-  border: 1px solid var(--rule);
-  font-size: 0.92rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.topic-option input:hover + span {
-  border-color: var(--ink);
-}
-
-.topic-option input:checked + span {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.topic-option input:focus-visible + span {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
 }
 
 .field {
@@ -1674,12 +1616,6 @@ textarea {
   .hero-actions .btn,
   .btn-submit {
     width: 100%;
-  }
-
-  .topic-option,
-  .topic-option span {
-    width: 100%;
-    text-align: center;
   }
 
   .project-head {
