@@ -1,17 +1,5 @@
-/**
- * Motion layer.
- *
- * One rule governs this file: **every animation is additive**. Reveals are
- * authored as `gsap.from()`, so the resting state in the DOM is already the
- * final, visible state. Nothing is set to `opacity: 0` in CSS, nothing waits
- * for a trigger to become readable. If GSAP fails to load, throws, or is
- * blocked, the page is simply the page — complete, styled and usable.
- *
- * The motion language, from the handoff: slow, warm, weighted. Reveals ease on
- * cubic-bezier(.22,1,.36,1); masks and doors on (.76,0,.24,1). Everything
- * emerges *out of darkness* — opacity paired with a short rise and a blur
- * burn-off. Nothing slides in from the side. One moving thing per viewport.
- */
+/** Motion layer. Every animation is additive: reveals use `gsap.from()`, so the
+    DOM's resting state is already visible and the page works if GSAP fails. */
 
 const root = document.documentElement;
 const reduced = () => root.hasAttribute('data-reduced-motion');
@@ -19,9 +7,7 @@ const reduced = () => root.hasAttribute('data-reduced-motion');
 const EASE = 'power3.out';
 const MASK_EASE = 'power4.inOut';
 
-/* ==========================================================================
-   Effects that do not need GSAP at all
-   ========================================================================== */
+/* -- Effects that do not need GSAP --------------------------------------- */
 
 /** Warm light sweeps once across "Crafted over fire" on entry. */
 function fireSweep() {
@@ -84,9 +70,7 @@ function magneticButtons() {
   });
 }
 
-/* ==========================================================================
-   GSAP
-   ========================================================================== */
+/* -- GSAP ---------------------------------------------------------------- */
 
 async function initGsap() {
   const [{ gsap }, { ScrollTrigger }] = await Promise.all([
@@ -133,21 +117,8 @@ async function initGsap() {
 
 type GsapLib = (typeof import('gsap'))['gsap'];
 
-/**
- * The guarantee.
- *
- * `gsap.from()` writes an inline `opacity: 0` the moment a tween is created and
- * relies on the ticker to play it out. The ticker rides requestAnimationFrame,
- * and rAF does not run in a background tab or an uncomposited view — so there
- * is a real window in which an element can sit at zero with nothing coming to
- * rescue it (a stalled ticker, a throwing plugin, a ScrollTrigger that never
- * resolves its start position).
- *
- * This watches every element the motion layer touches. If one is on screen,
- * the page is being looked at, and it is *still* invisible a couple of seconds
- * later, the inline state is thrown away and the element snaps to its natural,
- * styled, visible self. In normal operation this never fires.
- */
+/** Safety net: `gsap.from()` sets opacity 0 at once and relies on rAF, which can
+    stall. Anything on screen and still hidden after 2.5s is reset to visible. */
 function watchdog(gsap: GsapLib) {
   const GRACE = 2500;
   const pending = new WeakMap<Element, number>();
@@ -215,12 +186,8 @@ function hero(gsap: GsapLib) {
   const copy = section.querySelector<HTMLElement>('[data-hero-copy]');
   const tags = section.querySelector<HTMLElement>('[data-hero-tags]');
 
-  /*
-    When the intro curtain is running, hold the hero back so its lines stagger
-    in exactly as the doors part (they begin at 72% of the 4.6s sequence).
-    Otherwise the hero finishes while it is still hidden behind black panels
-    and the curtain opens onto something already static.
-  */
+  /* With the intro curtain running, hold the hero so its lines stagger in as the
+     doors part (72% into the 4.6s sequence), not finish behind the panels. */
   const introEndsAt = (window as Window & { __gphIntroEndsAt?: number }).__gphIntroEndsAt;
   const startDelay = introEndsAt
     ? Math.max(0.1, (introEndsAt - 1600 - Date.now()) / 1000)
@@ -387,12 +354,8 @@ function galleryDepth(gsap: GsapLib) {
   });
 }
 
-/**
- * The dish list pins while the plate changes.
- *
- * Desktop only, and it never takes the wheel: ScrollTrigger scrubs a pin, the
- * page keeps scrolling at its own speed. Clicking a row still works throughout.
- */
+/** The dish list pins while the plate changes. Desktop only, and it never takes
+    the wheel: the page scrolls at its own speed and rows stay clickable. */
 function dishSequence(gsap: GsapLib, ScrollTrigger: typeof import('gsap/ScrollTrigger')['ScrollTrigger']) {
   const stage = document.querySelector<HTMLElement>('[data-dishes-stage]');
   const section = document.querySelector<HTMLElement>('[data-dishes]');
@@ -433,9 +396,7 @@ function dishSequence(gsap: GsapLib, ScrollTrigger: typeof import('gsap/ScrollTr
   void gsap;
 }
 
-/* ==========================================================================
-   Boot
-   ========================================================================== */
+/* -- Boot ---------------------------------------------------------------- */
 
 fireSweep();
 magneticButtons();
@@ -447,13 +408,8 @@ if (!reduced()) {
     });
   };
 
-  /*
-    Two gates before any start state is written to the DOM:
-      1. `load`, so motion never competes with first paint;
-      2. visibility, so a page opened in a background tab is not left holding
-         `opacity: 0` on a ticker that will not run until someone looks at it.
-    Until both are satisfied the page is simply its plain, complete self.
-  */
+  /* Two gates before any start state is written: `load`, so motion never competes
+     with first paint; visibility, so a background tab never sits at opacity 0. */
   const whenVisible = () => {
     if (!document.hidden) {
       start();

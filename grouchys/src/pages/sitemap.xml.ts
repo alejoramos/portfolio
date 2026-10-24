@@ -1,9 +1,7 @@
 import type { APIRoute } from 'astro';
 
-/**
- * A five-line sitemap beats a dependency for a site with six real URLs.
- * Add a route here when a route is added to src/pages.
- */
+/** For six URLs a short sitemap beats a dependency. Add a route here whenever
+    a page is added to src/pages. */
 const ROUTES = [
   { path: '/', priority: '1.0' },
   { path: '/menu', priority: '0.9' },

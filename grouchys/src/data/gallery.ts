@@ -23,11 +23,8 @@ export const gallery: GalleryCell[] = [
   { image: photo.peel, alt: alt.peel, col: 3, row: 2, depth: 0 },
 ];
 
-/**
- * The mobile frame uses a different, tighter set — six images in two columns.
- * Kept separate rather than reflowing the desktop grid, per the handoff's
- * "recomposed, not shrunk" note.
- */
+/** The mobile frame uses its own tighter set, six images in two columns: the
+    handoff says "recomposed, not shrunk". */
 export const galleryMobile: GalleryCell[] = [
   { image: photo.bartender, alt: alt.bartender, col: 1, row: 2, depth: 0, tall: true },
   { image: photo.ribeyeMacro, alt: alt.ribeyeMacro, col: 1, row: 1, depth: 0 },

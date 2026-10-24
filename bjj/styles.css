@@ -1,7 +1,5 @@
-/* BJJ Basics
-   Editorial academy site. Bone paper against near black, one mat blue.
-   Sections alternate light and dark so the page has rhythm rather than
-   one long column of boxes. */
+/* BJJ Basics. Bone paper against near black, one mat blue, with sections
+   alternating light and dark. */
 
 * {
     margin: 0;
@@ -28,9 +26,8 @@
     --shell: 1300px;
 }
 
-/* No scroll-behavior: smooth here. It fights the pinned track, because the
-   browser keeps animating the scroll position while ScrollTrigger is reading
-   it, and the section ends up jumping or refusing to pin. */
+/* No scroll-behavior: smooth. The browser animating the scroll position while
+   ScrollTrigger reads it makes the pinned track jump or refuse to pin. */
 html {
     scroll-padding-top: 78px;
     -webkit-text-size-adjust: 100%;
@@ -222,9 +219,8 @@ a { color: inherit; }
     transition: background-color 0.22s ease, color 0.22s ease;
 }
 
-/* Fill and label are set as an explicit pair. Using currentColor for the
-   background made it follow the colour set on the same hover, so both ended
-   up identical and the label disappeared. */
+/* Fill and label set as an explicit pair: with currentColor the fill followed
+   the hover colour and the label disappeared. */
 .masthead:not(.is-light) .nav-cta:hover {
     background: var(--bone);
     border-color: var(--bone);
@@ -393,9 +389,8 @@ a { color: inherit; }
 .mat-head { margin-bottom: clamp(36px, 5vw, 64px); }
 .mat .marker { color: var(--muted-dark); }
 
-/* The row is a real horizontal scroller by default, so the photos are always
-   reachable by swipe or shift+wheel. When GSAP takes over and pins the
-   section it adds .is-pinned, which hands scrolling back to the timeline. */
+/* A real horizontal scroller by default, so the photos are always reachable.
+   GSAP adds .is-pinned when it takes the scrolling over. */
 .track {
     width: 100%;
     overflow-x: auto;
@@ -795,9 +790,8 @@ textarea { resize: vertical; }
 
 /* ---------------------------------------------------------------- responsive */
 
-/* The track section is pinned on desktop, so it has to fit the viewport
-   exactly. Image height is driven by vh and the widths follow from each
-   photo's own ratio, which is what gives the row its uneven rhythm. */
+/* Pinned on desktop, so the section fits the viewport: height comes from vh
+   and each width from the photo's own ratio. */
 @media (min-width: 821px) {
     .mat {
         min-height: 100svh;
@@ -819,11 +813,8 @@ textarea { resize: vertical; }
         max-width: none;
     }
 
-    /* Height is fixed and width follows the photo's own ratio, which is what
-       gives the row its uneven rhythm. The ratio is spelled out per slide
-       rather than left as `auto`: the images are lazy, and an unloaded image
-       with `aspect-ratio: auto` has no width at all, so the pin measured the
-       row far too short and stopped before the last photo. */
+    /* Ratios are set per slide, not `auto`: an unloaded lazy image with
+       aspect-ratio auto has no width, so the pin measured the row too short. */
     .slide img,
     .slide-tall img {
         height: clamp(240px, 42vh, 460px);

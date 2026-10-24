@@ -1,6 +1,4 @@
-/* Momentum Athletics
-   Scroll reveals, a looping marquee, the sport switcher, and magnetic
-   buttons on pointer devices. Falls back to a plain page without GSAP. */
+/* Momentum Athletics. Falls back to a plain page if GSAP never loads. */
 
 (function () {
     'use strict';

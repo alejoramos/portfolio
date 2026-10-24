@@ -8,10 +8,8 @@ interface AsyncState<T> {
   error: Error | null;
 }
 
-/**
- * Fetches through the repository rather than reading mock data directly, so the
- * loading and error branches already exist when a real API is wired in.
- */
+/** Goes through the repository, not the mock data, so loading and error
+    states already exist when a real API is connected. */
 export function useProducts(filter: ProductFilter = {}): AsyncState<Product[]> {
   // Filters are usually inline object literals; serialising avoids an effect
   // loop from a new reference on every render.

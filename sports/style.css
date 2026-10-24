@@ -1,7 +1,5 @@
-/* Momentum Athletics
-   Community sports club. White and near black with one lime.
-   Headings use the wide end of Archivo, which is what separates this from
-   the tighter, quieter BJJ page in the same portfolio. */
+/* Momentum Athletics. White and near black with one lime, and headings on the
+   wide end of Archivo to set it apart from the BJJ page. */
 
 * {
     margin: 0;
@@ -659,9 +657,7 @@ footer {
     text-transform: uppercase;
 }
 
-/* ================================================================ SUB PAGES
-   about, sports, schedule and contact share the shell above and only need
-   these page level primitives. */
+/* Sub pages: about, sports, schedule and contact need only these primitives. */
 
 /* On the sub pages these elements are the container themselves, so they
    carry the shell width rather than wrapping another div. */

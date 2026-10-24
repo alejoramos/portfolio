@@ -58,12 +58,8 @@ const ogImage = new URL('/og-image.jpg', Astro.site ?? site.url).href;
     <link rel="apple-touch-icon" href={url("/apple-touch-icon.png")} />
     <link rel="manifest" href={url("/site.webmanifest")} />
 
-    <!--
-      This is a proposal for a real restaurant that has not commissioned it,
-      and the prices and photography are still placeholders. Keeping it out of
-      search means nobody looking for Grouchy's can land on it and mistake it
-      for their official site.
-    -->
+    <!-- A proposal the restaurant has not commissioned, with placeholder prices
+         and photos. Kept out of search so it can't pass for the official site. -->
     <meta name="robots" content="noindex, nofollow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,13 +79,8 @@ const ogImage = new URL('/og-image.jpg', Astro.site ?? site.url).href;
       )
     }
 
-    <!--
-      Boot script. Runs before paint and does three small things:
-        1. flags that JavaScript is alive, so JS-only affordances can appear;
-        2. records the reduced-motion preference once, for CSS and for GSAP;
-        3. measures the scrollbar, so locking the body does not shift the page.
-      It never hides content. Every element on the page is visible without it.
-    -->
+    <!-- Boot script, before paint: flags JS, records reduced motion and measures
+         the scrollbar so scroll locks don't shift layout. Hides nothing. -->
     <script is:inline>
       (function () {
         var root = document.documentElement;

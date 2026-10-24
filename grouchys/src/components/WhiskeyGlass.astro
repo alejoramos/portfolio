@@ -1,16 +1,6 @@
 ---
-/**
- * The signature WebGL object — a rocks glass of whiskey, in the reservation
- * section and nowhere else.
- *
- * What ships in the HTML is the *fallback*: a static CSS glass with the same
- * silhouette and the same warm glow. WebGL is loaded lazily, only when this
- * block scrolls into view, only on pointer-capable large screens, and only
- * when motion is welcome. If any of that fails the static glass simply stays.
- *
- * The whole block is `pointer-events: none` and `aria-hidden` — it is
- * atmosphere beside the form, never in front of it.
- */
+/** WebGL whiskey glass, reservation section only. A static CSS glass ships in the
+    HTML and stays if WebGL can't load; aria-hidden, pointer-events: none. */
 ---
 
 <div class="glass" data-whiskey-glass aria-hidden="true">

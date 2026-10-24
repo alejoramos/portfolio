@@ -1,10 +1,5 @@
-/**
- * Menu category tabs.
- *
- * The markup ships with every category visible. This module switches the board
- * into single-panel mode and takes over — so a failed script leaves a complete,
- * readable menu behind rather than an empty box.
- */
+/** Menu category tabs. The markup shows every category; this switches it to one
+    panel, so a failed script still leaves a complete, readable menu. */
 
 const REDUCED = () => document.documentElement.hasAttribute('data-reduced-motion');
 
@@ -64,12 +59,8 @@ function init() {
     positionSlider(active);
     if (focus) active.focus();
 
-    /*
-      Rows fade + rise, 40ms apart — only on a real tab change, and only while
-      the page is actually on screen. `fill: 'backwards'` holds opacity 0 during
-      the stagger delay, and a document timeline that is not running (hidden
-      tab) would hold it there indefinitely. The board must never be blank.
-    */
+    /* Rows fade and rise 40ms apart, only on a real tab change while visible:
+       `fill: 'backwards'` holds opacity 0, and a hidden tab would keep it there. */
     if (animate && !REDUCED() && !document.hidden) {
       const rows = panels[i]!.querySelectorAll<HTMLElement>('[data-row]');
       rows.forEach((row, ri) => {

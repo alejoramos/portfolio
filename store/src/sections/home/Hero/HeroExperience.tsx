@@ -11,21 +11,8 @@ import { HeroCarousel } from './HeroCarousel';
 const SLIDE_MS = 900;
 const AUTOPLAY_MS = 5600;
 
-/**
- * Full-viewport hero that converts into the store.
- *
- * The section is a tall scroll runway with a `position: sticky` stage inside it.
- * Sticky is used rather than ScrollTrigger's own pinning because it needs no
- * pin-spacer, survives Lenis and resize without a refresh, and leaves the
- * document flow intact — the New Drop section that follows simply scrolls up
- * underneath, so the handoff has no seam to hide.
- *
- * Scroll then scrubs a single timeline in three acts: the chrome clears, the
- * figures scatter past the camera, and the wordmark rushes forward and turns to
- * ink, swallowing the frame. The reveal that fades up behind it shares the same
- * background as the next section, so passing through the type lands directly in
- * the store.
- */
+/** Hero: a tall scroll runway around a sticky stage. Sticky instead of a GSAP pin
+    means no pin-spacer, no refresh on resize, and no seam with the next section. */
 export function HeroExperience() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -107,9 +94,8 @@ export function HeroExperience() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.55,
-          // Only touch state on the crossing. onUpdate runs on every scroll
-          // tick, and calling a setter that often during a fast scroll is
-          // exactly when the extra render pressure is least affordable.
+          // Set state only on the crossing: onUpdate runs every scroll tick, and
+          // a fast scroll is when extra renders cost the most.
           onUpdate: (self) => {
             const next = self.progress > 0.04;
             if (next === transformingRef.current) return;
@@ -119,14 +105,8 @@ export function HeroExperience() {
         },
       });
 
-      /* Act I — the chrome clears and the colour field drains to ink.
-         The drain is its own ink panel fading in rather than a tween on the
-         stage's own backgroundColor. React owns that property (it carries the
-         slide colour) and the stage also has a 900ms CSS transition on it, so
-         scrubbing it meant three writers fighting over one value every frame:
-         GSAP set it, the transition started easing toward it, and the next
-         React render put the slide colour back. Fading a panel is also a pure
-         compositor job, where a per-frame colour change is not. */
+      /* Act I: the chrome clears and an ink panel fades in. Tweening the stage
+         background fought React and a CSS transition, and repainted every frame. */
       tl.to(chromeRef.current, { opacity: 0, y: -50, duration: 0.14 }, 0)
         .to(drainRef.current, { opacity: 1, duration: 0.55 }, 0.04);
 
@@ -151,13 +131,8 @@ export function HeroExperience() {
         );
       });
 
-      /* Act III — the wordmark rushes forward, turns to ink and takes the frame.
-         The scale is deliberately modest. The wordmark is already about 1280px
-         wide, so 6x covers five viewports and swallows the frame with room to
-         spare; the old 24x asked the compositor for a layer around 34,000px
-         across, past the 8,192px texture limit, which is what made the type
-         drop out and the whole screen flicker on the way back up. It reads the
-         same because the type turns the same ink as the panel behind it. */
+      /* Act III: the wordmark rushes forward and turns ink. 6x already covers the
+         frame; 24x needed a layer past the 8,192px texture limit and flickered. */
       tl.to(
         typeRef.current,
         { scale: mobile ? 5 : 6, color: '#0a0a0b', duration: 0.6, ease: 'power2.in' },
@@ -228,9 +203,8 @@ export function HeroExperience() {
           style={{ zIndex: 1 }}
         />
 
-        {/* Giant display wordmark, behind the figures. Only the text box is
-            scaled, not the full width positioning wrapper, so the layer the
-            compositor has to hold stays a fraction of the size. */}
+        {/* Giant wordmark behind the figures. Only the text box scales, not the
+            full width wrapper, so the compositor layer stays small. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 flex select-none items-center justify-center"

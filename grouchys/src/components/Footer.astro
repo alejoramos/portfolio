@@ -202,12 +202,8 @@ const year = new Date().getFullYear();
     padding-block: 2px;
   }
 
-  /*
-    A stacked list of links needs its targets separated, not just enlarged — an
-    invisible overlay here would overlap its neighbours and steal taps. So on
-    touch the padding does the work and the gap tightens to keep the column's
-    overall rhythm close to the handoff.
-  */
+  /* Stacked links need their targets apart, not just bigger: an overlay would
+     overlap and steal taps. On touch, padding grows and the gap shrinks. */
   @media (pointer: coarse), (max-width: 767px) {
     .site-footer__col ul {
       gap: 4px;

@@ -1,9 +1,7 @@
 import type { APIRoute } from 'astro';
 
-/**
- * Generated rather than static, so the sitemap line always points at whatever
- * origin the site was actually built for (see SITE in astro.config.mjs).
- */
+/** Generated, not static, so the sitemap line uses the origin the site was
+    built for (SITE in astro.config.mjs). */
 export const GET: APIRoute = ({ site }) => {
   const origin = site ? site.href.replace(/\/$/, '') : '';
 

@@ -8,14 +8,8 @@ import { formatPrice } from '../../lib/utils';
 import { SectionKicker, SplitHeading } from '../../components/ui/Reveal';
 import { SmartImage } from '../../components/ui/Primitives';
 
-/**
- * Section C — "The Rail".
- *
- * A hard tonal break from the ink sections either side: bright, gallery-lit, and
- * the only place on the page where products hang rather than float. Each top is
- * suspended from a visible rail and swings with scroll velocity, so the section
- * responds to how fast you move rather than merely where you are.
- */
+/** Section C, "The Rail". A bright break between ink sections where tops hang
+    from a rail and swing with scroll speed, not just scroll position. */
 export function TopsRail() {
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();

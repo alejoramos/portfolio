@@ -2,24 +2,15 @@ import { PRODUCTS as AUTHORED } from '../data/products.mock';
 import { asset } from './utils';
 import type { Category, Product, ProductFilter, SortKey } from '../types/product';
 
-/**
- * Colourway images are authored as paths under /public. Resolving them against
- * the deployment base happens once, here, because this module is the only door
- * the catalogue comes through — doing it at render sites would mean remembering
- * it in every component that ever shows a product.
- */
+/** Image paths are written as under /public and resolved against the deploy
+    base here, once, because every product passes through this module. */
 const PRODUCTS: Product[] = AUTHORED.map((product) => ({
   ...product,
   colorways: product.colorways.map((c) => ({ ...c, image: asset(c.image) })),
 }));
 
-/**
- * The single seam between the UI and the data source.
- *
- * Every function is async and returns plain domain objects, so replacing the
- * mock array with `fetch('/api/products')` (or a CMS SDK) is a change confined
- * to this file. No component imports the mock data directly.
- */
+/** The one seam between UI and data. Every function is async and returns plain
+    objects, so moving to a real API or CMS changes only this file. */
 
 /** Simulated latency, so loading states are exercised in development. */
 const LATENCY = import.meta.env.DEV ? 120 : 0;

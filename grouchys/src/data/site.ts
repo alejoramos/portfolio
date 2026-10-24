@@ -1,12 +1,7 @@
 import { url } from '@/lib/url';
 
-/**
- * Single source of truth for business information.
- *
- * CONFIRMED values come from the handoff (NOTES-open-questions.md → "Confirmed
- * and safe to use"). Everything marked TODO is still a placeholder and must be
- * supplied by the owner before launch — nothing here is invented.
- */
+/** Single source of truth for business info. CONFIRMED values come from the
+    handoff; anything marked TODO is a placeholder the owner must supply. */
 
 export const site = {
   name: "Grouchy's Public House",
@@ -34,25 +29,18 @@ export const site = {
   /** TODO — business email not yet supplied by the owner. */
   email: null as string | null,
 
-  /**
-   * TODO — final domain not yet chosen. Also set `site` in astro.config.mjs.
-   */
+  /** TODO: domain not chosen yet. Also set SITE_URL, see astro.config.mjs. */
   url: 'https://grouchyspublichouse.example',
 
-  /**
-   * TODO — social handles not yet confirmed. Leave `href: null` and the footer
-   * renders the label without a link rather than pointing somewhere wrong.
-   */
+  /** TODO: social handles not confirmed. With `href: null` the footer shows the
+      label without a link rather than pointing somewhere wrong. */
   social: [
     { label: 'Instagram', href: null as string | null },
     { label: 'Facebook', href: null as string | null },
   ],
 
-  /**
-   * TODO — reservations are a front-end demonstration only. When a provider is
-   * chosen (OpenTable / Resy / Tock / SevenRooms / phone), point this at the
-   * booking URL and the reservation flow will hand off at the final step.
-   */
+  /** TODO: reservations are a front-end demo. Once a provider is chosen, point
+      this at its booking URL and the flow hands off at the final step. */
   reservationProviderUrl: null as string | null,
 
   /** TODO — parking & accessibility details to confirm with the owner. */
@@ -99,10 +87,8 @@ export const heroTags = [
 
 export const formattedAddress = `${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`;
 
-/**
- * Restaurant schema. Built only from confirmed data — no geo coordinates, no
- * price range, no menu URL claims that have not been signed off.
- */
+/** Restaurant schema, built only from confirmed data: no coordinates, price
+    range or menu URL until they are signed off. */
 export function restaurantSchema(canonical: string) {
   const openingHoursSpecification = hours
     .filter((h) => h.service !== null)

@@ -1,10 +1,5 @@
-/**
- * Reservation flow — front-end demonstration, local state only.
- *
- * Nothing here performs a network request. `submitReservation()` at the bottom
- * is the single seam a real booking provider would be connected to; today it
- * resolves immediately and the flow moves to the confirmation state.
- */
+/** Reservation flow: a front-end demo, local state only, no network requests.
+    `submitReservation()` at the bottom is where a real provider would connect. */
 
 import { buildDays, DAYS_SHOWN, TOTAL_STEPS } from '@/data/reservation';
 
@@ -40,8 +35,7 @@ function init() {
   let step: 1 | 2 | 3 | 'done' = 1;
 
   // ---- keep the dates current ---------------------------------------------
-  // The markup was rendered at build time; refresh it against today's date so a
-  // site that has been live for a month still offers the right seven days.
+  // The markup dates from the build, so refresh it to offer the right seven days.
   const refreshDays = () => {
     const days = buildDays(new Date(), DAYS_SHOWN);
     const inputs = Array.from(form.querySelectorAll<HTMLInputElement>('[data-day]'));
@@ -305,14 +299,8 @@ function init() {
   });
 }
 
-/**
- * The integration seam.
- *
- * Today this is a no-op: the reservation exists only in this browser tab and is
- * discarded when the page unloads. To connect a real provider, replace the body
- * with the provider call (or a redirect to their flow) and keep the signature.
- * Nothing else in the UI needs to change.
- */
+/** The integration seam. Today a no-op: the booking only lives in this tab. For
+    a real provider, replace the body and keep the signature; the UI stays as is. */
 async function submitReservation(draft: ReservationDraft): Promise<void> {
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-console

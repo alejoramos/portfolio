@@ -70,10 +70,8 @@ export const useCartStore = create<CartState>()(
   )
 );
 
-/**
- * Derived totals. Kept as a plain function rather than a selector so callers
- * choose when to recompute, and so it can be reused server-side later.
- */
+/** Derived totals as a plain function, not a selector, so callers decide when
+    to recompute and it could run on a server later. */
 export function computeTotals(lines: CartLine[], express = false): CartTotals {
   const subtotal = lines.reduce((sum, l) => sum + l.price * l.quantity, 0);
   const itemCount = lines.reduce((sum, l) => sum + l.quantity, 0);

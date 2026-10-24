@@ -1,12 +1,5 @@
-/**
- * Every temporary presentation image, in one place.
- *
- * ALL of these are placeholders. To swap in the real photography of Grouchy's
- * Public House, drop the new file into `src/assets/photography/` and change the
- * import below — nothing else in the codebase references a filename.
- *
- * See handoff → NOTES-temporary-images.md for the crop brief per slot.
- */
+/** All temporary placeholder images. For real photos, add the file to
+    `src/assets/photography/` and swap its import here. No other file names them. */
 
 import bartender from '@/assets/photography/ph-bartender.jpg';
 import beer from '@/assets/photography/ph-beer.jpg';
@@ -60,11 +53,8 @@ export const brand = {
   grouchGold,
 } as const;
 
-/**
- * Alt text for the temporary images. Descriptive of what is actually pictured —
- * these get rewritten alongside the real photography, not invented into dish
- * names. Decorative slots (background textures) pass alt="" instead.
- */
+/** Alt text says what is really pictured, not a dish name, and will be rewritten
+    with the real photos. Decorative backgrounds pass alt="" instead. */
 export const alt = {
   bartender: 'A bartender stirring a drink behind the bar',
   beer: 'A glass of beer being poured at the bar',

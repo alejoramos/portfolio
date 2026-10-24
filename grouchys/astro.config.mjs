@@ -2,28 +2,15 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-/*
-  Canonical origin, used for canonical URLs, Open Graph, robots.txt and the
-  sitemap. Resolved in this order:
-
-    1. SITE_URL          — set this once the real domain is confirmed
-    2. URL               — Netlify sets this to the site's own URL, so a fresh
-                           deploy is already correct with no configuration
-    3. the placeholder   — local development only
-
-  Nothing here needs editing to deploy; set SITE_URL in Netlify only when the
-  custom domain is attached.
-*/
+/* Canonical origin for canonical URLs, Open Graph, robots.txt and the sitemap:
+   SITE_URL once a real domain exists, else Netlify's URL, else a placeholder. */
 const SITE =
   process.env.SITE_URL || process.env.URL || 'https://grouchyspublichouse.example';
 
 export default defineConfig({
   site: SITE,
-  /*
-   * The site is published inside the portfolio rather than at a domain root.
-   * Astro prefixes what it generates itself with this; anything written by
-   * hand goes through `url()` in src/lib/url.ts, which reads the same value.
-   */
+  /* Served inside the portfolio. Astro prefixes its own output with this, and
+     hand-written paths go through `url()` in src/lib/url.ts, which reads it too. */
   base: '/grouchys/',
   trailingSlash: 'ignore',
   build: { inlineStylesheets: 'auto' },

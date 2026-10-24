@@ -8,11 +8,8 @@ import { Campaign } from '../sections/home/Campaign';
 import { CategoryTiles } from '../sections/home/CategoryTiles';
 import { FeaturedPicks } from '../sections/home/FeaturedPicks';
 
-/**
- * Section order is a deliberate rhythm of tone and density:
- * ink → bone → electric → indigo → ink → bone → ink → ink.
- * No two adjacent sections share a background value or a motion signature.
- */
+/** Order sets the rhythm: ink, bone, electric, indigo, ink, bone, ink. The
+    hero and New Drop share ink for a seamless handoff, as do the last two. */
 export default function Home() {
   return (
     <>

@@ -1,12 +1,7 @@
 import type { Product, SizeOption } from '../types/product';
 
-/**
- * Mock catalogue. Images are the processed cutouts in /public/assets — trimmed,
- * resized and converted to WebP by `scripts/process-assets.mjs`.
- *
- * To go live, replace `src/lib/repository.ts` with a real client returning this
- * same shape. Nothing else in the app reads this file.
- */
+/** Mock catalogue; the images are processed by `scripts/process-assets.mjs`.
+    Only `src/lib/repository.ts` reads it, so going live means replacing that. */
 
 const APPAREL_SIZES = (soldOut: string[] = []): SizeOption[] =>
   ['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((label) => ({

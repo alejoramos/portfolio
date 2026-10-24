@@ -3,14 +3,8 @@ import { Image } from 'astro:assets';
 import { brand } from '@/data/images';
 import { site } from '@/data/site';
 
-/**
- * The intro curtain — once per session, homepage only.
- *
- * It ships with the `hidden` attribute set. A tiny inline script decides
- * whether to show it *before first paint*, so a returning visitor and anyone
- * who prefers reduced motion never sees a flash of it. The hero underneath is
- * fully rendered the whole time; this only ever sits on top and then leaves.
- */
+/** Intro curtain, homepage only, once per session. It ships `hidden` and a
+    script decides before first paint, so other visits never see it flash. */
 ---
 
 <div class="intro" data-intro hidden aria-hidden="true">
@@ -38,9 +32,7 @@ import { site } from '@/data/site';
 
     var root = document.documentElement;
 
-    // ?intro replays the sequence on demand. A guest never sees this; it exists
-    // so the curtain can actually be reviewed without clearing storage or
-    // opening a fresh tab every time.
+    // ?intro replays the curtain, so it can be reviewed without clearing storage.
     var forced = /[?&]intro\b/.test(location.search);
 
     var seen = false;
@@ -60,13 +52,8 @@ import { site } from '@/data/site';
       return;
     }
 
-    /*
-      The doors have to part onto the hero, which means the page must actually
-      be at the top. Browsers restore the previous scroll offset on reload, and
-      because the curtain is position:fixed it happily covers a page sitting
-      halfway down — so the sequence would end by revealing the menu board.
-      Pin the page at the top for the length of the sequence, then let go.
-    */
+    /* The doors must part onto the hero, but browsers restore the scroll offset on
+       reload. Hold the page at the top for the sequence, then let go. */
     try {
       history.scrollRestoration = 'manual';
     } catch (e) {
@@ -82,9 +69,8 @@ import { site } from '@/data/site';
     el.hidden = false;
     root.setAttribute('data-intro-running', '');
 
-    // The motion layer reads this to hold the hero's entrance until the doors
-    // are actually parting, so the sequence opens *onto* the hero coming alive
-    // rather than onto a hero that already finished behind the curtain.
+    // The motion layer reads this to hold the hero's entrance until the doors part,
+    // so the curtain opens onto the hero coming alive, not one already finished.
     window.__gphIntroEndsAt = Date.now() + 4600;
 
     var done = function () {

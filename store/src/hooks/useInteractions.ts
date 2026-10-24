@@ -2,12 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from '../lib/gsap';
 import { usePrefersReducedMotion, useHasFinePointer } from './useEnvironment';
 
-/**
- * Pulls an element toward the pointer while it is nearby.
- *
- * Disabled entirely on coarse pointers and under reduced motion, where the
- * element behaves as an ordinary button.
- */
+/** Pulls an element toward the pointer when it is near. Off on coarse
+    pointers and with reduced motion, where it acts as a normal button. */
 export function useMagnetic<T extends HTMLElement>(strength = 0.35, radius = 90) {
   const ref = useRef<T>(null);
   const reduced = usePrefersReducedMotion();

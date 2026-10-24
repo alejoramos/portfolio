@@ -1,11 +1,5 @@
-/**
- * Reservation configuration.
- *
- * This is a front-end demonstration. No data leaves the browser: there is no
- * backend, no database and no booking provider wired up. The shape below is the
- * seam — when a provider is chosen, `submitReservation()` in
- * `src/scripts/reservation.ts` is the single function that needs to change.
- */
+/** Reservation settings for a front-end demo: no backend, no provider, no data
+    leaves the browser. A provider would connect at `submitReservation()`. */
 
 export const PARTY_SIZES = [1, 2, 3, 4, 5, 6, 7, 8] as const;
 export const DEFAULT_PARTY = 2;
@@ -13,18 +7,12 @@ export const DEFAULT_PARTY = 2;
 /** TODO — real party-size cap to confirm. Design shows 1–8 with a call-out. */
 export const MAX_PARTY = 8;
 
-/**
- * TODO — real service windows to confirm. The design's picker covers dinner
- * only (5:00–8:30 pm in 30-minute steps); lunch service (11–2) is not
- * represented and should not be invented.
- */
+/** TODO: confirm the real service windows. The design only covers dinner (5:00
+    to 8:30 pm, 30-minute steps); lunch (11 to 2) is left out, not invented. */
 export const TIMES = ['5:00', '5:30', '6:00', '6:30', '7:00', '7:30', '8:00', '8:30'] as const;
 export const DEFAULT_TIME = '6:30';
 
-/**
- * Demonstration availability only. Hard-coded exactly as in the prototype —
- * there is no availability service to ask.
- */
+/** Demo availability, hard-coded from the prototype: there is no service to ask. */
 export const FULLY_BOOKED: readonly string[] = ['7:00', '7:30'];
 
 /** CONFIRMED closed days: Tuesday (2) and Sunday (0). */
@@ -59,11 +47,8 @@ export interface DayCell {
   open: boolean;
 }
 
-/**
- * The next `count` days starting today. Rendered at build time so the markup is
- * complete and readable without JavaScript, then recomputed on load by the
- * reservation script so the dates are never stale.
- */
+/** The next `count` days from today. Built at build time so the markup works
+    without JavaScript, and recomputed on load so the dates are never stale. */
 export function buildDays(from: Date = new Date(), count: number = DAYS_SHOWN): DayCell[] {
   const out: DayCell[] = [];
   const start = new Date(from.getFullYear(), from.getMonth(), from.getDate());

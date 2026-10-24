@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Eddy Ramos, portfolio
-   Plain JavaScript, no libraries. Each block below does one thing.
-   ========================================================================== */
+/* Eddy Ramos, portfolio. Plain JavaScript, one job per block below. */
 
 (function () {
   'use strict';
@@ -9,11 +6,8 @@
   var root = document.documentElement;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ------------------------------------------------------------------------
-     1. Theme toggle
-     The theme itself is set in the <head> so the page never flashes.
-     This only handles switching it and keeping the button label truthful.
-     ---------------------------------------------------------------------- */
+  /* -- 1. Theme toggle --------------------------------------------------- */
+  /* The theme is set in <head> so it never flashes; this only switches it. */
 
   var themeToggle = document.getElementById('theme-toggle');
 
@@ -41,9 +35,7 @@
     });
   }
 
-  /* ------------------------------------------------------------------------
-     2. Mobile menu
-     ---------------------------------------------------------------------- */
+  /* -- 2. Mobile menu ---------------------------------------------------- */
 
   var menuToggle = document.getElementById('menu-toggle');
   var mobileMenu = document.getElementById('mobile-menu');
@@ -112,11 +104,8 @@
     });
   }
 
-  /* ------------------------------------------------------------------------
-     3. Scroll driven UI
-     One scroll listener, throttled with requestAnimationFrame, updating:
-     the progress rule, the back to top button, and the current nav link.
-     ---------------------------------------------------------------------- */
+  /* -- 3. Scroll driven UI ----------------------------------------------- */
+  /* One rAF throttled listener for the progress rule, back to top and nav. */
 
   var progressBar = document.getElementById('scroll-progress');
   var toTopButton = document.getElementById('to-top');
@@ -182,9 +171,7 @@
     });
   }
 
-  /* ------------------------------------------------------------------------
-     4. Reveal on scroll
-     ---------------------------------------------------------------------- */
+  /* -- 4. Reveal on scroll ----------------------------------------------- */
 
   var revealTargets = document.querySelectorAll('[data-reveal]');
 
@@ -206,10 +193,8 @@
     revealTargets.forEach(function (target) { revealObserver.observe(target); });
   }
 
-  /* ------------------------------------------------------------------------
-     5. Light parallax on the project screenshots
-     Desktop only, transform only, and only while the frame is on screen.
-     ---------------------------------------------------------------------- */
+  /* -- 5. Parallax on the project screenshots ---------------------------- */
+  /* Desktop only, transform only, and only while the frame is on screen. */
 
   var wideScreen = window.matchMedia('(min-width: 961px)');
   var parallaxFrames = [];
@@ -270,12 +255,8 @@
   wideScreen.addEventListener('change', setUpParallax);
   reducedMotion.addEventListener('change', setUpParallax);
 
-  /* ------------------------------------------------------------------------
-     6. Contact form
-     Validates in the browser, then posts to Formspree with fetch so the
-     visitor stays on the page. Without JavaScript the form still submits
-     normally, because the action and method are in the HTML.
-     ---------------------------------------------------------------------- */
+  /* -- 6. Contact form --------------------------------------------------- */
+  /* Sent with fetch to Formspree; without JS the form action still submits. */
 
   var form = document.getElementById('contact-form');
   var status = document.getElementById('form-status');
@@ -370,12 +351,8 @@
     });
   }
 
-  /* ------------------------------------------------------------------------
-     Certificate lightbox
-
-     The thumbnails are real buttons in the markup, so with no JavaScript they
-     simply do nothing rather than looking clickable and failing.
-     ------------------------------------------------------------------------ */
+  /* -- 7. Certificate lightbox ------------------------------------------- */
+  /* Thumbnails are real buttons: without JS they do nothing rather than fail. */
 
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');

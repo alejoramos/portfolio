@@ -1,11 +1,7 @@
-/* ==========================================================================
-   Eddy Ramos, portfolio
-   A 12 column grid, hairline rules, one accent colour, flat backgrounds.
-   ========================================================================== */
+/* Eddy Ramos, portfolio. A 12 column grid, hairline rules, one accent colour
+   and flat backgrounds. */
 
-/* --------------------------------------------------------------------------
-   1. Tokens
-   -------------------------------------------------------------------------- */
+/* -- 1. Tokens ----------------------------------------------------------- */
 
 :root {
   --paper: #f2f0ea;
@@ -46,9 +42,7 @@
   --shadow-frame: 0 24px 50px -30px rgba(0, 0, 0, 0.8);
 }
 
-/* --------------------------------------------------------------------------
-   2. Base
-   -------------------------------------------------------------------------- */
+/* -- 2. Base ------------------------------------------------------------- */
 
 *,
 *::before,
@@ -162,9 +156,7 @@ a {
   transform: translateY(0);
 }
 
-/* --------------------------------------------------------------------------
-   3. Buttons
-   -------------------------------------------------------------------------- */
+/* -- 3. Buttons ---------------------------------------------------------- */
 
 .btn {
   display: inline-flex;
@@ -235,9 +227,7 @@ a {
   background: var(--accent-wash);
 }
 
-/* --------------------------------------------------------------------------
-   4. Masthead
-   -------------------------------------------------------------------------- */
+/* -- 4. Masthead --------------------------------------------------------- */
 
 .masthead {
   position: sticky;
@@ -268,9 +258,8 @@ a {
 
 /* ER monogram. The custom property reaches into the <use> shadow tree,
    which a plain class selector cannot do. */
-/* EAR mark. Two files because the artwork is a solid mass with the letters
-   cut out of it, so the mass has to flip between themes. Using a background
-   rather than <img> means only the version in use gets downloaded. */
+/* Two logo files because the mark is a solid mass that has to flip between
+   themes; as a background, only the one in use downloads. */
 .brand-mark {
   width: 80px;
   height: 29px;
@@ -386,9 +375,7 @@ a {
   transform-origin: left;
 }
 
-/* --------------------------------------------------------------------------
-   5. Mobile menu
-   -------------------------------------------------------------------------- */
+/* -- 5. Mobile menu ------------------------------------------------------ */
 
 /* sits under the masthead so the close button stays reachable */
 .mobile-menu {
@@ -424,9 +411,7 @@ a {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --------------------------------------------------------------------------
-   6. Hero
-   -------------------------------------------------------------------------- */
+/* -- 6. Hero ------------------------------------------------------------- */
 
 .hero {
   padding-block: clamp(56px, 8vw, 108px) clamp(64px, 9vw, 120px);
@@ -533,9 +518,7 @@ a {
   font-size: 0.88rem;
 }
 
-/* --------------------------------------------------------------------------
-   7. Section scaffolding
-   -------------------------------------------------------------------------- */
+/* -- 7. Section scaffolding ---------------------------------------------- */
 
 .section {
   padding-block: var(--section-space);
@@ -578,9 +561,7 @@ a {
   color: var(--ink-muted);
 }
 
-/* --------------------------------------------------------------------------
-   8. About
-   -------------------------------------------------------------------------- */
+/* -- 8. About ------------------------------------------------------------ */
 
 .about-grid {
   display: grid;
@@ -598,9 +579,8 @@ a {
   font-size: 1.06rem;
 }
 
-/* Sits beside the opening paragraphs rather than above them, so the two
-   are read together. The file is already square, so the circle is just a
-   radius and nothing gets cropped. */
+/* Beside the opening paragraphs so the two are read together. The source is
+   square, so the circle crops nothing. */
 .about-portrait {
   grid-column: 9 / 13;
   grid-row: 1;
@@ -642,9 +622,7 @@ a {
   font-weight: 500;
 }
 
-/* --------------------------------------------------------------------------
-   9. Projects
-   -------------------------------------------------------------------------- */
+/* -- 9. Projects --------------------------------------------------------- */
 
 .section-work {
   padding-bottom: clamp(48px, 6vw, 84px);
@@ -772,9 +750,7 @@ a {
 
 
 
-/* --------------------------------------------------------------------------
-   10. Other builds
-   -------------------------------------------------------------------------- */
+/* -- 10. Other builds ---------------------------------------------------- */
 
 .build-list {
   border-top: 1px solid var(--rule);
@@ -844,9 +820,7 @@ a {
   white-space: nowrap;
 }
 
-/* --------------------------------------------------------------------------
-   11. Toolkit
-   -------------------------------------------------------------------------- */
+/* -- 11. Toolkit --------------------------------------------------------- */
 
 .toolkit {
   margin: 0;
@@ -880,9 +854,7 @@ a {
   font-weight: 500;
 }
 
-/* --------------------------------------------------------------------------
-   12. Contact
-   -------------------------------------------------------------------------- */
+/* -- 12. Contact --------------------------------------------------------- */
 
 .contact-grid {
   display: grid;
@@ -1077,9 +1049,7 @@ textarea {
   font-size: 0.93rem;
 }
 
-/* --------------------------------------------------------------------------
-   13. Footer
-   -------------------------------------------------------------------------- */
+/* -- 13. Footer ---------------------------------------------------------- */
 
 .site-footer {
   padding-block: clamp(40px, 5vw, 60px);
@@ -1140,9 +1110,7 @@ textarea {
   text-align: right;
 }
 
-/* --------------------------------------------------------------------------
-   14. Back to top
-   -------------------------------------------------------------------------- */
+/* -- 14. Back to top ----------------------------------------------------- */
 
 .to-top {
   position: fixed;
@@ -1176,9 +1144,7 @@ textarea {
   color: var(--paper);
 }
 
-/* --------------------------------------------------------------------------
-   15. Motion
-   -------------------------------------------------------------------------- */
+/* -- 15. Motion ---------------------------------------------------------- */
 
 /* Scroll reveal. Content stays visible if JavaScript never runs. */
 .js [data-reveal] {
@@ -1257,14 +1223,8 @@ textarea {
   }
 }
 
-/* --------------------------------------------------------------------------
-   15b. Certifications
-
-   Rows, not a card grid. Each certificate reads left to right like a line in
-   a list: number, the document itself, what it is, then who issued it and the
-   link that proves it. The rules between them do the work a card border would
-   have done, without boxing anything in.
-   -------------------------------------------------------------------------- */
+/* -- 15b. Certifications ------------------------------------------------- */
+/* Rows, not a card grid: the rules between them do what a card border would. */
 
 .certs {
   list-style: none;
@@ -1310,10 +1270,8 @@ textarea {
 
 .cert:nth-child(even) .cert-shot { transform: rotate(1.2deg); }
 
-/* No border of our own: the certificate already carries a heavy blue frame,
-   and a second edge around it just reads as noise. It also sits slightly
-   desaturated at rest so three of them in a column do not shout, and comes
-   back to full colour when you go to open one. */
+/* No border of our own, since the certificate has a heavy frame already.
+   Slightly desaturated at rest so three in a column do not shout. */
 .cert-shot img {
   display: block;
   width: 100%;
@@ -1427,9 +1385,7 @@ textarea {
   .cert-verify { margin-top: 8px; }
 }
 
-/* --------------------------------------------------------------------------
-   15c. Lightbox
-   -------------------------------------------------------------------------- */
+/* -- 15c. Lightbox ------------------------------------------------------- */
 
 .lightbox {
   position: fixed;
@@ -1466,9 +1422,7 @@ textarea {
 
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.14); }
 
-/* --------------------------------------------------------------------------
-   16. Responsive
-   -------------------------------------------------------------------------- */
+/* -- 16. Responsive ------------------------------------------------------ */
 
 @media (max-width: 1100px) {
   .section-head,

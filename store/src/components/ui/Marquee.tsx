@@ -10,10 +10,8 @@ interface MarqueeProps {
   separator?: string;
 }
 
-/**
- * CSS-only marquee. Duplicating the track and translating by exactly -50% gives
- * a seamless loop without measuring anything at runtime.
- */
+/** CSS-only marquee: the track is duplicated and moved by exactly -50%, so it
+    loops seamlessly without measuring anything. */
 export function Marquee({
   items,
   className,

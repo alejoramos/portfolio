@@ -1,10 +1,5 @@
-/**
- * Featured dishes.
- *
- * Selection is plain DOM work and always available. The pinned scroll is
- * layered on top by `motion.ts` once GSAP is ready — this module exposes
- * `setDish` for it and never depends on it.
- */
+/** Featured dishes. Selection is plain DOM and always works; motion.ts adds the
+    pinned scroll on top through `setDish`, and this never depends on it. */
 
 import { dishes } from '@/data/dishes';
 

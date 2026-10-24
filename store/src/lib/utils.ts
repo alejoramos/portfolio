@@ -35,11 +35,7 @@ export const mapRange = (
 
 export const pad2 = (n: number) => String(n).padStart(2, '0');
 
-/**
- * Resolves a path authored as "under /public" against wherever the app is
- * actually deployed. The store is served from a subdirectory of the portfolio,
- * so a bare `/assets/...` would resolve against the domain root and 404.
- * `BASE_URL` is `/` in development, so this is a no-op there.
- */
+/** Resolves a /public path against the deploy base. The store lives under
+    /store/, so a bare `/assets/...` would 404; in dev BASE_URL is `/`. */
 export const asset = (path: string) =>
   path.startsWith('/') ? import.meta.env.BASE_URL.replace(/\/$/, '') + path : path;

@@ -12,13 +12,8 @@ import { SmartImage } from '../../components/ui/Primitives';
 /** Code-split: three + drei never reach the bundle unless this section mounts. */
 const ShoeStage = lazy(() => import('../../components/three/ShoeStage'));
 
-/**
- * Section D — "The Chamber".
- *
- * The strongest treatment on the page and the only WebGL on the site. Falls back
- * to a styled static presentation on reduced motion, constrained devices, and
- * any context where the canvas cannot mount, so the section is never empty.
- */
+/** Section D, "The Chamber", the only WebGL on the site. Reduced motion, weak
+    devices and a canvas that fails to mount all get a static version instead. */
 export function FootwearChamber() {
   const [wrapRef, visible] = useIsVisible<HTMLDivElement>('300px');
   const [index, setIndex] = useState(0);

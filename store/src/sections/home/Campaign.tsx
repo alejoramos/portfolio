@@ -13,13 +13,8 @@ const STATS = [
   { value: '11oz', label: 'Denim programme weight' },
 ];
 
-/**
- * Section G — Campaign.
- *
- * The quiet, confident beat between two loud sections. Almost no chrome: a
- * cropped figure, one statement, a stat row, and a single marquee. The restraint
- * is the point — it is what makes the sections around it land.
- */
+/** Section G, Campaign. The quiet beat between two loud sections: a figure,
+    one statement, stats and a marquee, and almost nothing else. */
 export function Campaign() {
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();

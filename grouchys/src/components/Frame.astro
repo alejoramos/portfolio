@@ -2,14 +2,8 @@
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
-/**
- * A photograph inside a fixed-size frame.
- *
- * Every image on the site goes through here so the cover behaviour, the
- * responsive srcset, the explicit dimensions and the empty state stay
- * identical everywhere. `src={null}` renders the frame with the photographer's
- * brief instead of borrowing another dish's picture.
- */
+/** A photograph in a fixed-size frame. Every image goes through here so cover,
+    srcset, dimensions and the empty state match. `src={null}` shows the brief. */
 interface Props {
   src: ImageMetadata | null;
   alt: string;
@@ -40,13 +34,8 @@ const {
   ...rest
 } = Astro.props;
 
-/*
-  `rest` carries the parent's `data-astro-cid-*` scope attribute. Forwarding it
-  onto the root is what lets a section style its own frames — `.story__photo--2
-  { height: 400px }` in Story.astro only matches if this element is inside that
-  component's style scope. Without it every frame silently collapses to the
-  image's intrinsic aspect ratio and the whole photographic rhythm goes.
-*/
+/* `rest` carries the parent's `data-astro-cid-*` scope, so a section's styles reach
+   its frames (e.g. `.story__photo--2`); without it they lose their set heights. */
 
 const available = src ? widths.filter((w) => w <= src.width) : [];
 const finalWidths = available.length ? available : src ? [src.width] : [];

@@ -15,10 +15,8 @@ const openDays = hours.filter((h) => h.service).length;
   description="Grouchy's Public House on Main Street in Greenville, Illinois — premium grilled dishes, handcrafted cocktails, whiskey, bourbon and craft beer in a warm, intimate setting."
   path="/about"
 >
-  <!--
-    Opener: one statement, held in negative space, with the Main Street drawing
-    behind it. No eyebrow, no paragraph, no button — the page earns those later.
-  -->
+  <!-- Opener: one statement in open space with the Main Street drawing behind.
+       No eyebrow, paragraph or button yet; the page earns those later. -->
   <section class="opener" aria-labelledby="about-title">
     <Image
       src={brand.buildingCream}
@@ -183,12 +181,8 @@ const openDays = hours.filter((h) => h.service).length;
     .spread__grid {
       grid-template-columns: minmax(0, 430px) 1fr;
       gap: 90px;
-      /*
-        The approved copy here is short — three paragraphs against two
-        photographs. Aligned to the start it left ~590px of dead column under
-        the text, which read as an accident. Centred, the same emptiness sits
-        evenly above and below and reads as intentional negative space.
-      */
+      /* Centred, not start-aligned: three short paragraphs against two photos left
+         ~590px of dead column below; centred, the space reads as intentional. */
       align-items: center;
     }
   }
@@ -225,12 +219,8 @@ const openDays = hours.filter((h) => h.service).length;
     .spread__photo--wide {
       height: 400px;
     }
-    /*
-      Held to the left edge, not the right. At 66% right-aligned the offcut
-      landed *between* the text and the photograph — a 259px hole trapped
-      inside the composition. Against the left edge the two images share a
-      spine and the offcut falls at the outer margin, where open space belongs.
-    */
+    /* Held to the left edge: right-aligned at 66% the offcut left a 259px hole
+       between text and photo. On the left it falls at the outer margin instead. */
     .spread__photo--tall {
       height: 420px;
       width: 72%;

@@ -3,10 +3,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Flip } from 'gsap/Flip';
 import { useGSAP } from '@gsap/react';
 
-/**
- * Single registration point. Importing plugins in more than one module risks
- * double registration and makes it hard to see what the app actually depends on.
- */
+/** The only place plugins are registered: no double registration, and one
+    file shows what the app depends on. */
 gsap.registerPlugin(ScrollTrigger, Flip, useGSAP);
 
 /** Brand easing, matched to the CSS token of the same name. */

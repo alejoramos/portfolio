@@ -16,16 +16,8 @@ const STEPS: { key: CheckoutStep; label: string }[] = [
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/**
- * Checkout.
- *
- * Deliberately the least animated surface on the site — a progress bar and a
- * step slide, nothing more. Motion here would only get between someone and their
- * order. Validation is real so the flow behaves like a store rather than a mock.
- *
- * No payment is processed and no card data leaves the component; the fields
- * exist to complete the concept, not to capture anything.
- */
+/** Checkout, kept nearly still: motion here only gets in the way of the order.
+    Validation is real, but nothing is charged and no card data leaves the page. */
 export default function Checkout() {
   const { lines, clear } = useCartStore();
   const reduced = usePrefersReducedMotion();
@@ -60,11 +52,8 @@ export default function Checkout() {
 
   const stepIndex = STEPS.findIndex((s) => s.key === step);
 
-  /**
-   * One local part, one @, then a domain with at least one dot and a two letter
-   * or longer ending. Enough to catch the common typos without pretending to
-   * be RFC 5322, which is not something a checkout form should attempt.
-   */
+  /** One local part, one @, and a domain with at least one dot. Catches common
+      typos without trying to be RFC 5322. */
   const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 
   const validateShipping = () => {

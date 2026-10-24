@@ -1,11 +1,5 @@
-/**
- * The board. Copied verbatim from the design prototype's MENU object.
- *
- * TODO — every price renders as the placeholder `$ ——`. Real prices, and
- * confirmation of the seven categories and their contents, are still pending
- * with the owner (NOTES-open-questions.md → Menu & pricing). `price` stays
- * `null` until then; the row renders the placeholder automatically.
- */
+/** The board, verbatim from the prototype's MENU object. TODO: every price is
+    `null`, which renders a placeholder, until the owner confirms the menu. */
 
 export interface MenuItem {
   name: string;

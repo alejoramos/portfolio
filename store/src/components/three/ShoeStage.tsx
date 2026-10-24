@@ -4,18 +4,8 @@ import { MeshReflectorMaterial, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { gsap } from '../../lib/gsap';
 
-/**
- * WebGL showcase for the footwear section.
- *
- * The catalogue ships flat product renders rather than GLTF models, so this is
- * not a rotatable mesh — it is a lit, reflected billboard. What WebGL buys here
- * is real: a mirrored floor that responds to the light rig, and a shader wipe
- * between colourways with a chromatic split along the boundary. Neither is
- * reproducible in CSS, and both read as a premium product moment.
- *
- * Drop a `.glb` into the product data's `model3d` field and this component is
- * the only place that needs to change.
- */
+/** WebGL stage for the footwear. There are flat renders, not 3D models, so it
+    shows them on a mirrored floor with a shader wipe between colourways. */
 
 const VERTEX = /* glsl */ `
   varying vec2 vUv;
@@ -89,11 +79,8 @@ function ShoePlane({ images, index, aspect }: ShoePlaneProps) {
     });
   }, [textures]);
 
-  /*
-   * uProgress runs 0 -> 1 for each swap: at 0 the shader resolves to uFrom (the
-   * outgoing colourway), at 1 to uTo (the incoming one). It rests at 1 so the
-   * settled state is always the current selection.
-   */
+  /* uProgress runs 0 to 1 per swap: 0 shows uFrom (outgoing), 1 shows uTo
+     (incoming). It rests at 1, so the settled frame is the current selection. */
   const uniforms = useMemo(
     () => ({
       uFrom: { value: textures[index] },

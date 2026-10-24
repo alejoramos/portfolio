@@ -1,9 +1,5 @@
-/**
- * Header + mobile navigation behaviour.
- *
- * Everything here is progressive: without JavaScript the header is a normal
- * sticky bar with working links, and the overlay simply never opens.
- */
+/** Header and mobile nav. Without JavaScript the header is a normal sticky bar
+    with working links, and the overlay never opens. */
 
 import { lockScroll, unlockScroll } from './lib/scroll-lock';
 import { trapFocus } from './lib/focus-trap';
@@ -48,12 +44,8 @@ function initMobileNav() {
     if (isOpen) return;
     isOpen = true;
 
-    /*
-      Remember where focus came from so Escape can put it back. If nothing was
-      focused (a tap rather than a keypress) `document.activeElement` is
-      <body>, which cannot take focus — fall back to the toggle, so closing
-      always lands somewhere a keyboard user can carry on from.
-    */
+    /* Remember the focused element so Escape can return focus. After a tap it is
+       <body>, which can't take focus, so fall back to the toggle. */
     const active = document.activeElement;
     lastFocused =
       active instanceof HTMLElement && active !== document.body ? active : openBtn;

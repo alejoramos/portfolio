@@ -13,10 +13,8 @@ export interface Dish {
   brief: string;
 }
 
-/**
- * Copy is verbatim from the handoff. Dishes 05 and 06 have no photography yet —
- * they render an empty frame rather than borrowing another dish's picture.
- */
+/** Copy is verbatim from the handoff. Dishes 05 and 06 have no photo yet, so
+    they show an empty frame rather than another dish's picture. */
 export const dishes: Dish[] = [
   {
     n: '01',

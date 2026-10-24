@@ -1,11 +1,5 @@
-/**
- * Domain types for the KINETA catalogue.
- *
- * Everything the UI renders is described here. The mock data in
- * `src/data/products.mock.ts` is the only place these are hand-authored — swap
- * `src/lib/repository.ts` for a real CMS/API client and the components below it
- * do not change.
- */
+/** Domain types for the KINETA catalogue. Only the mock data writes them by
+    hand, so a real API in the repository leaves the UI unchanged. */
 
 export type Category = 'tops' | 'footwear' | 'bottoms';
 

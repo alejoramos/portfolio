@@ -25,12 +25,8 @@ interface ShopProps {
   badge?: 'new';
 }
 
-/**
- * The catalogue surface, shared by /shop and every category route.
- *
- * One component covers all of them because they differ only in their locked
- * filter and copy — duplicating it per category is how these pages drift apart.
- */
+/** The catalogue page for /shop and every category route. They differ only in
+    the locked filter and copy, and separate copies would drift apart. */
 export default function Shop({ category, title, kicker, intro, badge }: ShopProps) {
   const [activeCategory, setActiveCategory] = useState<Category | undefined>(category);
   const [sort, setSort] = useState<SortKey>('featured');

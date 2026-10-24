@@ -20,11 +20,8 @@ interface Props {
   headingId?: string;
   /** The /reserve page leads with the card; the homepage leads with the copy. */
   compact?: boolean;
-  /**
-   * On the homepage this is one section among many (h2). On /reserve it is the
-   * page's subject, so it has to be the h1 — the heading order is part of the
-   * document, not decoration.
-   */
+  /** An h2 on the homepage, but the h1 on /reserve, where it is the page's
+      subject: heading order is part of the document. */
   as?: 'h1' | 'h2';
 }
 const {
@@ -36,11 +33,8 @@ const Heading = as;
 /** The card sits one level below whatever the section heading is. */
 const CardHeading = as === 'h1' ? 'h2' : 'h3';
 
-/*
-  Days are generated at build time so the markup is complete and readable with
-  no JavaScript, then recomputed on load by the reservation script so the dates
-  are never stale. Closed days come from the confirmed opening hours.
-*/
+/* Days are generated at build time so the markup works without JavaScript, then
+   recomputed on load so they are never stale. Closed days follow the real hours. */
 const days = buildDays();
 const defaultDay = firstOpenIndex(days);
 ---
@@ -94,11 +88,8 @@ const defaultDay = firstOpenIndex(days);
       </div>
     </div>
 
-    <!--
-      The reservation card. This is a front-end demonstration: the form has no
-      action and no endpoint, and `submitReservation()` in the script is the
-      single seam where a real provider would be connected later.
-    -->
+    <!-- Reservation card, a front-end demo: no action, no endpoint. A real provider
+         would connect at `submitReservation()` in the script. -->
     <div class="reserve__card">
       <form class="reserve__form" data-reserve-form novalidate autocomplete="on">
         <div class="reserve__head">
@@ -544,9 +535,8 @@ const defaultDay = firstOpenIndex(days);
     color: rgb(184 178 167 / 0.4);
   }
 
-  /* ---------- choice controls -------------------------------------------
-     Real radios, visually hidden. Selection, keyboard support and focus all
-     come from the browser; the styling rides on :checked and :focus-visible. */
+  /* ---------- choice controls -------------------------------------------- */
+  /* Real radios, visually hidden: the browser handles selection, keys and focus. */
 
   .reserve__input {
     position: absolute;

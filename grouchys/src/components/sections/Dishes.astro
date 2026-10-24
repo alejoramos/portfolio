@@ -2,14 +2,8 @@
 import Frame from '@/components/Frame.astro';
 import { dishes } from '@/data/dishes';
 
-/**
- * Six things worth driving for.
- *
- * Desktop: the list pins and the plate changes on scroll. Rows are real
- * buttons, so the section is fully usable by keyboard and by click even when
- * the pinned scroll never runs.
- * Mobile: the same six dishes as a swipeable rail, per the 430px frame.
- */
+/** Six dishes. Desktop: the list pins and the plate changes on scroll; rows are
+    real buttons, so it works without the pin. Mobile: a swipeable rail. */
 ---
 
 <section class="section band-a dishes" data-dishes aria-labelledby="dishes-title">

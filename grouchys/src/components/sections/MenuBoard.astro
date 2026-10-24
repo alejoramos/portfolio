@@ -4,13 +4,8 @@ import { photo, alt } from '@/data/images';
 import { menu, PRICE_PLACEHOLDER, PRICE_NOTE } from '@/data/menu';
 import { url } from '@/lib/url';
 
-/**
- * The board — the homepage menu preview.
- *
- * Without JavaScript every category is on the page, one after another. Once the
- * tab script runs it collapses to a single panel and the tabs take over. The
- * board is never empty and never depends on a script to be readable.
- */
+/** Homepage menu preview. Without JavaScript every category is listed; the tab
+    script then collapses it to one panel, so the board is never empty. */
 ---
 
 <section class="section band-b board" data-board aria-labelledby="board-title">

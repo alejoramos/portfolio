@@ -77,10 +77,8 @@ export function LinkButton({
   );
 }
 
-/**
- * Button whose inner label drifts toward the pointer. The wrapper keeps its own
- * hit area static so the magnetism never makes the control hard to click.
- */
+/** The label drifts toward the pointer while the wrapper's hit area stays put,
+    so the magnetism never makes the button hard to click. */
 export function MagneticButton({
   children,
   className,

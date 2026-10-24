@@ -1,21 +1,5 @@
-/**
- * The reservation whiskey glass.
- *
- * Ported from the handoff's `whiskey-glass.js` with the same visual recipe:
- * a lathed rocks glass, amber liquid painted with a vertical gradient, two ice
- * cubes, a warm key from camera-left, an amber bounce behind, a cool rim from
- * the right, and a small canvas-generated equirect environment through PMREM —
- * that environment is what makes the crystal read as crystal.
- *
- * Everything around it is defensive:
- *   · three.js is imported dynamically, so no other page pays for it;
- *   · it only loads when the block is on screen, on a large screen, with
- *     motion allowed and WebGL available;
- *   · it renders only while visible and while the tab is in the foreground;
- *   · it disposes geometries, materials, textures and the renderer on teardown;
- *   · any failure leaves the static CSS glass in place. There is no state in
- *     which this produces a black rectangle.
- */
+/** Reservation whiskey glass. three.js loads lazily, only on screen, on large
+    screens, with motion and WebGL; any failure keeps the static CSS glass. */
 
 type ThreeModule = typeof import('three');
 
@@ -53,9 +37,8 @@ export function mountWhiskeyGlass(): void {
   if (!host || !mount) return;
 
   const reduced = document.documentElement.hasAttribute('data-reduced-motion');
-  // 768px, not 1024: a laptop window that is not maximised was falling through
-  // to the static glass, which never moves — and the caption beside it promises
-  // that it reacts to the cursor.
+  // 768px, not 1024: an unmaximised laptop window got the static glass, which
+  // doesn't move, while the caption promises it follows the cursor.
   const bigEnough = window.matchMedia('(min-width: 768px)').matches;
 
   // Reduced motion, small screens and machines without WebGL keep the static
@@ -143,9 +126,7 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
   scene.add(group);
 
   // ---- crystal -------------------------------------------------------------
-  // Deliberately not transmission-based: against a transparent canvas there is
-  // no backdrop to refract and transmission collapses to a milky silhouette.
-  // Low-opacity dark glass plus clearcoat gives the same read, predictably.
+  // No transmission (milky with no backdrop): dark glass and clearcoat instead.
   const glassGeo = new THREE.LatheGeometry(
     PROFILE.map((p) => new THREE.Vector2(p[0], p[1])),
     96,
@@ -165,8 +146,7 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
   group.add(new THREE.Mesh(glassGeo, glassMat));
 
   // ---- rim ------------------------------------------------------------------
-  // A hairline of lit crystal around the lip. Without it the silhouette dies
-  // against a black background and the whole thing reads as a dark blob.
+  // A lit hairline around the lip, or the glass sinks into a dark blob on black.
   const rimGeo = new THREE.TorusGeometry(1.0, 0.022, 12, 96);
   const rimMat = new THREE.MeshPhysicalMaterial({
     color: 0xf6e4c4,
@@ -183,9 +163,7 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
   group.add(rimRing);
 
   // ---- whiskey ---------------------------------------------------------------
-  // Transmissive, per the handoff: amber that light passes *through*, tinted by
-  // attenuation over distance. A painted cylinder (what this used to be) reads
-  // as a flat orange card because nothing varies across its curve.
+  // Transmissive amber that light passes through; a painted cylinder looked flat.
   const liquidGeo = new THREE.CylinderGeometry(0.8, 0.792, 0.86, 96, 1, false);
   const liquidMat = new THREE.MeshPhysicalMaterial({
     color: 0xc9761f,
@@ -206,9 +184,8 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
   liquid.position.y = 1.0;
   group.add(liquid);
 
-  // The meniscus — a bright hairline where whiskey meets air and the surface
-  // curves up the glass wall. A filled disc here reads as a plastic lid; it is
-  // this thin lit ring that actually says "liquid".
+  // The meniscus: a thin lit ring where whiskey meets glass. A filled disc reads
+  // as a plastic lid; this ring is what says "liquid".
   const surfaceGeo = new THREE.TorusGeometry(0.788, 0.016, 10, 96);
   const surfaceMat = new THREE.MeshPhysicalMaterial({
     color: 0xffc070,
@@ -228,8 +205,7 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
   group.add(surface);
 
   // ---- ice -------------------------------------------------------------------
-  // Bevelled, mostly submerged, and genuinely transmissive — flat grey boxes
-  // read as paper, which is exactly how the previous version looked.
+  // Bevelled, mostly submerged and transmissive; flat grey boxes read as paper.
   const iceGeo = new THREE.BoxGeometry(0.54, 0.54, 0.54, 3, 3, 3);
   // knock the corners off so the edges catch light like real ice
   {
@@ -255,9 +231,8 @@ function build(THREE: ThreeModule, host: HTMLElement, mount: HTMLElement): () =>
     envMapIntensity: 2.2,
     transparent: true,
   });
-  // Both cubes sit fully under the surface (top of the whiskey is y 1.43).
-  // A cube breaking the surface renders as a dark shard against the black
-  // backdrop, which is what the first pass looked like.
+  // Both cubes stay under the surface (y 1.43): one breaking it shows as a dark
+  // shard against the black backdrop.
   const ice1 = new THREE.Mesh(iceGeo, iceMat);
   ice1.position.set(-0.24, 1.05, 0.06);
   ice1.rotation.set(0.4, 0.7, 0.25);

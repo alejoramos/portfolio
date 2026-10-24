@@ -1,7 +1,5 @@
-/* Leland Barbers
-   A three chair shop in Uptown. Near black and warm bone, with one brick red
-   that only ever means "do something". Sections alternate dark and light so
-   the page has a rhythm instead of one long scroll of boxes. */
+/* Leland Barbers. Near black and warm bone, with one brick red that only
+   ever marks something you can act on. */
 
 *,
 *::before,
@@ -950,9 +948,8 @@ textarea { font: inherit; }
     .js .stack-card:nth-child(2) { z-index: 2; }
     .js .stack-card:nth-child(3) { z-index: 3; }
 
-    /* Parked below the frame until scroll deals them up. They slide rather
-       than fade, otherwise two photos are visible at once mid transition and
-       it reads as a double exposure. */
+    /* Parked below the frame until scroll deals them up. They slide rather than
+       fade, so two photos never show at once as a double exposure. */
     .js .stack-card:nth-child(n + 2) { transform: translateY(101%); }
 
     /* pointer devices get the quick hover peek as well as the switch */

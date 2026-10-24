@@ -62,11 +62,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   </div>
 </header>
 
-<!--
-  Full-screen mobile navigation. Hidden with the `hidden` attribute so it is
-  inert for assistive tech and for keyboards until it is opened; the toggle is
-  the only thing that reveals it.
--->
+<!-- Full-screen mobile nav. The `hidden` attribute keeps it inert for screen
+     readers and keyboards until the toggle opens it. -->
 <div id="mobile-nav" class="mobile-nav" data-mobile-nav hidden>
   <div class="mobile-nav__bg" aria-hidden="true">
     <Frame

@@ -1,7 +1,5 @@
-/* BJJ Basics
-   Motion is deliberately limited: one entrance, scroll reveals, a pinned
-   horizontal track on desktop, and a slow drift on the gi / no-gi panels.
-   Everything degrades to a plain scrolling page if GSAP never loads. */
+/* BJJ Basics. Motion is kept small, and everything degrades to a plain
+   scrolling page if GSAP never loads. */
 
 (function () {
     'use strict';
@@ -124,9 +122,8 @@
                 track.classList.add('is-pinned');
             }
 
-            // Measured from the last slide rather than from scrollWidth,
-            // which is unreliable once the row is clipped by .is-pinned.
-            // Both rects carry the same transform, so it cancels out.
+            // Measured from the last slide: scrollWidth is unreliable once .is-pinned
+            // clips the row, and both rects share the transform, so it cancels out.
             var slides = inner.querySelectorAll('.slide');
             var last = slides[slides.length - 1];
 
@@ -151,9 +148,8 @@
                 }
             });
 
-            // The ratios above keep the widths right before the photos load,
-            // but a decoded image can still land a fraction off, so the
-            // measurements are taken again once the row has finished loading.
+            // Re-measure once the photos load, since a decoded image can land a
+            // fraction off the ratio set above.
             var waiting = 0;
             var settle = function () {
                 if (--waiting <= 0) ScrollTrigger.refresh();

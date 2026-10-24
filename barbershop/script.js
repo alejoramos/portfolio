@@ -1,7 +1,5 @@
-/* Leland Barbers
-   Menu, opening hours, the before and after switches, the booking form, and a
-   scroll driven photo stack. Everything here is an enhancement: with no GSAP,
-   or with reduced motion, the page is a plain scrolling document. */
+/* Leland Barbers. Everything here is an enhancement: without GSAP, or with
+   reduced motion, the page is a plain scrolling document. */
 
 (function () {
     'use strict';

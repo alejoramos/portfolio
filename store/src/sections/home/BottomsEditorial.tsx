@@ -8,14 +8,8 @@ import { formatPrice } from '../../lib/utils';
 import { SectionKicker } from '../../components/ui/Reveal';
 import { SmartImage } from '../../components/ui/Primitives';
 
-/**
- * Section E — "Cut & Weight".
- *
- * Deliberately the opposite of the two sections before it: nothing floats,
- * nothing is centred. An asymmetric editorial grid with oversized index numerals
- * and clip-path wipes, anchored by a full-height figure. Grounded, magazine-like,
- * and the only section on the page built on a left-heavy axis.
- */
+/** Section E, "Cut & Weight". The one left-heavy section: an asymmetric grid,
+    big index numerals and clip-path wipes, with nothing floating or centred. */
 export function BottomsEditorial() {
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();

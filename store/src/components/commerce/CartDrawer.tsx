@@ -10,12 +10,8 @@ import { usePrefersReducedMotion } from '../../hooks/useEnvironment';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/**
- * Slide-over cart.
- *
- * Quick adds open here rather than navigating, so browsing is never interrupted;
- * `/cart` remains available as a full page for review before checkout.
- */
+/** Slide-over cart. Quick adds open here so browsing is never interrupted;
+    `/cart` is still a full page for review before checkout. */
 export function CartDrawer() {
   const { cartOpen, closeCart } = useUIStore();
   const { lines, setQuantity, remove } = useCartStore();

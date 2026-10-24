@@ -1,7 +1,5 @@
-/**
- * Background scroll lock, shared by the mobile nav and the lightbox.
- * Reference-counted so two overlays cannot unlock each other.
- */
+/** Background scroll lock for the mobile nav and the lightbox. It is reference
+    counted, so one overlay can't unlock the other. */
 
 let depth = 0;
 let savedY = 0;

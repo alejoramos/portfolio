@@ -11,10 +11,8 @@ function visible(el: HTMLElement): boolean {
   return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
 }
 
-/**
- * Keeps Tab inside `container` until the returned function is called.
- * Used by the mobile navigation and the gallery lightbox.
- */
+/** Keeps Tab inside `container` until the returned function is called. Used by
+    the mobile nav and the gallery lightbox. */
 export function trapFocus(container: HTMLElement): () => void {
   const onKeydown = (e: KeyboardEvent) => {
     if (e.key !== 'Tab') return;

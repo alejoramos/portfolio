@@ -21,11 +21,8 @@ interface RoleStyle {
   zIndex: number;
 }
 
-/**
- * Layered depth positions. The centre figure is oversized and grounded at the
- * bottom edge so it overlaps the display type behind it; the flanking figures
- * sit smaller and blurred to read as depth rather than as a row of thumbnails.
- */
+/** Depth positions. The centre figure is oversized and overlaps the type behind
+    it; the side figures are smaller and blurred, so they read as depth. */
 export function roleStyle(role: SlideRole, mobile: boolean): RoleStyle {
   switch (role) {
     case 'center':
@@ -78,11 +75,8 @@ interface HeroCarouselProps {
   reduced: boolean;
 }
 
-/**
- * The figure layer. Each slide keeps a stable DOM node so the transformation
- * timeline can address them directly by index, and role changes are pure CSS
- * transitions rather than remounts.
- */
+/** Figure layer. Each slide keeps a stable DOM node, so the timeline can target
+    it by index and role changes are CSS transitions, not remounts. */
 export const HeroCarousel = forwardRef<HTMLDivElement, HeroCarouselProps>(function HeroCarousel(
   { active, mobile, reduced },
   ref

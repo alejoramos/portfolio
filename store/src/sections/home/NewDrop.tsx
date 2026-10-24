@@ -9,13 +9,8 @@ import { formatPrice } from '../../lib/utils';
 import { SectionKicker, SplitHeading } from '../../components/ui/Reveal';
 import { SmartImage, ProductSkeleton } from '../../components/ui/Primitives';
 
-/**
- * Section B — the landing point of the hero transformation.
- *
- * Shares the hero reveal's ink background so the seam is invisible. Products are
- * suspended at uneven heights and drift at different rates on scroll, which
- * gives depth without any single loud effect.
- */
+/** Section B, where the hero lands. It shares the hero's ink, so there is no
+    seam; products hang at uneven heights and drift at different rates. */
 export function NewDrop() {
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();

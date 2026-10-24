@@ -3,13 +3,8 @@ import { useProducts } from '../../hooks/useProducts';
 import { Reveal, SectionKicker } from '../../components/ui/Reveal';
 import { ProductGrid } from '../../components/product/ProductGrid';
 
-/**
- * Section I — curated picks.
- *
- * Intentionally the calmest section on the page: standard grid, one entrance
- * stagger, no parallax, no accent field. After the Chamber and the Runway the
- * page needs somewhere to rest, and a store needs somewhere you can just browse.
- */
+/** Section I, curated picks. The calmest section, a plain grid and one stagger,
+    so after the Chamber and the Runway there is somewhere to just browse. */
 export function FeaturedPicks() {
   const { data: products, loading } = useProducts({ sort: 'featured', limit: 8 });
 

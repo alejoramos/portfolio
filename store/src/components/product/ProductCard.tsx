@@ -52,13 +52,8 @@ export function WishlistButton({
   );
 }
 
-/**
- * The catalogue's single card component.
- *
- * Presentation is a prop rather than a separate component per category: the
- * shared behaviour (link target, wishlist, price, badges) stays in one place and
- * only the framing changes, so a new category is a variant rather than a fork.
- */
+/** The catalogue's one card. Presentation is a prop, so shared behaviour stays
+    in one place and a new category is a variant, not a fork. */
 export const ProductCard = memo(function ProductCard({
   product,
   variant,

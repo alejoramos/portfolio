@@ -9,12 +9,8 @@ import { useUIStore, useWishlistStore } from '../store/ui.store';
 import { useScrollLock, useEscape } from '../hooks/useInteractions';
 import { usePrefersReducedMotion } from '../hooks/useEnvironment';
 
-/**
- * Site header.
- *
- * Transparent over the hero and solid everywhere else, so the intro keeps its
- * full-bleed composition without the nav ever becoming unreadable.
- */
+/** Transparent over the hero and solid everywhere else, so the intro stays
+    full-bleed and the nav is always readable. */
 export function Header() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);

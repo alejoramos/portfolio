@@ -18,12 +18,8 @@ interface SmartImageProps {
   sizes?: string;
 }
 
-/**
- * Product image with reserved space and a fade-in once decoded.
- *
- * The wrapper holds the aspect ratio so nothing reflows as images arrive, which
- * matters on grids where dozens load at once.
- */
+/** Product image that fades in once decoded. The wrapper holds the aspect
+    ratio, so grids don't reflow while dozens of images arrive. */
 export function SmartImage({
   src,
   alt,
@@ -183,10 +179,8 @@ export function Accordion({
 
 /* ----------------------------------------------------------------- Cursor */
 
-/**
- * Blend-mode cursor dot. Desktop with a fine pointer only — on touch it would
- * lag behind taps and add nothing.
- */
+/** Blend-mode cursor dot, for fine pointers only. On touch it would lag
+    behind taps and add nothing. */
 export function Cursor() {
   const dot = useRef<HTMLDivElement>(null);
   const fine = useHasFinePointer();

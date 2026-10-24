@@ -12,13 +12,8 @@ const TILES = [
   { key: 'bottoms', slug: 'stretch-denim-jogger-indigo', span: 'lg:col-span-3' },
 ] as const;
 
-/**
- * Section H — entry points to the catalogue.
- *
- * Three tiles on an uneven twelve-column split so it does not read as a row of
- * equal boxes, each carrying its category accent. Tilt is the only effect, and
- * it is pointer-gated.
- */
+/** Section H, catalogue entry points. An uneven 12 column split so the tiles
+    don't read as equal boxes; tilt is the only effect, on fine pointers only. */
 export function CategoryTiles() {
   const { data: products } = useProductsBySlugs(TILES.map((t) => t.slug));
   const bySlug = new Map(products.map((p) => [p.slug, p]));

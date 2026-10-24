@@ -45,14 +45,8 @@ const NAMES = {
   },
 };
 
-/**
- * Bounding box of the real subject.
- *
- * A plain min/max over opaque pixels is fooled by the stray hairlines a few of
- * these renders carry in the margins, so a row or column only counts as content
- * once enough of its pixels are opaque. That discards 1px artifacts while still
- * keeping the soft baked-in shadows under the footwear.
- */
+/** Bounding box of the subject. A line counts only once enough of its pixels
+    are opaque, so stray 1px hairlines are skipped but soft shadows are kept. */
 async function alphaBounds(file, threshold = 10) {
   const img = sharp(file);
   const { width, height } = await img.metadata();
@@ -69,12 +63,8 @@ async function alphaBounds(file, threshold = 10) {
     }
   }
 
-  /*
-   * A few renders carry a faint stripe against the canvas edge, far from the
-   * subject and dense enough to survive any sane per-line threshold. Grouping
-   * lines into runs and keeping the heaviest run drops those islands without
-   * touching the shadows, which are contiguous with the product.
-   */
+  /* Some renders have a faint stripe at the canvas edge. Keeping only the
+     heaviest run of lines drops it; the shadows touch the product, so they stay. */
   const span = (counts) => {
     const floor = Math.max(2, Math.round(Math.max(...counts) * 0.01));
     const maxGap = Math.max(8, Math.round(counts.length * 0.02));

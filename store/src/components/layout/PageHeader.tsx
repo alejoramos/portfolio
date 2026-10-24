@@ -8,10 +8,8 @@ interface PageHeaderProps {
   count?: number;
 }
 
-/**
- * Shared masthead for catalogue pages. Carries the category accent as a wash so
- * each route feels like its own space without a bespoke layout per category.
- */
+/** Shared masthead for catalogue pages. The category accent shows as a wash,
+    so each route feels distinct without a layout of its own. */
 export function PageHeader({ kicker, title, intro, accent, count }: PageHeaderProps) {
   return (
     <header className="relative overflow-hidden pb-12 pt-32 sm:pt-40">

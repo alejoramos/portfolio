@@ -8,14 +8,8 @@ import { usePrefersReducedMotion, useIsMobile } from '../../hooks/useEnvironment
 import { SmartImage } from '../../components/ui/Primitives';
 import { SectionKicker } from '../../components/ui/Reveal';
 
-/**
- * Section F — "The Runway".
- *
- * The page's single pinned horizontal moment, reserved for collection
- * storytelling so the device stays special. On mobile the pin is dropped
- * entirely and the panels become a native swipe rail — a thumb already knows how
- * to scroll sideways, and pinning fights it.
- */
+/** Section F, "The Runway", the page's one pinned horizontal scroll. On mobile
+    the pin is dropped for a native swipe rail, since pinning fights the thumb. */
 const PIN_ID = 'kineta-runway-pin';
 
 export function Runway() {
@@ -31,9 +25,8 @@ export function Runway() {
 
   useGSAP(
     () => {
-      // Building before the panels exist measures the wrong width, and the
-      // rebuild once data lands would leave the first pin in place — two pinned
-      // triggers on one section double its spacer and displace it.
+      // Wait for the panels: built early it measures the wrong width, and the
+      // rebuild would leave a second pin that doubles the spacer.
       if (!pinned || !products.length) return;
 
       const track = trackRef.current;

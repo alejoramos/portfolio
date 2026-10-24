@@ -5,15 +5,8 @@
   publish = "."
   command = ""
 
-# The store is a React single page app that lives in a subfolder, so its build
-# output has to be mapped onto the URL it is served from. Assets resolve into
-# the build directory; anything else under /store hands back the app shell, so
-# client side routes survive a refresh or a shared link.
-#
-# force is required. Netlify serves a matching static file before it considers
-# a redirect, and store/index.html is Vite's source template pointing at
-# /src/main.tsx, which only exists while the dev server is running. Without
-# force, /store would serve that template and the page would come up blank.
+# Store SPA: assets map into its build and other /store paths get the app shell.
+# force is needed, or Netlify serves Vite's source template and the page is blank.
 [[redirects]]
   from = "/store/assets/*"
   to = "/store/dist/assets/:splat"
@@ -26,13 +19,8 @@
   status = 200
   force = true
 
-# Grouchy's is an Astro site, so unlike the store it builds real pages rather
-# than one shell, and each one lands in its own folder as an index.html.
-#
-# The pages are listed one by one on purpose. A single catch-all would rewrite
-# /grouchys/menu to /grouchys/dist/menu, which is a directory, and whether that
-# resolves to its index.html is left to the host. Naming the file removes the
-# guess. The catch-all underneath then only has to carry assets.
+# Grouchy's builds one index.html per page folder, so each page is named here;
+# a catch-all to a bare directory would leave index resolution to the host.
 [[redirects]]
   from = "/grouchys"
   to = "/grouchys/dist/index.html"

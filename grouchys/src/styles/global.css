@@ -1,10 +1,7 @@
 @import 'tailwindcss';
 
-/* ==========================================================================
-   Grouchy's Public House — design tokens
-   Values are taken verbatim from the design handoff (README.md → Design Tokens).
-   Anything added here is a responsive step, never a new colour or a new idea.
-   ========================================================================== */
+/* -- Grouchy's Public House: design tokens ------------------------------- */
+/* Values come from the handoff; additions are responsive steps, not new colours. */
 
 @theme {
   /* ---- colour ---------------------------------------------------------- */
@@ -49,13 +46,9 @@
   --breakpoint-2xl: 1440px;
 }
 
-/* ==========================================================================
-   Responsive scale
-   Three bands, matching the handoff's responsive strategy:
-     < 768px    the 430px mobile composition
-     768–1279   same order, collapsed grids, headline sizes ~x0.72
-     >= 1280    the 1440px desktop composition, content capped at 1440
-   ========================================================================== */
+/* -- Responsive scale ---------------------------------------------------- */
+/* Three bands: under 768px the 430px mobile design; 768 to 1279 collapsed grids,
+   headlines about 0.72x; 1280 and up the 1440px desktop design, capped at 1440. */
 
 :root {
   --gutter: 22px;
@@ -122,9 +115,7 @@
   }
 }
 
-/* ==========================================================================
-   Base
-   ========================================================================== */
+/* -- Base ---------------------------------------------------------------- */
 
 @layer base {
   *,
@@ -233,9 +224,7 @@
   }
 }
 
-/* ==========================================================================
-   Layout
-   ========================================================================== */
+/* -- Layout -------------------------------------------------------------- */
 
 .shell {
   width: 100%;
@@ -276,9 +265,7 @@
   top: 0;
 }
 
-/* ==========================================================================
-   Typography
-   ========================================================================== */
+/* -- Typography ---------------------------------------------------------- */
 
 .t-hero {
   font-family: var(--font-display);
@@ -404,9 +391,7 @@
   }
 }
 
-/* ==========================================================================
-   Controls
-   ========================================================================== */
+/* -- Controls ------------------------------------------------------------ */
 
 .btn {
   --btn-py: 17px;
@@ -498,18 +483,8 @@
   color: var(--color-gold-light);
 }
 
-/*
-  Touch targets for the text-style controls.
-
-  The design draws these as type with a hairline under it — a tertiary button,
-  "Get directions", a phone number. Boxing them would change the design, and
-  padding would drag the underline away from the words. So the hit area is
-  widened with an invisible overlay instead: the type stays exactly where the
-  handoff puts it, and a thumb still gets 44px.
-
-  Applied on touch and on narrow viewports; a desktop mouse keeps the tight,
-  intentional spacing the design asks for.
-*/
+/* Touch targets for text-style controls: padding would pull the underline away,
+   so an invisible overlay gives 44px on touch and narrow screens instead. */
 @media (pointer: coarse), (max-width: 767px) {
   .btn-tertiary,
   .link-underline,
@@ -549,9 +524,7 @@
   border-bottom-color: var(--color-cream);
 }
 
-/* ==========================================================================
-   Photography
-   ========================================================================== */
+/* -- Photography --------------------------------------------------------- */
 
 .frame {
   position: relative;
@@ -559,9 +532,8 @@
   background: var(--color-black-4);
 }
 
-/* Descendant, not child: <Picture> wraps the <img> in a <picture>, so a child
-   combinator here silently misses every responsive image and the photograph
-   under-fills its frame. */
+/* Descendant, not child: <Picture> wraps the <img> in <picture>, so a child
+   combinator would miss every responsive image and leave the frame under-filled. */
 .frame picture {
   display: block;
   width: 100%;
@@ -603,12 +575,9 @@
   will-change: transform;
 }
 
-/* ==========================================================================
-   Motion
-   All reveals are authored as GSAP `from()` tweens, so the resting state in
-   the DOM is the *visible* state. If GSAP never loads, or throws, every
-   element is already where it belongs. Nothing here sets opacity: 0.
-   ========================================================================== */
+/* -- Motion -------------------------------------------------------------- */
+/* Reveals are GSAP `from()` tweens, so the resting DOM state is visible.
+   Nothing here sets opacity: 0. */
 
 @keyframes emberDrift {
   0% {

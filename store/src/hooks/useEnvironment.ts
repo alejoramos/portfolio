@@ -17,13 +17,8 @@ export function useMediaQuery(query: string, defaultValue = false): boolean {
   return matches;
 }
 
-/**
- * The gate every animation in the app checks.
- *
- * Returns true when the user has asked for reduced motion. Callers must fall
- * back to an instant or opacity-only presentation rather than simply skipping
- * the animation, or content set to `opacity: 0` by a timeline never appears.
- */
+/** The motion gate: true under reduced motion. Callers must render the final
+    state, not just skip the tween, or anything set to opacity 0 stays hidden. */
 export const usePrefersReducedMotion = () =>
   useMediaQuery('(prefers-reduced-motion: reduce)', false);
 
@@ -33,10 +28,7 @@ export const useIsTablet = () => useMediaQuery('(max-width: 1023px)', false);
 /** Coarse pointers get no hover-dependent affordances and no custom cursor. */
 export const useHasFinePointer = () => useMediaQuery('(hover: hover) and (pointer: fine)', false);
 
-/**
- * True when the device is likely to struggle with WebGL. Used to decide whether
- * to mount the Three.js scene or fall back to the static presentation.
- */
+/** True on devices likely to struggle with WebGL; they get the static stage. */
 export function useIsLowPower(): boolean {
   const isTablet = useIsTablet();
   const [constrained, setConstrained] = useState(false);

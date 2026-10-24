@@ -15,12 +15,8 @@ interface RevealProps {
   start?: string;
 }
 
-/**
- * Scroll-triggered entrance used across quieter sections.
- *
- * Under reduced motion the element renders in its final state and no timeline is
- * created, so nothing can be left stuck at zero opacity.
- */
+/** Scroll entrance for the quieter sections. With reduced motion it renders in
+    its final state and builds no timeline, so nothing stays at opacity 0. */
 export function Reveal({
   children,
   className,
@@ -70,13 +66,8 @@ interface SplitHeadingProps {
   start?: string;
 }
 
-/**
- * Masked per-word heading reveal.
- *
- * Splitting by word rather than using SplitText keeps the DOM predictable and
- * avoids re-splitting on every resize, which matters because these headings are
- * fluid-sized and reflow constantly.
- */
+/** Masked word-by-word heading reveal. Splitting by word, not with SplitText,
+    keeps the DOM predictable and avoids re-splitting fluid headings on resize. */
 export function SplitHeading({
   text,
   className,

@@ -17,13 +17,8 @@ interface ProductGridProps {
   skeletonCount?: number;
 }
 
-/**
- * Catalogue grid with animated re-layout.
- *
- * Filtering and sorting are exactly what GSAP Flip is for: the DOM order changes
- * in one commit and Flip interpolates every card from where it was to where it
- * landed, which reads far better than a fade-out/fade-in.
- */
+/** Catalogue grid. A filter or sort changes the DOM order in one commit, and
+    GSAP Flip moves each card from where it was to where it landed. */
 export function ProductGrid({
   products,
   loading = false,
@@ -65,11 +60,8 @@ export function ProductGrid({
     });
   });
 
-  /*
-   * Skeletons are for the first load only. On a refilter the previous results
-   * stay on screen while the new set resolves — otherwise the grid empties for a
-   * frame, Flip has no "from" state to measure, and the re-layout is lost.
-   */
+  /* Skeletons only on first load. A refilter keeps the old results up, or the
+     grid would empty for a frame and Flip would have nothing to measure. */
   if (loading && !products.length) {
     return (
       <div className={cn('grid gap-x-5 gap-y-12', columns, className)}>
