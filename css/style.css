@@ -1271,7 +1271,7 @@ textarea {
 .cert:nth-child(even) .cert-shot { transform: rotate(1.2deg); }
 
 /* No border of our own, since the certificate has a heavy frame already.
-   Slightly desaturated at rest so three in a column do not shout. */
+   Slightly desaturated at rest so a column of them does not shout. */
 .cert-shot img {
   display: block;
   width: 100%;
